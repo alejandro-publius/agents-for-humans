@@ -13,6 +13,7 @@ name = "afh-agent"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "python-dotenv" },
     { name = "strands-agents" },
     { name = "strands-agents-tools" },
 ]
@@ -42,6 +43,7 @@ dev = [
 requires-dist = [
     { name = "bedrock-agentcore", marker = "extra == 'agentcore'", specifier = ">=1.22" },
     { name = "bedrock-agentcore-starter-toolkit", marker = "extra == 'agentcore'", specifier = ">=0.3" },
+    { name = "python-dotenv", specifier = ">=1.2.3" },
     { name = "strands-agents", specifier = ">=1.55.1" },
     { name = "strands-agents", extras = ["anthropic"], marker = "extra == 'anthropic'" },
     { name = "strands-agents", extras = ["ollama"], marker = "extra == 'ollama'" },
