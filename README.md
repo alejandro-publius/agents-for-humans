@@ -68,9 +68,10 @@ the tests assert that with a socket-blocking fixture.
 
 The interruption numbers come from a synthetic four-snapshot archive replayed through the pipeline
 (`fixtures/bart/archive_synthetic.json`), not from a real weekend; the relevance score is unfilled
-until two people label the exported rows. The policy-agreement number is not a model-quality number yet: the scripted model returns the
-label. The live-mode run (credentials, capped at 200 model calls) reports the real number and has
-not been run. Stations with accessible-pathway prose on BART's page: <!-- claim:kb_label_distribution.stations_with_pathways -->1; the other
+until two people label the exported rows. The two policy-agreement numbers are not model-quality numbers yet: the scripted model returns
+the label, so both prove plumbing. The live run (Bedrock, frozen `kb-labels-v1` labels, hard cap of
+200 model calls per variant, exactly once) has not happened because no AWS credentials were
+present; when it runs, its two numbers replace these. Stations with accessible-pathway prose on BART's page: <!-- claim:kb_label_distribution.stations_with_pathways -->1; the other
 <!-- claim:kb_label_distribution.stations_pathways_unknown -->49are recorded as `unknown`, not invented.
 
 ## What is simulated or unverified
