@@ -1,6 +1,6 @@
 # Day 1 report. Overnight build, Fri Sept 11 to Sat Sept 12, 2026
 
-Branch `overnight`, 19 commits past `main`. Everything ran on the offline mock model provider with
+Branch `overnight`, 27 commits past `main` (Block A, Block B, and Block C items C1 to C4). Everything ran on the offline mock model provider with
 the network blocked in tests. No AWS resources, no deployments, no posts, no spend, no live BART
 calls, and no bart.gov fetch after the B1 capture.
 
@@ -31,6 +31,14 @@ Each line names the command that ran in this session and what it printed.
 - **B7 policy agreement.** `make evals` printed `policy_agreement: agreement 100.0% on 194 cases (mode=mock, skipped for budget=0, steering guides=0)` and wrote `results/policy_agreement.json` with `mode`, `cases_run`, `agreement_pct`, and a by-label breakdown (52 alternate_elevator, 54 backtracking, 88 transit, all agreeing). The ablation run printed `209/211 passed`.
 - **B8.** README claim table regenerated with `make render-claims`; `scripts/verify_claims.py` printed `22 claim(s) match results/`. `make verify` and `git status` results are in the transcript for the B8 commit.
 
+### Block C (rider surface, built after Block B went green; deployment not attempted)
+
+- **C1 rider app.** `make replay` printed `inbox replay: 4 snapshots, 4 new outages, 8 decisions, 4 messages sent (provider=mock, archive=archive_synthetic.json, ...)`. With `make app` running, `GET /` returned 200 with the registration form, `GET /api/status` returned riders 1, trips 2, inbox 8, sent 4, snapshots 4, and a `POST /trips` (rider alex, SANL to DBRK, Mon and Wed) returned 303 and appeared in `data/riders.sqlite` as trip 3. `pytest tests/test_app.py` printed `3 passed`, including the timeline reconstruction (DELN active after snapshot 1, nothing active after snapshot 4) and zero network attempts.
+- **C2 quiet report.** `python -m src.report --rider demo` printed `3 outages touched your stations, 3 touched your trips, 4 interruptions sent; BART-style station alerts would have sent 6.` and wrote `results/interruptions.json`. `pytest tests/test_report.py` printed `2 passed`.
+- **C3 preferences.** `pytest tests/test_preferences.py` printed `5 passed`: the same San Leandro outage at last train gives transit for a default rider and Mitigation Trip for a rider who avoids buses; after sunset it gives backtracking for a default rider and Mitigation Trip for a rider who never travels after dark; a rider who needs a larger elevator skips 12th Street's alternate-elevator option for transit, with the reason stated. Preferences round-trip through the local JSON store and fold into the rider store's policy trips.
+- **C4 tooling.** `make replay` exported `evals/labels/relevance.csv` (8 rows, two empty label columns) and `python -m evals.relevance` printed `relevance: awaiting labels; rows=8 labeled_by_both=0 precision=None recall=None agreement=None kappa=None`, writing `results/relevance.json`. `pytest tests/test_relevance.py` printed `4 passed`, including precision, recall, and Cohen's kappa on hand-made labels and the poller's `--archive-dir` manifest.
+- **CI on GitHub.** After the B8 push, Actions run 34639693587 on `overnight` completed with `success` in 42 s (`make verify` with no secrets).
+
 ## Claimed but not proven
 
 - **BART's ranked option order** (alternate elevator, backtracking, transit, Mitigation Trip, Mitigation Shuttle) and the Mitigation Trip justifications (after dark, bad weather, last train). The page that stated them returned 403; `kb/policy.json` marks the order unverified. The BART Accessibility Guide PDF (May 2026) linked from the accessibility overview may contain it and was not fetched.
@@ -40,12 +48,13 @@ Each line names the command that ran in this session and what it printed.
 - **Minutes.** All computed minutes come from synthetic schedule fixtures and are labeled as such in every plan; real trip times need a key or the GTFS feed.
 - **Transfers.** The policy engine handles boarding and exiting; transfer stations are not modeled (all fixtures are single-leg). Headings that name a direction as a region ("EAST BAY DIRECTION" at Daly City) cannot be matched to a train head station and resolve to `unknown_direction`.
 - **Option labels.** The extension tier (58 of 194 options) is my reading of BART's phrasing, listed in `kb/labels.py` and counted separately in `results/kb_label_distribution.json` for review.
-- **CI on GitHub.** The workflow parses and `make verify` passes locally; the `overnight` branch had not been pushed when this report was written.
+- **Block C live half.** The AgentCore Memory preference store is written but never constructed (no credentials). The live archive through Sunday needs `BART_API_KEY` (`make archive`), and the relevance numbers need two people to fill `evals/labels/relevance.csv`; until then `results/relevance.json` says "awaiting labels". The BART-style alert count assumes one alert per outage start and one per clearance at each registered station. The replay's "model" is a scripted echo of the policy engine unless Bedrock credentials are present; the inbox says `provider=mock`.
+- **The app** has no authentication and was checked only on localhost; it is not deployed.
 - **Cold-machine `make setup` time** is unmeasured (uv cache was warm).
 
 ## Deliberately not built
 
-- Block C: rider app, weekly quiet report, preferences memory, live archive with two labelers (C1 to C4), and deployment (C5, which needs an explicit yes).
+- C5 deployment (AgentCore Runtime or Lambda plus EventBridge, SNS delivery, a public URL): needs an explicit yes.
 - Anything that deploys, creates AWS resources, runs `agentcore`, sends SMS or email, or spends money.
 - A live fixture recorder (`python -m bart.record`); a human with a key can add real responses in the morning.
 - gitleaks (a regex scanner with tests covers the key shapes we could leak).
