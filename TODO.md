@@ -41,7 +41,7 @@ Constraints that hold all night.
       Accept. `make evals` shows `outage_parse` accuracy on the ten cases.
 - [x] B4. Trip matcher and policy engine, pure code. Given a rider trip `{origin, dest, days, window, needs}` and an outage, decide affected or not, then rank options in BART's published order: alternate elevator, backtracking, transit, Mitigation Trip, Mitigation Shuttle. Compute added minutes from `sched.aspx` fixtures. Flags for after dark (sunset computed locally) and last train.
       Accept. `pytest tests/test_policy.py -q` covers the boarding and exiting examples from the BART page (San Leandro to SF, and SF to El Cerrito Plaza via Del Norte) and passes.
-- [ ] B5. Poller. `src/poller.py` polls every 5 minutes, diffs against the last snapshot, writes new or changed outages to `data/outages.sqlite`. Runs live only with the key.
+- [x] B5. Poller. `src/poller.py` polls every 5 minutes, diffs against the last snapshot, writes new or changed outages to `data/outages.sqlite`. Runs live only with the key.
       Accept. `python -m src.poller --once --fixture fixtures/bart/elev_sample.json` inserts rows and a second run inserts none.
 - [ ] B6. Wire the agent. Replace the placeholder tools with `get_station_facts`, `plan_alternatives`, `draft_message`. Steering handler enforces BART's option order. Hook cancels any tool call naming a station not in the KB.
       Accept. `make demo-one` runs a synthetic outage against a synthetic trip on the mock provider and prints a structured plan whose option matches the policy engine's top feasible option.
