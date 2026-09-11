@@ -6,6 +6,8 @@ import argparse
 import sys
 from collections.abc import Sequence
 
+from dotenv import find_dotenv, load_dotenv
+
 from afh_agent.agent import build_agent
 
 
@@ -40,7 +42,13 @@ def repl(agent) -> None:
             print(f"\nagent> {run_once(agent, line)}")
 
 
+def load_env() -> None:
+    """Load `.env` from the current directory (or a parent). Real environment variables win."""
+    load_dotenv(find_dotenv(usecwd=True), override=False)
+
+
 def main(argv: Sequence[str] | None = None) -> int:
+    load_env()
     args = _parse(argv)
     agent = build_agent(session_id=args.session)
     if args.prompt:
