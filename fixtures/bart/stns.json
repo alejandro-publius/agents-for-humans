@@ -1,0 +1,222 @@
+{
+ "_fixture": {
+  "synthetic": true,
+  "source": "https://api.bart.gov/docs/overview/abbrev.aspx (station abbreviation table) shaped like the documented stn.aspx?cmd=stns response",
+  "captured_from_docs_on": "2026-09-11",
+  "note": "Names and abbreviations are BART's; coordinates, address, city, county, zip are omitted because they were not in the documented table."
+ },
+ "?xml": {
+  "@version": "1.0",
+  "@encoding": "utf-8"
+ },
+ "root": {
+  "uri": {
+   "#cdata-section": "https://api.bart.gov/api/stn.aspx?cmd=stns&json=y"
+  },
+  "stations": {
+   "station": [
+    {
+     "name": "12th St. Oakland City Center",
+     "abbr": "12TH"
+    },
+    {
+     "name": "16th St. Mission (SF)",
+     "abbr": "16TH"
+    },
+    {
+     "name": "19th St. Oakland",
+     "abbr": "19TH"
+    },
+    {
+     "name": "24th St. Mission (SF)",
+     "abbr": "24TH"
+    },
+    {
+     "name": "Ashby (Berkeley)",
+     "abbr": "ASHB"
+    },
+    {
+     "name": "Antioch",
+     "abbr": "ANTC"
+    },
+    {
+     "name": "Balboa Park (SF)",
+     "abbr": "BALB"
+    },
+    {
+     "name": "Bay Fair (San Leandro)",
+     "abbr": "BAYF"
+    },
+    {
+     "name": "Berryessa / North San Jose",
+     "abbr": "BERY"
+    },
+    {
+     "name": "Castro Valley",
+     "abbr": "CAST"
+    },
+    {
+     "name": "Civic Center (SF)",
+     "abbr": "CIVC"
+    },
+    {
+     "name": "Coliseum",
+     "abbr": "COLS"
+    },
+    {
+     "name": "Colma",
+     "abbr": "COLM"
+    },
+    {
+     "name": "Concord",
+     "abbr": "CONC"
+    },
+    {
+     "name": "Daly City",
+     "abbr": "DALY"
+    },
+    {
+     "name": "Downtown Berkeley",
+     "abbr": "DBRK"
+    },
+    {
+     "name": "Dublin/Pleasanton",
+     "abbr": "DUBL"
+    },
+    {
+     "name": "El Cerrito del Norte",
+     "abbr": "DELN"
+    },
+    {
+     "name": "El Cerrito Plaza",
+     "abbr": "PLZA"
+    },
+    {
+     "name": "Embarcadero (SF)",
+     "abbr": "EMBR"
+    },
+    {
+     "name": "Fremont",
+     "abbr": "FRMT"
+    },
+    {
+     "name": "Fruitvale (Oakland)",
+     "abbr": "FTVL"
+    },
+    {
+     "name": "Glen Park (SF)",
+     "abbr": "GLEN"
+    },
+    {
+     "name": "Hayward",
+     "abbr": "HAYW"
+    },
+    {
+     "name": "Lafayette",
+     "abbr": "LAFY"
+    },
+    {
+     "name": "Lake Merritt (Oakland)",
+     "abbr": "LAKE"
+    },
+    {
+     "name": "MacArthur (Oakland)",
+     "abbr": "MCAR"
+    },
+    {
+     "name": "Millbrae",
+     "abbr": "MLBR"
+    },
+    {
+     "name": "Milpitas",
+     "abbr": "MLPT"
+    },
+    {
+     "name": "Montgomery St. (SF)",
+     "abbr": "MONT"
+    },
+    {
+     "name": "North Berkeley",
+     "abbr": "NBRK"
+    },
+    {
+     "name": "North Concord/Martinez",
+     "abbr": "NCON"
+    },
+    {
+     "name": "Oakland Int'l Airport",
+     "abbr": "OAKL"
+    },
+    {
+     "name": "Orinda",
+     "abbr": "ORIN"
+    },
+    {
+     "name": "Pittsburg/Bay Point",
+     "abbr": "PITT"
+    },
+    {
+     "name": "Pittsburg Center",
+     "abbr": "PCTR"
+    },
+    {
+     "name": "Pleasant Hill",
+     "abbr": "PHIL"
+    },
+    {
+     "name": "Powell St. (SF)",
+     "abbr": "POWL"
+    },
+    {
+     "name": "Richmond",
+     "abbr": "RICH"
+    },
+    {
+     "name": "Rockridge (Oakland)",
+     "abbr": "ROCK"
+    },
+    {
+     "name": "San Bruno",
+     "abbr": "SBRN"
+    },
+    {
+     "name": "San Francisco Int'l Airport",
+     "abbr": "SFIA"
+    },
+    {
+     "name": "San Leandro",
+     "abbr": "SANL"
+    },
+    {
+     "name": "South Hayward",
+     "abbr": "SHAY"
+    },
+    {
+     "name": "South San Francisco",
+     "abbr": "SSAN"
+    },
+    {
+     "name": "Union City",
+     "abbr": "UCTY"
+    },
+    {
+     "name": "Warm Springs/South Fremont",
+     "abbr": "WARM"
+    },
+    {
+     "name": "Walnut Creek",
+     "abbr": "WCRK"
+    },
+    {
+     "name": "West Dublin",
+     "abbr": "WDUB"
+    },
+    {
+     "name": "West Oakland",
+     "abbr": "WOAK"
+    }
+   ]
+  },
+  "message": ""
+ }
+}

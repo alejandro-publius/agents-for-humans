@@ -1,0 +1,34 @@
+{
+ "_fixture": {
+  "synthetic": false,
+  "source": "https://api.bart.gov/docs/bsa/bsa.aspx (documented JSON sample, dated 06/26/2017)",
+  "captured_from_docs_on": "2026-09-11",
+  "repairs": [
+   "removed a stray 's' after '\"sms_text\":{' present in BART's documentation"
+  ]
+ },
+ "?xml": {
+  "@version": "1.0",
+  "@encoding": "utf-8"
+ },
+ "root": {
+  "@id": "1",
+  "uri": {
+   "#cdata-section": "https://api.bart.gov/api/bsa.aspx?cmd=bsa&json=y"
+  },
+  "date": "06/26/2017",
+  "time": "11:08:00 AM PDT",
+  "bsa": [
+   {
+    "station": "",
+    "description": {
+     "#cdata-section": "No advisories issued."
+    },
+    "sms_text": {
+     "#cdata-section": "No advisories issued."
+    }
+   }
+  ],
+  "message": ""
+ }
+}

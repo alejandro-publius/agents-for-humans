@@ -1,0 +1,36 @@
+{
+ "_fixture": {
+  "synthetic": false,
+  "source": "https://api.bart.gov/docs/bsa/elev.aspx (documented JSON sample, dated 11/20/2017)",
+  "captured_from_docs_on": "2026-09-11",
+  "note": "Verbatim documented sample. Not a live response; no BART_API_KEY was used."
+ },
+ "?xml": {
+  "@version": "1.0",
+  "@encoding": "utf-8"
+ },
+ "root": {
+  "@id": "1",
+  "uri": {
+   "#cdata-section": "https://api.bart.gov/api/bsa.aspx?cmd=elev&json=y"
+  },
+  "date": "11/20/2017",
+  "time": "11:51:20 AM PST",
+  "bsa": [
+   {
+    "@id": "11201151",
+    "station": "BART",
+    "type": "ELEVATOR",
+    "description": {
+     "#cdata-section": "There is 1 elevator out of service at this time: DELN: Platform - Richmond"
+    },
+    "sms_text": {
+     "#cdata-section": "1 elev out of svc: DELN: plat - RICH"
+    },
+    "posted": "",
+    "expires": ""
+   }
+  ],
+  "message": ""
+ }
+}

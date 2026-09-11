@@ -1,0 +1,117 @@
+{
+ "_fixture": {
+  "synthetic": false,
+  "source": "https://api.bart.gov/docs/etd/etd.aspx (documented JSON sample, dated 01/20/2021, orig=RICH)",
+  "captured_from_docs_on": "2026-09-11",
+  "repairs": [
+   "inserted 12 missing commas between fields, as printed in BART's documentation; values unchanged"
+  ]
+ },
+ "?xml": {
+  "@version": "1.0",
+  "@encoding": "utf-8"
+ },
+ "root": {
+  "@id": "1",
+  "uri": {
+   "#cdata-section": "https://api.bart.gov/api/etd.aspx?cmd=etd&orig=RICH&json=y"
+  },
+  "date": "01/20/2021",
+  "time": "08:13:44 AM PDT",
+  "station": [
+   {
+    "name": "Richmond",
+    "abbr": "RICH",
+    "etd": [
+     {
+      "destination": "Fremont",
+      "abbreviation": "FRMT",
+      "limited": "0",
+      "estimate": [
+       {
+        "minutes": "1",
+        "platform": "2",
+        "direction": "South",
+        "length": "4",
+        "color": "ORANGE",
+        "hexcolor": "#ff9933",
+        "bikeflag": "1",
+        "delay": "238",
+        "cancelflag": "1",
+        "dynamicflag": "0"
+       },
+       {
+        "minutes": "13",
+        "platform": "2",
+        "direction": "South",
+        "length": "4",
+        "color": "ORANGE",
+        "hexcolor": "#ff9933",
+        "bikeflag": "1",
+        "delay": "0",
+        "cancelflag": "0",
+        "dynamicflag": "1"
+       },
+       {
+        "minutes": "28",
+        "platform": "2",
+        "direction": "South",
+        "length": "4",
+        "color": "ORANGE",
+        "hexcolor": "#ff9933",
+        "bikeflag": "1",
+        "delay": "0",
+        "cancelflag": "0",
+        "dynamicflag": "0"
+       }
+      ]
+     },
+     {
+      "destination": "Millbrae",
+      "abbreviation": "MLBR",
+      "limited": "0",
+      "estimate": [
+       {
+        "minutes": "6",
+        "platform": "2",
+        "direction": "South",
+        "length": "4",
+        "color": "RED",
+        "hexcolor": "#ff0000",
+        "bikeflag": "1",
+        "delay": "0",
+        "cancelflag": "0",
+        "dynamicflag": "0"
+       },
+       {
+        "minutes": "21",
+        "platform": "2",
+        "direction": "South",
+        "length": "5",
+        "color": "RED",
+        "hexcolor": "#ff0000",
+        "bikeflag": "1",
+        "delay": "0",
+        "cancelflag": "0",
+        "dynamicflag": "0"
+       },
+       {
+        "minutes": "36",
+        "platform": "2",
+        "direction": "South",
+        "length": "5",
+        "color": "RED",
+        "hexcolor": "#ff0000",
+        "bikeflag": "1",
+        "delay": "0",
+        "cancelflag": "0",
+        "dynamicflag": "0"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "message": ""
+ }
+}
