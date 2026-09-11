@@ -10,7 +10,7 @@ from agent.mock_model import FIXTURE_DIR, FixtureError, MockExhausted, MockModel
 
 def test_network_guard_is_armed(no_network):
     """Self-check: the fixture really refuses connections, so a zero-attempt assertion means something."""
-    with pytest.raises(RuntimeError, match="network disabled"):
+    with pytest.raises(ConnectionError, match="network disabled"):
         socket.create_connection(("example.com", 80), timeout=1)
     assert no_network.attempts == ["socket.create_connection"]
 

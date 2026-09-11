@@ -46,7 +46,7 @@ class _Guard:
 def install_network_guard() -> None:
     def refuse(*args: Any, **kwargs: Any):
         _Guard.attempts += 1
-        raise RuntimeError("network disabled: mock provider run")
+        raise ConnectionError("network disabled: mock provider run")
 
     socket.socket.connect = refuse  # type: ignore[method-assign]
     socket.socket.connect_ex = refuse  # type: ignore[method-assign]

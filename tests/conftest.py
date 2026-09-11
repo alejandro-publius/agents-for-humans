@@ -8,6 +8,11 @@ from dataclasses import dataclass, field
 import pytest
 
 
+class NetworkBlocked(ConnectionError):
+    """Raised for any outbound attempt. An OSError subclass, so code that handles real network
+    failures (URLError, OSError) handles the block the same way and never sees a surprise type."""
+
+
 @dataclass
 class NetworkGuard:
     """Records every attempt to reach the network and refuses it."""
@@ -17,7 +22,7 @@ class NetworkGuard:
     def refuse(self, where: str):
         def _blocked(*args, **kwargs):
             self.attempts.append(where)
-            raise RuntimeError(f"network disabled in tests: {where} called with {args[:2]}")
+            raise NetworkBlocked(f"network disabled in tests: {where} called with {args[:2]}")
 
         return _blocked
 
