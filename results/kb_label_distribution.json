@@ -78,6 +78,7 @@
     ]
   },
   "default_after_extension": [],
+  "elevators_total": 97,
   "labeled_by_rule": {
     "default": 0,
     "extended": 58,
@@ -92,6 +93,9 @@
     "mitigation_trip",
     "mitigation_shuttle"
   ],
+  "stations": 50,
+  "stations_pathways_unknown": 49,
+  "stations_with_pathways": 1,
   "strict_rules_only": {
     "alternate_elevator": 8,
     "backtracking": 53,

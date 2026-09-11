@@ -1,31 +1,53 @@
-# Day 1 report. Overnight build, Fri Sept 11, 2026
+# Day 1 report. Overnight build, Fri Sept 11 to Sat Sept 12, 2026
 
-Branch `overnight`. Everything below ran on the offline mock model provider with the network
-blocked. No AWS resources, no deployments, no posts, no spend.
+Branch `overnight`, 19 commits past `main`. Everything ran on the offline mock model provider with
+the network blocked in tests. No AWS resources, no deployments, no posts, no spend, no live BART
+calls, and no bart.gov fetch after the B1 capture.
 
 ## Proven by a command with observed output
 
 Each line names the command that ran in this session and what it printed.
 
-- **A1 repo skeleton.** `make setup && make lint && make test` exited 0: `python 3.12.0`, `All checks passed!`, `1 passed`.
-- **A2 mock provider.** `pytest tests/test_mock_provider.py -q` printed `9 passed`. The agent completed one turn on `fixtures/model/one_turn_text.json` with the socket-blocking fixture recording `attempts == []`; the same fixture is proven armed by a test that expects `socket.create_connection` to raise.
-- **A3 hook, steering, structured output.** `pytest tests/test_hooks.py tests/test_steering.py tests/test_structured_output.py -q` printed `10 passed`. Captured output showed the hook cancelling `get_station_facts(station="ZZZZ")` with `CANCELLED by ArgumentValidatorHook: station='ZZZZ' is not a known station`, the steering handler rewriting a Mitigation Shuttle draft to `Backtracking is the first feasible option under BART's published outage order…`, and a validated `Plan(option='alternate elevator', added_minutes=3, …)`. Ablation tests show both mechanisms are what cause those outcomes.
-- **A4 evals harness.** `make evals` printed `full total 7/7 passed, network_attempts=0` and wrote `results/summary.json` with `cases_run: 7`. A temporary case without a `label` made `make evals` exit 2 (`make: *** [evals] Error 2`). Strands Evals (`strands-agents-evals 1.2.0`) installed in about one second and is used for scoring (`Experiment` + deterministic `Equals`), so no pytest fallback was needed.
-- **A5 ablation.** `make evals ABLATE=1` printed `ABLATED total 5/7 passed` and wrote `results/ablation.json`; a field-by-field diff against `summary.json` listed 20 differing fields (for example `hook_cancellations 1 -> 0`, `steering_rewrites 1 -> 0`, `accuracy_pct 100.0 -> 71.4`). `tests/test_ablation.py` locks this in.
-- **A6 claim verification.** `make verify` printed `verify_claims: 12 claim(s) match results/` and `verify: OK`. After changing the README's `cases_passed` claim from 7 to 9, `make verify` printed `MISMATCH summary.cases_passed README=9 results=7` and `make: *** [verify-claims] Error 1`. README restored.
-- **A7 CI and secret scan.** `python -c "import yaml;yaml.safe_load(open('.github/workflows/ci.yml'))"` parsed the workflow (one job, four steps). `make verify` printed `secret_scan: 50 tracked files clean`; `pytest tests/test_secret_scan.py -q` printed `4 passed` after planting each key shape.
-- **A8 judging route.** From a fresh `git clone -b overnight` into `/tmp`: clone 1s, `make setup` 0s (uv cache was warm; see below), `make replay` 4s, total 5s. `results/replay.md` opened and showed the cancelled tool call for case `harness_hook / unknown_station_is_cancelled`.
+### Block A (harness)
+
+- **A1.** `make setup && make lint && make test` exited 0 (`python 3.12.0`, `All checks passed!`, `1 passed`).
+- **A2.** `pytest tests/test_mock_provider.py -q` printed `9 passed`; the agent completed one turn on a scripted model with the socket-blocking fixture recording no attempts.
+- **A3.** `pytest tests/test_hooks.py tests/test_steering.py tests/test_structured_output.py -q` printed `10 passed`; captured output showed the hook cancelling a call with an unknown station, the steering handler rewriting a Mitigation Shuttle draft, and a validated `Plan`.
+- **A4.** `make evals` printed `7/7 passed, network_attempts=0` and wrote `results/summary.json`; a case without a label made `make evals` exit 2. Strands Evals 1.2.0 installed in about one second and scores every suite (`Experiment` + `Equals`); no fallback runner was needed.
+- **A5.** `make evals ABLATE=1` printed `5/7 passed`; 20 fields differed from `summary.json`.
+- **A6.** `make verify` printed `verify_claims: 12 claim(s) match results/`; a README number changed from 7 to 9 made it exit 1 with `MISMATCH summary.cases_passed README=9 results=7`.
+- **A7.** `python -c "import yaml;yaml.safe_load(open('.github/workflows/ci.yml'))"` parsed; `make verify` ran the regex secret scan clean.
+- **A8.** Fresh `git clone -b overnight` into `/tmp`: clone 1s, `make setup` 0s (warm uv cache), `make replay` 4s, total 5s; `results/replay.md` opened.
+
+### Block B (Last Elevator)
+
+- **B1 knowledge base.** `python -m kb.build` printed `kb: 50 stations; 50 with documented outage options (194 options across 97 elevators); 1 with pathways, 49 pathways unknown; missing pages: none`. `pytest tests/test_kb.py` printed `8 passed` (11 after labels were added). Capture method: bart.gov returned HTTP 403 "Access denied" to curl, to Python urllib, and to browser-like headers; the 50 station pages (`/stations/<ABBR>/accessible`) and the Elevator Status page were captured from a real Chrome session by same-origin fetch, one request per 1.1 s, as text blocks, and committed under `kb/raw/`. The old `/guide/accessibility/elevators` URL is gone (403 in the browser too). BART's status page links "El Cerrito del Norte" to the DUBL page by mistake; the KB is built by abbreviation, and a test pins DELN to DELN.
+- **Option labels.** `python -m kb.build` wrote `results/kb_label_distribution.json`: strict rules alone label 8 alternate_elevator / 53 backtracking / 75 transit and leave 58 at the default; with the extension tier 52 / 54 / 88 / 0. Checks printed: SANL backtracking on all four options, DBRK transit on all four, 12TH street elevators alternate_elevator and its platform elevator transit.
+- **B2 BART client.** `pytest tests/test_bart_client.py -q` printed `15 passed` (offline; fixtures are BART's documented samples, three of them repaired for BART's own typos and labeled, plus labeled synthetic snapshots). The live path was exercised only against the network guard: one warning line, `BartUnavailable`, no key in the message. Note: commit `b282637` landed while `make verify` was red because my shell chain read `tail`'s exit code; `62f8835` fixed the test and the chain, and every later commit gated on make's real exit code.
+- **B3 outage parser.** `make evals` printed `outage_parse accuracy: 100.0% on 10 cases (mock provider); regex baseline 100.0%`. The model path (`Agent(structured_output_model=OutageParse)`) is scripted; code nulls unknown stations, checks level words, and resolves the KB elevator or refuses (the WDUB garage case is deliberately ambiguous and resolves to null).
+- **B4 policy engine.** `pytest tests/test_policy.py -q` printed `15 passed`, including boarding at San Leandro toward SF (documented option: Platform 1 elevator to the opposite platform, back to Bay Fair; label backtracking; 4 + 4 + 6 minutes from the synthetic schedule fixture) and exiting at El Cerrito Plaza from SF (continue to El Cerrito del Norte and return; backtracking; 3 + 3 + 6). Sunset for Oakland on 2026-09-12 computed as 19:21 PDT. A first version put the sunset on the previous local date; caught by the test, fixed.
+- **B5 poller.** `python -m src.poller --once --fixture fixtures/bart/elev_sample.json` printed `inserted=1 cleared=0 unchanged=0`; the second run printed `inserted=0 cleared=0 unchanged=1`. `pytest tests/test_poller.py` printed `5 passed` (new, cleared, empty feed, CLI refusal without a key).
+- **B6 wired agent.** `make demo-one` printed the policy decision (affected, cant_enter, top option backtracking, 14 minutes), `hook cancelled 1 call(s)` for `station_abbr='SANK'`, `steering guided 1 call(s)` from mitigation_shuttle to backtracking, a verified plan, and `RESULT : final option 'backtracking' == policy top option 'backtracking': True`. `pytest tests/test_strands_mechanics.py` printed `2 passed`: exactly one hook cancellation, one steering Guide, one valid Plan, zero network attempts; and in ablation, code still corrected a wrong plan. `make test` printed `80 passed`.
+- **B7 policy agreement.** `make evals` printed `policy_agreement: agreement 100.0% on 194 cases (mode=mock, skipped for budget=0, steering guides=0)` and wrote `results/policy_agreement.json` with `mode`, `cases_run`, `agreement_pct`, and a by-label breakdown (52 alternate_elevator, 54 backtracking, 88 transit, all agreeing). The ablation run printed `209/211 passed`.
+- **B8.** README claim table regenerated with `make render-claims`; `scripts/verify_claims.py` printed `22 claim(s) match results/`. `make verify` and `git status` results are in the transcript for the B8 commit.
 
 ## Claimed but not proven
 
-- **`make setup` on a cold machine.** The 0s figure came from a warm uv cache. A first-time install downloads Python 3.12 and about 60 packages; expect tens of seconds, not zero.
-- **CI on GitHub.** The workflow file parses and `make verify` passes locally, but the `overnight` branch has not been pushed, so no Actions run exists yet.
-- **Bedrock provider path.** `evals/run.py --provider bedrock` is written but untested: no credentials were present, by design.
-- **The numbers mean harness correctness, not model quality.** Every eval and replay uses scripted model turns. A 100% pass rate here says the hook, steering handler, and schema behave; it says nothing about how a real model would plan. Real outage numbers are Block B and C work.
+- **BART's ranked option order** (alternate elevator, backtracking, transit, Mitigation Trip, Mitigation Shuttle) and the Mitigation Trip justifications (after dark, bad weather, last train). The page that stated them returned 403; `kb/policy.json` marks the order unverified. The BART Accessibility Guide PDF (May 2026) linked from the accessibility overview may contain it and was not fetched.
+- **Accessible pathways.** 49 of 50 station pages carry no pathway prose; they are recorded as `unknown`. The `stnaccess` API command returns entering/exiting text per station (its documented 12TH sample is a fixture) and needs a key.
+- **Live BART API.** No live call was made. The demo key was not used. Fixture provenance is in `fixtures/bart/README.md`; the `;` separator between simultaneous outages and the no-outage wording are assumptions.
+- **Live model.** Bedrock was never called (no credentials; the AWS-status placeholder in the work order was left unfilled). The policy-agreement number is a plumbing proof; the live number, capped at 200 model calls, is unknown. The `--provider bedrock` path is untested.
+- **Minutes.** All computed minutes come from synthetic schedule fixtures and are labeled as such in every plan; real trip times need a key or the GTFS feed.
+- **Transfers.** The policy engine handles boarding and exiting; transfer stations are not modeled (all fixtures are single-leg). Headings that name a direction as a region ("EAST BAY DIRECTION" at Daly City) cannot be matched to a train head station and resolve to `unknown_direction`.
+- **Option labels.** The extension tier (58 of 194 options) is my reading of BART's phrasing, listed in `kb/labels.py` and counted separately in `results/kb_label_distribution.json` for review.
+- **CI on GitHub.** The workflow parses and `make verify` passes locally; the `overnight` branch had not been pushed when this report was written.
+- **Cold-machine `make setup` time** is unmeasured (uv cache was warm).
 
 ## Deliberately not built
 
-- Anything that deploys, creates AWS resources, runs `agentcore`, sends email or SMS, or spends money. Deployment is a human decision in the morning (TODO C5).
-- gitleaks. A regex scanner (`scripts/secret_scan.py`) covers the key shapes we could plausibly leak, with tests; the CI job runs it with no secrets configured.
-- The rider app, weekly quiet report, preferences memory, and live archive (Block C). None should start overnight.
-- Live BART calls. Without `BART_API_KEY` the client reads `fixtures/bart/` (Block B).
+- Block C: rider app, weekly quiet report, preferences memory, live archive with two labelers (C1 to C4), and deployment (C5, which needs an explicit yes).
+- Anything that deploys, creates AWS resources, runs `agentcore`, sends SMS or email, or spends money.
+- A live fixture recorder (`python -m bart.record`); a human with a key can add real responses in the morning.
+- gitleaks (a regex scanner with tests covers the key shapes we could leak).
+- The Bedrock cost and latency table (needs credentials).
+- Direction synonyms for regional headings (Daly City's "East Bay") and GTFS-based transfer detection.

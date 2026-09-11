@@ -287,6 +287,10 @@ def label_distribution(stations: list[dict[str, Any]]) -> dict[str, Any]:
             ]
     total = sum(final_counts.values())
     return {
+        "stations": len(stations),
+        "elevators_total": sum(len(s["elevators"]) for s in stations),
+        "stations_with_pathways": sum(1 for s in stations if s["pathways"]),
+        "stations_pathways_unknown": sum(1 for s in stations if s["pathways_status"] == "unknown"),
         "options_total": total,
         "rank_order": list(OPTION_ORDER),
         "strict_rules_only": strict_counts,
