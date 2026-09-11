@@ -14,7 +14,7 @@ Constraints that hold all night.
 
 - [x] A1. Repo skeleton. `pyproject.toml`, `Makefile` with targets `setup lint test evals results verify`, `LICENSE` (Apache-2.0), `README.md` stub, `.gitignore`, `.env.example`, `docs/`, `evals/`, `results/`, `scripts/`, `src/agent/`.
       Accept. `make setup && make lint && make test` exits 0 with at least one passing test.
-- [ ] A2. Offline mock model provider for Strands so the agent runs with no credentials. Scripted responses loaded from `fixtures/model/*.json`.
+- [x] A2. Offline mock model provider for Strands so the agent runs with no credentials. Scripted responses loaded from `fixtures/model/*.json`.
       Accept. `pytest tests/test_mock_provider.py -q` passes and shows the agent completing one turn with zero network calls (assert via a socket-blocking fixture).
 - [ ] A3. Agent skeleton in `src/agent/`. One `strands.Agent` with three placeholder tools, a `BeforeToolCall` hook that cancels any call whose arguments fail a validator, a steering handler that rewrites a response when a policy check fails, and a structured-output schema for the final plan. Each mechanism has its own unit test that proves it fires.
       Accept. `pytest tests/test_hooks.py tests/test_steering.py tests/test_structured_output.py -q` passes, and the transcript shows the hook cancelling a bad call and the steering handler rewriting a bad response.
