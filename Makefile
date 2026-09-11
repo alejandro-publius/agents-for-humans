@@ -29,7 +29,7 @@ test: ## unit tests, fully offline
 	$(PY) -m pytest -q
 
 evals: ## run eval cases on the mock provider and write results/*.json; ABLATE=1 disables hook + steering
-	@echo "evals: not built yet (TODO A4)"; exit 1
+	$(PY) evals/run.py $(if $(filter 1,$(ABLATE)),--ablate,)
 
 results: ## print results/summary.json
 	@cat results/summary.json
