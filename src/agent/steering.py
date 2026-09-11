@@ -24,9 +24,14 @@ Rewrite = Callable[[str, str], str]
 
 
 def first_option_mentioned(text: str) -> str | None:
-    """The option the response recommends: the earliest-mentioned option name in the text."""
+    """The option the response recommends: the earliest-mentioned option name, as its label."""
     lowered = text.lower()
-    hits = [(lowered.find(opt), opt) for opt in OPTION_ORDER if opt in lowered]
+    hits = []
+    for label in OPTION_ORDER:
+        for spelling in (label, label.replace("_", " ")):
+            pos = lowered.find(spelling)
+            if pos >= 0:
+                hits.append((pos, label))
     return min(hits)[1] if hits else None
 
 
@@ -49,8 +54,8 @@ def option_order_policy(required_option: str | None) -> PolicyCheck:
 def option_order_rewrite(required_option: str | None) -> Rewrite:
     def _rewrite(original: str, reason: str) -> str:
         return (
-            f"{(required_option or 'none').capitalize()} is the first feasible option under BART's "
-            f"published outage order. Draft withheld by policy: {reason}."
+            f"{(required_option or 'none').replace('_', ' ').capitalize()} is the first feasible option "
+            f"under BART's published outage order. Draft withheld by policy: {reason}."
         )
 
     return _rewrite

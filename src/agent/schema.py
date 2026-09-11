@@ -9,15 +9,19 @@ from __future__ import annotations
 
 from pydantic import BaseModel, Field
 
-# BART's published order of outage options, best first.
-# Source: https://www.bart.gov/guide/accessibility/elevators (scraped into kb/ at B1).
-OPTION_ORDER: tuple[str, ...] = (
-    "alternate elevator",
-    "backtracking",
-    "transit",
-    "mitigation trip",
-    "mitigation shuttle",
-)
+# alternate_elevator, backtracking, transit, mitigation_trip, mitigation_shuttle
+from kb.labels import OPTION_ORDER
+
+
+def normalize_option(text: str | None) -> str | None:
+    """'Mitigation Shuttle' or 'mitigation-shuttle' -> 'mitigation_shuttle'; unknown text is lowered."""
+    if text is None:
+        return None
+    key = text.strip().lower().replace("-", " ").replace("_", " ")
+    for label in OPTION_ORDER:
+        if key == label.replace("_", " "):
+            return label
+    return key.replace(" ", "_") or None
 
 
 class Plan(BaseModel):

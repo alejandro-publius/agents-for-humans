@@ -6,7 +6,7 @@ PY    := $(VENV)/bin/python
 UV    := $(shell command -v uv 2>/dev/null)
 ABLATE ?= 0
 
-.PHONY: help setup lint test evals evals-ablate results render-claims verify-claims secret-scan verify replay poll clean
+.PHONY: help setup lint test evals evals-ablate results render-claims verify-claims secret-scan verify replay poll demo-one clean
 
 help: ## list targets
 	@grep -E '^[a-z-]+:.*## ' $(MAKEFILE_LIST) | awk -F ':.*## ' '{printf "  %-10s %s\n", $$1, $$2}'
@@ -33,6 +33,9 @@ evals: ## run eval cases on the mock provider and write results/*.json; ABLATE=1
 
 evals-ablate: ## same cases with hook + steering disabled -> results/ablation.json
 	$(PY) evals/run.py --ablate
+
+demo-one: ## one synthetic outage against one synthetic trip on the mock provider; prints decision, mechanisms, plan
+	$(PY) scripts/demo_one.py
 
 poll: ## one poll of the elevator feed into data/outages.sqlite; FIXTURE=path runs offline, else needs BART_API_KEY
 	$(PY) -m src.poller --once $(if $(FIXTURE),--fixture $(FIXTURE),)

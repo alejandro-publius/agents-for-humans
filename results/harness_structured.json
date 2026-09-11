@@ -15,8 +15,8 @@
   },
   "cases": {
     "immediate_plan": {
-      "expected": "alternate elevator",
-      "actual": "alternate elevator",
+      "expected": "alternate_elevator",
+      "actual": "alternate_elevator",
       "pass": true
     },
     "forced_plan_after_prose": {

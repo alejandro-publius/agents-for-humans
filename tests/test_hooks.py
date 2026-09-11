@@ -15,12 +15,12 @@ def test_hook_cancels_call_with_unknown_station():
     print("\nHOOK CANCELLED ->", first)
     assert first["status"] == "error"
     assert "CANCELLED by ArgumentValidatorHook" in result_text(first)
-    assert "station='ZZZZ' is not a known station" in result_text(first)
+    assert "station_abbr='ZZZZ' is not a known station" in result_text(first)
     (cancelled,) = built.validator_hook.cancelled
     assert cancelled == {
         "tool": "get_station_facts",
-        "input": {"station": "ZZZZ"},
-        "reason": "station='ZZZZ' is not a known station",
+        "input": {"station_abbr": "ZZZZ"},
+        "reason": "station_abbr='ZZZZ' is not a known station",
     }
     assert built.validator_hook.allowed == []
 
@@ -33,7 +33,7 @@ def test_hook_lets_known_station_through():
 
     first = tool_results(built.agent)[0]
     assert first["status"] == "success"
-    assert "PLACEHOLDER" in result_text(first)
+    assert "El Cerrito del Norte" in result_text(first)
     assert built.validator_hook.allowed == ["get_station_facts"]
     assert built.validator_hook.cancelled == []
 

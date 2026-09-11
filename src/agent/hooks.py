@@ -29,6 +29,29 @@ def station_code_validator(known: frozenset[str], *fields: str) -> Validator:
     return _validate
 
 
+def kb_station_validator(*fields: str) -> Validator:
+    """Every named field must be a station abbreviation present in kb/stations."""
+    from kb.load import known_abbrs
+
+    return station_code_validator(known_abbrs(), *fields)
+
+
+def kb_elevator_validator(station_field: str, elevator_field: str) -> Validator:
+    """``elevator_field`` must name an elevator that kb/stations lists for ``station_field``."""
+    from kb.load import elevator_names, known_abbrs
+
+    def _validate(args: dict[str, Any]) -> str | None:
+        station = str(args.get(station_field) or "").upper()
+        if station not in known_abbrs():
+            return f"{station_field}={args.get(station_field)!r} is not a known station"
+        elevator = str(args.get(elevator_field) or "")
+        if elevator not in elevator_names(station):
+            return f"{elevator_field}={elevator!r} is not an elevator the KB lists for {station}"
+        return None
+
+    return _validate
+
+
 class ArgumentValidatorHook(HookProvider):
     """Cancels tool calls whose arguments fail their registered validator."""
 

@@ -57,7 +57,7 @@
       "cases": {
         "shuttle_draft_is_rewritten_to_backtracking": {
           "expected": "backtracking",
-          "actual": "mitigation shuttle",
+          "actual": "mitigation_shuttle",
           "pass": false
         },
         "compliant_draft_is_left_alone": {
@@ -84,8 +84,8 @@
       },
       "cases": {
         "immediate_plan": {
-          "expected": "alternate elevator",
-          "actual": "alternate elevator",
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
           "pass": true
         },
         "forced_plan_after_prose": {

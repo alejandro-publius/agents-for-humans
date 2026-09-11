@@ -16,7 +16,7 @@ def test_plan_tool_call_becomes_structured_output():
     print("\nSTRUCTURED PLAN ->", plan)
     assert isinstance(plan, Plan)
     assert plan.affected is True
-    assert plan.option == "alternate elevator" and plan.option in OPTION_ORDER
+    assert plan.option == "alternate_elevator" and plan.option in OPTION_ORDER
     assert plan.added_minutes == 3
     assert model.calls[0]["tool_names"][-1] == "Plan", "the Plan tool is offered to the model"
 

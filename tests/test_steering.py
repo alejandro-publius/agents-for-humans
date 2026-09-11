@@ -15,10 +15,10 @@ def test_steering_rewrites_response_that_recommends_a_lower_option():
     final = str(result).strip()
     print("\nSTEERING REWROTE ->", built.steering.rewrites[0])
 
-    assert first_option_mentioned(built.steering.rewrites[0]["original"]) == "mitigation shuttle"
+    assert first_option_mentioned(built.steering.rewrites[0]["original"]) == "mitigation_shuttle"
     assert first_option_mentioned(final) == "backtracking"
     assert final.startswith("Backtracking is the first feasible option under BART's published outage order.")
-    assert "response recommends 'mitigation shuttle'" in final
+    assert "response recommends 'mitigation_shuttle'" in final
     # The rewrite is also what the conversation history keeps, not just what the caller sees.
     assert built.agent.messages[-1]["content"][0]["text"] == final
     assert built.steering.passed == 0
@@ -42,7 +42,7 @@ def test_ablation_removes_steering_so_the_bad_response_stands():
     result = built("Outage: DELN: Platform - Richmond. Trip DELN to EMBR.")
 
     assert built.steering is None
-    assert first_option_mentioned(str(result)) == "mitigation shuttle"
+    assert first_option_mentioned(str(result)) == "mitigation_shuttle"
 
 
 def test_policy_with_no_required_option_never_rewrites():
@@ -51,5 +51,5 @@ def test_policy_with_no_required_option_never_rewrites():
 
     result = built("anything")
 
-    assert first_option_mentioned(str(result)) == "mitigation shuttle"
+    assert first_option_mentioned(str(result)) == "mitigation_shuttle"
     assert built.steering.rewrites == []

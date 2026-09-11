@@ -2,6 +2,6 @@
   "name": "structured_plan",
   "description": "Model submits a valid Plan immediately.",
   "turns": [
-    {"type": "tool_use", "name": "Plan", "input": {"affected": true, "option": "alternate elevator", "steps": ["Use the street elevator at the north entrance"], "added_minutes": 3, "needs_human_decision": false, "message": "The south street elevator is out; the north one works and adds about three minutes."}}
+    {"type": "tool_use", "name": "Plan", "input": {"affected": true, "option": "alternate_elevator", "steps": ["Use the street elevator at the north entrance"], "added_minutes": 3, "needs_human_decision": false, "message": "The south street elevator is out; the north one works and adds about three minutes."}}
   ]
 }
