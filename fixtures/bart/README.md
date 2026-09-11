@@ -12,6 +12,7 @@ saying whether it is a verbatim documented sample, a repaired one, or synthetic.
 | `bsa_sample.json` | `bsa.aspx?cmd=bsa` | Documented sample, one typo removed. |
 | `etd_RICH.json` | `etd.aspx?cmd=etd&orig=RICH` | Documented sample, missing commas inserted. |
 | `depart_ASHB_CIVC.json` | `sched.aspx?cmd=depart` | Verbatim documented sample (historical schedule 45). |
+| `depart_<ORIG>_<DEST>.json` (six files) | `sched.aspx?cmd=depart` | **Synthetic.** Per-pair schedules for the policy tests (SANL/EMBR/BAYF, EMBR/PLZA/DELN); head stations chosen for BART's two worked examples, times are placeholders. |
 | `stns.json` | `stn.aspx?cmd=stns` | **Derived.** All 50 names and abbreviations from BART's abbreviation table; coordinates omitted. |
 | `stnaccess_12TH.json` | `stn.aspx?cmd=stnaccess&orig=12TH` | Documented sample, re-serialized because the printed sample is not valid JSON. |
 

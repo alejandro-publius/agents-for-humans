@@ -29,7 +29,7 @@ requires = ["hatchling>=1.25"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/agent", "src/bart", "kb"]
+packages = ["src/agent", "src/bart", "src/policy", "kb"]
 
 [tool.ruff]
 line-length = 110

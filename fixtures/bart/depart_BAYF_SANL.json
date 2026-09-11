@@ -1,0 +1,591 @@
+{
+ "_fixture": {
+  "synthetic": true,
+  "source": "Authored 2026-09-11 in the shape of the documented sched.aspx?cmd=depart sample.",
+  "note": "SYNTHETIC. BAYF->SANL departures with train head station 'Richmond': a morning cluster (6:50-8:38 AM) and an evening cluster (9:50-10:50 PM), 12 minutes apart, no departures after 10:50 PM. Trip times and headways are placeholders, not BART's timetable; anything computed from them is labeled 'synthetic schedule fixture'."
+ },
+ "?xml": {
+  "@version": "1.0",
+  "@encoding": "utf-8"
+ },
+ "root": {
+  "@id": "1",
+  "uri": {
+   "#cdata-section": "https://api.bart.gov/api/sched.aspx?cmd=depart&orig=BAYF&dest=SANL&date=now&b=2&a=2&l=1&json=y"
+  },
+  "origin": "BAYF",
+  "destination": "SANL",
+  "sched_num": "SYNTHETIC",
+  "schedule": {
+   "date": "Sep 12, 2026",
+   "time": "7:00 AM",
+   "before": "2",
+   "after": "2",
+   "request": {
+    "trip": [
+     {
+      "@origin": "BAYF",
+      "@destination": "SANL",
+      "@fare": "0.00",
+      "@origTimeMin": "6:50 AM",
+      "@origTimeDate": "09/12/2026",
+      "@destTimeMin": "6:54 AM",
+      "@destTimeDate": "09/12/2026",
+      "@clipper": "0.00",
+      "@tripTime": "4",
+      "fares": {
+       "@level": "normal",
+       "fare": []
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "BAYF",
+        "@destination": "SANL",
+        "@origTimeMin": "6:50 AM",
+        "@origTimeDate": "09/12/2026",
+        "@destTimeMin": "6:54 AM",
+        "@destTimeDate": "09/12/2026",
+        "@line": "SYNTHETIC",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Richmond",
+        "@load": "1",
+        "@trainId": "0",
+        "@trainIdx": "0",
+        "@originPlatform": "",
+        "@destinationPlatform": ""
+       }
+      ]
+     },
+     {
+      "@origin": "BAYF",
+      "@destination": "SANL",
+      "@fare": "0.00",
+      "@origTimeMin": "7:02 AM",
+      "@origTimeDate": "09/12/2026",
+      "@destTimeMin": "7:06 AM",
+      "@destTimeDate": "09/12/2026",
+      "@clipper": "0.00",
+      "@tripTime": "4",
+      "fares": {
+       "@level": "normal",
+       "fare": []
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "BAYF",
+        "@destination": "SANL",
+        "@origTimeMin": "7:02 AM",
+        "@origTimeDate": "09/12/2026",
+        "@destTimeMin": "7:06 AM",
+        "@destTimeDate": "09/12/2026",
+        "@line": "SYNTHETIC",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Richmond",
+        "@load": "1",
+        "@trainId": "0",
+        "@trainIdx": "0",
+        "@originPlatform": "",
+        "@destinationPlatform": ""
+       }
+      ]
+     },
+     {
+      "@origin": "BAYF",
+      "@destination": "SANL",
+      "@fare": "0.00",
+      "@origTimeMin": "7:14 AM",
+      "@origTimeDate": "09/12/2026",
+      "@destTimeMin": "7:18 AM",
+      "@destTimeDate": "09/12/2026",
+      "@clipper": "0.00",
+      "@tripTime": "4",
+      "fares": {
+       "@level": "normal",
+       "fare": []
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "BAYF",
+        "@destination": "SANL",
+        "@origTimeMin": "7:14 AM",
+        "@origTimeDate": "09/12/2026",
+        "@destTimeMin": "7:18 AM",
+        "@destTimeDate": "09/12/2026",
+        "@line": "SYNTHETIC",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Richmond",
+        "@load": "1",
+        "@trainId": "0",
+        "@trainIdx": "0",
+        "@originPlatform": "",
+        "@destinationPlatform": ""
+       }
+      ]
+     },
+     {
+      "@origin": "BAYF",
+      "@destination": "SANL",
+      "@fare": "0.00",
+      "@origTimeMin": "7:26 AM",
+      "@origTimeDate": "09/12/2026",
+      "@destTimeMin": "7:30 AM",
+      "@destTimeDate": "09/12/2026",
+      "@clipper": "0.00",
+      "@tripTime": "4",
+      "fares": {
+       "@level": "normal",
+       "fare": []
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "BAYF",
+        "@destination": "SANL",
+        "@origTimeMin": "7:26 AM",
+        "@origTimeDate": "09/12/2026",
+        "@destTimeMin": "7:30 AM",
+        "@destTimeDate": "09/12/2026",
+        "@line": "SYNTHETIC",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Richmond",
+        "@load": "1",
+        "@trainId": "0",
+        "@trainIdx": "0",
+        "@originPlatform": "",
+        "@destinationPlatform": ""
+       }
+      ]
+     },
+     {
+      "@origin": "BAYF",
+      "@destination": "SANL",
+      "@fare": "0.00",
+      "@origTimeMin": "7:38 AM",
+      "@origTimeDate": "09/12/2026",
+      "@destTimeMin": "7:42 AM",
+      "@destTimeDate": "09/12/2026",
+      "@clipper": "0.00",
+      "@tripTime": "4",
+      "fares": {
+       "@level": "normal",
+       "fare": []
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "BAYF",
+        "@destination": "SANL",
+        "@origTimeMin": "7:38 AM",
+        "@origTimeDate": "09/12/2026",
+        "@destTimeMin": "7:42 AM",
+        "@destTimeDate": "09/12/2026",
+        "@line": "SYNTHETIC",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Richmond",
+        "@load": "1",
+        "@trainId": "0",
+        "@trainIdx": "0",
+        "@originPlatform": "",
+        "@destinationPlatform": ""
+       }
+      ]
+     },
+     {
+      "@origin": "BAYF",
+      "@destination": "SANL",
+      "@fare": "0.00",
+      "@origTimeMin": "7:50 AM",
+      "@origTimeDate": "09/12/2026",
+      "@destTimeMin": "7:54 AM",
+      "@destTimeDate": "09/12/2026",
+      "@clipper": "0.00",
+      "@tripTime": "4",
+      "fares": {
+       "@level": "normal",
+       "fare": []
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "BAYF",
+        "@destination": "SANL",
+        "@origTimeMin": "7:50 AM",
+        "@origTimeDate": "09/12/2026",
+        "@destTimeMin": "7:54 AM",
+        "@destTimeDate": "09/12/2026",
+        "@line": "SYNTHETIC",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Richmond",
+        "@load": "1",
+        "@trainId": "0",
+        "@trainIdx": "0",
+        "@originPlatform": "",
+        "@destinationPlatform": ""
+       }
+      ]
+     },
+     {
+      "@origin": "BAYF",
+      "@destination": "SANL",
+      "@fare": "0.00",
+      "@origTimeMin": "8:02 AM",
+      "@origTimeDate": "09/12/2026",
+      "@destTimeMin": "8:06 AM",
+      "@destTimeDate": "09/12/2026",
+      "@clipper": "0.00",
+      "@tripTime": "4",
+      "fares": {
+       "@level": "normal",
+       "fare": []
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "BAYF",
+        "@destination": "SANL",
+        "@origTimeMin": "8:02 AM",
+        "@origTimeDate": "09/12/2026",
+        "@destTimeMin": "8:06 AM",
+        "@destTimeDate": "09/12/2026",
+        "@line": "SYNTHETIC",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Richmond",
+        "@load": "1",
+        "@trainId": "0",
+        "@trainIdx": "0",
+        "@originPlatform": "",
+        "@destinationPlatform": ""
+       }
+      ]
+     },
+     {
+      "@origin": "BAYF",
+      "@destination": "SANL",
+      "@fare": "0.00",
+      "@origTimeMin": "8:14 AM",
+      "@origTimeDate": "09/12/2026",
+      "@destTimeMin": "8:18 AM",
+      "@destTimeDate": "09/12/2026",
+      "@clipper": "0.00",
+      "@tripTime": "4",
+      "fares": {
+       "@level": "normal",
+       "fare": []
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "BAYF",
+        "@destination": "SANL",
+        "@origTimeMin": "8:14 AM",
+        "@origTimeDate": "09/12/2026",
+        "@destTimeMin": "8:18 AM",
+        "@destTimeDate": "09/12/2026",
+        "@line": "SYNTHETIC",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Richmond",
+        "@load": "1",
+        "@trainId": "0",
+        "@trainIdx": "0",
+        "@originPlatform": "",
+        "@destinationPlatform": ""
+       }
+      ]
+     },
+     {
+      "@origin": "BAYF",
+      "@destination": "SANL",
+      "@fare": "0.00",
+      "@origTimeMin": "8:26 AM",
+      "@origTimeDate": "09/12/2026",
+      "@destTimeMin": "8:30 AM",
+      "@destTimeDate": "09/12/2026",
+      "@clipper": "0.00",
+      "@tripTime": "4",
+      "fares": {
+       "@level": "normal",
+       "fare": []
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "BAYF",
+        "@destination": "SANL",
+        "@origTimeMin": "8:26 AM",
+        "@origTimeDate": "09/12/2026",
+        "@destTimeMin": "8:30 AM",
+        "@destTimeDate": "09/12/2026",
+        "@line": "SYNTHETIC",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Richmond",
+        "@load": "1",
+        "@trainId": "0",
+        "@trainIdx": "0",
+        "@originPlatform": "",
+        "@destinationPlatform": ""
+       }
+      ]
+     },
+     {
+      "@origin": "BAYF",
+      "@destination": "SANL",
+      "@fare": "0.00",
+      "@origTimeMin": "8:38 AM",
+      "@origTimeDate": "09/12/2026",
+      "@destTimeMin": "8:42 AM",
+      "@destTimeDate": "09/12/2026",
+      "@clipper": "0.00",
+      "@tripTime": "4",
+      "fares": {
+       "@level": "normal",
+       "fare": []
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "BAYF",
+        "@destination": "SANL",
+        "@origTimeMin": "8:38 AM",
+        "@origTimeDate": "09/12/2026",
+        "@destTimeMin": "8:42 AM",
+        "@destTimeDate": "09/12/2026",
+        "@line": "SYNTHETIC",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Richmond",
+        "@load": "1",
+        "@trainId": "0",
+        "@trainIdx": "0",
+        "@originPlatform": "",
+        "@destinationPlatform": ""
+       }
+      ]
+     },
+     {
+      "@origin": "BAYF",
+      "@destination": "SANL",
+      "@fare": "0.00",
+      "@origTimeMin": "9:50 PM",
+      "@origTimeDate": "09/12/2026",
+      "@destTimeMin": "9:54 PM",
+      "@destTimeDate": "09/12/2026",
+      "@clipper": "0.00",
+      "@tripTime": "4",
+      "fares": {
+       "@level": "normal",
+       "fare": []
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "BAYF",
+        "@destination": "SANL",
+        "@origTimeMin": "9:50 PM",
+        "@origTimeDate": "09/12/2026",
+        "@destTimeMin": "9:54 PM",
+        "@destTimeDate": "09/12/2026",
+        "@line": "SYNTHETIC",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Richmond",
+        "@load": "1",
+        "@trainId": "0",
+        "@trainIdx": "0",
+        "@originPlatform": "",
+        "@destinationPlatform": ""
+       }
+      ]
+     },
+     {
+      "@origin": "BAYF",
+      "@destination": "SANL",
+      "@fare": "0.00",
+      "@origTimeMin": "10:02 PM",
+      "@origTimeDate": "09/12/2026",
+      "@destTimeMin": "10:06 PM",
+      "@destTimeDate": "09/12/2026",
+      "@clipper": "0.00",
+      "@tripTime": "4",
+      "fares": {
+       "@level": "normal",
+       "fare": []
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "BAYF",
+        "@destination": "SANL",
+        "@origTimeMin": "10:02 PM",
+        "@origTimeDate": "09/12/2026",
+        "@destTimeMin": "10:06 PM",
+        "@destTimeDate": "09/12/2026",
+        "@line": "SYNTHETIC",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Richmond",
+        "@load": "1",
+        "@trainId": "0",
+        "@trainIdx": "0",
+        "@originPlatform": "",
+        "@destinationPlatform": ""
+       }
+      ]
+     },
+     {
+      "@origin": "BAYF",
+      "@destination": "SANL",
+      "@fare": "0.00",
+      "@origTimeMin": "10:14 PM",
+      "@origTimeDate": "09/12/2026",
+      "@destTimeMin": "10:18 PM",
+      "@destTimeDate": "09/12/2026",
+      "@clipper": "0.00",
+      "@tripTime": "4",
+      "fares": {
+       "@level": "normal",
+       "fare": []
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "BAYF",
+        "@destination": "SANL",
+        "@origTimeMin": "10:14 PM",
+        "@origTimeDate": "09/12/2026",
+        "@destTimeMin": "10:18 PM",
+        "@destTimeDate": "09/12/2026",
+        "@line": "SYNTHETIC",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Richmond",
+        "@load": "1",
+        "@trainId": "0",
+        "@trainIdx": "0",
+        "@originPlatform": "",
+        "@destinationPlatform": ""
+       }
+      ]
+     },
+     {
+      "@origin": "BAYF",
+      "@destination": "SANL",
+      "@fare": "0.00",
+      "@origTimeMin": "10:26 PM",
+      "@origTimeDate": "09/12/2026",
+      "@destTimeMin": "10:30 PM",
+      "@destTimeDate": "09/12/2026",
+      "@clipper": "0.00",
+      "@tripTime": "4",
+      "fares": {
+       "@level": "normal",
+       "fare": []
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "BAYF",
+        "@destination": "SANL",
+        "@origTimeMin": "10:26 PM",
+        "@origTimeDate": "09/12/2026",
+        "@destTimeMin": "10:30 PM",
+        "@destTimeDate": "09/12/2026",
+        "@line": "SYNTHETIC",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Richmond",
+        "@load": "1",
+        "@trainId": "0",
+        "@trainIdx": "0",
+        "@originPlatform": "",
+        "@destinationPlatform": ""
+       }
+      ]
+     },
+     {
+      "@origin": "BAYF",
+      "@destination": "SANL",
+      "@fare": "0.00",
+      "@origTimeMin": "10:38 PM",
+      "@origTimeDate": "09/12/2026",
+      "@destTimeMin": "10:42 PM",
+      "@destTimeDate": "09/12/2026",
+      "@clipper": "0.00",
+      "@tripTime": "4",
+      "fares": {
+       "@level": "normal",
+       "fare": []
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "BAYF",
+        "@destination": "SANL",
+        "@origTimeMin": "10:38 PM",
+        "@origTimeDate": "09/12/2026",
+        "@destTimeMin": "10:42 PM",
+        "@destTimeDate": "09/12/2026",
+        "@line": "SYNTHETIC",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Richmond",
+        "@load": "1",
+        "@trainId": "0",
+        "@trainIdx": "0",
+        "@originPlatform": "",
+        "@destinationPlatform": ""
+       }
+      ]
+     },
+     {
+      "@origin": "BAYF",
+      "@destination": "SANL",
+      "@fare": "0.00",
+      "@origTimeMin": "10:50 PM",
+      "@origTimeDate": "09/12/2026",
+      "@destTimeMin": "10:54 PM",
+      "@destTimeDate": "09/12/2026",
+      "@clipper": "0.00",
+      "@tripTime": "4",
+      "fares": {
+       "@level": "normal",
+       "fare": []
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "BAYF",
+        "@destination": "SANL",
+        "@origTimeMin": "10:50 PM",
+        "@origTimeDate": "09/12/2026",
+        "@destTimeMin": "10:54 PM",
+        "@destTimeDate": "09/12/2026",
+        "@line": "SYNTHETIC",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Richmond",
+        "@load": "1",
+        "@trainId": "0",
+        "@trainIdx": "0",
+        "@originPlatform": "",
+        "@destinationPlatform": ""
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "message": ""
+ }
+}

@@ -1,0 +1,591 @@
+{
+ "_fixture": {
+  "synthetic": true,
+  "source": "Authored 2026-09-11 in the shape of the documented sched.aspx?cmd=depart sample.",
+  "note": "SYNTHETIC. SANL->EMBR departures with train head station 'Daly City': a morning cluster (6:50-8:38 AM) and an evening cluster (9:50-10:50 PM), 12 minutes apart, no departures after 10:50 PM. Trip times and headways are placeholders, not BART's timetable; anything computed from them is labeled 'synthetic schedule fixture'."
+ },
+ "?xml": {
+  "@version": "1.0",
+  "@encoding": "utf-8"
+ },
+ "root": {
+  "@id": "1",
+  "uri": {
+   "#cdata-section": "https://api.bart.gov/api/sched.aspx?cmd=depart&orig=SANL&dest=EMBR&date=now&b=2&a=2&l=1&json=y"
+  },
+  "origin": "SANL",
+  "destination": "EMBR",
+  "sched_num": "SYNTHETIC",
+  "schedule": {
+   "date": "Sep 12, 2026",
+   "time": "7:00 AM",
+   "before": "2",
+   "after": "2",
+   "request": {
+    "trip": [
+     {
+      "@origin": "SANL",
+      "@destination": "EMBR",
+      "@fare": "0.00",
+      "@origTimeMin": "6:50 AM",
+      "@origTimeDate": "09/12/2026",
+      "@destTimeMin": "7:15 AM",
+      "@destTimeDate": "09/12/2026",
+      "@clipper": "0.00",
+      "@tripTime": "25",
+      "fares": {
+       "@level": "normal",
+       "fare": []
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "SANL",
+        "@destination": "EMBR",
+        "@origTimeMin": "6:50 AM",
+        "@origTimeDate": "09/12/2026",
+        "@destTimeMin": "7:15 AM",
+        "@destTimeDate": "09/12/2026",
+        "@line": "SYNTHETIC",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Daly City",
+        "@load": "1",
+        "@trainId": "0",
+        "@trainIdx": "0",
+        "@originPlatform": "",
+        "@destinationPlatform": ""
+       }
+      ]
+     },
+     {
+      "@origin": "SANL",
+      "@destination": "EMBR",
+      "@fare": "0.00",
+      "@origTimeMin": "7:02 AM",
+      "@origTimeDate": "09/12/2026",
+      "@destTimeMin": "7:27 AM",
+      "@destTimeDate": "09/12/2026",
+      "@clipper": "0.00",
+      "@tripTime": "25",
+      "fares": {
+       "@level": "normal",
+       "fare": []
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "SANL",
+        "@destination": "EMBR",
+        "@origTimeMin": "7:02 AM",
+        "@origTimeDate": "09/12/2026",
+        "@destTimeMin": "7:27 AM",
+        "@destTimeDate": "09/12/2026",
+        "@line": "SYNTHETIC",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Daly City",
+        "@load": "1",
+        "@trainId": "0",
+        "@trainIdx": "0",
+        "@originPlatform": "",
+        "@destinationPlatform": ""
+       }
+      ]
+     },
+     {
+      "@origin": "SANL",
+      "@destination": "EMBR",
+      "@fare": "0.00",
+      "@origTimeMin": "7:14 AM",
+      "@origTimeDate": "09/12/2026",
+      "@destTimeMin": "7:39 AM",
+      "@destTimeDate": "09/12/2026",
+      "@clipper": "0.00",
+      "@tripTime": "25",
+      "fares": {
+       "@level": "normal",
+       "fare": []
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "SANL",
+        "@destination": "EMBR",
+        "@origTimeMin": "7:14 AM",
+        "@origTimeDate": "09/12/2026",
+        "@destTimeMin": "7:39 AM",
+        "@destTimeDate": "09/12/2026",
+        "@line": "SYNTHETIC",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Daly City",
+        "@load": "1",
+        "@trainId": "0",
+        "@trainIdx": "0",
+        "@originPlatform": "",
+        "@destinationPlatform": ""
+       }
+      ]
+     },
+     {
+      "@origin": "SANL",
+      "@destination": "EMBR",
+      "@fare": "0.00",
+      "@origTimeMin": "7:26 AM",
+      "@origTimeDate": "09/12/2026",
+      "@destTimeMin": "7:51 AM",
+      "@destTimeDate": "09/12/2026",
+      "@clipper": "0.00",
+      "@tripTime": "25",
+      "fares": {
+       "@level": "normal",
+       "fare": []
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "SANL",
+        "@destination": "EMBR",
+        "@origTimeMin": "7:26 AM",
+        "@origTimeDate": "09/12/2026",
+        "@destTimeMin": "7:51 AM",
+        "@destTimeDate": "09/12/2026",
+        "@line": "SYNTHETIC",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Daly City",
+        "@load": "1",
+        "@trainId": "0",
+        "@trainIdx": "0",
+        "@originPlatform": "",
+        "@destinationPlatform": ""
+       }
+      ]
+     },
+     {
+      "@origin": "SANL",
+      "@destination": "EMBR",
+      "@fare": "0.00",
+      "@origTimeMin": "7:38 AM",
+      "@origTimeDate": "09/12/2026",
+      "@destTimeMin": "8:03 AM",
+      "@destTimeDate": "09/12/2026",
+      "@clipper": "0.00",
+      "@tripTime": "25",
+      "fares": {
+       "@level": "normal",
+       "fare": []
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "SANL",
+        "@destination": "EMBR",
+        "@origTimeMin": "7:38 AM",
+        "@origTimeDate": "09/12/2026",
+        "@destTimeMin": "8:03 AM",
+        "@destTimeDate": "09/12/2026",
+        "@line": "SYNTHETIC",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Daly City",
+        "@load": "1",
+        "@trainId": "0",
+        "@trainIdx": "0",
+        "@originPlatform": "",
+        "@destinationPlatform": ""
+       }
+      ]
+     },
+     {
+      "@origin": "SANL",
+      "@destination": "EMBR",
+      "@fare": "0.00",
+      "@origTimeMin": "7:50 AM",
+      "@origTimeDate": "09/12/2026",
+      "@destTimeMin": "8:15 AM",
+      "@destTimeDate": "09/12/2026",
+      "@clipper": "0.00",
+      "@tripTime": "25",
+      "fares": {
+       "@level": "normal",
+       "fare": []
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "SANL",
+        "@destination": "EMBR",
+        "@origTimeMin": "7:50 AM",
+        "@origTimeDate": "09/12/2026",
+        "@destTimeMin": "8:15 AM",
+        "@destTimeDate": "09/12/2026",
+        "@line": "SYNTHETIC",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Daly City",
+        "@load": "1",
+        "@trainId": "0",
+        "@trainIdx": "0",
+        "@originPlatform": "",
+        "@destinationPlatform": ""
+       }
+      ]
+     },
+     {
+      "@origin": "SANL",
+      "@destination": "EMBR",
+      "@fare": "0.00",
+      "@origTimeMin": "8:02 AM",
+      "@origTimeDate": "09/12/2026",
+      "@destTimeMin": "8:27 AM",
+      "@destTimeDate": "09/12/2026",
+      "@clipper": "0.00",
+      "@tripTime": "25",
+      "fares": {
+       "@level": "normal",
+       "fare": []
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "SANL",
+        "@destination": "EMBR",
+        "@origTimeMin": "8:02 AM",
+        "@origTimeDate": "09/12/2026",
+        "@destTimeMin": "8:27 AM",
+        "@destTimeDate": "09/12/2026",
+        "@line": "SYNTHETIC",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Daly City",
+        "@load": "1",
+        "@trainId": "0",
+        "@trainIdx": "0",
+        "@originPlatform": "",
+        "@destinationPlatform": ""
+       }
+      ]
+     },
+     {
+      "@origin": "SANL",
+      "@destination": "EMBR",
+      "@fare": "0.00",
+      "@origTimeMin": "8:14 AM",
+      "@origTimeDate": "09/12/2026",
+      "@destTimeMin": "8:39 AM",
+      "@destTimeDate": "09/12/2026",
+      "@clipper": "0.00",
+      "@tripTime": "25",
+      "fares": {
+       "@level": "normal",
+       "fare": []
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "SANL",
+        "@destination": "EMBR",
+        "@origTimeMin": "8:14 AM",
+        "@origTimeDate": "09/12/2026",
+        "@destTimeMin": "8:39 AM",
+        "@destTimeDate": "09/12/2026",
+        "@line": "SYNTHETIC",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Daly City",
+        "@load": "1",
+        "@trainId": "0",
+        "@trainIdx": "0",
+        "@originPlatform": "",
+        "@destinationPlatform": ""
+       }
+      ]
+     },
+     {
+      "@origin": "SANL",
+      "@destination": "EMBR",
+      "@fare": "0.00",
+      "@origTimeMin": "8:26 AM",
+      "@origTimeDate": "09/12/2026",
+      "@destTimeMin": "8:51 AM",
+      "@destTimeDate": "09/12/2026",
+      "@clipper": "0.00",
+      "@tripTime": "25",
+      "fares": {
+       "@level": "normal",
+       "fare": []
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "SANL",
+        "@destination": "EMBR",
+        "@origTimeMin": "8:26 AM",
+        "@origTimeDate": "09/12/2026",
+        "@destTimeMin": "8:51 AM",
+        "@destTimeDate": "09/12/2026",
+        "@line": "SYNTHETIC",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Daly City",
+        "@load": "1",
+        "@trainId": "0",
+        "@trainIdx": "0",
+        "@originPlatform": "",
+        "@destinationPlatform": ""
+       }
+      ]
+     },
+     {
+      "@origin": "SANL",
+      "@destination": "EMBR",
+      "@fare": "0.00",
+      "@origTimeMin": "8:38 AM",
+      "@origTimeDate": "09/12/2026",
+      "@destTimeMin": "9:03 AM",
+      "@destTimeDate": "09/12/2026",
+      "@clipper": "0.00",
+      "@tripTime": "25",
+      "fares": {
+       "@level": "normal",
+       "fare": []
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "SANL",
+        "@destination": "EMBR",
+        "@origTimeMin": "8:38 AM",
+        "@origTimeDate": "09/12/2026",
+        "@destTimeMin": "9:03 AM",
+        "@destTimeDate": "09/12/2026",
+        "@line": "SYNTHETIC",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Daly City",
+        "@load": "1",
+        "@trainId": "0",
+        "@trainIdx": "0",
+        "@originPlatform": "",
+        "@destinationPlatform": ""
+       }
+      ]
+     },
+     {
+      "@origin": "SANL",
+      "@destination": "EMBR",
+      "@fare": "0.00",
+      "@origTimeMin": "9:50 PM",
+      "@origTimeDate": "09/12/2026",
+      "@destTimeMin": "10:15 PM",
+      "@destTimeDate": "09/12/2026",
+      "@clipper": "0.00",
+      "@tripTime": "25",
+      "fares": {
+       "@level": "normal",
+       "fare": []
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "SANL",
+        "@destination": "EMBR",
+        "@origTimeMin": "9:50 PM",
+        "@origTimeDate": "09/12/2026",
+        "@destTimeMin": "10:15 PM",
+        "@destTimeDate": "09/12/2026",
+        "@line": "SYNTHETIC",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Daly City",
+        "@load": "1",
+        "@trainId": "0",
+        "@trainIdx": "0",
+        "@originPlatform": "",
+        "@destinationPlatform": ""
+       }
+      ]
+     },
+     {
+      "@origin": "SANL",
+      "@destination": "EMBR",
+      "@fare": "0.00",
+      "@origTimeMin": "10:02 PM",
+      "@origTimeDate": "09/12/2026",
+      "@destTimeMin": "10:27 PM",
+      "@destTimeDate": "09/12/2026",
+      "@clipper": "0.00",
+      "@tripTime": "25",
+      "fares": {
+       "@level": "normal",
+       "fare": []
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "SANL",
+        "@destination": "EMBR",
+        "@origTimeMin": "10:02 PM",
+        "@origTimeDate": "09/12/2026",
+        "@destTimeMin": "10:27 PM",
+        "@destTimeDate": "09/12/2026",
+        "@line": "SYNTHETIC",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Daly City",
+        "@load": "1",
+        "@trainId": "0",
+        "@trainIdx": "0",
+        "@originPlatform": "",
+        "@destinationPlatform": ""
+       }
+      ]
+     },
+     {
+      "@origin": "SANL",
+      "@destination": "EMBR",
+      "@fare": "0.00",
+      "@origTimeMin": "10:14 PM",
+      "@origTimeDate": "09/12/2026",
+      "@destTimeMin": "10:39 PM",
+      "@destTimeDate": "09/12/2026",
+      "@clipper": "0.00",
+      "@tripTime": "25",
+      "fares": {
+       "@level": "normal",
+       "fare": []
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "SANL",
+        "@destination": "EMBR",
+        "@origTimeMin": "10:14 PM",
+        "@origTimeDate": "09/12/2026",
+        "@destTimeMin": "10:39 PM",
+        "@destTimeDate": "09/12/2026",
+        "@line": "SYNTHETIC",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Daly City",
+        "@load": "1",
+        "@trainId": "0",
+        "@trainIdx": "0",
+        "@originPlatform": "",
+        "@destinationPlatform": ""
+       }
+      ]
+     },
+     {
+      "@origin": "SANL",
+      "@destination": "EMBR",
+      "@fare": "0.00",
+      "@origTimeMin": "10:26 PM",
+      "@origTimeDate": "09/12/2026",
+      "@destTimeMin": "10:51 PM",
+      "@destTimeDate": "09/12/2026",
+      "@clipper": "0.00",
+      "@tripTime": "25",
+      "fares": {
+       "@level": "normal",
+       "fare": []
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "SANL",
+        "@destination": "EMBR",
+        "@origTimeMin": "10:26 PM",
+        "@origTimeDate": "09/12/2026",
+        "@destTimeMin": "10:51 PM",
+        "@destTimeDate": "09/12/2026",
+        "@line": "SYNTHETIC",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Daly City",
+        "@load": "1",
+        "@trainId": "0",
+        "@trainIdx": "0",
+        "@originPlatform": "",
+        "@destinationPlatform": ""
+       }
+      ]
+     },
+     {
+      "@origin": "SANL",
+      "@destination": "EMBR",
+      "@fare": "0.00",
+      "@origTimeMin": "10:38 PM",
+      "@origTimeDate": "09/12/2026",
+      "@destTimeMin": "11:03 PM",
+      "@destTimeDate": "09/12/2026",
+      "@clipper": "0.00",
+      "@tripTime": "25",
+      "fares": {
+       "@level": "normal",
+       "fare": []
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "SANL",
+        "@destination": "EMBR",
+        "@origTimeMin": "10:38 PM",
+        "@origTimeDate": "09/12/2026",
+        "@destTimeMin": "11:03 PM",
+        "@destTimeDate": "09/12/2026",
+        "@line": "SYNTHETIC",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Daly City",
+        "@load": "1",
+        "@trainId": "0",
+        "@trainIdx": "0",
+        "@originPlatform": "",
+        "@destinationPlatform": ""
+       }
+      ]
+     },
+     {
+      "@origin": "SANL",
+      "@destination": "EMBR",
+      "@fare": "0.00",
+      "@origTimeMin": "10:50 PM",
+      "@origTimeDate": "09/12/2026",
+      "@destTimeMin": "11:15 PM",
+      "@destTimeDate": "09/12/2026",
+      "@clipper": "0.00",
+      "@tripTime": "25",
+      "fares": {
+       "@level": "normal",
+       "fare": []
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "SANL",
+        "@destination": "EMBR",
+        "@origTimeMin": "10:50 PM",
+        "@origTimeDate": "09/12/2026",
+        "@destTimeMin": "11:15 PM",
+        "@destTimeDate": "09/12/2026",
+        "@line": "SYNTHETIC",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Daly City",
+        "@load": "1",
+        "@trainId": "0",
+        "@trainIdx": "0",
+        "@originPlatform": "",
+        "@destinationPlatform": ""
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "message": ""
+ }
+}

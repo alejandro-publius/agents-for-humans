@@ -201,15 +201,26 @@ class BartClient:
     def mode(self) -> str:
         return "live" if self.live else "fixtures"
 
-    def _load_fixture(self, key: str, fixture: Path | None) -> dict[str, Any]:
-        path = Path(fixture) if fixture else self.fixtures_dir / DEFAULT_FIXTURES[key]
+    def _load_fixture(
+        self, key: str, fixture: Path | None, params: dict[str, str] | None = None
+    ) -> dict[str, Any]:
+        if fixture:
+            path = Path(fixture)
+        elif key == "depart" and params:
+            # One fixture per station pair, so no trip ever gets another pair's head stations or times.
+            path = self.fixtures_dir / f"depart_{params['orig']}_{params['dest']}.json"
+            if not path.exists():
+                pair = f"{params['orig']}->{params['dest']}"
+                raise BartUnavailable(f"no schedule fixture for {pair} ({path.name})")
+        else:
+            path = self.fixtures_dir / DEFAULT_FIXTURES[key]
         return json.loads(path.read_text())
 
     def _request(
         self, endpoint: str, params: dict[str, str], key: str, fixture: Path | None
     ) -> dict[str, Any]:
         if not self.live:
-            return self._load_fixture(key, fixture)
+            return self._load_fixture(key, fixture, params)
         query = urllib.parse.urlencode({**params, "key": self.api_key, "json": "y"})
         req = urllib.request.Request(f"{BASE_URL}{endpoint}?{query}", headers={"User-Agent": USER_AGENT})
         try:
