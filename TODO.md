@@ -24,7 +24,7 @@ Constraints that hold all night.
       Accept. Both files exist and differ in at least one field.
 - [x] A6. `scripts/verify_claims.py`. Reads every number in `README.md` marked with `<!-- claim:key -->` and compares it to `results/*.json`. Fails on mismatch or on a claim with no result.
       Accept. `make verify` exits 0 with one real claim in the README, and exits 1 when a README number is deliberately changed (show both runs).
-- [ ] A7. CI. `.github/workflows/ci.yml` runs `make verify` on push with no secrets. Secret scan step using gitleaks or a regex script.
+- [x] A7. CI. `.github/workflows/ci.yml` runs `make verify` on push with no secrets. Secret scan step using gitleaks or a regex script.
       Accept. Workflow file lints (`python -c "import yaml;yaml.safe_load(open('.github/workflows/ci.yml'))"`) and `make verify` passes locally.
 - [ ] A8. `JUDGING.md` with a 60-second route: clone, `make setup`, `make replay`, open one output file. `make replay` must work offline.
       Accept. Run the route from a fresh clone into `/tmp` and paste the timing.

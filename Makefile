@@ -6,7 +6,7 @@ PY    := $(VENV)/bin/python
 UV    := $(shell command -v uv 2>/dev/null)
 ABLATE ?= 0
 
-.PHONY: help setup lint test evals evals-ablate results verify-claims verify clean
+.PHONY: help setup lint test evals evals-ablate results verify-claims secret-scan verify clean
 
 help: ## list targets
 	@grep -E '^[a-z-]+:.*## ' $(MAKEFILE_LIST) | awk -F ':.*## ' '{printf "  %-10s %s\n", $$1, $$2}'
@@ -40,7 +40,10 @@ results: ## print results/summary.json
 verify-claims: ## every number in README.md marked <!-- claim:key --> must match results/*.json
 	$(PY) scripts/verify_claims.py
 
-verify: lint test evals evals-ablate verify-claims ## everything CI runs, no secrets needed
+secret-scan: ## regex scan of every tracked file for keys and tokens
+	$(PY) scripts/secret_scan.py
+
+verify: lint test evals evals-ablate verify-claims secret-scan ## everything CI runs, no secrets needed
 	@echo "verify: OK"
 
 clean: ## remove the virtualenv and caches
