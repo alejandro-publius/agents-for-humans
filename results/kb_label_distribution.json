@@ -81,8 +81,8 @@
   "elevators_total": 97,
   "labeled_by_rule": {
     "default": 0,
-    "extended": 58,
-    "strict": 136
+    "extended": 44,
+    "strict": 150
   },
   "note": "strict = the mapping specified in the work order; extended = additional BART phrasings listed in kb/labels.py; default = mitigation_trip when nothing matched. Labels are derived from BART's text by fixed rules; they are not BART's own categories.",
   "options_total": 194,
@@ -97,17 +97,17 @@
   "stations_pathways_unknown": 49,
   "stations_with_pathways": 1,
   "strict_rules_only": {
-    "alternate_elevator": 8,
+    "alternate_elevator": 23,
     "backtracking": 53,
     "mitigation_shuttle": 0,
-    "mitigation_trip": 58,
-    "transit": 75
+    "mitigation_trip": 44,
+    "transit": 74
   },
   "with_extension": {
-    "alternate_elevator": 52,
+    "alternate_elevator": 53,
     "backtracking": 54,
     "mitigation_shuttle": 0,
     "mitigation_trip": 0,
-    "transit": 88
+    "transit": 87
   }
 }

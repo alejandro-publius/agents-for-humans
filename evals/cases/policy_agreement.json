@@ -587,7 +587,7 @@
      "dest": "19TH"
     },
     "bart_text": "Take the alternative elevator located at the other end of the platform.",
-    "label_rule": "extended",
+    "label_rule": "strict",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -675,7 +675,7 @@
      "dest": "19TH"
     },
     "bart_text": "Take the alternative elevator located at the other end of the platform.",
-    "label_rule": "extended",
+    "label_rule": "strict",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -1071,7 +1071,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the other platform elevator",
-    "label_rule": "extended",
+    "label_rule": "strict",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -1115,7 +1115,7 @@
      "dest": "ASHB"
     },
     "bart_text": "Take the other platform elevator",
-    "label_rule": "extended",
+    "label_rule": "strict",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -1159,7 +1159,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the other platform elevator",
-    "label_rule": "extended",
+    "label_rule": "strict",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -1203,7 +1203,7 @@
      "dest": "ASHB"
     },
     "bart_text": "Take the other platform elevator",
-    "label_rule": "extended",
+    "label_rule": "strict",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -6269,7 +6269,7 @@
       "type": "tool_use",
       "name": "draft_message",
       "input": {
-       "option": "transit",
+       "option": "alternate_elevator",
        "station_abbr": "RICH",
        "elevator": "STREET ELEVATOR (WEST SIDE OF STATION)",
        "steps": [
@@ -6283,7 +6283,7 @@
       "name": "Plan",
       "input": {
        "affected": true,
-       "option": "transit",
+       "option": "alternate_elevator",
        "steps": [
         "Take another mode of transportation such as an AC Transit bus to another BART station. The closest station is El Cerrito del Norte. An alternative elevator is also available on the east side of the station."
        ],
@@ -6294,7 +6294,7 @@
      }
     ]
    },
-   "label": "transit"
+   "label": "alternate_elevator"
   },
   {
    "name": "RICH__STREET_ELEVATOR_(WEST_SIDE_OF_STATION)__cant_exit",
@@ -6703,7 +6703,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the other platform elevator.",
-    "label_rule": "extended",
+    "label_rule": "strict",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -6747,7 +6747,7 @@
      "dest": "SFIA"
     },
     "bart_text": "Take the other platform elevator.",
-    "label_rule": "extended",
+    "label_rule": "strict",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -6791,7 +6791,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the other platform elevator.",
-    "label_rule": "extended",
+    "label_rule": "strict",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -6835,7 +6835,7 @@
      "dest": "SFIA"
     },
     "bart_text": "Take the other platform elevator.",
-    "label_rule": "extended",
+    "label_rule": "strict",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -7495,7 +7495,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the other platform elevator.",
-    "label_rule": "extended",
+    "label_rule": "strict",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -7539,7 +7539,7 @@
      "dest": "WARM"
     },
     "bart_text": "Take the other platform elevator.",
-    "label_rule": "extended",
+    "label_rule": "strict",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -7583,7 +7583,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the other platform elevator.",
-    "label_rule": "extended",
+    "label_rule": "strict",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -7627,7 +7627,7 @@
      "dest": "WARM"
     },
     "bart_text": "Take the other platform elevator.",
-    "label_rule": "extended",
+    "label_rule": "strict",
     "mock_turns": [
      {
       "type": "tool_use",

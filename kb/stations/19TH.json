@@ -32,7 +32,7 @@
       "elevator": "PLATFORM ELEVATOR 1 (NEAR 17th ST EXIT)",
       "elevator_kind": "platform",
       "label": "Can't exit station",
-      "label_rule": "extended",
+      "label_rule": "strict",
       "option_label": "alternate_elevator",
       "situation": "cant_exit",
       "text": "Take the alternative elevator located at the other end of the platform."
@@ -50,7 +50,7 @@
       "elevator": "PLATFORM ELEVATOR 2 (NEAR 20th ST EXIT)",
       "elevator_kind": "platform",
       "label": "Can't exit station",
-      "label_rule": "extended",
+      "label_rule": "strict",
       "option_label": "alternate_elevator",
       "situation": "cant_exit",
       "text": "Take the alternative elevator located at the other end of the platform."
@@ -94,7 +94,7 @@
         },
         {
           "label": "Can't exit station",
-          "label_rule": "extended",
+          "label_rule": "strict",
           "option_label": "alternate_elevator",
           "situation": "cant_exit",
           "text": "Take the alternative elevator located at the other end of the platform."
@@ -116,7 +116,7 @@
         },
         {
           "label": "Can't exit station",
-          "label_rule": "extended",
+          "label_rule": "strict",
           "option_label": "alternate_elevator",
           "situation": "cant_exit",
           "text": "Take the alternative elevator located at the other end of the platform."

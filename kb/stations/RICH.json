@@ -42,7 +42,7 @@
       "elevator_kind": "street",
       "label": "Can't enter station",
       "label_rule": "strict",
-      "option_label": "transit",
+      "option_label": "alternate_elevator",
       "situation": "cant_enter",
       "text": "Take another mode of transportation such as an AC Transit bus to another BART station. The closest station is El Cerrito del Norte. An alternative elevator is also available on the east side of the station."
     },
@@ -102,7 +102,7 @@
       ]
     },
     {
-      "enter_option": "transit",
+      "enter_option": "alternate_elevator",
       "exit_option": "backtracking",
       "kind": "street",
       "name": "STREET ELEVATOR (WEST SIDE OF STATION)",
@@ -110,7 +110,7 @@
         {
           "label": "Can't enter station",
           "label_rule": "strict",
-          "option_label": "transit",
+          "option_label": "alternate_elevator",
           "situation": "cant_enter",
           "text": "Take another mode of transportation such as an AC Transit bus to another BART station. The closest station is El Cerrito del Norte. An alternative elevator is also available on the east side of the station."
         },

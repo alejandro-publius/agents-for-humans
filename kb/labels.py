@@ -2,7 +2,8 @@
 
 Rank order (best first): alternate_elevator, backtracking, transit, mitigation_trip, mitigation_shuttle.
 
-STRICT rules are the mapping specified in the work order and are applied first, in that order.
+STRICT rules are the mapping specified by the reviewer (work order plus the Sept 12 additions) and are
+applied first, in that order.
 EXTENDED rules cover phrasings BART uses that the strict rules do not name (for example
 "Take the other platform elevator", "Use the ramp", "Continue on train to exit at another
 station"). Every labeled option records which tier produced its label, and
@@ -15,7 +16,15 @@ from __future__ import annotations
 OPTION_ORDER = ("alternate_elevator", "backtracking", "transit", "mitigation_trip", "mitigation_shuttle")
 
 STRICT: dict[str, tuple[str, ...]] = {
-    "alternate_elevator": ("alternative street elevator", "other street elevator", "alternate elevator"),
+    "alternate_elevator": (
+        "alternative street elevator",
+        "other street elevator",
+        "alternate elevator",
+        # added Sat Sept 12, 2026 at the reviewer's instruction
+        "other platform elevator",
+        "other elevator",
+        "alternative elevator",
+    ),
     "backtracking": ("opposite platform", "go back to", "return to"),
     "transit": (
         "another mode of transportation",
@@ -28,9 +37,7 @@ STRICT: dict[str, tuple[str, ...]] = {
 
 EXTENDED: dict[str, tuple[str, ...]] = {
     "alternate_elevator": (
-        "other platform elevator",
         "alternative platform elevator",
-        "alternative elevator",
         "alternate parking garage elevator",
         "elevator in the bart parking garage",
         "caltrain platform",

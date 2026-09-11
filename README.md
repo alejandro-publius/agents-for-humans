@@ -53,8 +53,8 @@ the tests assert that with a socket-blocking fixture.
 | Stations in the knowledge base (BART's own accessible-path pages) | <!-- claim:kb_label_distribution.stations -->50|
 | Elevators with BART-documented outage options | <!-- claim:kb_label_distribution.elevators_total -->97|
 | Documented outage options (each is a labeled eval case) | <!-- claim:kb_label_distribution.options_total -->194|
-| Options labeled by the strict rules / the extension tier / left at default | <!-- claim:kb_label_distribution.labeled_by_rule.strict -->136/ <!-- claim:kb_label_distribution.labeled_by_rule.extended -->58/ <!-- claim:kb_label_distribution.labeled_by_rule.default -->0|
-| Policy agreement, mock mode (scripted model echoes the KB label; proves plumbing only) | <!-- claim:policy_agreement.agreement_pct -->100.0% on <!-- claim:policy_agreement.cases_run -->194cases |
+| Options labeled by the strict rules / the extension tier / left at default | <!-- claim:kb_label_distribution.labeled_by_rule.strict -->150/ <!-- claim:kb_label_distribution.labeled_by_rule.extended -->44/ <!-- claim:kb_label_distribution.labeled_by_rule.default -->0|
+| Policy agreement, mock mode, provisional (scripted model echoes the KB label; proves plumbing only) | <!-- claim:policy_agreement.agreement_pct -->100.0% on <!-- claim:policy_agreement.cases_run -->194cases |
 | Outage parse accuracy, mock mode, with a regex baseline | <!-- claim:outage_parse.accuracy_pct -->100.0% / regex <!-- claim:outage_parse.baselines.regex_accuracy_pct -->100.0% on <!-- claim:outage_parse.cases_run -->10cases |
 | All eval cases passed, guardrails on | <!-- claim:summary.cases_passed -->211of <!-- claim:summary.cases_run -->211(<!-- claim:summary.accuracy_pct -->100.0%) |
 | All eval cases passed, guardrails removed (ablation) | <!-- claim:ablation.cases_passed -->209of <!-- claim:ablation.cases_run -->211(<!-- claim:ablation.accuracy_pct -->99.1%) |
@@ -80,9 +80,11 @@ not been run. Stations with accessible-pathway prose on BART's page: <!-- claim:
   poller and client run live only with `BART_API_KEY`.
 - **Minutes.** Backtracking minutes come from synthetic schedule fixtures and are labeled as such
   in every plan. Distances in BART's text are converted at 3 mph, an assumption.
-- **BART's ranked option order** (alternate elevator, backtracking, transit, Mitigation Trip,
-  Mitigation Shuttle) is recorded as unverified in `kb/policy.json`: the page that stated it
-  returned HTTP 403 during the build. The per-station options are BART's own text.
+- **BART's ranked option order** (alternate elevator when one exists, then backtracking, transit,
+  Mitigation Trip, Mitigation Shuttle) was verified by a person against the live page
+  https://www.bart.gov/guide/accessibility/elevators on Fri Sept 11, 2026, and is recorded in
+  `kb/policy.json`. The automated capture saw HTTP 403 for that page because BART's WAF blocks this
+  laptop's IP. The per-station options are BART's own text.
 - **Option labels** are derived from BART's text by fixed rules (`kb/labels.py`), with the
   extension tier reviewable in `results/kb_label_distribution.json`.
 

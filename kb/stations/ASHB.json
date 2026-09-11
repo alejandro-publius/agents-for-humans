@@ -5,7 +5,7 @@
       "elevator": "PLATFORM ELEVATOR 1",
       "elevator_kind": "platform",
       "label": "Can't enter station",
-      "label_rule": "extended",
+      "label_rule": "strict",
       "option_label": "alternate_elevator",
       "situation": "cant_enter",
       "text": "Take the other platform elevator"
@@ -14,7 +14,7 @@
       "elevator": "PLATFORM ELEVATOR 1",
       "elevator_kind": "platform",
       "label": "Can't exit station",
-      "label_rule": "extended",
+      "label_rule": "strict",
       "option_label": "alternate_elevator",
       "situation": "cant_exit",
       "text": "Take the other platform elevator"
@@ -23,7 +23,7 @@
       "elevator": "PLATFORM ELEVATOR 2",
       "elevator_kind": "platform",
       "label": "Can't enter station",
-      "label_rule": "extended",
+      "label_rule": "strict",
       "option_label": "alternate_elevator",
       "situation": "cant_enter",
       "text": "Take the other platform elevator"
@@ -32,7 +32,7 @@
       "elevator": "PLATFORM ELEVATOR 2",
       "elevator_kind": "platform",
       "label": "Can't exit station",
-      "label_rule": "extended",
+      "label_rule": "strict",
       "option_label": "alternate_elevator",
       "situation": "cant_exit",
       "text": "Take the other platform elevator"
@@ -65,14 +65,14 @@
       "outage_options": [
         {
           "label": "Can't enter station",
-          "label_rule": "extended",
+          "label_rule": "strict",
           "option_label": "alternate_elevator",
           "situation": "cant_enter",
           "text": "Take the other platform elevator"
         },
         {
           "label": "Can't exit station",
-          "label_rule": "extended",
+          "label_rule": "strict",
           "option_label": "alternate_elevator",
           "situation": "cant_exit",
           "text": "Take the other platform elevator"
@@ -87,14 +87,14 @@
       "outage_options": [
         {
           "label": "Can't enter station",
-          "label_rule": "extended",
+          "label_rule": "strict",
           "option_label": "alternate_elevator",
           "situation": "cant_enter",
           "text": "Take the other platform elevator"
         },
         {
           "label": "Can't exit station",
-          "label_rule": "extended",
+          "label_rule": "strict",
           "option_label": "alternate_elevator",
           "situation": "cant_exit",
           "text": "Take the other platform elevator"

@@ -2,12 +2,12 @@
   "baselines": {
     "by_label": {
       "alternate_elevator": {
-        "cases": 52,
-        "agree": 52
+        "cases": 53,
+        "agree": 53
       },
       "transit": {
-        "cases": 88,
-        "agree": 88
+        "cases": 87,
+        "agree": 87
       },
       "backtracking": {
         "cases": 54,
@@ -156,7 +156,7 @@
       "actual": "alternate_elevator",
       "final_after_code": "alternate_elevator",
       "policy_top": "alternate_elevator",
-      "label_rule": "extended",
+      "label_rule": "strict",
       "error": null,
       "pass": true
     },
@@ -174,7 +174,7 @@
       "actual": "alternate_elevator",
       "final_after_code": "alternate_elevator",
       "policy_top": "alternate_elevator",
-      "label_rule": "extended",
+      "label_rule": "strict",
       "error": null,
       "pass": true
     },
@@ -255,7 +255,7 @@
       "actual": "alternate_elevator",
       "final_after_code": "alternate_elevator",
       "policy_top": "alternate_elevator",
-      "label_rule": "extended",
+      "label_rule": "strict",
       "error": null,
       "pass": true
     },
@@ -264,7 +264,7 @@
       "actual": "alternate_elevator",
       "final_after_code": "alternate_elevator",
       "policy_top": "alternate_elevator",
-      "label_rule": "extended",
+      "label_rule": "strict",
       "error": null,
       "pass": true
     },
@@ -273,7 +273,7 @@
       "actual": "alternate_elevator",
       "final_after_code": "alternate_elevator",
       "policy_top": "alternate_elevator",
-      "label_rule": "extended",
+      "label_rule": "strict",
       "error": null,
       "pass": true
     },
@@ -282,7 +282,7 @@
       "actual": "alternate_elevator",
       "final_after_code": "alternate_elevator",
       "policy_top": "alternate_elevator",
-      "label_rule": "extended",
+      "label_rule": "strict",
       "error": null,
       "pass": true
     },
@@ -1313,10 +1313,10 @@
       "pass": true
     },
     "RICH__STREET_ELEVATOR_(WEST_SIDE_OF_STATION)__cant_enter": {
-      "expected": "transit",
-      "actual": "transit",
-      "final_after_code": "transit",
-      "policy_top": "transit",
+      "expected": "alternate_elevator",
+      "actual": "alternate_elevator",
+      "final_after_code": "alternate_elevator",
+      "policy_top": "alternate_elevator",
       "label_rule": "strict",
       "error": null,
       "pass": true
@@ -1407,7 +1407,7 @@
       "actual": "alternate_elevator",
       "final_after_code": "alternate_elevator",
       "policy_top": "alternate_elevator",
-      "label_rule": "extended",
+      "label_rule": "strict",
       "error": null,
       "pass": true
     },
@@ -1416,7 +1416,7 @@
       "actual": "alternate_elevator",
       "final_after_code": "alternate_elevator",
       "policy_top": "alternate_elevator",
-      "label_rule": "extended",
+      "label_rule": "strict",
       "error": null,
       "pass": true
     },
@@ -1425,7 +1425,7 @@
       "actual": "alternate_elevator",
       "final_after_code": "alternate_elevator",
       "policy_top": "alternate_elevator",
-      "label_rule": "extended",
+      "label_rule": "strict",
       "error": null,
       "pass": true
     },
@@ -1434,7 +1434,7 @@
       "actual": "alternate_elevator",
       "final_after_code": "alternate_elevator",
       "policy_top": "alternate_elevator",
-      "label_rule": "extended",
+      "label_rule": "strict",
       "error": null,
       "pass": true
     },
@@ -1569,7 +1569,7 @@
       "actual": "alternate_elevator",
       "final_after_code": "alternate_elevator",
       "policy_top": "alternate_elevator",
-      "label_rule": "extended",
+      "label_rule": "strict",
       "error": null,
       "pass": true
     },
@@ -1578,7 +1578,7 @@
       "actual": "alternate_elevator",
       "final_after_code": "alternate_elevator",
       "policy_top": "alternate_elevator",
-      "label_rule": "extended",
+      "label_rule": "strict",
       "error": null,
       "pass": true
     },
@@ -1587,7 +1587,7 @@
       "actual": "alternate_elevator",
       "final_after_code": "alternate_elevator",
       "policy_top": "alternate_elevator",
-      "label_rule": "extended",
+      "label_rule": "strict",
       "error": null,
       "pass": true
     },
@@ -1596,7 +1596,7 @@
       "actual": "alternate_elevator",
       "final_after_code": "alternate_elevator",
       "policy_top": "alternate_elevator",
-      "label_rule": "extended",
+      "label_rule": "strict",
       "error": null,
       "pass": true
     },
