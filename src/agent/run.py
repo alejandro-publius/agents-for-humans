@@ -20,10 +20,10 @@ from typing import Any
 from strands.types.exceptions import StructuredOutputException
 
 from agent.core import AgentConfig, BuiltAgent, build_agent
-from agent.outage_parser import ValidatedOutage, parse_and_validate
+from agent.outage_parser import parse_and_validate
 from agent.schema import Plan, normalize_option
 from bart import BartClient
-from policy import Decision, Outage, Trip, assess
+from policy import Decision, Outage, Trip, assess, assess_condition
 
 
 @dataclass
@@ -74,9 +74,9 @@ def verify_plan(plan: Plan, decision: Decision) -> tuple[Plan, Verification]:
     return final, Verification(option_ok, minutes_ok, corrections)
 
 
-def prompt_for(trip: Trip, parsed: ValidatedOutage, when: datetime) -> str:
+def prompt_for(trip: Trip, raw: str, parsed: dict[str, Any], when: datetime) -> str:
     return (
-        f"Outage: {parsed.raw} (station {parsed.station_abbr}, elevator {parsed.kb_elevator!r}). "
+        f"Outage: {raw} (station {parsed['station_abbr']}, elevator {parsed['kb_elevator']!r}). "
         f"Rider trip: {trip.origin} to {trip.dest}, needs {sorted(trip.needs)}, at {when.isoformat()}."
     )
 
@@ -103,6 +103,50 @@ def run_one(
         return RunReport(fragment, trip_dict, parsed.as_label(), {}, None, None, None, {}, error=problems)
 
     decision = assess(trip, Outage(parsed.station_abbr, parsed.kb_elevator, fragment), when, client)
+    return run_with_decision(trip, fragment, parsed.as_label(), decision, when, model, config=config)
+
+
+def run_condition(
+    trip: Trip,
+    station_abbr: str,
+    elevator: str,
+    situation: str,
+    when: datetime,
+    model: Any,
+    *,
+    config: AgentConfig | None = None,
+    client: BartClient | None = None,
+) -> RunReport:
+    """Run for a (station, elevator, condition) triple the caller already knows (policy-agreement eval)."""
+    decision = assess_condition(trip, station_abbr, elevator, situation, when, client)
+    parsed = {
+        "station_abbr": station_abbr,
+        "level_from": None,
+        "level_to": None,
+        "platform_label": None,
+        "kb_elevator": elevator,
+    }
+    raw = f"{station_abbr}: {elevator} ({situation})"
+    return run_with_decision(trip, raw, parsed, decision, when, model, config=config)
+
+
+def run_with_decision(
+    trip: Trip,
+    raw: str,
+    parsed_label: dict[str, Any],
+    decision: Decision,
+    when: datetime,
+    model: Any,
+    *,
+    config: AgentConfig | None = None,
+) -> RunReport:
+    trip_dict = {
+        "origin": trip.origin,
+        "dest": trip.dest,
+        "needs": sorted(trip.needs),
+        "when": when.isoformat(),
+    }
+    fragment = raw
     base = config or AgentConfig()
     cfg = AgentConfig(
         hooks_enabled=base.hooks_enabled,
@@ -116,7 +160,7 @@ def run_one(
     error = None
     model_plan: Plan | None = None
     try:
-        result = built(prompt_for(trip, parsed, when))
+        result = built(prompt_for(trip, raw, parsed_label, when))
         if isinstance(result.structured_output, Plan):
             model_plan = result.structured_output
         else:
@@ -137,7 +181,7 @@ def run_one(
     return RunReport(
         fragment,
         trip_dict,
-        parsed.as_label(),
+        parsed_label,
         decision.as_dict(),
         model_plan.model_dump() if model_plan else None,
         final_plan.model_dump() if final_plan else None,

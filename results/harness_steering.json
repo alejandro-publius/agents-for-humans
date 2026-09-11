@@ -1,5 +1,7 @@
 {
   "baselines": {},
+  "mode": "mock",
+  "agreement_pct": 100.0,
   "suite": "harness_steering",
   "description": "Does the steering handler make the final response recommend code's top feasible option? Output is the first option named in the final text.",
   "output_of": "first_option_in_text",
@@ -11,6 +13,7 @@
   "mechanisms": {
     "hook_cancellations": 0,
     "steering_rewrites": 1,
+    "steering_guides": 0,
     "model_calls": 2
   },
   "cases": {

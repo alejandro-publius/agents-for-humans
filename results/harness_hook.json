@@ -1,5 +1,7 @@
 {
   "baselines": {},
+  "mode": "mock",
+  "agreement_pct": 100.0,
   "suite": "harness_hook",
   "description": "Does the BeforeToolCall hook cancel tool calls whose arguments name an unknown station? Output is the status of the first tool call: 'cancelled' or 'executed'.",
   "output_of": "first_tool_status",
@@ -11,6 +13,7 @@
   "mechanisms": {
     "hook_cancellations": 1,
     "steering_rewrites": 0,
+    "steering_guides": 0,
     "model_calls": 4
   },
   "cases": {

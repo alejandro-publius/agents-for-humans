@@ -147,9 +147,9 @@ def assess(trip: Trip, outage: Outage, when: datetime, client: BartClient | None
         return _refuse("unknown_elevator", station, outage.kb_elevator, flags, "elevator not in KB")
 
     if station == origin:
-        role, situation = "boarding", "cant_enter"
+        situation = "cant_enter"  # boarding
     elif station == dest:
-        role, situation = "exiting", "cant_exit"
+        situation = "cant_exit"  # exiting
     else:
         reason = "station is not on this trip"
         return _refuse("not_on_trip", station, elevator["name"], flags, reason, affected=False)
@@ -179,11 +179,41 @@ def assess(trip: Trip, outage: Outage, when: datetime, client: BartClient | None
         affected = None
         notes.append(f"{elevator['kind']} elevator: affects the trip only if the rider uses that entrance")
 
+    return _decide(trip, record, elevator, situation, affected, when, client, flags, notes)
+
+
+def assess_condition(
+    trip: Trip,
+    station_abbr: str,
+    elevator_name: str,
+    situation: str,
+    when: datetime,
+    client: BartClient | None = None,
+) -> Decision:
+    """Decide for a condition given by the caller (used by the policy-agreement eval, where every
+    (station, elevator, condition) triple from the KB is a case). Path and direction matching are
+    skipped; option ranking, minutes, and flags are identical to ``assess``."""
+    client = client or BartClient()
+    record = load_stations().get(station_abbr.upper())
+    flags: dict[str, Any] = _window_flags(trip, when)
+    flags["after_dark"] = is_after_dark(when)
+    flags["direction_source"] = "condition given by caller"
+    if record is None:
+        return _refuse("unknown_station", station_abbr.upper(), elevator_name, flags, "station not in KB")
+    elevator = _elevator(record, elevator_name)
+    if elevator is None:
+        return _refuse("unknown_elevator", station_abbr.upper(), elevator_name, flags, "elevator not in KB")
+    return _decide(trip, record, elevator, situation, True, when, client, flags, [])
+
+
+def _decide(trip, record, elevator, situation, affected, when, client, flags, notes) -> Decision:
+    station = record["abbr"]
     documented = _option_for(elevator, situation)
-    ranked = _rank_options(trip, record, documented, station, origin, dest, when, client, flags, notes)
+    ranked = _rank_options(
+        trip, record, documented, station, trip.origin, trip.dest, when, client, flags, notes
+    )
     top = next((o.option for o in ranked if o.feasible), None)
-    condition = situation if role != "transfer" else "transfer"
-    return Decision(affected, condition, station, elevator["name"], documented, ranked, top, flags, notes)
+    return Decision(affected, situation, station, elevator["name"], documented, ranked, top, flags, notes)
 
 
 def _refuse(condition, station, elevator, flags, reason, *, affected=None, notes=None) -> Decision:

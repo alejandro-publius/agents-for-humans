@@ -27,9 +27,9 @@ scripted. Real outage numbers arrive with Block B.
 
 | Measure | With guardrails | Guardrails removed (ablation) |
 | --- | --- | --- |
-| Harness cases run | <!-- claim:summary.cases_run -->17| <!-- claim:ablation.cases_run -->17|
-| Cases passed | <!-- claim:summary.cases_passed -->17| <!-- claim:ablation.cases_passed -->15|
-| Pass rate | <!-- claim:summary.accuracy_pct -->100.0% | <!-- claim:ablation.accuracy_pct -->88.2% |
+| Harness cases run | <!-- claim:summary.cases_run -->211| <!-- claim:ablation.cases_run -->211|
+| Cases passed | <!-- claim:summary.cases_passed -->211| <!-- claim:ablation.cases_passed -->209|
+| Pass rate | <!-- claim:summary.accuracy_pct -->100.0% | <!-- claim:ablation.accuracy_pct -->99.1% |
 | Tool calls cancelled by the hook | <!-- claim:summary.hook_cancellations -->1| <!-- claim:ablation.hook_cancellations -->0|
 | Responses rewritten by steering | <!-- claim:summary.steering_rewrites -->1| <!-- claim:ablation.steering_rewrites -->0|
 | Network attempts during the run | <!-- claim:summary.network_attempts -->0| <!-- claim:ablation.network_attempts -->0|

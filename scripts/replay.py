@@ -18,6 +18,7 @@ sys.path.insert(0, str(REPO_ROOT))
 
 from agent.mock_model import MockModel  # noqa: E402
 from agent.outage_parser import parse_and_validate  # noqa: E402
+from agent.run import run_condition  # noqa: E402
 from evals.run import extract_output, install_network_guard, load_suites, run_case  # noqa: E402
 
 OUT = REPO_ROOT / "results" / "replay.md"
@@ -45,6 +46,24 @@ def render_parse_case(suite: dict, case: dict) -> tuple[str, bool]:
     lines.append(f"- Expected: `{json.dumps(case['label'])}`")
     lines.append("")
     return "\n".join(lines), ok
+
+
+def render_agreement_row(case: dict) -> tuple[str, bool]:
+    """policy_agreement cases: one table row each (194 of them), model option vs KB label."""
+    from evals.run import EVAL_WHEN
+    from policy import Trip
+
+    inp = case["input"]
+    model = MockModel(inp["mock_turns"], name=case["name"])
+    trip = Trip(inp["trip"]["origin"], inp["trip"]["dest"])
+    report = run_condition(trip, inp["station"], inp["elevator"], inp["situation"], EVAL_WHEN, model)
+    model_option = report.model_plan["option"] if report.model_plan else None
+    ok = model_option == case["label"]
+    row = (
+        f"| {inp['station']} | {inp['elevator']} | {inp['situation']} | {case['label']} | "
+        f"{model_option} | {report.decision.get('top_option')} | {'yes' if ok else 'NO'} |"
+    )
+    return row, ok
 
 
 def render_case(suite: dict, case: dict) -> tuple[str, bool]:
@@ -100,11 +119,19 @@ def main() -> int:
         parts.append("")
         parts.append(suite["description"])
         parts.append("")
+        if suite["output_of"] == "policy_agreement":
+            parts.append("| station | elevator | condition | KB label | model option | policy top | agree |")
+            parts.append("| --- | --- | --- | --- | --- | --- | --- |")
         for case in suite["cases"]:
-            text, ok = render_case(suite, case)
+            if suite["output_of"] == "policy_agreement":
+                text, ok = render_agreement_row(case)
+            else:
+                text, ok = render_case(suite, case)
             parts.append(text)
             total += 1
             passed += ok
+        if suite["output_of"] == "policy_agreement":
+            parts.append("")
     elapsed = time.perf_counter() - start
     parts.append(f"---\n{passed}/{total} cases matched their label.\n")
     OUT.parent.mkdir(exist_ok=True)

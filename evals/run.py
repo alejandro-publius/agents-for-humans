@@ -17,6 +17,7 @@ import json
 import os
 import socket
 import sys
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
@@ -29,7 +30,10 @@ from strands_evals.evaluators import Equals  # noqa: E402
 from agent.core import AgentConfig, BuiltAgent, build_agent  # noqa: E402
 from agent.mock_model import MockModel  # noqa: E402
 from agent.outage_parser import parse_and_validate  # noqa: E402
+from agent.run import run_condition  # noqa: E402
 from agent.steering import first_option_mentioned  # noqa: E402
+from policy import Trip  # noqa: E402
+from policy.sun import PACIFIC  # noqa: E402
 
 CASES_DIR = REPO_ROOT / "evals" / "cases"
 RESULTS_DIR = REPO_ROOT / "results"
@@ -115,12 +119,41 @@ def extract_output(kind: str, built: BuiltAgent, result: Any) -> str:
     raise SystemExit(f"unknown output_of {kind!r}")
 
 
-def run_suite(suite: dict[str, Any], *, provider: str, ablate: bool) -> dict[str, Any]:
+EVAL_WHEN = datetime(2026, 9, 12, 8, 0, tzinfo=PACIFIC)  # daytime, so documented options are feasible
+
+
+def run_suite(
+    suite: dict[str, Any], *, provider: str, ablate: bool, max_model_calls: int | None = None
+) -> dict[str, Any]:
     kind = suite["output_of"]
-    mechanisms = {"hook_cancellations": 0, "steering_rewrites": 0, "model_calls": 0}
+    mechanisms = {"hook_cancellations": 0, "steering_rewrites": 0, "steering_guides": 0, "model_calls": 0}
     details: dict[str, dict[str, Any]] = {}
+    skipped: list[str] = []
 
     def task(case: Case) -> Any:
+        if kind == "policy_agreement":
+            over_budget = max_model_calls is not None and mechanisms["model_calls"] >= max_model_calls
+            if provider != "mock" and over_budget:
+                skipped.append(case.name)
+                details[case.name] = {"expected": labels[case.name], "actual": None, "skipped": "budget"}
+                return "__skipped__"
+            inp = case.input
+            model = make_model(provider, {**inp, "name": case.name})
+            trip = Trip(origin=inp["trip"]["origin"], dest=inp["trip"]["dest"])
+            report = run_condition(trip, inp["station"], inp["elevator"], inp["situation"], EVAL_WHEN, model)
+            mechanisms["model_calls"] += report.mechanisms.get("model_calls", 0)
+            mechanisms["hook_cancellations"] += report.mechanisms.get("hook_cancellations", 0)
+            mechanisms["steering_guides"] += report.mechanisms.get("steering_guides", 0)
+            model_option = report.model_plan["option"] if report.model_plan else None
+            details[case.name] = {
+                "expected": labels[case.name],
+                "actual": model_option,
+                "final_after_code": report.final_plan["option"] if report.final_plan else None,
+                "policy_top": report.decision.get("top_option"),
+                "label_rule": inp["label_rule"],
+                "error": report.error,
+            }
+            return model_option
         if kind == "outage_parse":
             fragment = case.input["fragment"]
             model = make_model(provider, {**case.input, "name": case.name})
@@ -152,16 +185,32 @@ def run_suite(suite: dict[str, Any], *, provider: str, ablate: bool) -> dict[str
 
     passes = [bool(p) for p in report.test_passes]
     for name, ok in zip(details, passes, strict=True):
-        details[name]["pass"] = ok
-    cases_run = len(cases)
-    passed = sum(passes)
+        details[name]["pass"] = ok and not details[name].get("skipped")
+    cases_run = len(cases) - len(skipped)
+    passed = sum(1 for name in details if details[name]["pass"])
     baselines: dict[str, Any] = {}
+    if kind == "policy_agreement":
+        cases_run = len(cases) - len(skipped)
+        by_label: dict[str, dict[str, int]] = {}
+        for d in details.values():
+            if d.get("skipped"):
+                continue
+            row = by_label.setdefault(d["expected"], {"cases": 0, "agree": 0})
+            row["cases"] += 1
+            row["agree"] += int(d["actual"] == d["expected"])
+        baselines["by_label"] = by_label
+        baselines["cases_skipped_for_budget"] = len(skipped)
+        code_agree = sum(1 for d in details.values() if d.get("final_after_code") == d["expected"])
+        code_pct = round(100.0 * code_agree / cases_run, 1) if cases_run else None
+        baselines["final_after_code_agreement_pct"] = code_pct
     if kind == "outage_parse":
         regex_ok = sum(1 for d in details.values() if d["regex_baseline"] == d["expected"])
         baselines["regex_accuracy_pct"] = round(100.0 * regex_ok / cases_run, 1) if cases_run else None
         baselines["regex_cases_passed"] = regex_ok
     return {
         "baselines": baselines,
+        "mode": provider,
+        "agreement_pct": round(100.0 * passed / cases_run, 1) if cases_run else None,
         "suite": suite["suite"],
         "description": suite["description"],
         "output_of": kind,
@@ -182,6 +231,9 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--provider", choices=["mock", "bedrock"], default="mock")
     parser.add_argument("--ablate", action="store_true", help="disable the hook and the steering handler")
     parser.add_argument("--out", type=Path, default=RESULTS_DIR)
+    parser.add_argument(
+        "--max-model-calls", type=int, default=200, help="live providers only: stop past this many calls"
+    )
     args = parser.parse_args(argv)
 
     if args.provider == "mock":
@@ -193,7 +245,10 @@ def main(argv: list[str] | None = None) -> int:
         print(f"evals: {exc}", file=sys.stderr)
         return 2
 
-    suite_results = [run_suite(s, provider=args.provider, ablate=args.ablate) for s in suites]
+    suite_results = [
+        run_suite(s, provider=args.provider, ablate=args.ablate, max_model_calls=args.max_model_calls)
+        for s in suites
+    ]
     cases_run = sum(r["cases_run"] for r in suite_results)
     cases_passed = sum(r["cases_passed"] for r in suite_results)
     summary = {
@@ -230,6 +285,12 @@ def main(argv: list[str] | None = None) -> int:
     tag = "ABLATED" if args.ablate else "full"
     for r in suite_results:
         print(f"{tag:8} {r['suite']:22} {r['cases_passed']}/{r['cases_run']} passed  {r['mechanisms']}")
+        if r["suite"] == "policy_agreement":
+            print(
+                f"{tag:8} policy_agreement: agreement {r['agreement_pct']}% on {r['cases_run']} cases "
+                f"(mode={r['mode']}, skipped for budget={r['baselines']['cases_skipped_for_budget']}, "
+                f"steering guides={r['mechanisms']['steering_guides']})"
+            )
         if r["suite"] == "outage_parse":
             print(
                 f"{tag:8} outage_parse accuracy: {r['accuracy_pct']}% on {r['cases_run']} cases "

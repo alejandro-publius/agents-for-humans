@@ -3,16 +3,18 @@
   "ablated": false,
   "note": "mock provider: scripted model turns from fixtures/model; these suites measure the harness (hook, steering, schema), not model quality",
   "network_attempts": 0,
-  "cases_run": 17,
-  "cases_passed": 17,
+  "cases_run": 211,
+  "cases_passed": 211,
   "accuracy": 1.0,
   "accuracy_pct": 100.0,
   "hook_cancellations": 1,
   "steering_rewrites": 1,
-  "model_calls": 21,
+  "model_calls": 409,
   "suites": {
     "harness_hook": {
       "baselines": {},
+      "mode": "mock",
+      "agreement_pct": 100.0,
       "suite": "harness_hook",
       "description": "Does the BeforeToolCall hook cancel tool calls whose arguments name an unknown station? Output is the status of the first tool call: 'cancelled' or 'executed'.",
       "output_of": "first_tool_status",
@@ -24,6 +26,7 @@
       "mechanisms": {
         "hook_cancellations": 1,
         "steering_rewrites": 0,
+        "steering_guides": 0,
         "model_calls": 4
       },
       "cases": {
@@ -41,6 +44,8 @@
     },
     "harness_steering": {
       "baselines": {},
+      "mode": "mock",
+      "agreement_pct": 100.0,
       "suite": "harness_steering",
       "description": "Does the steering handler make the final response recommend code's top feasible option? Output is the first option named in the final text.",
       "output_of": "first_option_in_text",
@@ -52,6 +57,7 @@
       "mechanisms": {
         "hook_cancellations": 0,
         "steering_rewrites": 1,
+        "steering_guides": 0,
         "model_calls": 2
       },
       "cases": {
@@ -69,6 +75,8 @@
     },
     "harness_structured": {
       "baselines": {},
+      "mode": "mock",
+      "agreement_pct": 100.0,
       "suite": "harness_structured",
       "description": "Does every run end in a schema-valid Plan? Output is plan.option from the structured output.",
       "output_of": "plan_option",
@@ -80,6 +88,7 @@
       "mechanisms": {
         "hook_cancellations": 0,
         "steering_rewrites": 0,
+        "steering_guides": 0,
         "model_calls": 5
       },
       "cases": {
@@ -105,6 +114,8 @@
         "regex_accuracy_pct": 100.0,
         "regex_cases_passed": 10
       },
+      "mode": "mock",
+      "agreement_pct": 100.0,
       "suite": "outage_parse",
       "description": "Free-text outage fragment -> {station_abbr, level_from, level_to, platform_label, kb_elevator}. The model proposes (mock: scripted proposal per case); code validates against kb/ and resolves the elevator. Case 1 is BART's documented sample; the rest are authored in the same shape from KB elevator names. A regex baseline is reported alongside.",
       "output_of": "outage_parse",
@@ -116,6 +127,7 @@
       "mechanisms": {
         "hook_cancellations": 0,
         "steering_rewrites": 0,
+        "steering_guides": 0,
         "model_calls": 10
       },
       "cases": {
@@ -357,6 +369,1790 @@
             "platform_label": "Fruitvale",
             "kb_elevator": "STATION ELEVATOR"
           },
+          "pass": true
+        }
+      }
+    },
+    "policy_agreement": {
+      "baselines": {
+        "by_label": {
+          "alternate_elevator": {
+            "cases": 52,
+            "agree": 52
+          },
+          "transit": {
+            "cases": 88,
+            "agree": 88
+          },
+          "backtracking": {
+            "cases": 54,
+            "agree": 54
+          }
+        },
+        "cases_skipped_for_budget": 0,
+        "final_after_code_agreement_pct": 100.0
+      },
+      "mode": "mock",
+      "agreement_pct": 100.0,
+      "suite": "policy_agreement",
+      "description": "One case per (station, elevator, condition) from kb/stations. Label = the option label derived from BART's documented text (kb/labels.py). Output is the option the model put in its Plan before code verification. Mock mode proves plumbing (scripted model echoes the label); live mode reports the real number and is capped by --max-model-calls.",
+      "output_of": "policy_agreement",
+      "cases_run": 194,
+      "cases_passed": 194,
+      "accuracy": 1.0,
+      "accuracy_pct": 100.0,
+      "strands_evals_overall_score": 1.0,
+      "mechanisms": {
+        "hook_cancellations": 0,
+        "steering_rewrites": 0,
+        "steering_guides": 0,
+        "model_calls": 388
+      },
+      "cases": {
+        "12TH__STREET_ELEVATOR_(14TH_STREET-OGAWA_PLAZA)__cant_enter": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "12TH__STREET_ELEVATOR_(14TH_STREET-OGAWA_PLAZA)__cant_exit": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "12TH__STREET_ELEVATOR_(11TH_STREET-CONVENTION_CENTER)__cant_enter": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "12TH__STREET_ELEVATOR_(11TH_STREET-CONVENTION_CENTER)__cant_exit": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "12TH__PLATFORM_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "12TH__PLATFORM_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "16TH__STREET_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "16TH__STREET_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "16TH__PLATFORM_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "16TH__PLATFORM_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "19TH__STREET_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "19TH__STREET_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "19TH__PLATFORM_ELEVATOR_1_(NEAR_17th_ST_EXIT)__cant_enter": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "19TH__PLATFORM_ELEVATOR_1_(NEAR_17th_ST_EXIT)__cant_exit": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "19TH__PLATFORM_ELEVATOR_2_(NEAR_20th_ST_EXIT)__cant_enter": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "19TH__PLATFORM_ELEVATOR_2_(NEAR_20th_ST_EXIT)__cant_exit": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "24TH__STREET_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "24TH__STREET_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "24TH__PLATFORM_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "24TH__PLATFORM_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "ANTC__STREET_ELEVATOR_(CONCOURSE_TO_WALKWAY)__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "ANTC__STREET_ELEVATOR_(CONCOURSE_TO_WALKWAY)__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "ANTC__PLATFORM_ELEVATOR_(WALKWAY_TO_PLATFORM)__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "ANTC__PLATFORM_ELEVATOR_(WALKWAY_TO_PLATFORM)__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "ASHB__PLATFORM_ELEVATOR_1__cant_enter": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "ASHB__PLATFORM_ELEVATOR_1__cant_exit": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "ASHB__PLATFORM_ELEVATOR_2__cant_enter": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "ASHB__PLATFORM_ELEVATOR_2__cant_exit": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "ASHB__STREET_ELEVATOR__cant_enter": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "ASHB__STREET_ELEVATOR__cant_exit": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "BALB__STATION_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "BALB__STATION_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "BAYF__STATION_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "BAYF__STATION_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "BERY__STATION_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "BERY__STATION_ELEVATOR__cant_exit": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "CAST__STATION_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "CAST__STATION_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "CIVC__STREET_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "CIVC__STREET_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "CIVC__PLATFORM_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "CIVC__PLATFORM_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "COLM__PLATFORM_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "COLM__PLATFORM_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "COLS__STATION_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "COLS__STATION_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "COLS__ELEVATOR_TO_OAKLAND_AIRPORT_CONNECTOR__can_t_access_connector_platform": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "COLS__ELEVATOR_TO_OAKLAND_AIRPORT_CONNECTOR__can_t_exit_connect_connector_platform": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "COLS__WHEELCHAIR_LIFT_FROM_STATION_TO_PARKING_LOT__cant_enter": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "COLS__WHEELCHAIR_LIFT_FROM_STATION_TO_PARKING_LOT__cant_exit": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "COLS__PEDESTRIAN_BRIDGE_ELEVATOR_TO_ARENA__can_t_access_arena": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "COLS__PEDESTRIAN_BRIDGE_ELEVATOR_TO_ARENA__can_t_leave_arena": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "CONC__STATION_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "CONC__STATION_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "DALY__PLATFORMS_1_AND_2_ELEVATOR_(EAST_BAY_DIRECTION)__cant_enter": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "DALY__PLATFORMS_1_AND_2_ELEVATOR_(EAST_BAY_DIRECTION)__cant_exit": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "DALY__PLATFORM_3_ELEVATOR_(SFO-MILLBRAE_DIRECTION)__cant_enter": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "DALY__PLATFORM_3_ELEVATOR_(SFO-MILLBRAE_DIRECTION)__cant_exit": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "DALY__ELEVATORS_TO_PEDESTRIAN_TUNNEL__cant_enter_from_tunnel": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "DALY__ELEVATORS_TO_PEDESTRIAN_TUNNEL__cant_exit_from_tunnel": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "DBRK__STREET_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "DBRK__STREET_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "DBRK__PLATFORM_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "DBRK__PLATFORM_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "DELN__PLATFORM_1_ELEVATOR_(RICHMOND_DIRECTION)__cant_enter": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "DELN__PLATFORM_1_ELEVATOR_(RICHMOND_DIRECTION)__cant_exit": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "DELN__PLATFORM_2_ELEVATOR_(BERRYESSA,_SFO-MILLBRAE-DALY_CITY_DIRECTION)__cant_enter": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "DELN__PLATFORM_2_ELEVATOR_(BERRYESSA,_SFO-MILLBRAE-DALY_CITY_DIRECTION)__cant_exit": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "DUBL__STATION_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "DUBL__STATION_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "EMBR__STREET_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "EMBR__STREET_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "EMBR__PLATFORM_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "EMBR__PLATFORM_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "FRMT__STATION_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "FRMT__STATION_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "FTVL__PLATFORM_2_ELEVATOR_(RICHMOND,_MILLBRAE-SFO-DALY_CITY_DIRECTIONS)__cant_enter": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "FTVL__PLATFORM_2_ELEVATOR_(RICHMOND,_MILLBRAE-SFO-DALY_CITY_DIRECTIONS)__cant_exit": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "FTVL__PLATFORM_1_ELEVATOR_(DUBLIN,_BERRYESSA_DIRECTIONS)__cant_enter": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "FTVL__PLATFORM_1_ELEVATOR_(DUBLIN,_BERRYESSA_DIRECTIONS)__cant_exit": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "GLEN__STATION_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "GLEN__STATION_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "HAYW__PLATFORM_2_ELEVATOR_(RICHMOND,_DALY_CITY_DIRECTIONS)__cant_enter": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "HAYW__PLATFORM_2_ELEVATOR_(RICHMOND,_DALY_CITY_DIRECTIONS)__cant_exit": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "HAYW__PLATFORM_1_ELEVATOR_(BERRYESSA_DIRECTION)__cant_enter": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "HAYW__PLATFORM_1_ELEVATOR_(BERRYESSA_DIRECTION)__cant_exit": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "LAFY__STATION_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "LAFY__STATION_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "LAKE__PLATFORM_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "LAKE__PLATFORM_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "LAKE__STREET_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "LAKE__STREET_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "MCAR__PLATFORMS_2_AND_4_ELEVATOR_(SFO-MILLBRAE-DALY_CITY,_BERRYESSA_DIRECTIONS)__cant_enter": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "MCAR__PLATFORMS_2_AND_4_ELEVATOR_(SFO-MILLBRAE-DALY_CITY,_BERRYESSA_DIRECTIONS)__cant_exit": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "MCAR__PLATFORMS_1_AND_3_ELEVATOR_(ANTIOCH,_RICHMOND_DIRECTIONS)__cant_enter": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "MCAR__PLATFORMS_1_AND_3_ELEVATOR_(ANTIOCH,_RICHMOND_DIRECTIONS)__cant_exit": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "MLBR__STREET_ELEVATOR_FROM_THE_EAST_PLAZA__cant_enter": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "MLBR__STREET_ELEVATOR_FROM_THE_EAST_PLAZA__cant_exit": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "MLBR__CALTRAIN_ELEVATOR_-_WEST_PLAZA_TO_CONCOURSE__cant_enter": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "MLBR__CALTRAIN_ELEVATOR_-_WEST_PLAZA_TO_CONCOURSE__cant_exit": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "MLBR__PLATFORM_3_ELEVATOR_(ALL_DESTINATIONS)__cant_enter": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "MLBR__PLATFORM_3_ELEVATOR_(ALL_DESTINATIONS)__cant_exit": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "MLBR__CALTRAIN_ELEVATOR_-_CONCOURSE_TO_NORTHBOUND_PLATFORM__cant_enter": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "MLBR__CALTRAIN_ELEVATOR_-_CONCOURSE_TO_NORTHBOUND_PLATFORM__cant_exit": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "MLPT__PLATFORM_1_ELEVATOR_(BERRYESSA_DIRECTION)__cant_enter": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "MLPT__PLATFORM_1_ELEVATOR_(BERRYESSA_DIRECTION)__cant_exit": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "MLPT__PLATFORM_2_ELEVATOR_(MILLBRAE-SFO-DALY_CITY-RICHMOND_DIRECTIONS)__cant_enter": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "MLPT__PLATFORM_2_ELEVATOR_(MILLBRAE-SFO-DALY_CITY-RICHMOND_DIRECTIONS)__cant_exit": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "MONT__STREET_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "MONT__STREET_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "MONT__PLATFORM_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "MONT__PLATFORM_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "NBRK__STATION_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "NBRK__STATION_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "NCON__STATION_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "NCON__STATION_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "OAKL__ELEVATOR_TO_OAKLAND_AIRPORT_CONNECTOR__can_t_access_connector": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "OAKL__ELEVATOR_TO_OAKLAND_AIRPORT_CONNECTOR__can_t_exit_to_airport": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "ORIN__STATION_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "ORIN__STATION_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "PCTR__STATION_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "PCTR__STATION_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "PHIL__PLATFORM_1_ELEVATOR_(ANTIOCH_DIRECTION)__cant_enter": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "PHIL__PLATFORM_1_ELEVATOR_(ANTIOCH_DIRECTION)__cant_exit": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "PHIL__PLATFORM_2_ELEVATOR_(SFO-MILLBRAE-DALY_CITY_DIRECTION)__cant_enter": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "PHIL__PLATFORM_2_ELEVATOR_(SFO-MILLBRAE-DALY_CITY_DIRECTION)__cant_exit": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "PITT__STREET_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "PITT__STREET_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "PITT__PLATFORM_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "PITT__PLATFORM_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "PLZA__PLATFORM_1_ELEVATOR_(RICHMOND_DIRECTION)__cant_enter": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "PLZA__PLATFORM_1_ELEVATOR_(RICHMOND_DIRECTION)__cant_exit": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "PLZA__PLATFORM_2_ELEVATOR_(BERRYESSA,_SFO-MILLBRAE-DALY_CITY_DIRECTION)__cant_enter": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "PLZA__PLATFORM_2_ELEVATOR_(BERRYESSA,_SFO-MILLBRAE-DALY_CITY_DIRECTION)__cant_exit": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "POWL__STREET_ELEVATOR__cant_enter": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "POWL__STREET_ELEVATOR__cant_exit": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "POWL__PLATFORM_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "POWL__PLATFORM_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "RICH__PLATFORM_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "RICH__PLATFORM_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "RICH__STREET_ELEVATOR_(EAST_SIDE_OF_STATION)__cant_enter": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "RICH__STREET_ELEVATOR_(EAST_SIDE_OF_STATION)__cant_exit": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "RICH__STREET_ELEVATOR_(WEST_SIDE_OF_STATION)__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "RICH__STREET_ELEVATOR_(WEST_SIDE_OF_STATION)__cant_exit": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "ROCK__STATION_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "ROCK__STATION_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "SANL__PLATFORM_2_ELEVATOR_(RICHMOND,_SFO-MILLBRAE-DALY_CITY_DIRECTIONS)__cant_enter": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "SANL__PLATFORM_2_ELEVATOR_(RICHMOND,_SFO-MILLBRAE-DALY_CITY_DIRECTIONS)__cant_exit": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "SANL__PLATFORM_1_ELEVATOR_(DUBLIN,_BERRYESSA_DIRECTIONS)__cant_enter": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "SANL__PLATFORM_1_ELEVATOR_(DUBLIN,_BERRYESSA_DIRECTIONS)__cant_exit": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "SBRN__STATION_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "SBRN__STATION_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "SFIA__PLATFORMS_1_AND_2_ELEVATOR_(ALL_DESTINATIONS)__cant_enter": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "SFIA__PLATFORMS_1_AND_2_ELEVATOR_(ALL_DESTINATIONS)__cant_exit": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "SFIA__PLATFORMS_3_AND_4_ELEVATOR_(ALL_DESTINATIONS)__cant_enter": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "SFIA__PLATFORMS_3_AND_4_ELEVATOR_(ALL_DESTINATIONS)__cant_exit": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "SHAY__STATION_ELEVATOR_-_STREET_TO_PLATFORM_1_AND_BRIDGE_(BERRYESSA_DIRECTION)__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "SHAY__STATION_ELEVATOR_-_STREET_TO_PLATFORM_1_AND_BRIDGE_(BERRYESSA_DIRECTION)__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "SHAY__PLATFORM_ELEVATOR_-_BRIDGE_TO_PLATFORM_2_(RICHMOND,_SFO-MILLBRAE-DALY_CITY_DIRECTIONS)__cant_enter": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "SHAY__PLATFORM_ELEVATOR_-_BRIDGE_TO_PLATFORM_2_(RICHMOND,_SFO-MILLBRAE-DALY_CITY_DIRECTIONS)__cant_exit": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "SSAN__STATION_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "SSAN__STATION_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "UCTY__PLATFORM_1_ELEVATOR_(BERRYESSA_DIRECTION)__cant_enter": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "UCTY__PLATFORM_1_ELEVATOR_(BERRYESSA_DIRECTION)__cant_exit": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "UCTY__PLATFORM_2_ELEVATOR_(RICHMOND,_SFO-MILLBRAE-DALY_CITY_DIRECTIONS)__cant_enter": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "UCTY__PLATFORM_2_ELEVATOR_(RICHMOND,_SFO-MILLBRAE-DALY_CITY_DIRECTIONS)__cant_exit": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "WARM__STREET_ELEVATOR_1__cant_enter": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "WARM__STREET_ELEVATOR_1__cant_exit": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "WARM__STREET_ELEVATOR_2__cant_enter": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "WARM__STREET_ELEVATOR_2__cant_exit": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "WARM__PLATFORM_ELEVATOR_1__cant_enter": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "WARM__PLATFORM_ELEVATOR_1__cant_exit": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "WARM__PLATFORM_ELEVATOR_2__cant_enter": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "WARM__PLATFORM_ELEVATOR_2__cant_exit": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "WARM__PEDESTRIAN_BRIDGE_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "WARM__PEDESTRIAN_BRIDGE_ELEVATOR__cant_exit": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "WCRK__PLATFORM_1_ELEVATOR_(ANTIOCH_DIRECTION)__cant_enter": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "WCRK__PLATFORM_1_ELEVATOR_(ANTIOCH_DIRECTION)__cant_exit": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "WCRK__PLATFORM_2_ELEVATOR_(SFO-MILLBRAE-DALY_CITY_DIRECTION)__cant_enter": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "WCRK__PLATFORM_2_ELEVATOR_(SFO-MILLBRAE-DALY_CITY_DIRECTION)__cant_exit": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "WDUB__GARAGE_ELEVATOR_2_(NORTH-DUBLIN_SIDE)__cant_enter": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "WDUB__GARAGE_ELEVATOR_2_(NORTH-DUBLIN_SIDE)__cant_exit": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "WDUB__GARAGE_ELEVATOR_1_(NORTH-DUBLIN_SIDE)__cant_enter": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "WDUB__GARAGE_ELEVATOR_1_(NORTH-DUBLIN_SIDE)__cant_exit": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "WDUB__GARAGE_ELEVATOR_1_(SOUTH-PLEASANTON_SIDE)__cant_enter": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "WDUB__GARAGE_ELEVATOR_1_(SOUTH-PLEASANTON_SIDE)__cant_exit": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "WDUB__GARAGE_ELEVATOR_2_(SOUTH-PLEASANTON_SIDE)__cant_enter": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "WDUB__GARAGE_ELEVATOR_2_(SOUTH-PLEASANTON_SIDE)__cant_exit": {
+          "expected": "alternate_elevator",
+          "actual": "alternate_elevator",
+          "final_after_code": "alternate_elevator",
+          "policy_top": "alternate_elevator",
+          "label_rule": "extended",
+          "error": null,
+          "pass": true
+        },
+        "WDUB__PLATFORM_ELEVATOR__cant_enter": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "WDUB__PLATFORM_ELEVATOR__cant_exit": {
+          "expected": "transit",
+          "actual": "transit",
+          "final_after_code": "transit",
+          "policy_top": "transit",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "WOAK__PLATFORM_1_ELEVATOR_(SFO-MILLBRAE-DALY_CITY_DIRECTION)__cant_enter": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "WOAK__PLATFORM_1_ELEVATOR_(SFO-MILLBRAE-DALY_CITY_DIRECTION)__cant_exit": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "WOAK__PLATFORM_2_ELEVATOR_(DUBLIN-ANTIOCH-RICHMOND-BERRYESSA_DIRECTIONS)__cant_enter": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
+          "pass": true
+        },
+        "WOAK__PLATFORM_2_ELEVATOR_(DUBLIN-ANTIOCH-RICHMOND-BERRYESSA_DIRECTIONS)__cant_exit": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "final_after_code": "backtracking",
+          "policy_top": "backtracking",
+          "label_rule": "strict",
+          "error": null,
           "pass": true
         }
       }

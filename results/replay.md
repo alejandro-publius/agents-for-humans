@@ -182,5 +182,206 @@ Free-text outage fragment -> {station_abbr, level_from, level_to, platform_label
 - Code validation: `{"station_abbr": "COLS", "level_from": "platform", "level_to": null, "platform_label": "Fruitvale", "kb_elevator": "STATION ELEVATOR"}`
 - Expected: `{"station_abbr": "COLS", "level_from": "platform", "level_to": null, "platform_label": "Fruitvale", "kb_elevator": "STATION ELEVATOR"}`
 
+## Suite `policy_agreement`
+
+One case per (station, elevator, condition) from kb/stations. Label = the option label derived from BART's documented text (kb/labels.py). Output is the option the model put in its Plan before code verification. Mock mode proves plumbing (scripted model echoes the label); live mode reports the real number and is capped by --max-model-calls.
+
+| station | elevator | condition | KB label | model option | policy top | agree |
+| --- | --- | --- | --- | --- | --- | --- |
+| 12TH | STREET ELEVATOR (14TH STREET/OGAWA PLAZA) | cant_enter | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| 12TH | STREET ELEVATOR (14TH STREET/OGAWA PLAZA) | cant_exit | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| 12TH | STREET ELEVATOR (11TH STREET/CONVENTION CENTER) | cant_enter | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| 12TH | STREET ELEVATOR (11TH STREET/CONVENTION CENTER) | cant_exit | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| 12TH | PLATFORM ELEVATOR | cant_enter | transit | transit | transit | yes |
+| 12TH | PLATFORM ELEVATOR | cant_exit | transit | transit | transit | yes |
+| 16TH | STREET ELEVATOR | cant_enter | transit | transit | transit | yes |
+| 16TH | STREET ELEVATOR | cant_exit | transit | transit | transit | yes |
+| 16TH | PLATFORM ELEVATOR | cant_enter | transit | transit | transit | yes |
+| 16TH | PLATFORM ELEVATOR | cant_exit | transit | transit | transit | yes |
+| 19TH | STREET ELEVATOR | cant_enter | transit | transit | transit | yes |
+| 19TH | STREET ELEVATOR | cant_exit | transit | transit | transit | yes |
+| 19TH | PLATFORM ELEVATOR 1 (NEAR 17th ST EXIT) | cant_enter | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| 19TH | PLATFORM ELEVATOR 1 (NEAR 17th ST EXIT) | cant_exit | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| 19TH | PLATFORM ELEVATOR 2 (NEAR 20th ST EXIT) | cant_enter | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| 19TH | PLATFORM ELEVATOR 2 (NEAR 20th ST EXIT) | cant_exit | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| 24TH | STREET ELEVATOR | cant_enter | transit | transit | transit | yes |
+| 24TH | STREET ELEVATOR | cant_exit | transit | transit | transit | yes |
+| 24TH | PLATFORM ELEVATOR | cant_enter | transit | transit | transit | yes |
+| 24TH | PLATFORM ELEVATOR | cant_exit | transit | transit | transit | yes |
+| ANTC | STREET ELEVATOR (CONCOURSE TO WALKWAY) | cant_enter | transit | transit | transit | yes |
+| ANTC | STREET ELEVATOR (CONCOURSE TO WALKWAY) | cant_exit | transit | transit | transit | yes |
+| ANTC | PLATFORM ELEVATOR (WALKWAY TO PLATFORM) | cant_enter | transit | transit | transit | yes |
+| ANTC | PLATFORM ELEVATOR (WALKWAY TO PLATFORM) | cant_exit | transit | transit | transit | yes |
+| ASHB | PLATFORM ELEVATOR 1 | cant_enter | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| ASHB | PLATFORM ELEVATOR 1 | cant_exit | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| ASHB | PLATFORM ELEVATOR 2 | cant_enter | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| ASHB | PLATFORM ELEVATOR 2 | cant_exit | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| ASHB | STREET ELEVATOR | cant_enter | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| ASHB | STREET ELEVATOR | cant_exit | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| BALB | STATION ELEVATOR | cant_enter | transit | transit | transit | yes |
+| BALB | STATION ELEVATOR | cant_exit | transit | transit | transit | yes |
+| BAYF | STATION ELEVATOR | cant_enter | transit | transit | transit | yes |
+| BAYF | STATION ELEVATOR | cant_exit | transit | transit | transit | yes |
+| BERY | STATION ELEVATOR | cant_enter | transit | transit | transit | yes |
+| BERY | STATION ELEVATOR | cant_exit | backtracking | backtracking | backtracking | yes |
+| CAST | STATION ELEVATOR | cant_enter | transit | transit | transit | yes |
+| CAST | STATION ELEVATOR | cant_exit | transit | transit | transit | yes |
+| CIVC | STREET ELEVATOR | cant_enter | transit | transit | transit | yes |
+| CIVC | STREET ELEVATOR | cant_exit | transit | transit | transit | yes |
+| CIVC | PLATFORM ELEVATOR | cant_enter | transit | transit | transit | yes |
+| CIVC | PLATFORM ELEVATOR | cant_exit | transit | transit | transit | yes |
+| COLM | PLATFORM ELEVATOR | cant_enter | transit | transit | transit | yes |
+| COLM | PLATFORM ELEVATOR | cant_exit | transit | transit | transit | yes |
+| COLS | STATION ELEVATOR | cant_enter | transit | transit | transit | yes |
+| COLS | STATION ELEVATOR | cant_exit | transit | transit | transit | yes |
+| COLS | ELEVATOR TO OAKLAND AIRPORT CONNECTOR | can_t_access_connector_platform | transit | transit | transit | yes |
+| COLS | ELEVATOR TO OAKLAND AIRPORT CONNECTOR | can_t_exit_connect_connector_platform | backtracking | backtracking | backtracking | yes |
+| COLS | WHEELCHAIR LIFT FROM STATION TO PARKING LOT | cant_enter | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| COLS | WHEELCHAIR LIFT FROM STATION TO PARKING LOT | cant_exit | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| COLS | PEDESTRIAN BRIDGE ELEVATOR TO ARENA | can_t_access_arena | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| COLS | PEDESTRIAN BRIDGE ELEVATOR TO ARENA | can_t_leave_arena | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| CONC | STATION ELEVATOR | cant_enter | transit | transit | transit | yes |
+| CONC | STATION ELEVATOR | cant_exit | transit | transit | transit | yes |
+| DALY | PLATFORMS 1 AND 2 ELEVATOR (EAST BAY DIRECTION) | cant_enter | backtracking | backtracking | backtracking | yes |
+| DALY | PLATFORMS 1 AND 2 ELEVATOR (EAST BAY DIRECTION) | cant_exit | backtracking | backtracking | backtracking | yes |
+| DALY | PLATFORM 3 ELEVATOR (SFO/MILLBRAE DIRECTION) | cant_enter | backtracking | backtracking | backtracking | yes |
+| DALY | PLATFORM 3 ELEVATOR (SFO/MILLBRAE DIRECTION) | cant_exit | backtracking | backtracking | backtracking | yes |
+| DALY | ELEVATORS TO PEDESTRIAN TUNNEL | cant_enter_from_tunnel | transit | transit | transit | yes |
+| DALY | ELEVATORS TO PEDESTRIAN TUNNEL | cant_exit_from_tunnel | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| DBRK | STREET ELEVATOR | cant_enter | transit | transit | transit | yes |
+| DBRK | STREET ELEVATOR | cant_exit | transit | transit | transit | yes |
+| DBRK | PLATFORM ELEVATOR | cant_enter | transit | transit | transit | yes |
+| DBRK | PLATFORM ELEVATOR | cant_exit | transit | transit | transit | yes |
+| DELN | PLATFORM 1 ELEVATOR (RICHMOND DIRECTION) | cant_enter | backtracking | backtracking | backtracking | yes |
+| DELN | PLATFORM 1 ELEVATOR (RICHMOND DIRECTION) | cant_exit | backtracking | backtracking | backtracking | yes |
+| DELN | PLATFORM 2 ELEVATOR (BERRYESSA, SFO/MILLBRAE/DALY CITY DIRECTION) | cant_enter | backtracking | backtracking | backtracking | yes |
+| DELN | PLATFORM 2 ELEVATOR (BERRYESSA, SFO/MILLBRAE/DALY CITY DIRECTION) | cant_exit | backtracking | backtracking | backtracking | yes |
+| DUBL | STATION ELEVATOR | cant_enter | transit | transit | transit | yes |
+| DUBL | STATION ELEVATOR | cant_exit | transit | transit | transit | yes |
+| EMBR | STREET ELEVATOR | cant_enter | transit | transit | transit | yes |
+| EMBR | STREET ELEVATOR | cant_exit | transit | transit | transit | yes |
+| EMBR | PLATFORM ELEVATOR | cant_enter | transit | transit | transit | yes |
+| EMBR | PLATFORM ELEVATOR | cant_exit | transit | transit | transit | yes |
+| FRMT | STATION ELEVATOR | cant_enter | transit | transit | transit | yes |
+| FRMT | STATION ELEVATOR | cant_exit | transit | transit | transit | yes |
+| FTVL | PLATFORM 2 ELEVATOR (RICHMOND, MILLBRAE/SFO/DALY CITY DIRECTIONS) | cant_enter | backtracking | backtracking | backtracking | yes |
+| FTVL | PLATFORM 2 ELEVATOR (RICHMOND, MILLBRAE/SFO/DALY CITY DIRECTIONS) | cant_exit | backtracking | backtracking | backtracking | yes |
+| FTVL | PLATFORM 1 ELEVATOR (DUBLIN, BERRYESSA DIRECTIONS) | cant_enter | backtracking | backtracking | backtracking | yes |
+| FTVL | PLATFORM 1 ELEVATOR (DUBLIN, BERRYESSA DIRECTIONS) | cant_exit | backtracking | backtracking | backtracking | yes |
+| GLEN | STATION ELEVATOR | cant_enter | transit | transit | transit | yes |
+| GLEN | STATION ELEVATOR | cant_exit | transit | transit | transit | yes |
+| HAYW | PLATFORM 2 ELEVATOR (RICHMOND, DALY CITY DIRECTIONS) | cant_enter | backtracking | backtracking | backtracking | yes |
+| HAYW | PLATFORM 2 ELEVATOR (RICHMOND, DALY CITY DIRECTIONS) | cant_exit | backtracking | backtracking | backtracking | yes |
+| HAYW | PLATFORM 1 ELEVATOR (BERRYESSA DIRECTION) | cant_enter | backtracking | backtracking | backtracking | yes |
+| HAYW | PLATFORM 1 ELEVATOR (BERRYESSA DIRECTION) | cant_exit | backtracking | backtracking | backtracking | yes |
+| LAFY | STATION ELEVATOR | cant_enter | transit | transit | transit | yes |
+| LAFY | STATION ELEVATOR | cant_exit | transit | transit | transit | yes |
+| LAKE | PLATFORM ELEVATOR | cant_enter | transit | transit | transit | yes |
+| LAKE | PLATFORM ELEVATOR | cant_exit | transit | transit | transit | yes |
+| LAKE | STREET ELEVATOR | cant_enter | transit | transit | transit | yes |
+| LAKE | STREET ELEVATOR | cant_exit | transit | transit | transit | yes |
+| MCAR | PLATFORMS 2 AND 4 ELEVATOR (SFO/MILLBRAE/DALY CITY, BERRYESSA DIRECTIONS) | cant_enter | backtracking | backtracking | backtracking | yes |
+| MCAR | PLATFORMS 2 AND 4 ELEVATOR (SFO/MILLBRAE/DALY CITY, BERRYESSA DIRECTIONS) | cant_exit | backtracking | backtracking | backtracking | yes |
+| MCAR | PLATFORMS 1 AND 3 ELEVATOR (ANTIOCH, RICHMOND DIRECTIONS) | cant_enter | backtracking | backtracking | backtracking | yes |
+| MCAR | PLATFORMS 1 AND 3 ELEVATOR (ANTIOCH, RICHMOND DIRECTIONS) | cant_exit | backtracking | backtracking | backtracking | yes |
+| MLBR | STREET ELEVATOR FROM THE EAST PLAZA | cant_enter | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| MLBR | STREET ELEVATOR FROM THE EAST PLAZA | cant_exit | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| MLBR | CALTRAIN ELEVATOR - WEST PLAZA TO CONCOURSE | cant_enter | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| MLBR | CALTRAIN ELEVATOR - WEST PLAZA TO CONCOURSE | cant_exit | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| MLBR | PLATFORM 3 ELEVATOR (ALL DESTINATIONS) | cant_enter | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| MLBR | PLATFORM 3 ELEVATOR (ALL DESTINATIONS) | cant_exit | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| MLBR | CALTRAIN ELEVATOR - CONCOURSE TO NORTHBOUND PLATFORM | cant_enter | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| MLBR | CALTRAIN ELEVATOR - CONCOURSE TO NORTHBOUND PLATFORM | cant_exit | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| MLPT | PLATFORM 1 ELEVATOR (BERRYESSA DIRECTION) | cant_enter | backtracking | backtracking | backtracking | yes |
+| MLPT | PLATFORM 1 ELEVATOR (BERRYESSA DIRECTION) | cant_exit | backtracking | backtracking | backtracking | yes |
+| MLPT | PLATFORM 2 ELEVATOR (MILLBRAE/SFO/DALY CITY/RICHMOND DIRECTIONS) | cant_enter | backtracking | backtracking | backtracking | yes |
+| MLPT | PLATFORM 2 ELEVATOR (MILLBRAE/SFO/DALY CITY/RICHMOND DIRECTIONS) | cant_exit | backtracking | backtracking | backtracking | yes |
+| MONT | STREET ELEVATOR | cant_enter | transit | transit | transit | yes |
+| MONT | STREET ELEVATOR | cant_exit | transit | transit | transit | yes |
+| MONT | PLATFORM ELEVATOR | cant_enter | transit | transit | transit | yes |
+| MONT | PLATFORM ELEVATOR | cant_exit | transit | transit | transit | yes |
+| NBRK | STATION ELEVATOR | cant_enter | transit | transit | transit | yes |
+| NBRK | STATION ELEVATOR | cant_exit | transit | transit | transit | yes |
+| NCON | STATION ELEVATOR | cant_enter | transit | transit | transit | yes |
+| NCON | STATION ELEVATOR | cant_exit | transit | transit | transit | yes |
+| OAKL | ELEVATOR TO OAKLAND AIRPORT CONNECTOR | can_t_access_connector | transit | transit | transit | yes |
+| OAKL | ELEVATOR TO OAKLAND AIRPORT CONNECTOR | can_t_exit_to_airport | backtracking | backtracking | backtracking | yes |
+| ORIN | STATION ELEVATOR | cant_enter | transit | transit | transit | yes |
+| ORIN | STATION ELEVATOR | cant_exit | transit | transit | transit | yes |
+| PCTR | STATION ELEVATOR | cant_enter | transit | transit | transit | yes |
+| PCTR | STATION ELEVATOR | cant_exit | transit | transit | transit | yes |
+| PHIL | PLATFORM 1 ELEVATOR (ANTIOCH DIRECTION) | cant_enter | backtracking | backtracking | backtracking | yes |
+| PHIL | PLATFORM 1 ELEVATOR (ANTIOCH DIRECTION) | cant_exit | backtracking | backtracking | backtracking | yes |
+| PHIL | PLATFORM 2 ELEVATOR (SFO/MILLBRAE/DALY CITY DIRECTION) | cant_enter | backtracking | backtracking | backtracking | yes |
+| PHIL | PLATFORM 2 ELEVATOR (SFO/MILLBRAE/DALY CITY DIRECTION) | cant_exit | backtracking | backtracking | backtracking | yes |
+| PITT | STREET ELEVATOR | cant_enter | transit | transit | transit | yes |
+| PITT | STREET ELEVATOR | cant_exit | transit | transit | transit | yes |
+| PITT | PLATFORM ELEVATOR | cant_enter | transit | transit | transit | yes |
+| PITT | PLATFORM ELEVATOR | cant_exit | transit | transit | transit | yes |
+| PLZA | PLATFORM 1 ELEVATOR (RICHMOND DIRECTION) | cant_enter | backtracking | backtracking | backtracking | yes |
+| PLZA | PLATFORM 1 ELEVATOR (RICHMOND DIRECTION) | cant_exit | backtracking | backtracking | backtracking | yes |
+| PLZA | PLATFORM 2 ELEVATOR (BERRYESSA, SFO/MILLBRAE/DALY CITY DIRECTION) | cant_enter | backtracking | backtracking | backtracking | yes |
+| PLZA | PLATFORM 2 ELEVATOR (BERRYESSA, SFO/MILLBRAE/DALY CITY DIRECTION) | cant_exit | backtracking | backtracking | backtracking | yes |
+| POWL | STREET ELEVATOR | cant_enter | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| POWL | STREET ELEVATOR | cant_exit | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| POWL | PLATFORM ELEVATOR | cant_enter | transit | transit | transit | yes |
+| POWL | PLATFORM ELEVATOR | cant_exit | transit | transit | transit | yes |
+| RICH | PLATFORM ELEVATOR | cant_enter | transit | transit | transit | yes |
+| RICH | PLATFORM ELEVATOR | cant_exit | transit | transit | transit | yes |
+| RICH | STREET ELEVATOR (EAST SIDE OF STATION) | cant_enter | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| RICH | STREET ELEVATOR (EAST SIDE OF STATION) | cant_exit | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| RICH | STREET ELEVATOR (WEST SIDE OF STATION) | cant_enter | transit | transit | transit | yes |
+| RICH | STREET ELEVATOR (WEST SIDE OF STATION) | cant_exit | backtracking | backtracking | backtracking | yes |
+| ROCK | STATION ELEVATOR | cant_enter | transit | transit | transit | yes |
+| ROCK | STATION ELEVATOR | cant_exit | transit | transit | transit | yes |
+| SANL | PLATFORM 2 ELEVATOR (RICHMOND, SFO/MILLBRAE/DALY CITY DIRECTIONS) | cant_enter | backtracking | backtracking | backtracking | yes |
+| SANL | PLATFORM 2 ELEVATOR (RICHMOND, SFO/MILLBRAE/DALY CITY DIRECTIONS) | cant_exit | backtracking | backtracking | backtracking | yes |
+| SANL | PLATFORM 1 ELEVATOR (DUBLIN, BERRYESSA DIRECTIONS) | cant_enter | backtracking | backtracking | backtracking | yes |
+| SANL | PLATFORM 1 ELEVATOR (DUBLIN, BERRYESSA DIRECTIONS) | cant_exit | backtracking | backtracking | backtracking | yes |
+| SBRN | STATION ELEVATOR | cant_enter | transit | transit | transit | yes |
+| SBRN | STATION ELEVATOR | cant_exit | transit | transit | transit | yes |
+| SFIA | PLATFORMS 1 AND 2 ELEVATOR (ALL DESTINATIONS) | cant_enter | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| SFIA | PLATFORMS 1 AND 2 ELEVATOR (ALL DESTINATIONS) | cant_exit | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| SFIA | PLATFORMS 3 AND 4 ELEVATOR (ALL DESTINATIONS) | cant_enter | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| SFIA | PLATFORMS 3 AND 4 ELEVATOR (ALL DESTINATIONS) | cant_exit | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| SHAY | STATION ELEVATOR - STREET TO PLATFORM 1 AND BRIDGE (BERRYESSA DIRECTION) | cant_enter | transit | transit | transit | yes |
+| SHAY | STATION ELEVATOR - STREET TO PLATFORM 1 AND BRIDGE (BERRYESSA DIRECTION) | cant_exit | transit | transit | transit | yes |
+| SHAY | PLATFORM ELEVATOR - BRIDGE TO PLATFORM 2 (RICHMOND, SFO/MILLBRAE/DALY CITY DIRECTIONS) | cant_enter | backtracking | backtracking | backtracking | yes |
+| SHAY | PLATFORM ELEVATOR - BRIDGE TO PLATFORM 2 (RICHMOND, SFO/MILLBRAE/DALY CITY DIRECTIONS) | cant_exit | backtracking | backtracking | backtracking | yes |
+| SSAN | STATION ELEVATOR | cant_enter | transit | transit | transit | yes |
+| SSAN | STATION ELEVATOR | cant_exit | transit | transit | transit | yes |
+| UCTY | PLATFORM 1 ELEVATOR (BERRYESSA DIRECTION) | cant_enter | backtracking | backtracking | backtracking | yes |
+| UCTY | PLATFORM 1 ELEVATOR (BERRYESSA DIRECTION) | cant_exit | backtracking | backtracking | backtracking | yes |
+| UCTY | PLATFORM 2 ELEVATOR (RICHMOND, SFO/MILLBRAE/DALY CITY DIRECTIONS) | cant_enter | backtracking | backtracking | backtracking | yes |
+| UCTY | PLATFORM 2 ELEVATOR (RICHMOND, SFO/MILLBRAE/DALY CITY DIRECTIONS) | cant_exit | backtracking | backtracking | backtracking | yes |
+| WARM | STREET ELEVATOR 1 | cant_enter | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| WARM | STREET ELEVATOR 1 | cant_exit | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| WARM | STREET ELEVATOR 2 | cant_enter | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| WARM | STREET ELEVATOR 2 | cant_exit | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| WARM | PLATFORM ELEVATOR 1 | cant_enter | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| WARM | PLATFORM ELEVATOR 1 | cant_exit | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| WARM | PLATFORM ELEVATOR 2 | cant_enter | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| WARM | PLATFORM ELEVATOR 2 | cant_exit | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| WARM | PEDESTRIAN BRIDGE ELEVATOR | cant_enter | transit | transit | transit | yes |
+| WARM | PEDESTRIAN BRIDGE ELEVATOR | cant_exit | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| WCRK | PLATFORM 1 ELEVATOR (ANTIOCH DIRECTION) | cant_enter | backtracking | backtracking | backtracking | yes |
+| WCRK | PLATFORM 1 ELEVATOR (ANTIOCH DIRECTION) | cant_exit | backtracking | backtracking | backtracking | yes |
+| WCRK | PLATFORM 2 ELEVATOR (SFO/MILLBRAE/DALY CITY DIRECTION) | cant_enter | backtracking | backtracking | backtracking | yes |
+| WCRK | PLATFORM 2 ELEVATOR (SFO/MILLBRAE/DALY CITY DIRECTION) | cant_exit | backtracking | backtracking | backtracking | yes |
+| WDUB | GARAGE ELEVATOR 2 (NORTH/DUBLIN SIDE) | cant_enter | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| WDUB | GARAGE ELEVATOR 2 (NORTH/DUBLIN SIDE) | cant_exit | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| WDUB | GARAGE ELEVATOR 1 (NORTH/DUBLIN SIDE) | cant_enter | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| WDUB | GARAGE ELEVATOR 1 (NORTH/DUBLIN SIDE) | cant_exit | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| WDUB | GARAGE ELEVATOR 1 (SOUTH/PLEASANTON SIDE) | cant_enter | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| WDUB | GARAGE ELEVATOR 1 (SOUTH/PLEASANTON SIDE) | cant_exit | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| WDUB | GARAGE ELEVATOR 2 (SOUTH/PLEASANTON SIDE) | cant_enter | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| WDUB | GARAGE ELEVATOR 2 (SOUTH/PLEASANTON SIDE) | cant_exit | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| WDUB | PLATFORM ELEVATOR | cant_enter | transit | transit | transit | yes |
+| WDUB | PLATFORM ELEVATOR | cant_exit | transit | transit | transit | yes |
+| WOAK | PLATFORM 1 ELEVATOR (SFO/MILLBRAE/DALY CITY DIRECTION) | cant_enter | backtracking | backtracking | backtracking | yes |
+| WOAK | PLATFORM 1 ELEVATOR (SFO/MILLBRAE/DALY CITY DIRECTION) | cant_exit | backtracking | backtracking | backtracking | yes |
+| WOAK | PLATFORM 2 ELEVATOR (DUBLIN/ANTIOCH/RICHMOND/BERRYESSA DIRECTIONS) | cant_enter | backtracking | backtracking | backtracking | yes |
+| WOAK | PLATFORM 2 ELEVATOR (DUBLIN/ANTIOCH/RICHMOND/BERRYESSA DIRECTIONS) | cant_exit | backtracking | backtracking | backtracking | yes |
+
 ---
-17/17 cases matched their label.
+211/211 cases matched their label.

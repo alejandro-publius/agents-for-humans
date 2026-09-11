@@ -45,7 +45,7 @@ Constraints that hold all night.
       Accept. `python -m src.poller --once --fixture fixtures/bart/elev_sample.json` inserts rows and a second run inserts none.
 - [x] B6. Wire the agent. Replace the placeholder tools with `get_station_facts`, `plan_alternatives`, `draft_message`. Steering handler enforces BART's option order. Hook cancels any tool call naming a station not in the KB.
       Accept. `make demo-one` runs a synthetic outage against a synthetic trip on the mock provider and prints a structured plan whose option matches the policy engine's top feasible option.
-- [ ] B7. Policy-agreement eval. One case per station with documented outage options. The label is BART's own text. Report agreement in `results/policy_agreement.json`.
+- [x] B7. Policy-agreement eval. One case per station with documented outage options. The label is BART's own text. Report agreement in `results/policy_agreement.json`.
       Accept. `make evals` reports the agreement number, whatever it is. Do not tune labels to pass.
 - [ ] B8. Update `docs/reports/day-1.md` and the README claim table with the numbers produced tonight, then `make verify`.
       Accept. `make verify` exits 0 and `git status` is clean on branch `overnight`.
