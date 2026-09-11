@@ -36,7 +36,8 @@ Models propose. Code decides.
 make setup      # .venv with Python 3.12
 make verify     # lint, tests, evals, ablation, README claim check, secret scan
 make demo-one   # one synthetic outage against one synthetic trip: decision, mechanisms, plan
-make replay     # every eval case through the agent -> results/replay.md (the judging route)
+make replay     # every eval case -> results/replay.md; archived feed -> rider inbox; quiet report
+make app        # the rider app on http://127.0.0.1:8000 (register a trip, inbox, replay timeline)
 ```
 
 Optional credentials are listed by name in `.env.example`. `BART_API_KEY` enables live BART calls;
@@ -57,8 +58,13 @@ the tests assert that with a socket-blocking fixture.
 | All eval cases passed, guardrails removed (ablation) | <!-- claim:ablation.cases_passed -->209of <!-- claim:ablation.cases_run -->211(<!-- claim:ablation.accuracy_pct -->99.1%) |
 | Tool calls cancelled by the hook / responses rewritten by steering (harness suites) | <!-- claim:summary.hook_cancellations -->1/ <!-- claim:summary.steering_rewrites -->1|
 | Network attempts during the eval run | <!-- claim:summary.network_attempts -->0|
+| Demo rider, synthetic weekend archive: outages touching their stations / their trips | <!-- claim:interruptions.rider.outages_touching_your_stations -->3/ <!-- claim:interruptions.rider.outages_touching_your_trips -->3|
+| Interruptions the agent sent / what per-station BART alerts would have sent | <!-- claim:interruptions.rider.interruptions_sent -->4/ <!-- claim:interruptions.rider.bart_style_station_alerts -->6|
+| Relevance rows exported for two human labelers / rows labeled so far | <!-- claim:relevance.rows_total -->8/ <!-- claim:relevance.rows_labeled_by_both -->0|
 
-The policy-agreement number is not a model-quality number yet: the scripted model returns the
+The interruption numbers come from a synthetic four-snapshot archive replayed through the pipeline
+(`fixtures/bart/archive_synthetic.json`), not from a real weekend; the relevance score is unfilled
+until two people label the exported rows. The policy-agreement number is not a model-quality number yet: the scripted model returns the
 label. The live-mode run (credentials, capped at 200 model calls) reports the real number and has
 not been run. Stations with accessible-pathway prose on BART's page: <!-- claim:kb_label_distribution.stations_with_pathways -->1; the other
 <!-- claim:kb_label_distribution.stations_pathways_unknown -->49are recorded as `unknown`, not invented.
@@ -86,7 +92,9 @@ not been run. Stations with accessible-pathway prose on BART's page: <!-- claim:
 | `src/bart/` | BART API client (JSON mode), fixtures by default |
 | `src/policy/` | Trip matcher, option ranking, schedule minutes, sunset |
 | `src/agent/` | Tools, hook, steering, `Plan` schema, mock model, run orchestration |
-| `src/poller.py` | Feed poller with SQLite snapshot diff |
+| `src/poller.py` | Feed poller with SQLite snapshot diff and optional raw archive |
+| `src/app/` | Rider app: store, archived-feed replay into the inbox, one-page UI |
+| `src/report.py` | Weekly quiet report per rider |
 | `evals/` | Case suites, runner, policy-agreement case generator |
 | `results/` | Everything `make evals` and `make replay` produce |
 | `tests/` | Offline tests; `tests/test_strands_mechanics.py` is the standing proof of the three mechanisms |
