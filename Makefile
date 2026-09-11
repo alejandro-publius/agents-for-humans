@@ -6,7 +6,7 @@ PY    := $(VENV)/bin/python
 UV    := $(shell command -v uv 2>/dev/null)
 ABLATE ?= 0
 
-.PHONY: help setup lint test evals evals-ablate results render-claims verify-claims secret-scan verify replay poll demo-one app inbox-replay clean
+.PHONY: help setup lint test evals evals-ablate results render-claims verify-claims secret-scan verify replay poll demo-one app inbox-replay report clean
 
 help: ## list targets
 	@grep -E '^[a-z-]+:.*## ' $(MAKEFILE_LIST) | awk -F ':.*## ' '{printf "  %-10s %s\n", $$1, $$2}'
@@ -40,8 +40,12 @@ demo-one: ## one synthetic outage against one synthetic trip on the mock provide
 poll: ## one poll of the elevator feed into data/outages.sqlite; FIXTURE=path runs offline, else needs BART_API_KEY
 	$(PY) -m src.poller --once $(if $(FIXTURE),--fixture $(FIXTURE),)
 
-replay: inbox-replay ## offline: every eval case -> results/replay.md, and the archived feed -> the rider inbox
+replay: inbox-replay ## offline: every eval case -> results/replay.md, the archived feed -> inbox, then the quiet report
 	$(PY) scripts/replay.py
+	$(PY) -m src.report --rider demo
+
+report: ## weekly quiet report for one rider -> results/interruptions.json (RIDER=demo)
+	$(PY) -m src.report --rider $(or $(RIDER),demo)
 
 inbox-replay: ## offline: replay the archived feed into data/riders.sqlite inbox (seeds the demo rider)
 	$(PY) -m src.app.replay --reset --seed-demo
