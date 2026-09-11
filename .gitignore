@@ -17,6 +17,8 @@ build/
 
 # Generated local state
 data/*.sqlite
+data/archive/
+data/preferences.json
 data/*.sqlite-journal
 results/.last_run*
 kb/_raw/

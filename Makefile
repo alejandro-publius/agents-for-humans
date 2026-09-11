@@ -6,7 +6,7 @@ PY    := $(VENV)/bin/python
 UV    := $(shell command -v uv 2>/dev/null)
 ABLATE ?= 0
 
-.PHONY: help setup lint test evals evals-ablate results render-claims verify-claims secret-scan verify replay poll demo-one app inbox-replay report clean
+.PHONY: help setup lint test evals evals-ablate results render-claims verify-claims secret-scan verify replay poll demo-one app inbox-replay report labels relevance archive clean
 
 help: ## list targets
 	@grep -E '^[a-z-]+:.*## ' $(MAKEFILE_LIST) | awk -F ':.*## ' '{printf "  %-10s %s\n", $$1, $$2}'
@@ -43,6 +43,17 @@ poll: ## one poll of the elevator feed into data/outages.sqlite; FIXTURE=path ru
 replay: inbox-replay ## offline: every eval case -> results/replay.md, the archived feed -> inbox, then the quiet report
 	$(PY) scripts/replay.py
 	$(PY) -m src.report --rider demo
+	$(PY) scripts/export_labels.py
+	$(PY) -m evals.relevance
+
+labels: ## export evals/labels/relevance.csv from the inbox (keeps existing human labels)
+	$(PY) scripts/export_labels.py
+
+relevance: ## score agent interruptions against the two label columns -> results/relevance.json
+	$(PY) -m evals.relevance
+
+archive: ## live: poll every 5 minutes with BART_API_KEY and archive every payload to data/archive/ (Ctrl-C to stop)
+	$(PY) -m src.poller --interval 300 --archive-dir data/archive
 
 report: ## weekly quiet report for one rider -> results/interruptions.json (RIDER=demo)
 	$(PY) -m src.report --rider $(or $(RIDER),demo)

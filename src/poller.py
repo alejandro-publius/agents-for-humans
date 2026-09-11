@@ -126,6 +126,20 @@ def poll_once(
     return PollResult(taken_at, source, fragments, inserted, cleared, unchanged)
 
 
+def archive_payload(archive_dir: Path, payload: dict, taken_at: str, source: str) -> Path:
+    """Save one raw feed payload and append it to ``manifest.json`` in the replay format."""
+    import json
+
+    archive_dir.mkdir(parents=True, exist_ok=True)
+    name = f"elev_{taken_at.replace(':', '').replace('+', 'p')}.json"
+    (archive_dir / name).write_text(json.dumps(payload, indent=1) + "\n")
+    manifest = archive_dir / "manifest.json"
+    data = json.loads(manifest.read_text()) if manifest.exists() else {"snapshots": []}
+    data["snapshots"].append({"at": taken_at, "file": name, "note": source})
+    manifest.write_text(json.dumps(data, indent=1) + "\n")
+    return archive_dir / name
+
+
 def active_outages(conn: sqlite3.Connection) -> list[dict[str, str | None]]:
     rows = conn.execute(
         "SELECT fragment, station_abbr, kb_elevator, first_seen, last_seen FROM outages "
@@ -143,6 +157,9 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--fixture", type=Path, help="read this fixture instead of the live feed")
     parser.add_argument("--db", type=Path, default=DEFAULT_DB, help=f"SQLite path (default {DEFAULT_DB})")
     parser.add_argument("--interval", type=int, default=300, help="seconds between polls (default 300)")
+    parser.add_argument(
+        "--archive-dir", type=Path, help="also save every raw payload here plus manifest.json (replayable)"
+    )
     args = parser.parse_args(argv)
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(name)s %(levelname)s %(message)s")
 
@@ -155,6 +172,9 @@ def main(argv: list[str] | None = None) -> int:
     while True:
         try:
             r = poll_once(client, conn, fixture=args.fixture)
+            if args.archive_dir:
+                payload = client.elevators(fixture=args.fixture)
+                archive_payload(args.archive_dir, payload, r.taken_at, r.source)
             print(
                 f"poll {r.taken_at} source={r.source} fragments={len(r.fragments)} "
                 f"inserted={r.inserted} cleared={r.cleared} unchanged={r.unchanged} db={args.db}"

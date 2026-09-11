@@ -60,7 +60,7 @@ These are the items that move the entry from "proof of concept" to "complete pro
       Accept. `python -m src.report --rider demo` prints the four numbers and writes `results/interruptions.json`.
 - [x] C3. Rider preferences memory. A `preferences` object per rider (prefers backtracking to buses, never travels after dark, needs the larger elevator) that changes option ranking. Store in AgentCore Memory when credentials are present, local JSON otherwise, behind one interface.
       Accept. `pytest tests/test_preferences.py` shows the same outage producing two different top options for two riders.
-- [ ] C4. Live archive and labels. With `BART_API_KEY`, run the poller continuously through Sunday. Export `evals/labels/relevance.csv` with one row per outage per demo trip and two label columns for two independent labelers. Report agreement.
+- [x] C4. Live archive and labels. With `BART_API_KEY`, run the poller continuously through Sunday. Export `evals/labels/relevance.csv` with one row per outage per demo trip and two label columns for two independent labelers. Report agreement.
       Accept. `results/relevance.json` reports precision, recall, and inter-labeler agreement.
 - [ ] C5. Deploy. Human decision first. AgentCore Runtime if the quota allows, otherwise Lambda plus EventBridge for the poller and a public URL for the app. Record the ARN or URL in README.
       Accept. Public URL loads from a phone, and a forced outage produces an inbox entry.
