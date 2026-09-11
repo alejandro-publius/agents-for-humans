@@ -5,7 +5,7 @@
       "elevator": "ELEVATOR TO OAKLAND AIRPORT CONNECTOR",
       "elevator_kind": "connector",
       "label": "Can't access connector",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "transit",
       "situation": "can_t_access_connector",
       "text": "Take another mode of transportation such as an AC Transit bus."
@@ -14,7 +14,7 @@
       "elevator": "ELEVATOR TO OAKLAND AIRPORT CONNECTOR",
       "elevator_kind": "connector",
       "label": "Can't exit to airport",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "backtracking",
       "situation": "can_t_exit_to_airport",
       "text": "Go back to the Coliseum Station and take another mode of transportation such as an AC Transit bus to get to the Oakland Airport."
@@ -29,14 +29,14 @@
       "outage_options": [
         {
           "label": "Can't access connector",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "transit",
           "situation": "can_t_access_connector",
           "text": "Take another mode of transportation such as an AC Transit bus."
         },
         {
           "label": "Can't exit to airport",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "backtracking",
           "situation": "can_t_exit_to_airport",
           "text": "Go back to the Coliseum Station and take another mode of transportation such as an AC Transit bus to get to the Oakland Airport."

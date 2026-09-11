@@ -5,7 +5,7 @@
       "elevator": "STREET ELEVATOR (14TH STREET/OGAWA PLAZA)",
       "elevator_kind": "street",
       "label": "Can't enter station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "alternate_elevator",
       "situation": "cant_enter",
       "text": "Take the alternative street elevator located between 11th and 12th Street on Broadway (0.2 miles)."
@@ -14,7 +14,7 @@
       "elevator": "STREET ELEVATOR (14TH STREET/OGAWA PLAZA)",
       "elevator_kind": "street",
       "label": "Can't exit station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "alternate_elevator",
       "situation": "cant_exit",
       "text": "Take the alternative street elevator located at the opposite end of the station (11th/12th Street exit)."
@@ -23,7 +23,7 @@
       "elevator": "STREET ELEVATOR (11TH STREET/CONVENTION CENTER)",
       "elevator_kind": "street",
       "label": "Can't enter station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "alternate_elevator",
       "situation": "cant_enter",
       "text": "Take the alternative street elevator located on Broadway at 14th Street/Ogawa Plaza (0.2 miles)."
@@ -32,7 +32,7 @@
       "elevator": "STREET ELEVATOR (11TH STREET/CONVENTION CENTER)",
       "elevator_kind": "street",
       "label": "Can't exit station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "alternate_elevator",
       "situation": "cant_exit",
       "text": "Take the alternative street elevator located at the opposite end of the station (Ogawa plaza exit)."
@@ -41,7 +41,7 @@
       "elevator": "PLATFORM ELEVATOR",
       "elevator_kind": "platform",
       "label": "Can't enter station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "transit",
       "situation": "cant_enter",
       "text": "Walk, roll, or take AC Transit 0.3 miles to access the 19th Street station street elevator at 1750 Broadway (between 17th St. and 19th St.)."
@@ -50,7 +50,7 @@
       "elevator": "PLATFORM ELEVATOR",
       "elevator_kind": "platform",
       "label": "Can't exit station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "transit",
       "situation": "cant_exit",
       "text": "Continue on BART to exit at another station. The closest station is 19th St. Oakland (0.3 miles)"
@@ -65,14 +65,14 @@
       "outage_options": [
         {
           "label": "Can't enter station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "alternate_elevator",
           "situation": "cant_enter",
           "text": "Take the alternative street elevator located between 11th and 12th Street on Broadway (0.2 miles)."
         },
         {
           "label": "Can't exit station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "alternate_elevator",
           "situation": "cant_exit",
           "text": "Take the alternative street elevator located at the opposite end of the station (11th/12th Street exit)."
@@ -87,14 +87,14 @@
       "outage_options": [
         {
           "label": "Can't enter station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "alternate_elevator",
           "situation": "cant_enter",
           "text": "Take the alternative street elevator located on Broadway at 14th Street/Ogawa Plaza (0.2 miles)."
         },
         {
           "label": "Can't exit station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "alternate_elevator",
           "situation": "cant_exit",
           "text": "Take the alternative street elevator located at the opposite end of the station (Ogawa plaza exit)."
@@ -109,14 +109,14 @@
       "outage_options": [
         {
           "label": "Can't enter station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "transit",
           "situation": "cant_enter",
           "text": "Walk, roll, or take AC Transit 0.3 miles to access the 19th Street station street elevator at 1750 Broadway (between 17th St. and 19th St.)."
         },
         {
           "label": "Can't exit station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "transit",
           "situation": "cant_exit",
           "text": "Continue on BART to exit at another station. The closest station is 19th St. Oakland (0.3 miles)"

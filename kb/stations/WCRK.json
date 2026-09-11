@@ -5,7 +5,7 @@
       "elevator": "PLATFORM 1 ELEVATOR (ANTIOCH DIRECTION)",
       "elevator_kind": "platform",
       "label": "Can't enter station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "backtracking",
       "situation": "cant_enter",
       "text": "Take the Platform 2 elevator to the opposite platform. Go back to Lafayette to board desired train."
@@ -14,7 +14,7 @@
       "elevator": "PLATFORM 1 ELEVATOR (ANTIOCH DIRECTION)",
       "elevator_kind": "platform",
       "label": "Can't exit station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "backtracking",
       "situation": "cant_exit",
       "text": "Continue on BART to Pleasant Hill/Contra Costa Centre and then return to Walnut Creek. Exit using the Platform 2 elevator."
@@ -23,7 +23,7 @@
       "elevator": "PLATFORM 2 ELEVATOR (SFO/MILLBRAE/DALY CITY DIRECTION)",
       "elevator_kind": "platform",
       "label": "Can't enter station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "backtracking",
       "situation": "cant_enter",
       "text": "Take the Platform 1 elevator to the opposite platform. Go back to Pleasant Hill/Contra Costa Centre to board the desired train."
@@ -32,7 +32,7 @@
       "elevator": "PLATFORM 2 ELEVATOR (SFO/MILLBRAE/DALY CITY DIRECTION)",
       "elevator_kind": "platform",
       "label": "Can't exit station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "backtracking",
       "situation": "cant_exit",
       "text": "Continue on BART to Lafayette and return to Walnut Creek. Exit using the Platform 1 elevator."
@@ -47,14 +47,14 @@
       "outage_options": [
         {
           "label": "Can't enter station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "backtracking",
           "situation": "cant_enter",
           "text": "Take the Platform 2 elevator to the opposite platform. Go back to Lafayette to board desired train."
         },
         {
           "label": "Can't exit station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "backtracking",
           "situation": "cant_exit",
           "text": "Continue on BART to Pleasant Hill/Contra Costa Centre and then return to Walnut Creek. Exit using the Platform 2 elevator."
@@ -69,14 +69,14 @@
       "outage_options": [
         {
           "label": "Can't enter station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "backtracking",
           "situation": "cant_enter",
           "text": "Take the Platform 1 elevator to the opposite platform. Go back to Pleasant Hill/Contra Costa Centre to board the desired train."
         },
         {
           "label": "Can't exit station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "backtracking",
           "situation": "cant_exit",
           "text": "Continue on BART to Lafayette and return to Walnut Creek. Exit using the Platform 1 elevator."

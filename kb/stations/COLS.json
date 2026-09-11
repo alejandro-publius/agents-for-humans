@@ -5,7 +5,7 @@
       "elevator": "STATION ELEVATOR",
       "elevator_kind": "station",
       "label": "Can't enter station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "transit",
       "situation": "cant_enter",
       "text": "Take another mode of transportation such as an AC Transit bus to another station. The closest station is Fruitvale (2.1 miles)."
@@ -14,7 +14,7 @@
       "elevator": "STATION ELEVATOR",
       "elevator_kind": "station",
       "label": "Can't exit station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "transit",
       "situation": "cant_exit",
       "text": "Continue on BART to exit at another station. The closest station is Fruitvale (2.1 miles)."
@@ -23,7 +23,7 @@
       "elevator": "ELEVATOR TO OAKLAND AIRPORT CONNECTOR",
       "elevator_kind": "connector",
       "label": "Can't access connector platform",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "transit",
       "situation": "can_t_access_connector_platform",
       "text": "Take another mode of transportation such as an AC Transit bus to get to the Oakland airport."
@@ -32,7 +32,7 @@
       "elevator": "ELEVATOR TO OAKLAND AIRPORT CONNECTOR",
       "elevator_kind": "connector",
       "label": "Can’t exit connect connector platform",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "backtracking",
       "situation": "can_t_exit_connect_connector_platform",
       "text": "Go back to the Oakland Airport Station and take another mode of transportation such as an AC Transit bus to get back to the Oakland Coliseum Station."
@@ -41,7 +41,7 @@
       "elevator": "WHEELCHAIR LIFT FROM STATION TO PARKING LOT",
       "elevator_kind": "lift",
       "label": "Can't enter station",
-      "label_rule": "extended",
+      "label_rule": "phrase",
       "option_label": "alternate_elevator",
       "situation": "cant_enter",
       "text": "Access the entrance on the other side of the station. From the parking area, turn right on Snell Street, left on 69th Street, and left on San Leandro Boulevard."
@@ -50,7 +50,7 @@
       "elevator": "WHEELCHAIR LIFT FROM STATION TO PARKING LOT",
       "elevator_kind": "lift",
       "label": "Can't exit station",
-      "label_rule": "extended",
+      "label_rule": "phrase",
       "option_label": "alternate_elevator",
       "situation": "cant_exit",
       "text": "Exit the station on the San Leandro Boulevard side and use surface streets to access the main parking area. From the station entrance, turn right on San Leandro Boulevard, right on 69th Street, and right on Snell Street."
@@ -59,7 +59,7 @@
       "elevator": "PEDESTRIAN BRIDGE ELEVATOR TO ARENA",
       "elevator_kind": "bridge",
       "label": "Can't access arena",
-      "label_rule": "extended",
+      "label_rule": "phrase",
       "option_label": "alternate_elevator",
       "situation": "can_t_access_arena",
       "text": "Cross San Leandro Blvd and go South one block. Turn right on 73rd Street to access the ramp to the pedestrian bridge from the Amtrak parking lot and proceed to the arena."
@@ -68,7 +68,7 @@
       "elevator": "PEDESTRIAN BRIDGE ELEVATOR TO ARENA",
       "elevator_kind": "bridge",
       "label": "Can't leave arena",
-      "label_rule": "extended",
+      "label_rule": "phrase",
       "option_label": "alternate_elevator",
       "situation": "can_t_leave_arena",
       "text": "Take the ramp down from the pedestrian bridge to the Amtrak parking lot. Walk or roll along 73rd St one block to get back to the Coliseum BART Station."
@@ -83,14 +83,14 @@
       "outage_options": [
         {
           "label": "Can't enter station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "transit",
           "situation": "cant_enter",
           "text": "Take another mode of transportation such as an AC Transit bus to another station. The closest station is Fruitvale (2.1 miles)."
         },
         {
           "label": "Can't exit station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "transit",
           "situation": "cant_exit",
           "text": "Continue on BART to exit at another station. The closest station is Fruitvale (2.1 miles)."
@@ -105,14 +105,14 @@
       "outage_options": [
         {
           "label": "Can't access connector platform",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "transit",
           "situation": "can_t_access_connector_platform",
           "text": "Take another mode of transportation such as an AC Transit bus to get to the Oakland airport."
         },
         {
           "label": "Can’t exit connect connector platform",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "backtracking",
           "situation": "can_t_exit_connect_connector_platform",
           "text": "Go back to the Oakland Airport Station and take another mode of transportation such as an AC Transit bus to get back to the Oakland Coliseum Station."
@@ -127,14 +127,14 @@
       "outage_options": [
         {
           "label": "Can't enter station",
-          "label_rule": "extended",
+          "label_rule": "phrase",
           "option_label": "alternate_elevator",
           "situation": "cant_enter",
           "text": "Access the entrance on the other side of the station. From the parking area, turn right on Snell Street, left on 69th Street, and left on San Leandro Boulevard."
         },
         {
           "label": "Can't exit station",
-          "label_rule": "extended",
+          "label_rule": "phrase",
           "option_label": "alternate_elevator",
           "situation": "cant_exit",
           "text": "Exit the station on the San Leandro Boulevard side and use surface streets to access the main parking area. From the station entrance, turn right on San Leandro Boulevard, right on 69th Street, and right on Snell Street."
@@ -149,14 +149,14 @@
       "outage_options": [
         {
           "label": "Can't access arena",
-          "label_rule": "extended",
+          "label_rule": "phrase",
           "option_label": "alternate_elevator",
           "situation": "can_t_access_arena",
           "text": "Cross San Leandro Blvd and go South one block. Turn right on 73rd Street to access the ramp to the pedestrian bridge from the Amtrak parking lot and proceed to the arena."
         },
         {
           "label": "Can't leave arena",
-          "label_rule": "extended",
+          "label_rule": "phrase",
           "option_label": "alternate_elevator",
           "situation": "can_t_leave_arena",
           "text": "Take the ramp down from the pedestrian bridge to the Amtrak parking lot. Walk or roll along 73rd St one block to get back to the Coliseum BART Station."

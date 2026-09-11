@@ -5,7 +5,7 @@
       "elevator": "PLATFORM 1 ELEVATOR (BERRYESSA DIRECTION)",
       "elevator_kind": "platform",
       "label": "Can't enter station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "backtracking",
       "situation": "cant_enter",
       "text": "Use the SF/Richmond platform elevator on the opposite platform. Take BART to the Warm Springs Station, then board desired train."
@@ -14,7 +14,7 @@
       "elevator": "PLATFORM 1 ELEVATOR (BERRYESSA DIRECTION)",
       "elevator_kind": "platform",
       "label": "Can't exit station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "backtracking",
       "situation": "cant_exit",
       "text": "Continue on BART to the Berryessa station and then return to Milpitas. Exit using the SF/Richmond platform elevator."
@@ -23,7 +23,7 @@
       "elevator": "PLATFORM 2 ELEVATOR (MILLBRAE/SFO/DALY CITY/RICHMOND DIRECTIONS)",
       "elevator_kind": "platform",
       "label": "Can't enter station",
-      "label_rule": "extended",
+      "label_rule": "phrase",
       "option_label": "backtracking",
       "situation": "cant_enter",
       "text": "Use the Berryessa platform elevator and take BART to the Berryessa station, then board desired train."
@@ -32,7 +32,7 @@
       "elevator": "PLATFORM 2 ELEVATOR (MILLBRAE/SFO/DALY CITY/RICHMOND DIRECTIONS)",
       "elevator_kind": "platform",
       "label": "Can't exit station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "backtracking",
       "situation": "cant_exit",
       "text": "Continue on BART to the Warm Springs Station and then return to Milpitas. Exit using the Berryessa platform elevator."
@@ -47,14 +47,14 @@
       "outage_options": [
         {
           "label": "Can't enter station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "backtracking",
           "situation": "cant_enter",
           "text": "Use the SF/Richmond platform elevator on the opposite platform. Take BART to the Warm Springs Station, then board desired train."
         },
         {
           "label": "Can't exit station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "backtracking",
           "situation": "cant_exit",
           "text": "Continue on BART to the Berryessa station and then return to Milpitas. Exit using the SF/Richmond platform elevator."
@@ -69,14 +69,14 @@
       "outage_options": [
         {
           "label": "Can't enter station",
-          "label_rule": "extended",
+          "label_rule": "phrase",
           "option_label": "backtracking",
           "situation": "cant_enter",
           "text": "Use the Berryessa platform elevator and take BART to the Berryessa station, then board desired train."
         },
         {
           "label": "Can't exit station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "backtracking",
           "situation": "cant_exit",
           "text": "Continue on BART to the Warm Springs Station and then return to Milpitas. Exit using the Berryessa platform elevator."

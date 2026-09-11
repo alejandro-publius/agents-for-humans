@@ -5,7 +5,7 @@
       "elevator": "PLATFORM 1 ELEVATOR (SFO/MILLBRAE/DALY CITY DIRECTION)",
       "elevator_kind": "platform",
       "label": "Can't enter station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "backtracking",
       "situation": "cant_enter",
       "text": "Take the Platform 2 elevator and go back to Lake Merritt or 12th St. Oakland City Center to board the desired train."
@@ -14,7 +14,7 @@
       "elevator": "PLATFORM 1 ELEVATOR (SFO/MILLBRAE/DALY CITY DIRECTION)",
       "elevator_kind": "platform",
       "label": "Can't exit station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "backtracking",
       "situation": "cant_exit",
       "text": "Continue on BART to Embarcadero and return to West Oakland. Exit using the Platform 2 elevator."
@@ -23,7 +23,7 @@
       "elevator": "PLATFORM 2 ELEVATOR (DUBLIN/ANTIOCH/RICHMOND/BERRYESSA DIRECTIONS)",
       "elevator_kind": "platform",
       "label": "Can't enter station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "backtracking",
       "situation": "cant_enter",
       "text": "Take the Platform 1 elevator and go back to Embarcadero and board desired train."
@@ -32,7 +32,7 @@
       "elevator": "PLATFORM 2 ELEVATOR (DUBLIN/ANTIOCH/RICHMOND/BERRYESSA DIRECTIONS)",
       "elevator_kind": "platform",
       "label": "Can't exit station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "backtracking",
       "situation": "cant_exit",
       "text": "Continue on BART to Lake Merritt or 12th St. Oakland City Center and return to West Oakland. Exit using the Platform 1 elevator."
@@ -47,14 +47,14 @@
       "outage_options": [
         {
           "label": "Can't enter station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "backtracking",
           "situation": "cant_enter",
           "text": "Take the Platform 2 elevator and go back to Lake Merritt or 12th St. Oakland City Center to board the desired train."
         },
         {
           "label": "Can't exit station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "backtracking",
           "situation": "cant_exit",
           "text": "Continue on BART to Embarcadero and return to West Oakland. Exit using the Platform 2 elevator."
@@ -69,14 +69,14 @@
       "outage_options": [
         {
           "label": "Can't enter station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "backtracking",
           "situation": "cant_enter",
           "text": "Take the Platform 1 elevator and go back to Embarcadero and board desired train."
         },
         {
           "label": "Can't exit station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "backtracking",
           "situation": "cant_exit",
           "text": "Continue on BART to Lake Merritt or 12th St. Oakland City Center and return to West Oakland. Exit using the Platform 1 elevator."

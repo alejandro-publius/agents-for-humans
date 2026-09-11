@@ -15,7 +15,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the alternative street elevator located between 11th and 12th Street on Broadway (0.2 miles).",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -59,7 +59,7 @@
      "dest": "12TH"
     },
     "bart_text": "Take the alternative street elevator located at the opposite end of the station (11th/12th Street exit).",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -103,7 +103,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the alternative street elevator located on Broadway at 14th Street/Ogawa Plaza (0.2 miles).",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -147,7 +147,7 @@
      "dest": "12TH"
     },
     "bart_text": "Take the alternative street elevator located at the opposite end of the station (Ogawa plaza exit).",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -191,7 +191,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Walk, roll, or take AC Transit 0.3 miles to access the 19th Street station street elevator at 1750 Broadway (between 17th St. and 19th St.).",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -235,7 +235,7 @@
      "dest": "12TH"
     },
     "bart_text": "Continue on BART to exit at another station. The closest station is 19th St. Oakland (0.3 miles)",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -279,7 +279,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take an alternative mode of transportation such as Muni to another BART station. The closest station is 24th St. Mission (0.9 miles).",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -323,7 +323,7 @@
      "dest": "16TH"
     },
     "bart_text": "Continue on BART to exit at another station. The closest station is 24th St. Mission (0.9 miles).",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -367,7 +367,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take an alternative mode of transportation such as Muni to another BART station. The closest station is 24th St. Mission (0.9 miles).",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -411,7 +411,7 @@
      "dest": "16TH"
     },
     "bart_text": "Continue on BART to exit at another station. The closest station is 24th St. Mission (0.9 miles).",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -455,7 +455,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Walk, roll, or take AC Transit 0.3 miles south on Broadway to access the street elevator at Broadway and 14th Street on Ogawa plaza.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -499,7 +499,7 @@
      "dest": "19TH"
     },
     "bart_text": "Continue on BART to exit at another station. The closest station is 12th St. Oakland City Center (0.3 miles).",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -543,7 +543,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the alternative platform elevator located at the other end of the station near the exit to 20th street.",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -587,7 +587,7 @@
      "dest": "19TH"
     },
     "bart_text": "Take the alternative elevator located at the other end of the platform.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -631,7 +631,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the alternative platform elevator located at the other end of the station near the exit to 17th Street.",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -675,7 +675,7 @@
      "dest": "19TH"
     },
     "bart_text": "Take the alternative elevator located at the other end of the platform.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -719,7 +719,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take an alternative mode of transportation such as Muni to another BART station. The closest station is 16th St. Mission (0.9 miles).",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -763,7 +763,7 @@
      "dest": "24TH"
     },
     "bart_text": "Continue on BART to exit at another station. The closest station is 16th St. Mission (0.9 miles). 24th St. Mission",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -807,7 +807,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take an alternative mode of transportation such as Muni to another BART station. The closest station is 16th St. Mission (0.9 miles).",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -851,7 +851,7 @@
      "dest": "24TH"
     },
     "bart_text": "Continue on BART to exit at another station. The closest station is 16th St. Mission (0.9 miles).",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -895,7 +895,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take another mode of transportation such as a Tri Delta Transit bus to another BART station. The closest station is Pittsburg Center.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -939,7 +939,7 @@
      "dest": "ANTC"
     },
     "bart_text": "Continue on BART to exit at another station. The closest station is Pittsburg Center.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -983,7 +983,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take another mode of transportation such as a Tri Delta Transit bus to another BART station. The closest station is Pittsburg Center.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -1027,7 +1027,7 @@
      "dest": "ANTC"
     },
     "bart_text": "Continue on BART to exit at another station. The closest station is Pittsburg Center.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -1071,7 +1071,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the other platform elevator",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -1115,7 +1115,7 @@
      "dest": "ASHB"
     },
     "bart_text": "Take the other platform elevator",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -1159,7 +1159,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the other platform elevator",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -1203,7 +1203,7 @@
      "dest": "ASHB"
     },
     "bart_text": "Take the other platform elevator",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -1247,7 +1247,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the ramp at the southwest corner of Ashby and Adeline Streets to access the other side of the station via the lower BART parking lot, or use the elevator inside of Ed Roberts Campus (only during opening hours).",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -1291,7 +1291,7 @@
      "dest": "ASHB"
     },
     "bart_text": "Go back into the station and exit on the other (lower) side. Then take the ramp at the southwest corner of Ashby and Adeline Streets to get back up to street level, or use the elevator inside of Ed Roberts Campus (only during opening hours).",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -1335,7 +1335,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take another mode of transportation such as Muni to another BART station. The closest station is Glen Park.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -1379,7 +1379,7 @@
      "dest": "BALB"
     },
     "bart_text": "Continue on BART to exit at another station. The closest station is Glen Park.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -1423,7 +1423,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take another mode of transportation such as an AC Transit bus to another BART station. The closest station is San Leandro.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -1467,7 +1467,7 @@
      "dest": "BAYF"
     },
     "bart_text": "Continue on BART to exit at another station. The closest station is San Leandro.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -1511,7 +1511,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take another mode of transportation such as a VTA bus to enter BART at the Milpitas station.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -1555,7 +1555,7 @@
      "dest": "BERY"
     },
     "bart_text": "Return to Milpitas to exit BART and take another mode of transportation such as a VTA bus to the destination.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -1599,7 +1599,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take another mode of transportation such as an AC Transit bus to another BART station. The closest station is Hayward.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -1643,7 +1643,7 @@
      "dest": "CAST"
     },
     "bart_text": "Continue on BART to exit at another station. The closest station is Hayward.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -1687,7 +1687,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Use the Powell St. Station street elevator at Market and Ellis streets (0.5 miles/ 5 blocks). Go to the intersection of McAllister and Leavenworth streets to take a bus to Market at Powell Street.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -1731,7 +1731,7 @@
      "dest": "CIVC"
     },
     "bart_text": "Continue on train to exit at another station. The closest station is Powell St. (0.5 miles).",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -1775,7 +1775,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Use the Powell St. Station street elevator at Market and Ellis streets (0.5 miles/ 5 blocks). Go to the intersection of McAllister and Leavenworth streets to take a bus to Market at Powell Street.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -1819,7 +1819,7 @@
      "dest": "CIVC"
     },
     "bart_text": "Continue on train to exit at another station. The closest station is Powell St. (0.5 miles).",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -1863,7 +1863,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take another mode of transportation such as a SamTrans bus to another BART station. The closest stations are Daly City and South San Francisco, both about 2 miles away.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -1907,7 +1907,7 @@
      "dest": "COLM"
     },
     "bart_text": "Continue on BART to another station. The closest stations are Daly City and South San Francisco, both about 2 miles away.",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -1951,7 +1951,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take another mode of transportation such as an AC Transit bus to another station. The closest station is Fruitvale (2.1 miles).",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -1995,7 +1995,7 @@
      "dest": "COLS"
     },
     "bart_text": "Continue on BART to exit at another station. The closest station is Fruitvale (2.1 miles).",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -2039,7 +2039,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take another mode of transportation such as an AC Transit bus to get to the Oakland airport.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -2083,7 +2083,7 @@
      "dest": "COLS"
     },
     "bart_text": "Go back to the Oakland Airport Station and take another mode of transportation such as an AC Transit bus to get back to the Oakland Coliseum Station.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -2127,7 +2127,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Access the entrance on the other side of the station. From the parking area, turn right on Snell Street, left on 69th Street, and left on San Leandro Boulevard.",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -2171,7 +2171,7 @@
      "dest": "COLS"
     },
     "bart_text": "Exit the station on the San Leandro Boulevard side and use surface streets to access the main parking area. From the station entrance, turn right on San Leandro Boulevard, right on 69th Street, and right on Snell Street.",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -2215,7 +2215,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Cross San Leandro Blvd and go South one block. Turn right on 73rd Street to access the ramp to the pedestrian bridge from the Amtrak parking lot and proceed to the arena.",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -2259,7 +2259,7 @@
      "dest": "COLS"
     },
     "bart_text": "Take the ramp down from the pedestrian bridge to the Amtrak parking lot. Walk or roll along 73rd St one block to get back to the Coliseum BART Station.",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -2303,7 +2303,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take another mode of transportation such as a County Connection bus to another BART station. The closest station is North Concord/Martinez.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -2347,7 +2347,7 @@
      "dest": "CONC"
     },
     "bart_text": "Continue on BART to exit at another station. The closest station is North Concord/Martinez.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -2391,7 +2391,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the elevator on the opposite platform and go back to Colma to board desired train.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -2435,7 +2435,7 @@
      "dest": "DALY"
     },
     "bart_text": "Continue on BART to Balboa Park and then return to Daly City. Exit using Platform 3 elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -2479,7 +2479,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the elevator on the opposite platform and go back to Balboa park to board desired train.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -2523,7 +2523,7 @@
      "dest": "DALY"
     },
     "bart_text": "Continue on BART to Colma and then return to Daly City. Exit using the Platform 1/2 elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -2567,13 +2567,13 @@
      "dest": "EMBR"
     },
     "bart_text": "Drive, walk, or roll to the main station entrance on De Long Street (about 0.3 miles). Turn right on John Daly Boulevard and then left on De Long Street.",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
       "name": "draft_message",
       "input": {
-       "option": "transit",
+       "option": "alternate_elevator",
        "station_abbr": "DALY",
        "elevator": "ELEVATORS TO PEDESTRIAN TUNNEL",
        "steps": [
@@ -2587,7 +2587,7 @@
       "name": "Plan",
       "input": {
        "affected": true,
-       "option": "transit",
+       "option": "alternate_elevator",
        "steps": [
         "Drive, walk, or roll to the main station entrance on De Long Street (about 0.3 miles). Turn right on John Daly Boulevard and then left on De Long Street."
        ],
@@ -2598,7 +2598,7 @@
      }
     ]
    },
-   "label": "transit"
+   "label": "alternate_elevator"
   },
   {
    "name": "DALY__ELEVATORS_TO_PEDESTRIAN_TUNNEL__cant_exit_from_tunnel",
@@ -2611,7 +2611,7 @@
      "dest": "DALY"
     },
     "bart_text": "Walk or roll about 0.3 miles to the parking area on the other side of the tunnel. Exit the station and take the ramp to the De Long Street parking lot. Cross the parking lot and turn right on John Daly Boulevard.",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -2655,7 +2655,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take another mode of transportation to another BART station. Ashby station (1.3 miles) is the easiest to access by AC Transit bus.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -2699,7 +2699,7 @@
      "dest": "DBRK"
     },
     "bart_text": "Continue on BART to exit at another station. Ashby is 1.3 miles away and North Berkeley is 1.1 miles away.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -2743,7 +2743,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take another mode of transportation to another BART station. Ashby station (1.3 miles) is the easiest to access by AC Transit bus.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -2787,7 +2787,7 @@
      "dest": "DBRK"
     },
     "bart_text": "Continue on BART to exit at another station. Ashby is 1.3 miles away and North Berkeley is 1.1 miles away.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -2831,7 +2831,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the Platform 2 elevator on the opposite platform and travel to El Cerrito Plaza, then board the desired train.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -2875,7 +2875,7 @@
      "dest": "DELN"
     },
     "bart_text": "Continue on BART to Richmond then return to El Cerrito del Norte and exit using the elevator on the opposite platform (Platform 2).",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -2919,7 +2919,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the Platform 1 elevator to the opposite platform and travel to Richmond Station, then board the desired train.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -2963,7 +2963,7 @@
      "dest": "DELN"
     },
     "bart_text": "Continue on BART to El Cerrito Plaza and then return to El Cerrito del Norte. Exit using Platform 1 elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -3007,7 +3007,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take another mode of transportation such as a LAVTA Wheels bus to another BART station. The closest station is West Dublin/Pleasanton.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -3051,7 +3051,7 @@
      "dest": "DUBL"
     },
     "bart_text": "Continue on BART to exit at another station. The closest station is West Dublin/Pleasanton.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -3095,7 +3095,7 @@
      "dest": "MONT"
     },
     "bart_text": "Use the Montgomery Station street elevator at Market and Sutter streets (0.3 miles/ 3 short blocks)",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -3139,7 +3139,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Continue on train to exit at another station. The closest station is Montgomery St. (0.3 miles/ 3 short blocks)",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -3183,7 +3183,7 @@
      "dest": "MONT"
     },
     "bart_text": "Use to the Montgomery Station street elevator at Market and Sutter streets (0.3 miles/ 3 short blocks)",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -3227,7 +3227,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Continue on train to exit at another station. The closest station is Montgomery St. (0.3 miles).",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -3271,7 +3271,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take another mode of transportation to another BART station. The closest station is Warm Springs/South Fremont.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -3315,7 +3315,7 @@
      "dest": "FRMT"
     },
     "bart_text": "Continue on BART to exit at another station. The closest station is Warm Springs/South Fremont.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -3359,7 +3359,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the Platform 1 elevator to opposite platform. Go back to Coliseum and board desired train.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -3403,7 +3403,7 @@
      "dest": "FTVL"
     },
     "bart_text": "Continue on BART to Lake Merritt and return to Fruitvale. Exit using Platform 1 elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -3447,7 +3447,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the Platform 2 elevator to opposite platform. Go back to Lake Merritt and board desired train.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -3491,7 +3491,7 @@
      "dest": "FTVL"
     },
     "bart_text": "Continue on BART to Coliseum and return to Fruitvale. Exit using Platform 2 elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -3535,7 +3535,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take another mode of transportation such as Muni to another BART station. The closest station is Balboa Park (1.2 miles).",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -3579,7 +3579,7 @@
      "dest": "GLEN"
     },
     "bart_text": "Continue on BART to exit at another station. The closest station is Balboa Park (1.2 miles).",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -3623,7 +3623,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the Platform 1 elevator to opposite platform. Go back to South Hayward and board desired train.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -3667,7 +3667,7 @@
      "dest": "HAYW"
     },
     "bart_text": "Continue on BART to Bay Fair and return to Hayward. Exit using Platform 1 elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -3711,7 +3711,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the Platform 2 elevator to opposite platform. Go back to Bay Fair and board desired train.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -3755,7 +3755,7 @@
      "dest": "HAYW"
     },
     "bart_text": "Continue on BART to South Hayward and return to Hayward. Exit using Platform 2 elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -3799,7 +3799,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take another mode of transportation such as a County Connection bus to another BART station. The closest station is Orinda.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -3843,7 +3843,7 @@
      "dest": "LAFY"
     },
     "bart_text": "Continue on BART to exit at another station. The closest station is Orinda.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -3887,7 +3887,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Walk, roll, or take AC Transit 0.6 miles to access the street elevator at the 12th Street station (located between 11th and 12th on Broadway).",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -3931,7 +3931,7 @@
      "dest": "LAKE"
     },
     "bart_text": "Continue on BART to exit at another station. The closest station is 12th St. Oakland City Center (0.6 miles).",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -3975,7 +3975,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Walk, roll, or take AC Transit 0.6 miles to access the street elevator at the 12th Street station (located between 11th and 12th on Broadway).",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -4019,7 +4019,7 @@
      "dest": "LAKE"
     },
     "bart_text": "Continue on BART to exit at another station. The closest station is 12th St. Oakland City Center (0.6 miles).",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -4063,7 +4063,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the Platform 1/3 elevator and go back to Rockridge or Ashby to board desired train.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -4107,7 +4107,7 @@
      "dest": "MCAR"
     },
     "bart_text": "Continue on BART to 19th St. Oakland and return to MacArthur. Exit using Platform 1/3 elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -4151,7 +4151,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the Platform 2/4 elevator and go back to 19th St. Oakland to board desired train.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -4195,7 +4195,7 @@
      "dest": "MCAR"
     },
     "bart_text": "Continue on BART to Rockridge or Ashby and return to MacArthur. Exit using the Platform 2/4 elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -4239,7 +4239,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the elevator in the BART parking garage to access the walkway to the station concourse.",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -4283,7 +4283,7 @@
      "dest": "MLBR"
     },
     "bart_text": "Exit the station using the elevator in the BART parking garage.",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -4327,7 +4327,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Access the station from the opposite (East Plaza) side.",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -4371,7 +4371,7 @@
      "dest": "MLBR"
     },
     "bart_text": "Exit the station from the opposite (East Plaza) side.",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -4415,7 +4415,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Use the Caltrain Platform 4/Northbound elevator.",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -4459,7 +4459,7 @@
      "dest": "MLBR"
     },
     "bart_text": "Use the Caltrain platform 4/Northbound elevator.",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -4503,7 +4503,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Use the BART Platform 3 elevator.",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -4547,7 +4547,7 @@
      "dest": "MLBR"
     },
     "bart_text": "Use the BART Platform 3 elevator.",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -4591,7 +4591,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Use the SF/Richmond platform elevator on the opposite platform. Take BART to the Warm Springs Station, then board desired train.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -4635,7 +4635,7 @@
      "dest": "MLPT"
     },
     "bart_text": "Continue on BART to the Berryessa station and then return to Milpitas. Exit using the SF/Richmond platform elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -4679,7 +4679,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Use the Berryessa platform elevator and take BART to the Berryessa station, then board desired train.",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -4723,7 +4723,7 @@
      "dest": "MLPT"
     },
     "bart_text": "Continue on BART to the Warm Springs Station and then return to Milpitas. Exit using the Berryessa platform elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -4767,7 +4767,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Use the Embarcadero Station street elevator at Market and Drumm streets (0.3 miles/ 4 short blocks). Go to the island on Market at Battery/Bush to take bus to Market at Main.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -4811,7 +4811,7 @@
      "dest": "MONT"
     },
     "bart_text": "Continue on train to exit at another station. The closest stations are Embarcadero (0.3 miles) and Powell (0.4 miles).",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -4855,7 +4855,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Use the Embarcadero Station street elevator at Market and Drumm Streets (0.3 miles/ 4 short blocks). Go to the island on Market at Battery/Bush to take bus to Market at Main.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -4899,7 +4899,7 @@
      "dest": "MONT"
     },
     "bart_text": "Continue on train to exit at another station. The closest stations are Embarcadero (0.3 miles) and Powell (0.4 miles).",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -4943,7 +4943,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take another mode of transportation such as an AC Transit bus to another BART station. The closest station is Downtown Berkeley (1.1 mile).",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -4987,7 +4987,7 @@
      "dest": "NBRK"
     },
     "bart_text": "Continue on BART to exit at another station. The closest station is Downtown Berkeley (1.1 mile).",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -5031,7 +5031,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take another mode of transportation such as a County Connection bus to another BART station. The closest station is Concord.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -5075,7 +5075,7 @@
      "dest": "NCON"
     },
     "bart_text": "Continue on BART to exit at another station. The closest station is Concord.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -5119,7 +5119,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take another mode of transportation such as an AC Transit bus.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -5163,7 +5163,7 @@
      "dest": "OAKL"
     },
     "bart_text": "Go back to the Coliseum Station and take another mode of transportation such as an AC Transit bus to get to the Oakland Airport.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -5207,7 +5207,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take another mode of transportation such as a County Connection bus to another BART station. The closest station is Lafayette.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -5251,7 +5251,7 @@
      "dest": "ORIN"
     },
     "bart_text": "Continue on BART to exit at another station. The closest station is Lafayette.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -5295,7 +5295,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take another mode of transportation such as a Tri Delta Transit bus to another BART station. The closest station is Pittsburg/Bay Point.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -5339,7 +5339,7 @@
      "dest": "PCTR"
     },
     "bart_text": "Continue on BART to exit at another station. The closest station is Pittsburg/Bay Point.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -5383,7 +5383,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the Platform 2 elevator to the opposite platform. Go back to Walnut Creek to board desired train.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -5427,7 +5427,7 @@
      "dest": "PHIL"
     },
     "bart_text": "Continue on BART to Concord and return to Pleasant Hill/Contra Costa Centre. Exit using the Platform 2 elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -5471,7 +5471,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the Platform 1 elevator to the opposite platform. Go back to Concord to board desired train.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -5515,7 +5515,7 @@
      "dest": "PHIL"
     },
     "bart_text": "Continue on BART to Walnut Creek and return to Pleasant Hill/Contra Costa Centre. Exit using the Platform 1 elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -5559,7 +5559,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take another mode of transportation such as a Tri Delta Transit bus to another BART station. The closest station is Concord.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -5603,7 +5603,7 @@
      "dest": "PITT"
     },
     "bart_text": "Continue on BART to exit at another station. The closest station is Concord.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -5647,7 +5647,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take another mode of transportation such as a Tri Delta Transit bus to another BART station. The closest station is Concord.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -5691,7 +5691,7 @@
      "dest": "PITT"
     },
     "bart_text": "Continue on BART to exit at another station. The closest station is Concord.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -5735,7 +5735,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the Platform 2 elevator to the opposite platform and go back to North Berkeley to board desired train.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -5779,7 +5779,7 @@
      "dest": "PLZA"
     },
     "bart_text": "Continue on BART to El Cerrito del Norte and return to El Cerrito Plaza. Exit using Platform 2 elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -5823,7 +5823,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take Platform 1 elevator to the opposite platform and go back to El Cerrito del Norte to board desired train.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -5867,7 +5867,7 @@
      "dest": "PLZA"
     },
     "bart_text": "Continue on BART to North Berkeley and return to El Cerrito Plaza. Exit using Platform 1 elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -5911,7 +5911,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Use Union Square Market Street Station elevators at Geary and Stockton (0.2 miles/ 2 blocks) to enter station.",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -5955,7 +5955,7 @@
      "dest": "POWL"
     },
     "bart_text": "Use Union Square Market Street Station elevators to exit station. Follow signs to Union Square/Geary exit.",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -5999,7 +5999,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Go to the Civic Center Station street elevator on Market Street between Hyde and 7th Streets (0.5 miles / 5 blocks). Go to the island on Market at 5th to take the bus to Market at Hyde.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -6043,7 +6043,7 @@
      "dest": "POWL"
     },
     "bart_text": "Continue on train to exit at another station. The closest station is Montgomery St. (0.3 miles/ 3 blocks).",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -6087,7 +6087,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take another mode of transportation such as an AC Transit bus to another BART station. The closest station is El Cerrito del Norte.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -6131,7 +6131,7 @@
      "dest": "RICH"
     },
     "bart_text": "Continue on BART to exit at another station. The closest station is El Cerrito del Norte.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -6175,7 +6175,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Use the ramp to enter the station.",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -6219,7 +6219,7 @@
      "dest": "RICH"
     },
     "bart_text": "Use the ramp to exit the station.",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -6263,7 +6263,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take another mode of transportation such as an AC Transit bus to another BART station. The closest station is El Cerrito del Norte. An alternative elevator is also available on the east side of the station.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -6307,13 +6307,13 @@
      "dest": "RICH"
     },
     "bart_text": "Take the ramp or elevator to the east side of the station, or go back to El Cerrito del Norte Station to exit BART.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
       "name": "draft_message",
       "input": {
-       "option": "backtracking",
+       "option": "alternate_elevator",
        "station_abbr": "RICH",
        "elevator": "STREET ELEVATOR (WEST SIDE OF STATION)",
        "steps": [
@@ -6327,7 +6327,7 @@
       "name": "Plan",
       "input": {
        "affected": true,
-       "option": "backtracking",
+       "option": "alternate_elevator",
        "steps": [
         "Take the ramp or elevator to the east side of the station, or go back to El Cerrito del Norte Station to exit BART."
        ],
@@ -6338,7 +6338,7 @@
      }
     ]
    },
-   "label": "backtracking"
+   "label": "alternate_elevator"
   },
   {
    "name": "ROCK__STATION_ELEVATOR__cant_enter",
@@ -6351,7 +6351,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take another mode of transportation such as an AC Transit bus to another BART station. The closest station is MacArthur (1.5 miles).",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -6395,7 +6395,7 @@
      "dest": "ROCK"
     },
     "bart_text": "Continue on BART to exit at another station. The closest station is MacArthur (1.5 miles).",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -6439,7 +6439,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the Platform 1 elevator to the opposite platform. Go back to Bay Fair and board the desired train.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -6483,7 +6483,7 @@
      "dest": "SANL"
     },
     "bart_text": "Continue on BART to Coliseum and return to San Leandro. Exit using the Platform 1 elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -6527,7 +6527,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the Platform 2 elevator to the opposite platform. Go back to Coliseum and board the desired train.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -6571,7 +6571,7 @@
      "dest": "SANL"
     },
     "bart_text": "Continue on BART to Bay Fair and return to San Leandro. Exit using the Platform 2 elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -6615,7 +6615,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take another mode of transportation such as a SamTrans bus to another BART station. The closest station is South San Francisco.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -6659,7 +6659,7 @@
      "dest": "SBRN"
     },
     "bart_text": "Continue on BART to exit at another station. The closest station is South San Francisco.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -6703,7 +6703,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the other platform elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -6747,7 +6747,7 @@
      "dest": "SFIA"
     },
     "bart_text": "Take the other platform elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -6791,7 +6791,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the other platform elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -6835,7 +6835,7 @@
      "dest": "SFIA"
     },
     "bart_text": "Take the other platform elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -6879,7 +6879,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take another mode of transportation such as an AC Transit bus to another BART station. The closest station is Hayward.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -6923,7 +6923,7 @@
      "dest": "SHAY"
     },
     "bart_text": "Continue on BART to exit at another station. The closest station is Hayward.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -6967,7 +6967,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the elevator on the opposite platform. Go back to Union City and board desired train.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -7011,7 +7011,7 @@
      "dest": "SHAY"
     },
     "bart_text": "Continue on BART to Hayward and return to South Hayward. Exit using the platform 1 elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -7055,7 +7055,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take another mode of transportation such as a SamTrans bus to another BART station. The closest station is Colma.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -7099,7 +7099,7 @@
      "dest": "SSAN"
     },
     "bart_text": "Continue on BART to another station. The closest station is Colma.",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -7143,7 +7143,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the Platform 2 elevator to the opposite platform. Go back to South Hayward and board the desired train.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -7187,7 +7187,7 @@
      "dest": "UCTY"
     },
     "bart_text": "Continue on BART to Fremont and return to Union City. Exit using the Platform 2 elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -7231,7 +7231,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the Platform 1 elevator to the opposite platform. Go back to Fremont and board desired train.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -7275,7 +7275,7 @@
      "dest": "UCTY"
     },
     "bart_text": "Continue on BART to South Hayward and return to Union City. Exit using Platform 1 elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -7319,7 +7319,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the other street elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -7363,7 +7363,7 @@
      "dest": "WARM"
     },
     "bart_text": "Take the other street elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -7407,7 +7407,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the other street elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -7451,7 +7451,7 @@
      "dest": "WARM"
     },
     "bart_text": "Take the other street elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -7495,7 +7495,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the other platform elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -7539,7 +7539,7 @@
      "dest": "WARM"
     },
     "bart_text": "Take the other platform elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -7583,7 +7583,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the other platform elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -7627,7 +7627,7 @@
      "dest": "WARM"
     },
     "bart_text": "Take the other platform elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -7671,7 +7671,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take an alternative mode of transportation to reach the main station entrance on Warm Springs Boulevard (0.8 miles). To walk or roll, proceed north on Lopes Road and turn right on S. Grimmer Boulevard. Then turn right on Warm Springs Boulevard.",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -7715,7 +7715,7 @@
      "dest": "WARM"
     },
     "bart_text": "Use the platform elevators inside the station to exit via the main/east side of the station.",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -7759,7 +7759,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the Platform 2 elevator to the opposite platform. Go back to Lafayette to board desired train.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -7803,7 +7803,7 @@
      "dest": "WCRK"
     },
     "bart_text": "Continue on BART to Pleasant Hill/Contra Costa Centre and then return to Walnut Creek. Exit using the Platform 2 elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -7847,7 +7847,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the Platform 1 elevator to the opposite platform. Go back to Pleasant Hill/Contra Costa Centre to board the desired train.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -7891,7 +7891,7 @@
      "dest": "WCRK"
     },
     "bart_text": "Continue on BART to Lafayette and return to Walnut Creek. Exit using the Platform 1 elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -7935,7 +7935,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the alternate parking garage elevator.",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -7979,7 +7979,7 @@
      "dest": "WDUB"
     },
     "bart_text": "Take the alternate parking garage elevator.",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -8023,7 +8023,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the alternate parking garage elevator.",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -8067,7 +8067,7 @@
      "dest": "WDUB"
     },
     "bart_text": "Take the alternate parking garage elevator.",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -8111,7 +8111,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the alternate parking garage elevator.",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -8155,7 +8155,7 @@
      "dest": "WDUB"
     },
     "bart_text": "Take the alternate parking garage elevator.",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -8199,7 +8199,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the alternate parking garage elevator.",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -8243,7 +8243,7 @@
      "dest": "WDUB"
     },
     "bart_text": "Take the alternate parking garage elevator.",
-    "label_rule": "extended",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -8287,7 +8287,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take another mode of transportation such as a LAVTA Wheels bus to another BART station. The closest station is Dublin/Pleasanton.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -8331,7 +8331,7 @@
      "dest": "WDUB"
     },
     "bart_text": "Continue on BART to exit at another station. The closest station is Dublin/Pleasanton.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -8375,7 +8375,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the Platform 2 elevator and go back to Lake Merritt or 12th St. Oakland City Center to board the desired train.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -8419,7 +8419,7 @@
      "dest": "WOAK"
     },
     "bart_text": "Continue on BART to Embarcadero and return to West Oakland. Exit using the Platform 2 elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -8463,7 +8463,7 @@
      "dest": "EMBR"
     },
     "bart_text": "Take the Platform 1 elevator and go back to Embarcadero and board desired train.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",
@@ -8507,7 +8507,7 @@
      "dest": "WOAK"
     },
     "bart_text": "Continue on BART to Lake Merritt or 12th St. Oakland City Center and return to West Oakland. Exit using the Platform 1 elevator.",
-    "label_rule": "strict",
+    "label_rule": "phrase",
     "mock_turns": [
      {
       "type": "tool_use",

@@ -106,7 +106,7 @@ def test_every_elevator_has_enter_and_exit_labels_or_null():
 
 def test_label_distribution_file_is_written_and_consistent():
     dist = json.loads(kb_build.DISTRIBUTION_FILE.read_text())
-    assert dist["options_total"] == sum(dist["with_extension"].values()) == 194
+    assert dist["options_total"] == sum(dist["counts"].values()) == 194
     assert sum(dist["labeled_by_rule"].values()) == 194
-    assert dist["strict_rules_only"]["mitigation_trip"] >= dist["with_extension"]["mitigation_trip"]
-    assert len(dist["default_after_extension"]) == dist["with_extension"]["mitigation_trip"]
+    assert len(dist["defaults"]) == dist["labeled_by_rule"]["default"] == 0
+    assert dist["counts"]["mitigation_trip"] == 0

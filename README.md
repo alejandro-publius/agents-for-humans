@@ -53,8 +53,10 @@ the tests assert that with a socket-blocking fixture.
 | Stations in the knowledge base (BART's own accessible-path pages) | <!-- claim:kb_label_distribution.stations -->50|
 | Elevators with BART-documented outage options | <!-- claim:kb_label_distribution.elevators_total -->97|
 | Documented outage options (each is a labeled eval case) | <!-- claim:kb_label_distribution.options_total -->194|
-| Options labeled by the strict rules / the extension tier / left at default | <!-- claim:kb_label_distribution.labeled_by_rule.strict -->150/ <!-- claim:kb_label_distribution.labeled_by_rule.extended -->44/ <!-- claim:kb_label_distribution.labeled_by_rule.default -->0|
-| Policy agreement, mock mode, provisional (scripted model echoes the KB label; proves plumbing only) | <!-- claim:policy_agreement.agreement_pct -->100.0% on <!-- claim:policy_agreement.cases_run -->194cases |
+| Options labeled by a reviewer-decided phrase rule / left at default | <!-- claim:kb_label_distribution.labeled_by_rule.phrase -->194/ <!-- claim:kb_label_distribution.labeled_by_rule.default -->0|
+| Labels: alternate_elevator / backtracking / transit (frozen as `kb-labels-v1`) | <!-- claim:kb_label_distribution.counts.alternate_elevator -->55/ <!-- claim:kb_label_distribution.counts.backtracking -->53/ <!-- claim:kb_label_distribution.counts.transit -->86|
+| Policy agreement, enforced (steering on), mock mode: no live run yet | <!-- claim:policy_agreement.enforced.agreement_pct -->100.0% on <!-- claim:policy_agreement.enforced.cases_run -->194cases |
+| Policy agreement, no steering and no get_station_facts (unaided), mock mode: no live run yet | <!-- claim:policy_agreement.no_steering.agreement_pct -->100.0% on <!-- claim:policy_agreement.no_steering.cases_run -->194cases |
 | Outage parse accuracy, mock mode, with a regex baseline | <!-- claim:outage_parse.accuracy_pct -->100.0% / regex <!-- claim:outage_parse.baselines.regex_accuracy_pct -->100.0% on <!-- claim:outage_parse.cases_run -->10cases |
 | All eval cases passed, guardrails on | <!-- claim:summary.cases_passed -->211of <!-- claim:summary.cases_run -->211(<!-- claim:summary.accuracy_pct -->100.0%) |
 | All eval cases passed, guardrails removed (ablation) | <!-- claim:ablation.cases_passed -->209of <!-- claim:ablation.cases_run -->211(<!-- claim:ablation.accuracy_pct -->99.1%) |
@@ -85,8 +87,10 @@ not been run. Stations with accessible-pathway prose on BART's page: <!-- claim:
   https://www.bart.gov/guide/accessibility/elevators on Fri Sept 11, 2026, and is recorded in
   `kb/policy.json`. The automated capture saw HTTP 403 for that page because BART's WAF blocks this
   laptop's IP. The per-station options are BART's own text.
-- **Option labels** are derived from BART's text by fixed rules (`kb/labels.py`), with the
-  extension tier reviewable in `results/kb_label_distribution.json`.
+- **Option labels** are derived from BART's text by fixed phrase rules (`kb/labels.py`), every one
+  decided by a reviewer against the actual texts and frozen as `kb-labels-v1`. alternate_elevator
+  means an alternate accessible path at the same station, including ramps, lifts and tunnels.
+  `results/kb_label_distribution.json` lists the counts and any text left at the default (none).
 
 ## Layout
 

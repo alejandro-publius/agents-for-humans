@@ -5,7 +5,7 @@
       "elevator": "STATION ELEVATOR",
       "elevator_kind": "station",
       "label": "Can't enter station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "transit",
       "situation": "cant_enter",
       "text": "Take another mode of transportation such as a LAVTA Wheels bus to another BART station. The closest station is West Dublin/Pleasanton."
@@ -14,7 +14,7 @@
       "elevator": "STATION ELEVATOR",
       "elevator_kind": "station",
       "label": "Can't exit station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "transit",
       "situation": "cant_exit",
       "text": "Continue on BART to exit at another station. The closest station is West Dublin/Pleasanton."
@@ -29,14 +29,14 @@
       "outage_options": [
         {
           "label": "Can't enter station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "transit",
           "situation": "cant_enter",
           "text": "Take another mode of transportation such as a LAVTA Wheels bus to another BART station. The closest station is West Dublin/Pleasanton."
         },
         {
           "label": "Can't exit station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "transit",
           "situation": "cant_exit",
           "text": "Continue on BART to exit at another station. The closest station is West Dublin/Pleasanton."

@@ -5,7 +5,7 @@
       "elevator": "STREET ELEVATOR",
       "elevator_kind": "street",
       "label": "Can't enter station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "transit",
       "situation": "cant_enter",
       "text": "Walk, roll, or take AC Transit 0.3 miles south on Broadway to access the street elevator at Broadway and 14th Street on Ogawa plaza."
@@ -14,7 +14,7 @@
       "elevator": "STREET ELEVATOR",
       "elevator_kind": "street",
       "label": "Can't exit station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "transit",
       "situation": "cant_exit",
       "text": "Continue on BART to exit at another station. The closest station is 12th St. Oakland City Center (0.3 miles)."
@@ -23,7 +23,7 @@
       "elevator": "PLATFORM ELEVATOR 1 (NEAR 17th ST EXIT)",
       "elevator_kind": "platform",
       "label": "Can't enter station",
-      "label_rule": "extended",
+      "label_rule": "phrase",
       "option_label": "alternate_elevator",
       "situation": "cant_enter",
       "text": "Take the alternative platform elevator located at the other end of the station near the exit to 20th street."
@@ -32,7 +32,7 @@
       "elevator": "PLATFORM ELEVATOR 1 (NEAR 17th ST EXIT)",
       "elevator_kind": "platform",
       "label": "Can't exit station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "alternate_elevator",
       "situation": "cant_exit",
       "text": "Take the alternative elevator located at the other end of the platform."
@@ -41,7 +41,7 @@
       "elevator": "PLATFORM ELEVATOR 2 (NEAR 20th ST EXIT)",
       "elevator_kind": "platform",
       "label": "Can't enter station",
-      "label_rule": "extended",
+      "label_rule": "phrase",
       "option_label": "alternate_elevator",
       "situation": "cant_enter",
       "text": "Take the alternative platform elevator located at the other end of the station near the exit to 17th Street."
@@ -50,7 +50,7 @@
       "elevator": "PLATFORM ELEVATOR 2 (NEAR 20th ST EXIT)",
       "elevator_kind": "platform",
       "label": "Can't exit station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "alternate_elevator",
       "situation": "cant_exit",
       "text": "Take the alternative elevator located at the other end of the platform."
@@ -65,14 +65,14 @@
       "outage_options": [
         {
           "label": "Can't enter station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "transit",
           "situation": "cant_enter",
           "text": "Walk, roll, or take AC Transit 0.3 miles south on Broadway to access the street elevator at Broadway and 14th Street on Ogawa plaza."
         },
         {
           "label": "Can't exit station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "transit",
           "situation": "cant_exit",
           "text": "Continue on BART to exit at another station. The closest station is 12th St. Oakland City Center (0.3 miles)."
@@ -87,14 +87,14 @@
       "outage_options": [
         {
           "label": "Can't enter station",
-          "label_rule": "extended",
+          "label_rule": "phrase",
           "option_label": "alternate_elevator",
           "situation": "cant_enter",
           "text": "Take the alternative platform elevator located at the other end of the station near the exit to 20th street."
         },
         {
           "label": "Can't exit station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "alternate_elevator",
           "situation": "cant_exit",
           "text": "Take the alternative elevator located at the other end of the platform."
@@ -109,14 +109,14 @@
       "outage_options": [
         {
           "label": "Can't enter station",
-          "label_rule": "extended",
+          "label_rule": "phrase",
           "option_label": "alternate_elevator",
           "situation": "cant_enter",
           "text": "Take the alternative platform elevator located at the other end of the station near the exit to 17th Street."
         },
         {
           "label": "Can't exit station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "alternate_elevator",
           "situation": "cant_exit",
           "text": "Take the alternative elevator located at the other end of the platform."

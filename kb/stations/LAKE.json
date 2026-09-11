@@ -5,7 +5,7 @@
       "elevator": "PLATFORM ELEVATOR",
       "elevator_kind": "platform",
       "label": "Can't enter station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "transit",
       "situation": "cant_enter",
       "text": "Walk, roll, or take AC Transit 0.6 miles to access the street elevator at the 12th Street station (located between 11th and 12th on Broadway)."
@@ -14,7 +14,7 @@
       "elevator": "PLATFORM ELEVATOR",
       "elevator_kind": "platform",
       "label": "Can't exit station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "transit",
       "situation": "cant_exit",
       "text": "Continue on BART to exit at another station. The closest station is 12th St. Oakland City Center (0.6 miles)."
@@ -23,7 +23,7 @@
       "elevator": "STREET ELEVATOR",
       "elevator_kind": "street",
       "label": "Can't enter station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "transit",
       "situation": "cant_enter",
       "text": "Walk, roll, or take AC Transit 0.6 miles to access the street elevator at the 12th Street station (located between 11th and 12th on Broadway)."
@@ -32,7 +32,7 @@
       "elevator": "STREET ELEVATOR",
       "elevator_kind": "street",
       "label": "Can't exit station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "transit",
       "situation": "cant_exit",
       "text": "Continue on BART to exit at another station. The closest station is 12th St. Oakland City Center (0.6 miles)."
@@ -47,14 +47,14 @@
       "outage_options": [
         {
           "label": "Can't enter station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "transit",
           "situation": "cant_enter",
           "text": "Walk, roll, or take AC Transit 0.6 miles to access the street elevator at the 12th Street station (located between 11th and 12th on Broadway)."
         },
         {
           "label": "Can't exit station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "transit",
           "situation": "cant_exit",
           "text": "Continue on BART to exit at another station. The closest station is 12th St. Oakland City Center (0.6 miles)."
@@ -69,14 +69,14 @@
       "outage_options": [
         {
           "label": "Can't enter station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "transit",
           "situation": "cant_enter",
           "text": "Walk, roll, or take AC Transit 0.6 miles to access the street elevator at the 12th Street station (located between 11th and 12th on Broadway)."
         },
         {
           "label": "Can't exit station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "transit",
           "situation": "cant_exit",
           "text": "Continue on BART to exit at another station. The closest station is 12th St. Oakland City Center (0.6 miles)."

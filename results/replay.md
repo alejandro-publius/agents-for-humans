@@ -246,7 +246,7 @@ One case per (station, elevator, condition) from kb/stations. Label = the option
 | DALY | PLATFORMS 1 AND 2 ELEVATOR (EAST BAY DIRECTION) | cant_exit | backtracking | backtracking | backtracking | yes |
 | DALY | PLATFORM 3 ELEVATOR (SFO/MILLBRAE DIRECTION) | cant_enter | backtracking | backtracking | backtracking | yes |
 | DALY | PLATFORM 3 ELEVATOR (SFO/MILLBRAE DIRECTION) | cant_exit | backtracking | backtracking | backtracking | yes |
-| DALY | ELEVATORS TO PEDESTRIAN TUNNEL | cant_enter_from_tunnel | transit | transit | transit | yes |
+| DALY | ELEVATORS TO PEDESTRIAN TUNNEL | cant_enter_from_tunnel | alternate_elevator | alternate_elevator | alternate_elevator | yes |
 | DALY | ELEVATORS TO PEDESTRIAN TUNNEL | cant_exit_from_tunnel | alternate_elevator | alternate_elevator | alternate_elevator | yes |
 | DBRK | STREET ELEVATOR | cant_enter | transit | transit | transit | yes |
 | DBRK | STREET ELEVATOR | cant_exit | transit | transit | transit | yes |
@@ -330,8 +330,8 @@ One case per (station, elevator, condition) from kb/stations. Label = the option
 | RICH | PLATFORM ELEVATOR | cant_exit | transit | transit | transit | yes |
 | RICH | STREET ELEVATOR (EAST SIDE OF STATION) | cant_enter | alternate_elevator | alternate_elevator | alternate_elevator | yes |
 | RICH | STREET ELEVATOR (EAST SIDE OF STATION) | cant_exit | alternate_elevator | alternate_elevator | alternate_elevator | yes |
-| RICH | STREET ELEVATOR (WEST SIDE OF STATION) | cant_enter | transit | transit | transit | yes |
-| RICH | STREET ELEVATOR (WEST SIDE OF STATION) | cant_exit | backtracking | backtracking | backtracking | yes |
+| RICH | STREET ELEVATOR (WEST SIDE OF STATION) | cant_enter | alternate_elevator | alternate_elevator | alternate_elevator | yes |
+| RICH | STREET ELEVATOR (WEST SIDE OF STATION) | cant_exit | alternate_elevator | alternate_elevator | alternate_elevator | yes |
 | ROCK | STATION ELEVATOR | cant_enter | transit | transit | transit | yes |
 | ROCK | STATION ELEVATOR | cant_exit | transit | transit | transit | yes |
 | SANL | PLATFORM 2 ELEVATOR (RICHMOND, SFO/MILLBRAE/DALY CITY DIRECTIONS) | cant_enter | backtracking | backtracking | backtracking | yes |

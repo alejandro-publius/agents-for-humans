@@ -2,95 +2,82 @@
 
 Rank order (best first): alternate_elevator, backtracking, transit, mitigation_trip, mitigation_shuttle.
 
-STRICT rules are the mapping specified by the reviewer (work order plus the Sept 12 additions) and are
-applied first, in that order.
-EXTENDED rules cover phrasings BART uses that the strict rules do not name (for example
-"Take the other platform elevator", "Use the ramp", "Continue on train to exit at another
-station"). Every labeled option records which tier produced its label, and
-``results/kb_label_distribution.json`` reports the distribution under strict rules alone and
-with the extension, so the extension is reviewable and removable.
+Every phrase below was decided by the reviewer against the actual KB texts (work order Fri Sept 11;
+additions and the 44 remaining defaults Sat Sept 12, 2026). Rules are applied in rank order:
+alternate_elevator phrases first, then backtracking, then transit; anything unmatched is
+mitigation_trip and is counted as a default in ``results/kb_label_distribution.json``.
+
+``alternate_elevator`` means an alternate accessible path at the same station, including ramps,
+lifts and tunnels, not only another elevator car.
 """
 
 from __future__ import annotations
 
 OPTION_ORDER = ("alternate_elevator", "backtracking", "transit", "mitigation_trip", "mitigation_shuttle")
 
-STRICT: dict[str, tuple[str, ...]] = {
+PHRASES: dict[str, tuple[str, ...]] = {
     "alternate_elevator": (
+        # work order, Sept 11
         "alternative street elevator",
         "other street elevator",
         "alternate elevator",
-        # added Sat Sept 12, 2026 at the reviewer's instruction
+        # reviewer additions, Sept 12
         "other platform elevator",
         "other elevator",
         "alternative elevator",
+        # same-complex elevators (19TH, WDUB, MLBR, POWL, WARM)
+        "alternative platform elevator",
+        "alternate parking garage elevator",
+        "elevator in the bart parking garage",
+        "opposite (east plaza) side",
+        "caltrain platform 4",
+        "bart platform 3 elevator",
+        "union square market street station elevators",
+        "platform elevators inside the station",
+        # ramps (ASHB, RICH, COLS arena bridge)
+        "ramp",
+        # same-station surface routes (COLS lift at the other entrance, DALY tunnel to the main entrance)
+        "other side of the station",
+        "surface streets",
+        "drive, walk, or roll",
+        "other side of the tunnel",
     ),
-    "backtracking": ("opposite platform", "go back to", "return to"),
+    "backtracking": (
+        "opposite platform",
+        "go back to",
+        "return to",
+        # MLPT: use the other platform's elevator, ride to Berryessa, board the desired train
+        "take bart to the",
+    ),
     "transit": (
         "another mode of transportation",
         "ac transit",
         "muni",
         "bus",
         "continue on bart to exit at another station",
-    ),
-}
-
-EXTENDED: dict[str, tuple[str, ...]] = {
-    "alternate_elevator": (
-        "alternative platform elevator",
-        "alternate parking garage elevator",
-        "elevator in the bart parking garage",
-        "caltrain platform",
-        "bart platform 3 elevator",
-        "opposite (east plaza) side",
-        "platform elevators inside the station",
-        "union square market street station elevators",
-        "ramp",
-        "other side of the station",
-        "surface streets",
-    ),
-    "backtracking": ("take bart to the", "board desired train", "board the desired train"),
-    "transit": (
+        # Sept 12: exiting at the next station (CIVC, EMBR, MONT, POWL, COLM, SSAN)
         "continue on train to exit at another station",
         "continue on bart to another station",
+        # Sept 12: EMBR, walk to Montgomery's street elevator
+        "montgomery station street elevator",
+        # Sept 12: WARM bridge
         "alternative mode of transportation",
-        "station street elevator",
-        "walk, roll",
-        "walk or roll",
-        "drive, walk, or roll",
     ),
 }
 
 
-def _strict_label(text: str) -> str | None:
+def _match(text: str) -> str | None:
     t = text.lower()
-    if any(k in t for k in STRICT["alternate_elevator"]):
+    if any(k in t for k in PHRASES["alternate_elevator"]):
         return "alternate_elevator"
-    if any(k in t for k in STRICT["backtracking"]) or ("continue on bart" in t and "exit using" in t):
+    if any(k in t for k in PHRASES["backtracking"]) or ("continue on bart" in t and "exit using" in t):
         return "backtracking"
-    if any(k in t for k in STRICT["transit"]):
+    if any(k in t for k in PHRASES["transit"]):
         return "transit"
     return None
 
 
-def _extended_label(text: str) -> str | None:
-    t = text.lower()
-    for label in ("alternate_elevator", "backtracking", "transit"):
-        if any(k in t for k in EXTENDED[label]):
-            return label
-    return None
-
-
 def label_option(text: str) -> tuple[str, str]:
-    """Return (label, rule) where rule is 'strict', 'extended', or 'default'."""
-    strict = _strict_label(text)
-    if strict:
-        return strict, "strict"
-    extended = _extended_label(text)
-    if extended:
-        return extended, "extended"
-    return "mitigation_trip", "default"
-
-
-def strict_only_label(text: str) -> str:
-    return _strict_label(text) or "mitigation_trip"
+    """Return (label, rule) where rule is 'phrase' or 'default'."""
+    label = _match(text)
+    return (label, "phrase") if label else ("mitigation_trip", "default")

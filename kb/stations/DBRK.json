@@ -5,7 +5,7 @@
       "elevator": "STREET ELEVATOR",
       "elevator_kind": "street",
       "label": "Can't enter station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "transit",
       "situation": "cant_enter",
       "text": "Take another mode of transportation to another BART station. Ashby station (1.3 miles) is the easiest to access by AC Transit bus."
@@ -14,7 +14,7 @@
       "elevator": "STREET ELEVATOR",
       "elevator_kind": "street",
       "label": "Can't exit station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "transit",
       "situation": "cant_exit",
       "text": "Continue on BART to exit at another station. Ashby is 1.3 miles away and North Berkeley is 1.1 miles away."
@@ -23,7 +23,7 @@
       "elevator": "PLATFORM ELEVATOR",
       "elevator_kind": "platform",
       "label": "Can't enter station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "transit",
       "situation": "cant_enter",
       "text": "Take another mode of transportation to another BART station. Ashby station (1.3 miles) is the easiest to access by AC Transit bus."
@@ -32,7 +32,7 @@
       "elevator": "PLATFORM ELEVATOR",
       "elevator_kind": "platform",
       "label": "Can't exit station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "transit",
       "situation": "cant_exit",
       "text": "Continue on BART to exit at another station. Ashby is 1.3 miles away and North Berkeley is 1.1 miles away."
@@ -47,14 +47,14 @@
       "outage_options": [
         {
           "label": "Can't enter station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "transit",
           "situation": "cant_enter",
           "text": "Take another mode of transportation to another BART station. Ashby station (1.3 miles) is the easiest to access by AC Transit bus."
         },
         {
           "label": "Can't exit station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "transit",
           "situation": "cant_exit",
           "text": "Continue on BART to exit at another station. Ashby is 1.3 miles away and North Berkeley is 1.1 miles away."
@@ -69,14 +69,14 @@
       "outage_options": [
         {
           "label": "Can't enter station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "transit",
           "situation": "cant_enter",
           "text": "Take another mode of transportation to another BART station. Ashby station (1.3 miles) is the easiest to access by AC Transit bus."
         },
         {
           "label": "Can't exit station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "transit",
           "situation": "cant_exit",
           "text": "Continue on BART to exit at another station. Ashby is 1.3 miles away and North Berkeley is 1.1 miles away."

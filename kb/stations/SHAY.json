@@ -5,7 +5,7 @@
       "elevator": "STATION ELEVATOR - STREET TO PLATFORM 1 AND BRIDGE (BERRYESSA DIRECTION)",
       "elevator_kind": "bridge",
       "label": "Can't enter station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "transit",
       "situation": "cant_enter",
       "text": "Take another mode of transportation such as an AC Transit bus to another BART station. The closest station is Hayward."
@@ -14,7 +14,7 @@
       "elevator": "STATION ELEVATOR - STREET TO PLATFORM 1 AND BRIDGE (BERRYESSA DIRECTION)",
       "elevator_kind": "bridge",
       "label": "Can't exit station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "transit",
       "situation": "cant_exit",
       "text": "Continue on BART to exit at another station. The closest station is Hayward."
@@ -23,7 +23,7 @@
       "elevator": "PLATFORM ELEVATOR - BRIDGE TO PLATFORM 2 (RICHMOND, SFO/MILLBRAE/DALY CITY DIRECTIONS)",
       "elevator_kind": "bridge",
       "label": "Can't enter station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "backtracking",
       "situation": "cant_enter",
       "text": "Take the elevator on the opposite platform. Go back to Union City and board desired train."
@@ -32,7 +32,7 @@
       "elevator": "PLATFORM ELEVATOR - BRIDGE TO PLATFORM 2 (RICHMOND, SFO/MILLBRAE/DALY CITY DIRECTIONS)",
       "elevator_kind": "bridge",
       "label": "Can't exit station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "backtracking",
       "situation": "cant_exit",
       "text": "Continue on BART to Hayward and return to South Hayward. Exit using the platform 1 elevator."
@@ -47,14 +47,14 @@
       "outage_options": [
         {
           "label": "Can't enter station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "transit",
           "situation": "cant_enter",
           "text": "Take another mode of transportation such as an AC Transit bus to another BART station. The closest station is Hayward."
         },
         {
           "label": "Can't exit station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "transit",
           "situation": "cant_exit",
           "text": "Continue on BART to exit at another station. The closest station is Hayward."
@@ -69,14 +69,14 @@
       "outage_options": [
         {
           "label": "Can't enter station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "backtracking",
           "situation": "cant_enter",
           "text": "Take the elevator on the opposite platform. Go back to Union City and board desired train."
         },
         {
           "label": "Can't exit station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "backtracking",
           "situation": "cant_exit",
           "text": "Continue on BART to Hayward and return to South Hayward. Exit using the platform 1 elevator."

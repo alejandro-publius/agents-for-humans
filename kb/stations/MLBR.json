@@ -5,7 +5,7 @@
       "elevator": "STREET ELEVATOR FROM THE EAST PLAZA",
       "elevator_kind": "street",
       "label": "Can't enter station",
-      "label_rule": "extended",
+      "label_rule": "phrase",
       "option_label": "alternate_elevator",
       "situation": "cant_enter",
       "text": "Take the elevator in the BART parking garage to access the walkway to the station concourse."
@@ -14,7 +14,7 @@
       "elevator": "STREET ELEVATOR FROM THE EAST PLAZA",
       "elevator_kind": "street",
       "label": "Can't exit station",
-      "label_rule": "extended",
+      "label_rule": "phrase",
       "option_label": "alternate_elevator",
       "situation": "cant_exit",
       "text": "Exit the station using the elevator in the BART parking garage."
@@ -23,7 +23,7 @@
       "elevator": "CALTRAIN ELEVATOR - WEST PLAZA TO CONCOURSE",
       "elevator_kind": "caltrain",
       "label": "Can't enter station",
-      "label_rule": "extended",
+      "label_rule": "phrase",
       "option_label": "alternate_elevator",
       "situation": "cant_enter",
       "text": "Access the station from the opposite (East Plaza) side."
@@ -32,7 +32,7 @@
       "elevator": "CALTRAIN ELEVATOR - WEST PLAZA TO CONCOURSE",
       "elevator_kind": "caltrain",
       "label": "Can't exit station",
-      "label_rule": "extended",
+      "label_rule": "phrase",
       "option_label": "alternate_elevator",
       "situation": "cant_exit",
       "text": "Exit the station from the opposite (East Plaza) side."
@@ -41,7 +41,7 @@
       "elevator": "PLATFORM 3 ELEVATOR (ALL DESTINATIONS)",
       "elevator_kind": "platform",
       "label": "Can't enter station",
-      "label_rule": "extended",
+      "label_rule": "phrase",
       "option_label": "alternate_elevator",
       "situation": "cant_enter",
       "text": "Use the Caltrain Platform 4/Northbound elevator."
@@ -50,7 +50,7 @@
       "elevator": "PLATFORM 3 ELEVATOR (ALL DESTINATIONS)",
       "elevator_kind": "platform",
       "label": "Can't exit station",
-      "label_rule": "extended",
+      "label_rule": "phrase",
       "option_label": "alternate_elevator",
       "situation": "cant_exit",
       "text": "Use the Caltrain platform 4/Northbound elevator."
@@ -59,7 +59,7 @@
       "elevator": "CALTRAIN ELEVATOR - CONCOURSE TO NORTHBOUND PLATFORM",
       "elevator_kind": "caltrain",
       "label": "Can't enter station",
-      "label_rule": "extended",
+      "label_rule": "phrase",
       "option_label": "alternate_elevator",
       "situation": "cant_enter",
       "text": "Use the BART Platform 3 elevator."
@@ -68,7 +68,7 @@
       "elevator": "CALTRAIN ELEVATOR - CONCOURSE TO NORTHBOUND PLATFORM",
       "elevator_kind": "caltrain",
       "label": "Can't exit station",
-      "label_rule": "extended",
+      "label_rule": "phrase",
       "option_label": "alternate_elevator",
       "situation": "cant_exit",
       "text": "Use the BART Platform 3 elevator."
@@ -83,14 +83,14 @@
       "outage_options": [
         {
           "label": "Can't enter station",
-          "label_rule": "extended",
+          "label_rule": "phrase",
           "option_label": "alternate_elevator",
           "situation": "cant_enter",
           "text": "Take the elevator in the BART parking garage to access the walkway to the station concourse."
         },
         {
           "label": "Can't exit station",
-          "label_rule": "extended",
+          "label_rule": "phrase",
           "option_label": "alternate_elevator",
           "situation": "cant_exit",
           "text": "Exit the station using the elevator in the BART parking garage."
@@ -105,14 +105,14 @@
       "outage_options": [
         {
           "label": "Can't enter station",
-          "label_rule": "extended",
+          "label_rule": "phrase",
           "option_label": "alternate_elevator",
           "situation": "cant_enter",
           "text": "Access the station from the opposite (East Plaza) side."
         },
         {
           "label": "Can't exit station",
-          "label_rule": "extended",
+          "label_rule": "phrase",
           "option_label": "alternate_elevator",
           "situation": "cant_exit",
           "text": "Exit the station from the opposite (East Plaza) side."
@@ -127,14 +127,14 @@
       "outage_options": [
         {
           "label": "Can't enter station",
-          "label_rule": "extended",
+          "label_rule": "phrase",
           "option_label": "alternate_elevator",
           "situation": "cant_enter",
           "text": "Use the Caltrain Platform 4/Northbound elevator."
         },
         {
           "label": "Can't exit station",
-          "label_rule": "extended",
+          "label_rule": "phrase",
           "option_label": "alternate_elevator",
           "situation": "cant_exit",
           "text": "Use the Caltrain platform 4/Northbound elevator."
@@ -149,14 +149,14 @@
       "outage_options": [
         {
           "label": "Can't enter station",
-          "label_rule": "extended",
+          "label_rule": "phrase",
           "option_label": "alternate_elevator",
           "situation": "cant_enter",
           "text": "Use the BART Platform 3 elevator."
         },
         {
           "label": "Can't exit station",
-          "label_rule": "extended",
+          "label_rule": "phrase",
           "option_label": "alternate_elevator",
           "situation": "cant_exit",
           "text": "Use the BART Platform 3 elevator."

@@ -5,7 +5,7 @@
       "elevator": "PLATFORMS 1 AND 2 ELEVATOR (EAST BAY DIRECTION)",
       "elevator_kind": "platform",
       "label": "Can't enter station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "backtracking",
       "situation": "cant_enter",
       "text": "Take the elevator on the opposite platform and go back to Colma to board desired train."
@@ -14,7 +14,7 @@
       "elevator": "PLATFORMS 1 AND 2 ELEVATOR (EAST BAY DIRECTION)",
       "elevator_kind": "platform",
       "label": "Can't exit station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "backtracking",
       "situation": "cant_exit",
       "text": "Continue on BART to Balboa Park and then return to Daly City. Exit using Platform 3 elevator."
@@ -23,7 +23,7 @@
       "elevator": "PLATFORM 3 ELEVATOR (SFO/MILLBRAE DIRECTION)",
       "elevator_kind": "platform",
       "label": "Can't enter station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "backtracking",
       "situation": "cant_enter",
       "text": "Take the elevator on the opposite platform and go back to Balboa park to board desired train."
@@ -32,7 +32,7 @@
       "elevator": "PLATFORM 3 ELEVATOR (SFO/MILLBRAE DIRECTION)",
       "elevator_kind": "platform",
       "label": "Can't exit station",
-      "label_rule": "strict",
+      "label_rule": "phrase",
       "option_label": "backtracking",
       "situation": "cant_exit",
       "text": "Continue on BART to Colma and then return to Daly City. Exit using the Platform 1/2 elevator."
@@ -41,8 +41,8 @@
       "elevator": "ELEVATORS TO PEDESTRIAN TUNNEL",
       "elevator_kind": "tunnel",
       "label": "Can't enter station from tunnel",
-      "label_rule": "extended",
-      "option_label": "transit",
+      "label_rule": "phrase",
+      "option_label": "alternate_elevator",
       "situation": "cant_enter_from_tunnel",
       "text": "Drive, walk, or roll to the main station entrance on De Long Street (about 0.3 miles). Turn right on John Daly Boulevard and then left on De Long Street."
     },
@@ -50,7 +50,7 @@
       "elevator": "ELEVATORS TO PEDESTRIAN TUNNEL",
       "elevator_kind": "tunnel",
       "label": "Can't exit station from tunnel",
-      "label_rule": "extended",
+      "label_rule": "phrase",
       "option_label": "alternate_elevator",
       "situation": "cant_exit_from_tunnel",
       "text": "Walk or roll about 0.3 miles to the parking area on the other side of the tunnel. Exit the station and take the ramp to the De Long Street parking lot. Cross the parking lot and turn right on John Daly Boulevard."
@@ -65,14 +65,14 @@
       "outage_options": [
         {
           "label": "Can't enter station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "backtracking",
           "situation": "cant_enter",
           "text": "Take the elevator on the opposite platform and go back to Colma to board desired train."
         },
         {
           "label": "Can't exit station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "backtracking",
           "situation": "cant_exit",
           "text": "Continue on BART to Balboa Park and then return to Daly City. Exit using Platform 3 elevator."
@@ -87,14 +87,14 @@
       "outage_options": [
         {
           "label": "Can't enter station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "backtracking",
           "situation": "cant_enter",
           "text": "Take the elevator on the opposite platform and go back to Balboa park to board desired train."
         },
         {
           "label": "Can't exit station",
-          "label_rule": "strict",
+          "label_rule": "phrase",
           "option_label": "backtracking",
           "situation": "cant_exit",
           "text": "Continue on BART to Colma and then return to Daly City. Exit using the Platform 1/2 elevator."
@@ -102,21 +102,21 @@
       ]
     },
     {
-      "enter_option": "transit",
+      "enter_option": "alternate_elevator",
       "exit_option": "alternate_elevator",
       "kind": "tunnel",
       "name": "ELEVATORS TO PEDESTRIAN TUNNEL",
       "outage_options": [
         {
           "label": "Can't enter station from tunnel",
-          "label_rule": "extended",
-          "option_label": "transit",
+          "label_rule": "phrase",
+          "option_label": "alternate_elevator",
           "situation": "cant_enter_from_tunnel",
           "text": "Drive, walk, or roll to the main station entrance on De Long Street (about 0.3 miles). Turn right on John Daly Boulevard and then left on De Long Street."
         },
         {
           "label": "Can't exit station from tunnel",
-          "label_rule": "extended",
+          "label_rule": "phrase",
           "option_label": "alternate_elevator",
           "situation": "cant_exit_from_tunnel",
           "text": "Walk or roll about 0.3 miles to the parking area on the other side of the tunnel. Exit the station and take the ramp to the De Long Street parking lot. Cross the parking lot and turn right on John Daly Boulevard."

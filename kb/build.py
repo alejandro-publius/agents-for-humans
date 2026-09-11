@@ -27,7 +27,7 @@ import urllib.request
 from pathlib import Path
 from typing import Any
 
-from kb.labels import OPTION_ORDER, label_option, strict_only_label
+from kb.labels import OPTION_ORDER, label_option
 
 KB_DIR = Path(__file__).resolve().parent
 RAW_DIR = KB_DIR / "raw"
@@ -264,41 +264,38 @@ def build() -> dict[str, Any]:
 
 
 def label_distribution(stations: list[dict[str, Any]]) -> dict[str, Any]:
-    """Counts of option labels under the strict rules alone and with the extension tier."""
-    strict_counts = dict.fromkeys(OPTION_ORDER, 0)
-    final_counts = dict.fromkeys(OPTION_ORDER, 0)
-    by_rule = {"strict": 0, "extended": 0, "default": 0}
-    default_texts = []
+    """Counts of option labels, how each was assigned, and any text left at the default."""
+    counts = dict.fromkeys(OPTION_ORDER, 0)
+    by_rule = {"phrase": 0, "default": 0}
+    defaults = []
     checks = {}
     for s in stations:
         for opt in s["documented_outage_options"]:
-            strict_counts[strict_only_label(opt["text"])] += 1
-            final_counts[opt["option_label"]] += 1
+            counts[opt["option_label"]] += 1
             by_rule[opt["label_rule"]] += 1
             if opt["label_rule"] == "default":
-                default_texts.append({"station": s["abbr"], "elevator": opt["elevator"], "text": opt["text"]})
+                defaults.append({"station": s["abbr"], "elevator": opt["elevator"], "text": opt["text"]})
         if s["abbr"] in ("SANL", "DBRK", "12TH"):
             checks[s["abbr"]] = [
                 {"elevator": o["elevator"], "situation": o["situation"], "label": o["option_label"]}
                 for o in s["documented_outage_options"]
             ]
-    total = sum(final_counts.values())
     return {
         "stations": len(stations),
         "elevators_total": sum(len(s["elevators"]) for s in stations),
         "stations_with_pathways": sum(1 for s in stations if s["pathways"]),
         "stations_pathways_unknown": sum(1 for s in stations if s["pathways_status"] == "unknown"),
-        "options_total": total,
+        "options_total": sum(counts.values()),
         "rank_order": list(OPTION_ORDER),
-        "strict_rules_only": strict_counts,
-        "with_extension": final_counts,
+        "counts": counts,
         "labeled_by_rule": by_rule,
-        "default_after_extension": default_texts,
+        "defaults": defaults,
         "checks": checks,
         "note": (
-            "strict = the mapping specified in the work order; extended = additional BART phrasings "
-            "listed in kb/labels.py; default = mitigation_trip when nothing matched. Labels are "
-            "derived from BART's text by fixed rules; they are not BART's own categories."
+            "Every phrase in kb/labels.py was decided by the reviewer against the KB texts (Sept 11 and 12, "
+            "2026). alternate_elevator means an alternate accessible path at the same station, including "
+            "ramps, lifts and tunnels. Labels are derived from BART's text by fixed rules; they are not "
+            "BART's own categories."
         ),
     }
 
