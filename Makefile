@@ -6,7 +6,7 @@ PY    := $(VENV)/bin/python
 UV    := $(shell command -v uv 2>/dev/null)
 ABLATE ?= 0
 
-.PHONY: help setup lint test evals evals-ablate results render-claims verify-claims secret-scan verify replay poll demo-one clean
+.PHONY: help setup lint test evals evals-ablate results render-claims verify-claims secret-scan verify replay poll demo-one app inbox-replay clean
 
 help: ## list targets
 	@grep -E '^[a-z-]+:.*## ' $(MAKEFILE_LIST) | awk -F ':.*## ' '{printf "  %-10s %s\n", $$1, $$2}'
@@ -40,8 +40,14 @@ demo-one: ## one synthetic outage against one synthetic trip on the mock provide
 poll: ## one poll of the elevator feed into data/outages.sqlite; FIXTURE=path runs offline, else needs BART_API_KEY
 	$(PY) -m src.poller --once $(if $(FIXTURE),--fixture $(FIXTURE),)
 
-replay: ## offline: run every case through the agent and write results/replay.md (the judging route)
+replay: inbox-replay ## offline: every eval case -> results/replay.md, and the archived feed -> the rider inbox
 	$(PY) scripts/replay.py
+
+inbox-replay: ## offline: replay the archived feed into data/riders.sqlite inbox (seeds the demo rider)
+	$(PY) -m src.app.replay --reset --seed-demo
+
+app: ## serve the rider app on http://127.0.0.1:8000 (reads data/*.sqlite; no model, no network)
+	$(PY) -m uvicorn app.main:app --host 127.0.0.1 --port 8000
 
 results: ## print results/summary.json
 	@cat results/summary.json

@@ -16,6 +16,9 @@ dependencies = [
     "strands-agents-evals>=1.2.0",
     "pydantic>=2.0",
     "certifi>=2024.0",
+    "fastapi>=0.115",
+    "uvicorn>=0.30",
+    "python-multipart>=0.0.9",
 ]
 
 [project.optional-dependencies]
@@ -29,7 +32,7 @@ requires = ["hatchling>=1.25"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/agent", "src/bart", "src/policy", "kb"]
+packages = ["src/agent", "src/bart", "src/policy", "src/app", "kb"]
 
 [tool.ruff]
 line-length = 110
@@ -38,6 +41,9 @@ extend-exclude = ["results", "fixtures", "kb", "data"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.flake8-bugbear]
+extend-immutable-calls = ["fastapi.Form"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

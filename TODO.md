@@ -54,7 +54,7 @@ Constraints that hold all night.
 
 These are the items that move the entry from "proof of concept" to "complete product" on the Design criterion. None of them should start overnight.
 
-- [ ] C1. Rider app. One page served by FastAPI. Register a trip (origin, destination, days, window, needs), an inbox of every decision the agent made with the reasoning and the BART option ranking shown, and a replay timeline a judge can scrub through the weekend's real outages.
+- [x] C1. Rider app. One page served by FastAPI. Register a trip (origin, destination, days, window, needs), an inbox of every decision the agent made with the reasoning and the BART option ranking shown, and a replay timeline a judge can scrub through the weekend's real outages.
       Accept. `make app` serves on localhost, a registered trip appears in `data/riders.sqlite`, and `make replay` populates the inbox from the archived feed with no network.
 - [ ] C2. Weekly quiet report. From `data/outages.sqlite`, generate "N outages touched your stations, M touched your trips, K interruptions sent" per rider, plus the BART-style alert count for comparison.
       Accept. `python -m src.report --rider demo` prints the four numbers and writes `results/interruptions.json`.
