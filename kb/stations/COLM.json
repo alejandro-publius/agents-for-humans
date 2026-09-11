@@ -5,6 +5,8 @@
       "elevator": "PLATFORM ELEVATOR",
       "elevator_kind": "platform",
       "label": "Can't enter station",
+      "label_rule": "strict",
+      "option_label": "transit",
       "situation": "cant_enter",
       "text": "Take another mode of transportation such as a SamTrans bus to another BART station. The closest stations are Daly City and South San Francisco, both about 2 miles away."
     },
@@ -12,22 +14,30 @@
       "elevator": "PLATFORM ELEVATOR",
       "elevator_kind": "platform",
       "label": "Can't exit station",
+      "label_rule": "extended",
+      "option_label": "transit",
       "situation": "cant_exit",
       "text": "Continue on BART to another station. The closest stations are Daly City and South San Francisco, both about 2 miles away."
     }
   ],
   "elevators": [
     {
+      "enter_option": "transit",
+      "exit_option": "transit",
       "kind": "platform",
       "name": "PLATFORM ELEVATOR",
       "outage_options": [
         {
           "label": "Can't enter station",
+          "label_rule": "strict",
+          "option_label": "transit",
           "situation": "cant_enter",
           "text": "Take another mode of transportation such as a SamTrans bus to another BART station. The closest stations are Daly City and South San Francisco, both about 2 miles away."
         },
         {
           "label": "Can't exit station",
+          "label_rule": "extended",
+          "option_label": "transit",
           "situation": "cant_exit",
           "text": "Continue on BART to another station. The closest stations are Daly City and South San Francisco, both about 2 miles away."
         }

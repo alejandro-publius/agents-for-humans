@@ -5,6 +5,8 @@
       "elevator": "STREET ELEVATOR",
       "elevator_kind": "street",
       "label": "Can't enter station",
+      "label_rule": "extended",
+      "option_label": "alternate_elevator",
       "situation": "cant_enter",
       "text": "Use Union Square Market Street Station elevators at Geary and Stockton (0.2 miles/ 2 blocks) to enter station."
     },
@@ -12,6 +14,8 @@
       "elevator": "STREET ELEVATOR",
       "elevator_kind": "street",
       "label": "Can't exit station",
+      "label_rule": "extended",
+      "option_label": "alternate_elevator",
       "situation": "cant_exit",
       "text": "Use Union Square Market Street Station elevators to exit station. Follow signs to Union Square/Geary exit."
     },
@@ -19,6 +23,8 @@
       "elevator": "PLATFORM ELEVATOR",
       "elevator_kind": "platform",
       "label": "Can't enter station",
+      "label_rule": "strict",
+      "option_label": "transit",
       "situation": "cant_enter",
       "text": "Go to the Civic Center Station street elevator on Market Street between Hyde and 7th Streets (0.5 miles / 5 blocks). Go to the island on Market at 5th to take the bus to Market at Hyde."
     },
@@ -26,38 +32,52 @@
       "elevator": "PLATFORM ELEVATOR",
       "elevator_kind": "platform",
       "label": "Can't exit station",
+      "label_rule": "extended",
+      "option_label": "transit",
       "situation": "cant_exit",
       "text": "Continue on train to exit at another station. The closest station is Montgomery St. (0.3 miles/ 3 blocks)."
     }
   ],
   "elevators": [
     {
+      "enter_option": "alternate_elevator",
+      "exit_option": "alternate_elevator",
       "kind": "street",
       "name": "STREET ELEVATOR",
       "outage_options": [
         {
           "label": "Can't enter station",
+          "label_rule": "extended",
+          "option_label": "alternate_elevator",
           "situation": "cant_enter",
           "text": "Use Union Square Market Street Station elevators at Geary and Stockton (0.2 miles/ 2 blocks) to enter station."
         },
         {
           "label": "Can't exit station",
+          "label_rule": "extended",
+          "option_label": "alternate_elevator",
           "situation": "cant_exit",
           "text": "Use Union Square Market Street Station elevators to exit station. Follow signs to Union Square/Geary exit."
         }
       ]
     },
     {
+      "enter_option": "transit",
+      "exit_option": "transit",
       "kind": "platform",
       "name": "PLATFORM ELEVATOR",
       "outage_options": [
         {
           "label": "Can't enter station",
+          "label_rule": "strict",
+          "option_label": "transit",
           "situation": "cant_enter",
           "text": "Go to the Civic Center Station street elevator on Market Street between Hyde and 7th Streets (0.5 miles / 5 blocks). Go to the island on Market at 5th to take the bus to Market at Hyde."
         },
         {
           "label": "Can't exit station",
+          "label_rule": "extended",
+          "option_label": "transit",
           "situation": "cant_exit",
           "text": "Continue on train to exit at another station. The closest station is Montgomery St. (0.3 miles/ 3 blocks)."
         }

@@ -5,6 +5,8 @@
       "elevator": "PLATFORM 2 ELEVATOR (RICHMOND, MILLBRAE/SFO/DALY CITY DIRECTIONS)",
       "elevator_kind": "platform",
       "label": "Can't enter station",
+      "label_rule": "strict",
+      "option_label": "backtracking",
       "situation": "cant_enter",
       "text": "Take the Platform 1 elevator to opposite platform. Go back to Coliseum and board desired train."
     },
@@ -12,6 +14,8 @@
       "elevator": "PLATFORM 2 ELEVATOR (RICHMOND, MILLBRAE/SFO/DALY CITY DIRECTIONS)",
       "elevator_kind": "platform",
       "label": "Can't exit station",
+      "label_rule": "strict",
+      "option_label": "backtracking",
       "situation": "cant_exit",
       "text": "Continue on BART to Lake Merritt and return to Fruitvale. Exit using Platform 1 elevator."
     },
@@ -19,6 +23,8 @@
       "elevator": "PLATFORM 1 ELEVATOR (DUBLIN, BERRYESSA DIRECTIONS)",
       "elevator_kind": "platform",
       "label": "Can't enter station",
+      "label_rule": "strict",
+      "option_label": "backtracking",
       "situation": "cant_enter",
       "text": "Take the Platform 2 elevator to opposite platform. Go back to Lake Merritt and board desired train."
     },
@@ -26,38 +32,52 @@
       "elevator": "PLATFORM 1 ELEVATOR (DUBLIN, BERRYESSA DIRECTIONS)",
       "elevator_kind": "platform",
       "label": "Can't exit station",
+      "label_rule": "strict",
+      "option_label": "backtracking",
       "situation": "cant_exit",
       "text": "Continue on BART to Coliseum and return to Fruitvale. Exit using Platform 2 elevator."
     }
   ],
   "elevators": [
     {
+      "enter_option": "backtracking",
+      "exit_option": "backtracking",
       "kind": "platform",
       "name": "PLATFORM 2 ELEVATOR (RICHMOND, MILLBRAE/SFO/DALY CITY DIRECTIONS)",
       "outage_options": [
         {
           "label": "Can't enter station",
+          "label_rule": "strict",
+          "option_label": "backtracking",
           "situation": "cant_enter",
           "text": "Take the Platform 1 elevator to opposite platform. Go back to Coliseum and board desired train."
         },
         {
           "label": "Can't exit station",
+          "label_rule": "strict",
+          "option_label": "backtracking",
           "situation": "cant_exit",
           "text": "Continue on BART to Lake Merritt and return to Fruitvale. Exit using Platform 1 elevator."
         }
       ]
     },
     {
+      "enter_option": "backtracking",
+      "exit_option": "backtracking",
       "kind": "platform",
       "name": "PLATFORM 1 ELEVATOR (DUBLIN, BERRYESSA DIRECTIONS)",
       "outage_options": [
         {
           "label": "Can't enter station",
+          "label_rule": "strict",
+          "option_label": "backtracking",
           "situation": "cant_enter",
           "text": "Take the Platform 2 elevator to opposite platform. Go back to Lake Merritt and board desired train."
         },
         {
           "label": "Can't exit station",
+          "label_rule": "strict",
+          "option_label": "backtracking",
           "situation": "cant_exit",
           "text": "Continue on BART to Coliseum and return to Fruitvale. Exit using Platform 2 elevator."
         }

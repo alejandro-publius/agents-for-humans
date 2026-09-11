@@ -5,6 +5,8 @@
       "elevator": "PLATFORMS 1 AND 2 ELEVATOR (ALL DESTINATIONS)",
       "elevator_kind": "platform",
       "label": "Can't enter station",
+      "label_rule": "extended",
+      "option_label": "alternate_elevator",
       "situation": "cant_enter",
       "text": "Take the other platform elevator."
     },
@@ -12,6 +14,8 @@
       "elevator": "PLATFORMS 1 AND 2 ELEVATOR (ALL DESTINATIONS)",
       "elevator_kind": "platform",
       "label": "Can't exit station",
+      "label_rule": "extended",
+      "option_label": "alternate_elevator",
       "situation": "cant_exit",
       "text": "Take the other platform elevator."
     },
@@ -19,6 +23,8 @@
       "elevator": "PLATFORMS 3 AND 4 ELEVATOR (ALL DESTINATIONS)",
       "elevator_kind": "platform",
       "label": "Can't enter station",
+      "label_rule": "extended",
+      "option_label": "alternate_elevator",
       "situation": "cant_enter",
       "text": "Take the other platform elevator."
     },
@@ -26,38 +32,52 @@
       "elevator": "PLATFORMS 3 AND 4 ELEVATOR (ALL DESTINATIONS)",
       "elevator_kind": "platform",
       "label": "Can't exit station",
+      "label_rule": "extended",
+      "option_label": "alternate_elevator",
       "situation": "cant_exit",
       "text": "Take the other platform elevator."
     }
   ],
   "elevators": [
     {
+      "enter_option": "alternate_elevator",
+      "exit_option": "alternate_elevator",
       "kind": "platform",
       "name": "PLATFORMS 1 AND 2 ELEVATOR (ALL DESTINATIONS)",
       "outage_options": [
         {
           "label": "Can't enter station",
+          "label_rule": "extended",
+          "option_label": "alternate_elevator",
           "situation": "cant_enter",
           "text": "Take the other platform elevator."
         },
         {
           "label": "Can't exit station",
+          "label_rule": "extended",
+          "option_label": "alternate_elevator",
           "situation": "cant_exit",
           "text": "Take the other platform elevator."
         }
       ]
     },
     {
+      "enter_option": "alternate_elevator",
+      "exit_option": "alternate_elevator",
       "kind": "platform",
       "name": "PLATFORMS 3 AND 4 ELEVATOR (ALL DESTINATIONS)",
       "outage_options": [
         {
           "label": "Can't enter station",
+          "label_rule": "extended",
+          "option_label": "alternate_elevator",
           "situation": "cant_enter",
           "text": "Take the other platform elevator."
         },
         {
           "label": "Can't exit station",
+          "label_rule": "extended",
+          "option_label": "alternate_elevator",
           "situation": "cant_exit",
           "text": "Take the other platform elevator."
         }

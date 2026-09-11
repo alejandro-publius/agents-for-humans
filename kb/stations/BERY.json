@@ -5,6 +5,8 @@
       "elevator": "STATION ELEVATOR",
       "elevator_kind": "station",
       "label": "Can't enter station",
+      "label_rule": "strict",
+      "option_label": "transit",
       "situation": "cant_enter",
       "text": "Take another mode of transportation such as a VTA bus to enter BART at the Milpitas station."
     },
@@ -12,22 +14,30 @@
       "elevator": "STATION ELEVATOR",
       "elevator_kind": "station",
       "label": "Can't exit station",
+      "label_rule": "strict",
+      "option_label": "backtracking",
       "situation": "cant_exit",
       "text": "Return to Milpitas to exit BART and take another mode of transportation such as a VTA bus to the destination."
     }
   ],
   "elevators": [
     {
+      "enter_option": "transit",
+      "exit_option": "backtracking",
       "kind": "station",
       "name": "STATION ELEVATOR",
       "outage_options": [
         {
           "label": "Can't enter station",
+          "label_rule": "strict",
+          "option_label": "transit",
           "situation": "cant_enter",
           "text": "Take another mode of transportation such as a VTA bus to enter BART at the Milpitas station."
         },
         {
           "label": "Can't exit station",
+          "label_rule": "strict",
+          "option_label": "backtracking",
           "situation": "cant_exit",
           "text": "Return to Milpitas to exit BART and take another mode of transportation such as a VTA bus to the destination."
         }

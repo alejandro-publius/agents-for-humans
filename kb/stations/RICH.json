@@ -5,6 +5,8 @@
       "elevator": "PLATFORM ELEVATOR",
       "elevator_kind": "platform",
       "label": "Can't enter station",
+      "label_rule": "strict",
+      "option_label": "transit",
       "situation": "cant_enter",
       "text": "Take another mode of transportation such as an AC Transit bus to another BART station. The closest station is El Cerrito del Norte."
     },
@@ -12,6 +14,8 @@
       "elevator": "PLATFORM ELEVATOR",
       "elevator_kind": "platform",
       "label": "Can't exit station",
+      "label_rule": "strict",
+      "option_label": "transit",
       "situation": "cant_exit",
       "text": "Continue on BART to exit at another station. The closest station is El Cerrito del Norte."
     },
@@ -19,6 +23,8 @@
       "elevator": "STREET ELEVATOR (EAST SIDE OF STATION)",
       "elevator_kind": "street",
       "label": "Can't enter station",
+      "label_rule": "extended",
+      "option_label": "alternate_elevator",
       "situation": "cant_enter",
       "text": "Use the ramp to enter the station."
     },
@@ -26,6 +32,8 @@
       "elevator": "STREET ELEVATOR (EAST SIDE OF STATION)",
       "elevator_kind": "street",
       "label": "Can't exit station",
+      "label_rule": "extended",
+      "option_label": "alternate_elevator",
       "situation": "cant_exit",
       "text": "Use the ramp to exit the station."
     },
@@ -33,6 +41,8 @@
       "elevator": "STREET ELEVATOR (WEST SIDE OF STATION)",
       "elevator_kind": "street",
       "label": "Can't enter station",
+      "label_rule": "strict",
+      "option_label": "transit",
       "situation": "cant_enter",
       "text": "Take another mode of transportation such as an AC Transit bus to another BART station. The closest station is El Cerrito del Norte. An alternative elevator is also available on the east side of the station."
     },
@@ -40,54 +50,74 @@
       "elevator": "STREET ELEVATOR (WEST SIDE OF STATION)",
       "elevator_kind": "street",
       "label": "Can't exit station",
+      "label_rule": "strict",
+      "option_label": "backtracking",
       "situation": "cant_exit",
       "text": "Take the ramp or elevator to the east side of the station, or go back to El Cerrito del Norte Station to exit BART."
     }
   ],
   "elevators": [
     {
+      "enter_option": "transit",
+      "exit_option": "transit",
       "kind": "platform",
       "name": "PLATFORM ELEVATOR",
       "outage_options": [
         {
           "label": "Can't enter station",
+          "label_rule": "strict",
+          "option_label": "transit",
           "situation": "cant_enter",
           "text": "Take another mode of transportation such as an AC Transit bus to another BART station. The closest station is El Cerrito del Norte."
         },
         {
           "label": "Can't exit station",
+          "label_rule": "strict",
+          "option_label": "transit",
           "situation": "cant_exit",
           "text": "Continue on BART to exit at another station. The closest station is El Cerrito del Norte."
         }
       ]
     },
     {
+      "enter_option": "alternate_elevator",
+      "exit_option": "alternate_elevator",
       "kind": "street",
       "name": "STREET ELEVATOR (EAST SIDE OF STATION)",
       "outage_options": [
         {
           "label": "Can't enter station",
+          "label_rule": "extended",
+          "option_label": "alternate_elevator",
           "situation": "cant_enter",
           "text": "Use the ramp to enter the station."
         },
         {
           "label": "Can't exit station",
+          "label_rule": "extended",
+          "option_label": "alternate_elevator",
           "situation": "cant_exit",
           "text": "Use the ramp to exit the station."
         }
       ]
     },
     {
+      "enter_option": "transit",
+      "exit_option": "backtracking",
       "kind": "street",
       "name": "STREET ELEVATOR (WEST SIDE OF STATION)",
       "outage_options": [
         {
           "label": "Can't enter station",
+          "label_rule": "strict",
+          "option_label": "transit",
           "situation": "cant_enter",
           "text": "Take another mode of transportation such as an AC Transit bus to another BART station. The closest station is El Cerrito del Norte. An alternative elevator is also available on the east side of the station."
         },
         {
           "label": "Can't exit station",
+          "label_rule": "strict",
+          "option_label": "backtracking",
           "situation": "cant_exit",
           "text": "Take the ramp or elevator to the east side of the station, or go back to El Cerrito del Norte Station to exit BART."
         }

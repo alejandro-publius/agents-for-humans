@@ -5,6 +5,8 @@
       "elevator": "GARAGE ELEVATOR 2 (NORTH/DUBLIN SIDE)",
       "elevator_kind": "garage",
       "label": "Can't enter station",
+      "label_rule": "extended",
+      "option_label": "alternate_elevator",
       "situation": "cant_enter",
       "text": "Take the alternate parking garage elevator."
     },
@@ -12,6 +14,8 @@
       "elevator": "GARAGE ELEVATOR 2 (NORTH/DUBLIN SIDE)",
       "elevator_kind": "garage",
       "label": "Can't exit station",
+      "label_rule": "extended",
+      "option_label": "alternate_elevator",
       "situation": "cant_exit",
       "text": "Take the alternate parking garage elevator."
     },
@@ -19,6 +23,8 @@
       "elevator": "GARAGE ELEVATOR 1 (NORTH/DUBLIN SIDE)",
       "elevator_kind": "garage",
       "label": "Can't enter station",
+      "label_rule": "extended",
+      "option_label": "alternate_elevator",
       "situation": "cant_enter",
       "text": "Take the alternate parking garage elevator."
     },
@@ -26,6 +32,8 @@
       "elevator": "GARAGE ELEVATOR 1 (NORTH/DUBLIN SIDE)",
       "elevator_kind": "garage",
       "label": "Can't exit station",
+      "label_rule": "extended",
+      "option_label": "alternate_elevator",
       "situation": "cant_exit",
       "text": "Take the alternate parking garage elevator."
     },
@@ -33,6 +41,8 @@
       "elevator": "GARAGE ELEVATOR 1 (SOUTH/PLEASANTON SIDE)",
       "elevator_kind": "garage",
       "label": "Can't enter station",
+      "label_rule": "extended",
+      "option_label": "alternate_elevator",
       "situation": "cant_enter",
       "text": "Take the alternate parking garage elevator."
     },
@@ -40,6 +50,8 @@
       "elevator": "GARAGE ELEVATOR 1 (SOUTH/PLEASANTON SIDE)",
       "elevator_kind": "garage",
       "label": "Can't exit station",
+      "label_rule": "extended",
+      "option_label": "alternate_elevator",
       "situation": "cant_exit",
       "text": "Take the alternate parking garage elevator."
     },
@@ -47,6 +59,8 @@
       "elevator": "GARAGE ELEVATOR 2 (SOUTH/PLEASANTON SIDE)",
       "elevator_kind": "garage",
       "label": "Can't enter station",
+      "label_rule": "extended",
+      "option_label": "alternate_elevator",
       "situation": "cant_enter",
       "text": "Take the alternate parking garage elevator."
     },
@@ -54,6 +68,8 @@
       "elevator": "GARAGE ELEVATOR 2 (SOUTH/PLEASANTON SIDE)",
       "elevator_kind": "garage",
       "label": "Can't exit station",
+      "label_rule": "extended",
+      "option_label": "alternate_elevator",
       "situation": "cant_exit",
       "text": "Take the alternate parking garage elevator."
     },
@@ -61,6 +77,8 @@
       "elevator": "PLATFORM ELEVATOR",
       "elevator_kind": "platform",
       "label": "Can't enter station",
+      "label_rule": "strict",
+      "option_label": "transit",
       "situation": "cant_enter",
       "text": "Take another mode of transportation such as a LAVTA Wheels bus to another BART station. The closest station is Dublin/Pleasanton."
     },
@@ -68,86 +86,118 @@
       "elevator": "PLATFORM ELEVATOR",
       "elevator_kind": "platform",
       "label": "Can't exit station",
+      "label_rule": "strict",
+      "option_label": "transit",
       "situation": "cant_exit",
       "text": "Continue on BART to exit at another station. The closest station is Dublin/Pleasanton."
     }
   ],
   "elevators": [
     {
+      "enter_option": "alternate_elevator",
+      "exit_option": "alternate_elevator",
       "kind": "garage",
       "name": "GARAGE ELEVATOR 2 (NORTH/DUBLIN SIDE)",
       "outage_options": [
         {
           "label": "Can't enter station",
+          "label_rule": "extended",
+          "option_label": "alternate_elevator",
           "situation": "cant_enter",
           "text": "Take the alternate parking garage elevator."
         },
         {
           "label": "Can't exit station",
+          "label_rule": "extended",
+          "option_label": "alternate_elevator",
           "situation": "cant_exit",
           "text": "Take the alternate parking garage elevator."
         }
       ]
     },
     {
+      "enter_option": "alternate_elevator",
+      "exit_option": "alternate_elevator",
       "kind": "garage",
       "name": "GARAGE ELEVATOR 1 (NORTH/DUBLIN SIDE)",
       "outage_options": [
         {
           "label": "Can't enter station",
+          "label_rule": "extended",
+          "option_label": "alternate_elevator",
           "situation": "cant_enter",
           "text": "Take the alternate parking garage elevator."
         },
         {
           "label": "Can't exit station",
+          "label_rule": "extended",
+          "option_label": "alternate_elevator",
           "situation": "cant_exit",
           "text": "Take the alternate parking garage elevator."
         }
       ]
     },
     {
+      "enter_option": "alternate_elevator",
+      "exit_option": "alternate_elevator",
       "kind": "garage",
       "name": "GARAGE ELEVATOR 1 (SOUTH/PLEASANTON SIDE)",
       "outage_options": [
         {
           "label": "Can't enter station",
+          "label_rule": "extended",
+          "option_label": "alternate_elevator",
           "situation": "cant_enter",
           "text": "Take the alternate parking garage elevator."
         },
         {
           "label": "Can't exit station",
+          "label_rule": "extended",
+          "option_label": "alternate_elevator",
           "situation": "cant_exit",
           "text": "Take the alternate parking garage elevator."
         }
       ]
     },
     {
+      "enter_option": "alternate_elevator",
+      "exit_option": "alternate_elevator",
       "kind": "garage",
       "name": "GARAGE ELEVATOR 2 (SOUTH/PLEASANTON SIDE)",
       "outage_options": [
         {
           "label": "Can't enter station",
+          "label_rule": "extended",
+          "option_label": "alternate_elevator",
           "situation": "cant_enter",
           "text": "Take the alternate parking garage elevator."
         },
         {
           "label": "Can't exit station",
+          "label_rule": "extended",
+          "option_label": "alternate_elevator",
           "situation": "cant_exit",
           "text": "Take the alternate parking garage elevator."
         }
       ]
     },
     {
+      "enter_option": "transit",
+      "exit_option": "transit",
       "kind": "platform",
       "name": "PLATFORM ELEVATOR",
       "outage_options": [
         {
           "label": "Can't enter station",
+          "label_rule": "strict",
+          "option_label": "transit",
           "situation": "cant_enter",
           "text": "Take another mode of transportation such as a LAVTA Wheels bus to another BART station. The closest station is Dublin/Pleasanton."
         },
         {
           "label": "Can't exit station",
+          "label_rule": "strict",
+          "option_label": "transit",
           "situation": "cant_exit",
           "text": "Continue on BART to exit at another station. The closest station is Dublin/Pleasanton."
         }

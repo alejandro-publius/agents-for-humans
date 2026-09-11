@@ -79,3 +79,32 @@ def test_elevator_kind_rule():
     assert kb_build.elevator_kind("GARAGE ELEVATOR 2 (NORTH/DUBLIN SIDE)") == "garage"
     assert kb_build.elevator_kind("WHEELCHAIR LIFT FROM STATION TO PARKING LOT") == "lift"
     assert kb_build.elevator_kind("CALTRAIN ELEVATOR - WEST PLAZA TO CONCOURSE") == "caltrain"
+
+
+def test_option_labels_match_the_three_known_pages():
+    def labels(abbr):
+        s = _load(kb_build.STATIONS_DIR / f"{abbr}.json")
+        return [(o["elevator"], o["situation"], o["option_label"]) for o in s["documented_outage_options"]]
+
+    assert {lab for _, _, lab in labels("SANL")} == {"backtracking"} and len(labels("SANL")) == 4
+    assert {lab for _, _, lab in labels("DBRK")} == {"transit"} and len(labels("DBRK")) == 4
+    twelfth = labels("12TH")
+    assert all(lab == "alternate_elevator" for el, _, lab in twelfth if el.startswith("STREET"))
+    assert all(lab == "transit" for el, _, lab in twelfth if el == "PLATFORM ELEVATOR")
+
+
+def test_every_elevator_has_enter_and_exit_labels_or_null():
+    from kb.labels import OPTION_ORDER
+
+    for path in STATIONS:
+        for e in _load(path)["elevators"]:
+            for key in ("enter_option", "exit_option"):
+                assert e[key] is None or e[key] in OPTION_ORDER, (path.stem, e["name"], key)
+
+
+def test_label_distribution_file_is_written_and_consistent():
+    dist = json.loads(kb_build.DISTRIBUTION_FILE.read_text())
+    assert dist["options_total"] == sum(dist["with_extension"].values()) == 194
+    assert sum(dist["labeled_by_rule"].values()) == 194
+    assert dist["strict_rules_only"]["mitigation_trip"] >= dist["with_extension"]["mitigation_trip"]
+    assert len(dist["default_after_extension"]) == dist["with_extension"]["mitigation_trip"]

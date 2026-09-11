@@ -5,6 +5,8 @@
       "elevator": "PLATFORMS 2 AND 4 ELEVATOR (SFO/MILLBRAE/DALY CITY, BERRYESSA DIRECTIONS)",
       "elevator_kind": "platform",
       "label": "Can't enter station",
+      "label_rule": "strict",
+      "option_label": "backtracking",
       "situation": "cant_enter",
       "text": "Take the Platform 1/3 elevator and go back to Rockridge or Ashby to board desired train."
     },
@@ -12,6 +14,8 @@
       "elevator": "PLATFORMS 2 AND 4 ELEVATOR (SFO/MILLBRAE/DALY CITY, BERRYESSA DIRECTIONS)",
       "elevator_kind": "platform",
       "label": "Can't exit station",
+      "label_rule": "strict",
+      "option_label": "backtracking",
       "situation": "cant_exit",
       "text": "Continue on BART to 19th St. Oakland and return to MacArthur. Exit using Platform 1/3 elevator."
     },
@@ -19,6 +23,8 @@
       "elevator": "PLATFORMS 1 AND 3 ELEVATOR (ANTIOCH, RICHMOND DIRECTIONS)",
       "elevator_kind": "platform",
       "label": "Can't enter station",
+      "label_rule": "strict",
+      "option_label": "backtracking",
       "situation": "cant_enter",
       "text": "Take the Platform 2/4 elevator and go back to 19th St. Oakland to board desired train."
     },
@@ -26,38 +32,52 @@
       "elevator": "PLATFORMS 1 AND 3 ELEVATOR (ANTIOCH, RICHMOND DIRECTIONS)",
       "elevator_kind": "platform",
       "label": "Can't exit station",
+      "label_rule": "strict",
+      "option_label": "backtracking",
       "situation": "cant_exit",
       "text": "Continue on BART to Rockridge or Ashby and return to MacArthur. Exit using the Platform 2/4 elevator."
     }
   ],
   "elevators": [
     {
+      "enter_option": "backtracking",
+      "exit_option": "backtracking",
       "kind": "platform",
       "name": "PLATFORMS 2 AND 4 ELEVATOR (SFO/MILLBRAE/DALY CITY, BERRYESSA DIRECTIONS)",
       "outage_options": [
         {
           "label": "Can't enter station",
+          "label_rule": "strict",
+          "option_label": "backtracking",
           "situation": "cant_enter",
           "text": "Take the Platform 1/3 elevator and go back to Rockridge or Ashby to board desired train."
         },
         {
           "label": "Can't exit station",
+          "label_rule": "strict",
+          "option_label": "backtracking",
           "situation": "cant_exit",
           "text": "Continue on BART to 19th St. Oakland and return to MacArthur. Exit using Platform 1/3 elevator."
         }
       ]
     },
     {
+      "enter_option": "backtracking",
+      "exit_option": "backtracking",
       "kind": "platform",
       "name": "PLATFORMS 1 AND 3 ELEVATOR (ANTIOCH, RICHMOND DIRECTIONS)",
       "outage_options": [
         {
           "label": "Can't enter station",
+          "label_rule": "strict",
+          "option_label": "backtracking",
           "situation": "cant_enter",
           "text": "Take the Platform 2/4 elevator and go back to 19th St. Oakland to board desired train."
         },
         {
           "label": "Can't exit station",
+          "label_rule": "strict",
+          "option_label": "backtracking",
           "situation": "cant_exit",
           "text": "Continue on BART to Rockridge or Ashby and return to MacArthur. Exit using the Platform 2/4 elevator."
         }

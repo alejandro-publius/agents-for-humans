@@ -5,6 +5,8 @@
       "elevator": "STREET ELEVATOR (CONCOURSE TO WALKWAY)",
       "elevator_kind": "street",
       "label": "Can't enter station",
+      "label_rule": "strict",
+      "option_label": "transit",
       "situation": "cant_enter",
       "text": "Take another mode of transportation such as a Tri Delta Transit bus to another BART station. The closest station is Pittsburg Center."
     },
@@ -12,6 +14,8 @@
       "elevator": "STREET ELEVATOR (CONCOURSE TO WALKWAY)",
       "elevator_kind": "street",
       "label": "Can't exit station",
+      "label_rule": "strict",
+      "option_label": "transit",
       "situation": "cant_exit",
       "text": "Continue on BART to exit at another station. The closest station is Pittsburg Center."
     },
@@ -19,6 +23,8 @@
       "elevator": "PLATFORM ELEVATOR (WALKWAY TO PLATFORM)",
       "elevator_kind": "platform",
       "label": "Can't enter station",
+      "label_rule": "strict",
+      "option_label": "transit",
       "situation": "cant_enter",
       "text": "Take another mode of transportation such as a Tri Delta Transit bus to another BART station. The closest station is Pittsburg Center."
     },
@@ -26,38 +32,52 @@
       "elevator": "PLATFORM ELEVATOR (WALKWAY TO PLATFORM)",
       "elevator_kind": "platform",
       "label": "Can't exit station",
+      "label_rule": "strict",
+      "option_label": "transit",
       "situation": "cant_exit",
       "text": "Continue on BART to exit at another station. The closest station is Pittsburg Center."
     }
   ],
   "elevators": [
     {
+      "enter_option": "transit",
+      "exit_option": "transit",
       "kind": "street",
       "name": "STREET ELEVATOR (CONCOURSE TO WALKWAY)",
       "outage_options": [
         {
           "label": "Can't enter station",
+          "label_rule": "strict",
+          "option_label": "transit",
           "situation": "cant_enter",
           "text": "Take another mode of transportation such as a Tri Delta Transit bus to another BART station. The closest station is Pittsburg Center."
         },
         {
           "label": "Can't exit station",
+          "label_rule": "strict",
+          "option_label": "transit",
           "situation": "cant_exit",
           "text": "Continue on BART to exit at another station. The closest station is Pittsburg Center."
         }
       ]
     },
     {
+      "enter_option": "transit",
+      "exit_option": "transit",
       "kind": "platform",
       "name": "PLATFORM ELEVATOR (WALKWAY TO PLATFORM)",
       "outage_options": [
         {
           "label": "Can't enter station",
+          "label_rule": "strict",
+          "option_label": "transit",
           "situation": "cant_enter",
           "text": "Take another mode of transportation such as a Tri Delta Transit bus to another BART station. The closest station is Pittsburg Center."
         },
         {
           "label": "Can't exit station",
+          "label_rule": "strict",
+          "option_label": "transit",
           "situation": "cant_exit",
           "text": "Continue on BART to exit at another station. The closest station is Pittsburg Center."
         }

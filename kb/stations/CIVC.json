@@ -5,6 +5,8 @@
       "elevator": "STREET ELEVATOR",
       "elevator_kind": "street",
       "label": "Can't enter station",
+      "label_rule": "strict",
+      "option_label": "transit",
       "situation": "cant_enter",
       "text": "Use the Powell St. Station street elevator at Market and Ellis streets (0.5 miles/ 5 blocks). Go to the intersection of McAllister and Leavenworth streets to take a bus to Market at Powell Street."
     },
@@ -12,6 +14,8 @@
       "elevator": "STREET ELEVATOR",
       "elevator_kind": "street",
       "label": "Can't exit station",
+      "label_rule": "extended",
+      "option_label": "transit",
       "situation": "cant_exit",
       "text": "Continue on train to exit at another station. The closest station is Powell St. (0.5 miles)."
     },
@@ -19,6 +23,8 @@
       "elevator": "PLATFORM ELEVATOR",
       "elevator_kind": "platform",
       "label": "Can't enter station",
+      "label_rule": "strict",
+      "option_label": "transit",
       "situation": "cant_enter",
       "text": "Use the Powell St. Station street elevator at Market and Ellis streets (0.5 miles/ 5 blocks). Go to the intersection of McAllister and Leavenworth streets to take a bus to Market at Powell Street."
     },
@@ -26,38 +32,52 @@
       "elevator": "PLATFORM ELEVATOR",
       "elevator_kind": "platform",
       "label": "Can't exit station",
+      "label_rule": "extended",
+      "option_label": "transit",
       "situation": "cant_exit",
       "text": "Continue on train to exit at another station. The closest station is Powell St. (0.5 miles)."
     }
   ],
   "elevators": [
     {
+      "enter_option": "transit",
+      "exit_option": "transit",
       "kind": "street",
       "name": "STREET ELEVATOR",
       "outage_options": [
         {
           "label": "Can't enter station",
+          "label_rule": "strict",
+          "option_label": "transit",
           "situation": "cant_enter",
           "text": "Use the Powell St. Station street elevator at Market and Ellis streets (0.5 miles/ 5 blocks). Go to the intersection of McAllister and Leavenworth streets to take a bus to Market at Powell Street."
         },
         {
           "label": "Can't exit station",
+          "label_rule": "extended",
+          "option_label": "transit",
           "situation": "cant_exit",
           "text": "Continue on train to exit at another station. The closest station is Powell St. (0.5 miles)."
         }
       ]
     },
     {
+      "enter_option": "transit",
+      "exit_option": "transit",
       "kind": "platform",
       "name": "PLATFORM ELEVATOR",
       "outage_options": [
         {
           "label": "Can't enter station",
+          "label_rule": "strict",
+          "option_label": "transit",
           "situation": "cant_enter",
           "text": "Use the Powell St. Station street elevator at Market and Ellis streets (0.5 miles/ 5 blocks). Go to the intersection of McAllister and Leavenworth streets to take a bus to Market at Powell Street."
         },
         {
           "label": "Can't exit station",
+          "label_rule": "extended",
+          "option_label": "transit",
           "situation": "cant_exit",
           "text": "Continue on train to exit at another station. The closest station is Powell St. (0.5 miles)."
         }

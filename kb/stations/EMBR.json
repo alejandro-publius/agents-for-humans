@@ -5,6 +5,8 @@
       "elevator": "STREET ELEVATOR",
       "elevator_kind": "street",
       "label": "Can't enter station",
+      "label_rule": "extended",
+      "option_label": "transit",
       "situation": "cant_enter",
       "text": "Use the Montgomery Station street elevator at Market and Sutter streets (0.3 miles/ 3 short blocks)"
     },
@@ -12,6 +14,8 @@
       "elevator": "STREET ELEVATOR",
       "elevator_kind": "street",
       "label": "Can't exit station",
+      "label_rule": "extended",
+      "option_label": "transit",
       "situation": "cant_exit",
       "text": "Continue on train to exit at another station. The closest station is Montgomery St. (0.3 miles/ 3 short blocks)"
     },
@@ -19,6 +23,8 @@
       "elevator": "PLATFORM ELEVATOR",
       "elevator_kind": "platform",
       "label": "Can't enter station",
+      "label_rule": "extended",
+      "option_label": "transit",
       "situation": "cant_enter",
       "text": "Use to the Montgomery Station street elevator at Market and Sutter streets (0.3 miles/ 3 short blocks)"
     },
@@ -26,38 +32,52 @@
       "elevator": "PLATFORM ELEVATOR",
       "elevator_kind": "platform",
       "label": "Can't exit station",
+      "label_rule": "extended",
+      "option_label": "transit",
       "situation": "cant_exit",
       "text": "Continue on train to exit at another station. The closest station is Montgomery St. (0.3 miles)."
     }
   ],
   "elevators": [
     {
+      "enter_option": "transit",
+      "exit_option": "transit",
       "kind": "street",
       "name": "STREET ELEVATOR",
       "outage_options": [
         {
           "label": "Can't enter station",
+          "label_rule": "extended",
+          "option_label": "transit",
           "situation": "cant_enter",
           "text": "Use the Montgomery Station street elevator at Market and Sutter streets (0.3 miles/ 3 short blocks)"
         },
         {
           "label": "Can't exit station",
+          "label_rule": "extended",
+          "option_label": "transit",
           "situation": "cant_exit",
           "text": "Continue on train to exit at another station. The closest station is Montgomery St. (0.3 miles/ 3 short blocks)"
         }
       ]
     },
     {
+      "enter_option": "transit",
+      "exit_option": "transit",
       "kind": "platform",
       "name": "PLATFORM ELEVATOR",
       "outage_options": [
         {
           "label": "Can't enter station",
+          "label_rule": "extended",
+          "option_label": "transit",
           "situation": "cant_enter",
           "text": "Use to the Montgomery Station street elevator at Market and Sutter streets (0.3 miles/ 3 short blocks)"
         },
         {
           "label": "Can't exit station",
+          "label_rule": "extended",
+          "option_label": "transit",
           "situation": "cant_exit",
           "text": "Continue on train to exit at another station. The closest station is Montgomery St. (0.3 miles)."
         }

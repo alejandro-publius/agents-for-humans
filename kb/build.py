@@ -27,10 +27,13 @@ import urllib.request
 from pathlib import Path
 from typing import Any
 
+from kb.labels import OPTION_ORDER, label_option, strict_only_label
+
 KB_DIR = Path(__file__).resolve().parent
 RAW_DIR = KB_DIR / "raw"
 STATIONS_DIR = KB_DIR / "stations"
 INDEX_FILE = KB_DIR / "index.json"
+DISTRIBUTION_FILE = KB_DIR.parent / "results" / "kb_label_distribution.json"
 POLICY_FILE = KB_DIR / "policy.json"
 ABBREVS_FILE = RAW_DIR / "station_abbrevs.json"
 
@@ -131,6 +134,17 @@ def parse_station(record: dict[str, Any], canonical: dict[str, str]) -> dict[str
         elif section == "other" and current_other is not None:
             current_other["text"].append(text)
 
+    for e in elevators:
+        e["enter_option"] = None
+        e["exit_option"] = None
+        for opt in e["outage_options"]:
+            if opt["situation"] == "note":
+                continue
+            opt["option_label"], opt["label_rule"] = label_option(opt["text"])
+            if opt["situation"].startswith("cant_enter") and e["enter_option"] is None:
+                e["enter_option"] = opt["option_label"]
+            elif opt["situation"].startswith("cant_exit") and e["exit_option"] is None:
+                e["exit_option"] = opt["option_label"]
     documented = [
         {"elevator": e["name"], "elevator_kind": e["kind"], **opt}
         for e in elevators
@@ -248,7 +262,44 @@ def build() -> dict[str, Any]:
     write_json(INDEX_FILE, index)
     if status_page is not None:
         write_json(POLICY_FILE, parse_policy(status_page))
+    write_json(DISTRIBUTION_FILE, label_distribution(stations))
     return index
+
+
+def label_distribution(stations: list[dict[str, Any]]) -> dict[str, Any]:
+    """Counts of option labels under the strict rules alone and with the extension tier."""
+    strict_counts = dict.fromkeys(OPTION_ORDER, 0)
+    final_counts = dict.fromkeys(OPTION_ORDER, 0)
+    by_rule = {"strict": 0, "extended": 0, "default": 0}
+    default_texts = []
+    checks = {}
+    for s in stations:
+        for opt in s["documented_outage_options"]:
+            strict_counts[strict_only_label(opt["text"])] += 1
+            final_counts[opt["option_label"]] += 1
+            by_rule[opt["label_rule"]] += 1
+            if opt["label_rule"] == "default":
+                default_texts.append({"station": s["abbr"], "elevator": opt["elevator"], "text": opt["text"]})
+        if s["abbr"] in ("SANL", "DBRK", "12TH"):
+            checks[s["abbr"]] = [
+                {"elevator": o["elevator"], "situation": o["situation"], "label": o["option_label"]}
+                for o in s["documented_outage_options"]
+            ]
+    total = sum(final_counts.values())
+    return {
+        "options_total": total,
+        "rank_order": list(OPTION_ORDER),
+        "strict_rules_only": strict_counts,
+        "with_extension": final_counts,
+        "labeled_by_rule": by_rule,
+        "default_after_extension": default_texts,
+        "checks": checks,
+        "note": (
+            "strict = the mapping specified in the work order; extended = additional BART phrasings "
+            "listed in kb/labels.py; default = mitigation_trip when nothing matched. Labels are "
+            "derived from BART's text by fixed rules; they are not BART's own categories."
+        ),
+    }
 
 
 def fetch_live(abbrs: list[str], delay: float = 1.1) -> int:

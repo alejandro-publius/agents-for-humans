@@ -5,6 +5,8 @@
       "elevator": "STREET ELEVATOR 1",
       "elevator_kind": "street",
       "label": "Can't enter station",
+      "label_rule": "strict",
+      "option_label": "alternate_elevator",
       "situation": "cant_enter",
       "text": "Take the other street elevator."
     },
@@ -12,6 +14,8 @@
       "elevator": "STREET ELEVATOR 1",
       "elevator_kind": "street",
       "label": "Can't exit station",
+      "label_rule": "strict",
+      "option_label": "alternate_elevator",
       "situation": "cant_exit",
       "text": "Take the other street elevator."
     },
@@ -19,6 +23,8 @@
       "elevator": "STREET ELEVATOR 2",
       "elevator_kind": "street",
       "label": "Can't enter station",
+      "label_rule": "strict",
+      "option_label": "alternate_elevator",
       "situation": "cant_enter",
       "text": "Take the other street elevator."
     },
@@ -26,6 +32,8 @@
       "elevator": "STREET ELEVATOR 2",
       "elevator_kind": "street",
       "label": "Can't exit station",
+      "label_rule": "strict",
+      "option_label": "alternate_elevator",
       "situation": "cant_exit",
       "text": "Take the other street elevator."
     },
@@ -33,6 +41,8 @@
       "elevator": "PLATFORM ELEVATOR 1",
       "elevator_kind": "platform",
       "label": "Can't enter station",
+      "label_rule": "extended",
+      "option_label": "alternate_elevator",
       "situation": "cant_enter",
       "text": "Take the other platform elevator."
     },
@@ -40,6 +50,8 @@
       "elevator": "PLATFORM ELEVATOR 1",
       "elevator_kind": "platform",
       "label": "Can't exit station",
+      "label_rule": "extended",
+      "option_label": "alternate_elevator",
       "situation": "cant_exit",
       "text": "Take the other platform elevator."
     },
@@ -47,6 +59,8 @@
       "elevator": "PLATFORM ELEVATOR 2",
       "elevator_kind": "platform",
       "label": "Can't enter station",
+      "label_rule": "extended",
+      "option_label": "alternate_elevator",
       "situation": "cant_enter",
       "text": "Take the other platform elevator."
     },
@@ -54,6 +68,8 @@
       "elevator": "PLATFORM ELEVATOR 2",
       "elevator_kind": "platform",
       "label": "Can't exit station",
+      "label_rule": "extended",
+      "option_label": "alternate_elevator",
       "situation": "cant_exit",
       "text": "Take the other platform elevator."
     },
@@ -61,6 +77,8 @@
       "elevator": "PEDESTRIAN BRIDGE ELEVATOR",
       "elevator_kind": "bridge",
       "label": "Can't enter station",
+      "label_rule": "extended",
+      "option_label": "transit",
       "situation": "cant_enter",
       "text": "Take an alternative mode of transportation to reach the main station entrance on Warm Springs Boulevard (0.8 miles). To walk or roll, proceed north on Lopes Road and turn right on S. Grimmer Boulevard. Then turn right on Warm Springs Boulevard."
     },
@@ -68,86 +86,118 @@
       "elevator": "PEDESTRIAN BRIDGE ELEVATOR",
       "elevator_kind": "bridge",
       "label": "Can't exit station",
+      "label_rule": "extended",
+      "option_label": "alternate_elevator",
       "situation": "cant_exit",
       "text": "Use the platform elevators inside the station to exit via the main/east side of the station."
     }
   ],
   "elevators": [
     {
+      "enter_option": "alternate_elevator",
+      "exit_option": "alternate_elevator",
       "kind": "street",
       "name": "STREET ELEVATOR 1",
       "outage_options": [
         {
           "label": "Can't enter station",
+          "label_rule": "strict",
+          "option_label": "alternate_elevator",
           "situation": "cant_enter",
           "text": "Take the other street elevator."
         },
         {
           "label": "Can't exit station",
+          "label_rule": "strict",
+          "option_label": "alternate_elevator",
           "situation": "cant_exit",
           "text": "Take the other street elevator."
         }
       ]
     },
     {
+      "enter_option": "alternate_elevator",
+      "exit_option": "alternate_elevator",
       "kind": "street",
       "name": "STREET ELEVATOR 2",
       "outage_options": [
         {
           "label": "Can't enter station",
+          "label_rule": "strict",
+          "option_label": "alternate_elevator",
           "situation": "cant_enter",
           "text": "Take the other street elevator."
         },
         {
           "label": "Can't exit station",
+          "label_rule": "strict",
+          "option_label": "alternate_elevator",
           "situation": "cant_exit",
           "text": "Take the other street elevator."
         }
       ]
     },
     {
+      "enter_option": "alternate_elevator",
+      "exit_option": "alternate_elevator",
       "kind": "platform",
       "name": "PLATFORM ELEVATOR 1",
       "outage_options": [
         {
           "label": "Can't enter station",
+          "label_rule": "extended",
+          "option_label": "alternate_elevator",
           "situation": "cant_enter",
           "text": "Take the other platform elevator."
         },
         {
           "label": "Can't exit station",
+          "label_rule": "extended",
+          "option_label": "alternate_elevator",
           "situation": "cant_exit",
           "text": "Take the other platform elevator."
         }
       ]
     },
     {
+      "enter_option": "alternate_elevator",
+      "exit_option": "alternate_elevator",
       "kind": "platform",
       "name": "PLATFORM ELEVATOR 2",
       "outage_options": [
         {
           "label": "Can't enter station",
+          "label_rule": "extended",
+          "option_label": "alternate_elevator",
           "situation": "cant_enter",
           "text": "Take the other platform elevator."
         },
         {
           "label": "Can't exit station",
+          "label_rule": "extended",
+          "option_label": "alternate_elevator",
           "situation": "cant_exit",
           "text": "Take the other platform elevator."
         }
       ]
     },
     {
+      "enter_option": "transit",
+      "exit_option": "alternate_elevator",
       "kind": "bridge",
       "name": "PEDESTRIAN BRIDGE ELEVATOR",
       "outage_options": [
         {
           "label": "Can't enter station",
+          "label_rule": "extended",
+          "option_label": "transit",
           "situation": "cant_enter",
           "text": "Take an alternative mode of transportation to reach the main station entrance on Warm Springs Boulevard (0.8 miles). To walk or roll, proceed north on Lopes Road and turn right on S. Grimmer Boulevard. Then turn right on Warm Springs Boulevard."
         },
         {
           "label": "Can't exit station",
+          "label_rule": "extended",
+          "option_label": "alternate_elevator",
           "situation": "cant_exit",
           "text": "Use the platform elevators inside the station to exit via the main/east side of the station."
         }

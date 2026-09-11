@@ -5,6 +5,8 @@
       "elevator": "STATION ELEVATOR",
       "elevator_kind": "station",
       "label": "Can't enter station",
+      "label_rule": "strict",
+      "option_label": "transit",
       "situation": "cant_enter",
       "text": "Take another mode of transportation such as a SamTrans bus to another BART station. The closest station is Colma."
     },
@@ -12,22 +14,30 @@
       "elevator": "STATION ELEVATOR",
       "elevator_kind": "station",
       "label": "Can't exit station",
+      "label_rule": "extended",
+      "option_label": "transit",
       "situation": "cant_exit",
       "text": "Continue on BART to another station. The closest station is Colma."
     }
   ],
   "elevators": [
     {
+      "enter_option": "transit",
+      "exit_option": "transit",
       "kind": "station",
       "name": "STATION ELEVATOR",
       "outage_options": [
         {
           "label": "Can't enter station",
+          "label_rule": "strict",
+          "option_label": "transit",
           "situation": "cant_enter",
           "text": "Take another mode of transportation such as a SamTrans bus to another BART station. The closest station is Colma."
         },
         {
           "label": "Can't exit station",
+          "label_rule": "extended",
+          "option_label": "transit",
           "situation": "cant_exit",
           "text": "Continue on BART to another station. The closest station is Colma."
         }
