@@ -22,7 +22,7 @@ Constraints that hold all night.
       Accept. `make evals` writes `results/summary.json` with `cases_run > 0`.
 - [x] A5. Ablation switch. `make evals ABLATE=1` runs the same cases with the hook and steering handler disabled and writes `results/ablation.json`.
       Accept. Both files exist and differ in at least one field.
-- [ ] A6. `scripts/verify_claims.py`. Reads every number in `README.md` marked with `<!-- claim:key -->` and compares it to `results/*.json`. Fails on mismatch or on a claim with no result.
+- [x] A6. `scripts/verify_claims.py`. Reads every number in `README.md` marked with `<!-- claim:key -->` and compares it to `results/*.json`. Fails on mismatch or on a claim with no result.
       Accept. `make verify` exits 0 with one real claim in the README, and exits 1 when a README number is deliberately changed (show both runs).
 - [ ] A7. CI. `.github/workflows/ci.yml` runs `make verify` on push with no secrets. Secret scan step using gitleaks or a regex script.
       Accept. Workflow file lints (`python -c "import yaml;yaml.safe_load(open('.github/workflows/ci.yml'))"`) and `make verify` passes locally.

@@ -19,6 +19,21 @@ make verify    # lint + tests, runs on the mock model provider at $0
 
 Optional credentials are listed by name in `.env.example`. Without them nothing touches the network.
 
+## Results so far
+
+Produced by `make evals` on the offline mock provider and checked by `scripts/verify_claims.py`.
+These numbers measure the harness (hook, steering handler, schema), not model quality; the model is
+scripted. Real outage numbers arrive with Block B.
+
+| Measure | With guardrails | Guardrails removed (ablation) |
+| --- | --- | --- |
+| Harness cases run | <!-- claim:summary.cases_run -->7 | <!-- claim:ablation.cases_run -->7 |
+| Cases passed | <!-- claim:summary.cases_passed -->7 | <!-- claim:ablation.cases_passed -->5 |
+| Pass rate | <!-- claim:summary.accuracy_pct -->100.0% | <!-- claim:ablation.accuracy_pct -->71.4% |
+| Tool calls cancelled by the hook | <!-- claim:summary.hook_cancellations -->1 | <!-- claim:ablation.hook_cancellations -->0 |
+| Responses rewritten by steering | <!-- claim:summary.steering_rewrites -->1 | <!-- claim:ablation.steering_rewrites -->0 |
+| Network attempts during the run | <!-- claim:summary.network_attempts -->0 | <!-- claim:ablation.network_attempts -->0 |
+
 ## Documents
 
 - `TODO.md`: the build list and acceptance commands.

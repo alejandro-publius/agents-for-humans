@@ -6,7 +6,7 @@ PY    := $(VENV)/bin/python
 UV    := $(shell command -v uv 2>/dev/null)
 ABLATE ?= 0
 
-.PHONY: help setup lint test evals results verify clean
+.PHONY: help setup lint test evals evals-ablate results verify-claims verify clean
 
 help: ## list targets
 	@grep -E '^[a-z-]+:.*## ' $(MAKEFILE_LIST) | awk -F ':.*## ' '{printf "  %-10s %s\n", $$1, $$2}'
@@ -31,10 +31,16 @@ test: ## unit tests, fully offline
 evals: ## run eval cases on the mock provider and write results/*.json; ABLATE=1 disables hook + steering
 	$(PY) evals/run.py $(if $(filter 1,$(ABLATE)),--ablate,)
 
+evals-ablate: ## same cases with hook + steering disabled -> results/ablation.json
+	$(PY) evals/run.py --ablate
+
 results: ## print results/summary.json
 	@cat results/summary.json
 
-verify: lint test ## everything CI runs, no secrets needed
+verify-claims: ## every number in README.md marked <!-- claim:key --> must match results/*.json
+	$(PY) scripts/verify_claims.py
+
+verify: lint test evals evals-ablate verify-claims ## everything CI runs, no secrets needed
 	@echo "verify: OK"
 
 clean: ## remove the virtualenv and caches

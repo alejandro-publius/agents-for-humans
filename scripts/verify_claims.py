@@ -1,0 +1,90 @@
+"""Verify every number claimed in README.md against results/*.json.
+
+A claim is written in the README as an HTML comment immediately before the number::
+
+    <!-- claim:summary.accuracy_pct -->100.0%
+    <!-- claim:ablation.suites.harness_hook.cases_passed -->**1**
+
+The key is ``<results file stem>.<dotted path>``: ``summary.accuracy_pct`` reads
+``results/summary.json`` and looks up ``["accuracy_pct"]``. The README number must equal the
+result rounded to the precision the README shows.
+
+Fails (exit 1) on: a mismatch, a claim whose result file or field is missing, a README with no
+claims at all, or a percentage in the README that is not marked as a claim.
+"""
+
+from __future__ import annotations
+
+import json
+import re
+import sys
+from pathlib import Path
+from typing import Any
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+README = REPO_ROOT / "README.md"
+RESULTS_DIR = REPO_ROOT / "results"
+
+CLAIM_RE = re.compile(r"<!--\s*claim:([A-Za-z0-9_.\-]+)\s*-->\s*\**\s*([-+]?\d[\d,]*(?:\.\d+)?)\s*(%?)")
+PERCENT_RE = re.compile(r"(?<![\w.\-])(\d+(?:\.\d+)?)%")
+
+
+def lookup(key: str, results_dir: Path) -> tuple[Any, str | None]:
+    stem, _, path = key.partition(".")
+    file = results_dir / f"{stem}.json"
+    if not file.exists():
+        return None, f"no results file {file.relative_to(REPO_ROOT)}"
+    node: Any = json.loads(file.read_text())
+    for part in path.split(".") if path else []:
+        if isinstance(node, dict) and part in node:
+            node = node[part]
+        else:
+            return None, f"field {path!r} not found in {file.name}"
+    if isinstance(node, bool) or not isinstance(node, int | float):
+        return None, f"{key} is not a number in results (got {type(node).__name__})"
+    return node, None
+
+
+def decimals_shown(text: str) -> int:
+    return len(text.split(".")[1]) if "." in text else 0
+
+
+def verify(readme: Path = README, results_dir: Path = RESULTS_DIR) -> int:
+    body = readme.read_text()
+    claims = CLAIM_RE.findall(body)
+    failures: list[str] = []
+
+    if not claims:
+        failures.append("README.md has no <!-- claim:key --> markers; every reported number must be a claim")
+
+    for key, shown, pct in claims:
+        value, err = lookup(key, results_dir)
+        if err:
+            failures.append(f"{key}: {err}")
+            continue
+        shown_num = float(shown.replace(",", ""))
+        rounded = round(float(value), decimals_shown(shown))
+        ok = abs(shown_num - rounded) < 1e-9
+        status = "OK      " if ok else "MISMATCH"
+        print(f"{status} {key} README={shown}{pct} results={value}")
+        if not ok:
+            failures.append(f"{key}: README says {shown}{pct}, results say {value}")
+
+    # Every percentage in the README must be a claim (no hand-typed numbers).
+    claimed_spans = {m.end(2) for m in CLAIM_RE.finditer(body)}
+    for m in PERCENT_RE.finditer(body):
+        if m.end(1) not in claimed_spans:
+            line = body.count("\n", 0, m.start()) + 1
+            failures.append(f"README.md:{line}: percentage {m.group(0)!r} is not marked as a claim")
+
+    if failures:
+        print("\nverify_claims: FAILED", file=sys.stderr)
+        for f in failures:
+            print(f"  - {f}", file=sys.stderr)
+        return 1
+    print(f"verify_claims: {len(claims)} claim(s) match results/")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(verify())
