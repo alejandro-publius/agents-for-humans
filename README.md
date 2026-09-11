@@ -5,11 +5,13 @@ BART's own published outage options to your route, and interrupts you only when 
 with the workaround already worked out. Entry for the
 [AWS Agents for Humans Hackathon](https://agentsforhumans.devpost.com/), Everyday Agents track.
 
-> **Status (Sat Sept 12, 2026, overnight build).** Harness and core pipeline are built and tested
-> offline: knowledge base, BART client, outage parser, policy engine, poller, wired agent, evals.
-> Every number below was produced by `make evals` on the offline mock model provider and is checked
-> by `scripts/verify_claims.py`. What is simulated is labeled as simulated here, in the code, and in
-> `docs/reports/day-1.md`. The rider app, live archive, and deployment (Block C) are not built.
+> **Status (Sat Sept 12, 2026, overnight build).** Built and tested offline: knowledge base, BART
+> client, outage parser, policy engine, poller, wired agent, evals, the one-page rider app with a
+> decisions inbox and replay timeline, the weekly quiet report, rider preferences, and the label
+> export and relevance scorer. Every number below was produced by `make evals` or `make replay` on
+> the offline mock model provider and is checked by `scripts/verify_claims.py`. What is simulated is
+> labeled as simulated here, in the code, and in `docs/reports/day-1.md`. Not built: deployment,
+> the live weekend archive, and human relevance labels.
 
 ## How it works
 
