@@ -20,7 +20,7 @@ Constraints that hold all night.
       Accept. `pytest tests/test_hooks.py tests/test_steering.py tests/test_structured_output.py -q` passes, and the transcript shows the hook cancelling a bad call and the steering handler rewriting a bad response.
 - [x] A4. Evals harness. `evals/run.py` loads cases from `evals/cases/*.json`, runs them through the agent (mock provider by default), writes `results/*.json` with counts, and exits non-zero if any case is missing a label. Try `strands-agents-evals` from https://github.com/strands-agents/evals first; if it cannot be installed in ten minutes, implement a minimal pytest-based runner and note the fallback in `docs/reports/day-1.md`.
       Accept. `make evals` writes `results/summary.json` with `cases_run > 0`.
-- [ ] A5. Ablation switch. `make evals ABLATE=1` runs the same cases with the hook and steering handler disabled and writes `results/ablation.json`.
+- [x] A5. Ablation switch. `make evals ABLATE=1` runs the same cases with the hook and steering handler disabled and writes `results/ablation.json`.
       Accept. Both files exist and differ in at least one field.
 - [ ] A6. `scripts/verify_claims.py`. Reads every number in `README.md` marked with `<!-- claim:key -->` and compares it to `results/*.json`. Fails on mismatch or on a claim with no result.
       Accept. `make verify` exits 0 with one real claim in the README, and exits 1 when a README number is deliberately changed (show both runs).

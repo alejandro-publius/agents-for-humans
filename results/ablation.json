@@ -1,0 +1,101 @@
+{
+  "provider": "mock",
+  "ablated": true,
+  "note": "mock provider: scripted model turns from fixtures/model; these suites measure the harness (hook, steering, schema), not model quality",
+  "network_attempts": 0,
+  "cases_run": 7,
+  "cases_passed": 5,
+  "accuracy": 0.7143,
+  "accuracy_pct": 71.4,
+  "hook_cancellations": 0,
+  "steering_rewrites": 0,
+  "model_calls": 11,
+  "suites": {
+    "harness_hook": {
+      "suite": "harness_hook",
+      "description": "Does the BeforeToolCall hook cancel tool calls whose arguments name an unknown station? Output is the status of the first tool call: 'cancelled' or 'executed'.",
+      "output_of": "first_tool_status",
+      "cases_run": 2,
+      "cases_passed": 1,
+      "accuracy": 0.5,
+      "accuracy_pct": 50.0,
+      "strands_evals_overall_score": 0.5,
+      "mechanisms": {
+        "hook_cancellations": 0,
+        "steering_rewrites": 0,
+        "model_calls": 4
+      },
+      "cases": {
+        "unknown_station_is_cancelled": {
+          "expected": "cancelled",
+          "actual": "executed",
+          "pass": false
+        },
+        "known_station_is_executed": {
+          "expected": "executed",
+          "actual": "executed",
+          "pass": true
+        }
+      }
+    },
+    "harness_steering": {
+      "suite": "harness_steering",
+      "description": "Does the steering handler make the final response recommend code's top feasible option? Output is the first option named in the final text.",
+      "output_of": "first_option_in_text",
+      "cases_run": 2,
+      "cases_passed": 1,
+      "accuracy": 0.5,
+      "accuracy_pct": 50.0,
+      "strands_evals_overall_score": 0.5,
+      "mechanisms": {
+        "hook_cancellations": 0,
+        "steering_rewrites": 0,
+        "model_calls": 2
+      },
+      "cases": {
+        "shuttle_draft_is_rewritten_to_backtracking": {
+          "expected": "backtracking",
+          "actual": "mitigation shuttle",
+          "pass": false
+        },
+        "compliant_draft_is_left_alone": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "pass": true
+        }
+      }
+    },
+    "harness_structured": {
+      "suite": "harness_structured",
+      "description": "Does every run end in a schema-valid Plan? Output is plan.option from the structured output.",
+      "output_of": "plan_option",
+      "cases_run": 3,
+      "cases_passed": 3,
+      "accuracy": 1.0,
+      "accuracy_pct": 100.0,
+      "strands_evals_overall_score": 1.0,
+      "mechanisms": {
+        "hook_cancellations": 0,
+        "steering_rewrites": 0,
+        "model_calls": 5
+      },
+      "cases": {
+        "immediate_plan": {
+          "expected": "alternate elevator",
+          "actual": "alternate elevator",
+          "pass": true
+        },
+        "forced_plan_after_prose": {
+          "expected": "backtracking",
+          "actual": "backtracking",
+          "pass": true
+        },
+        "invalid_plan_then_valid": {
+          "expected": "transit",
+          "actual": "transit",
+          "pass": true
+        }
+      }
+    }
+  }
+}
