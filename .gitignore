@@ -9,18 +9,20 @@ build/
 .ruff_cache/
 .mypy_cache/
 
-# Secrets & local config -- never commit credentials
+# Secrets: never commit credentials
 .env
 .env.*
 !.env.example
 *.pem
 
-# Agent runtime state
-.sessions/
-.agent-state/
+# Generated local state
+data/*.sqlite
+data/*.sqlite-journal
+results/.last_run*
+kb/_raw/
 *.log
 
-# AgentCore / AWS tooling
+# AgentCore / AWS tooling (deployment is a human decision)
 .bedrock_agentcore.yaml
 .bedrock_agentcore/
 Dockerfile.agentcore
