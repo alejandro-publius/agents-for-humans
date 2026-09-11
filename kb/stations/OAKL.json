@@ -1,0 +1,47 @@
+{
+  "abbr": "OAKL",
+  "documented_outage_options": [
+    {
+      "elevator": "ELEVATOR TO OAKLAND AIRPORT CONNECTOR",
+      "elevator_kind": "connector",
+      "label": "Can't access connector",
+      "situation": "can_t_access_connector",
+      "text": "Take another mode of transportation such as an AC Transit bus."
+    },
+    {
+      "elevator": "ELEVATOR TO OAKLAND AIRPORT CONNECTOR",
+      "elevator_kind": "connector",
+      "label": "Can't exit to airport",
+      "situation": "can_t_exit_to_airport",
+      "text": "Go back to the Coliseum Station and take another mode of transportation such as an AC Transit bus to get to the Oakland Airport."
+    }
+  ],
+  "elevators": [
+    {
+      "kind": "connector",
+      "name": "ELEVATOR TO OAKLAND AIRPORT CONNECTOR",
+      "outage_options": [
+        {
+          "label": "Can't access connector",
+          "situation": "can_t_access_connector",
+          "text": "Take another mode of transportation such as an AC Transit bus."
+        },
+        {
+          "label": "Can't exit to airport",
+          "situation": "can_t_exit_to_airport",
+          "text": "Go back to the Coliseum Station and take another mode of transportation such as an AC Transit bus to get to the Oakland Airport."
+        }
+      ]
+    }
+  ],
+  "http_status": 200,
+  "name": "Oakland Int'l Airport",
+  "other_sections": [],
+  "outage_intro": "In case of an elevator outage, use the following options or contact the station agent for assistance. Agents can arrange a ride to a different station in an accessible van if needed.",
+  "page_name": "Oakland International Airport",
+  "pathways": [],
+  "pathways_status": "unknown",
+  "scrape_method": "Chrome same-origin fetch, text blocks, 1 request per 1.1 s",
+  "scraped_at": "2026-09-11T18:24:00.007Z",
+  "source_url": "https://www.bart.gov/stations/OAKL/accessible"
+}

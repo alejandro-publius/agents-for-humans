@@ -1,0 +1,77 @@
+{
+  "abbr": "PITT",
+  "documented_outage_options": [
+    {
+      "elevator": "STREET ELEVATOR",
+      "elevator_kind": "street",
+      "label": "Can't enter station",
+      "situation": "cant_enter",
+      "text": "Take another mode of transportation such as a Tri Delta Transit bus to another BART station. The closest station is Concord."
+    },
+    {
+      "elevator": "STREET ELEVATOR",
+      "elevator_kind": "street",
+      "label": "Can't exit station",
+      "situation": "cant_exit",
+      "text": "Continue on BART to exit at another station. The closest station is Concord."
+    },
+    {
+      "elevator": "PLATFORM ELEVATOR",
+      "elevator_kind": "platform",
+      "label": "Can't enter station",
+      "situation": "cant_enter",
+      "text": "Take another mode of transportation such as a Tri Delta Transit bus to another BART station. The closest station is Concord."
+    },
+    {
+      "elevator": "PLATFORM ELEVATOR",
+      "elevator_kind": "platform",
+      "label": "Can't exit station",
+      "situation": "cant_exit",
+      "text": "Continue on BART to exit at another station. The closest station is Concord."
+    }
+  ],
+  "elevators": [
+    {
+      "kind": "street",
+      "name": "STREET ELEVATOR",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "situation": "cant_enter",
+          "text": "Take another mode of transportation such as a Tri Delta Transit bus to another BART station. The closest station is Concord."
+        },
+        {
+          "label": "Can't exit station",
+          "situation": "cant_exit",
+          "text": "Continue on BART to exit at another station. The closest station is Concord."
+        }
+      ]
+    },
+    {
+      "kind": "platform",
+      "name": "PLATFORM ELEVATOR",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "situation": "cant_enter",
+          "text": "Take another mode of transportation such as a Tri Delta Transit bus to another BART station. The closest station is Concord."
+        },
+        {
+          "label": "Can't exit station",
+          "situation": "cant_exit",
+          "text": "Continue on BART to exit at another station. The closest station is Concord."
+        }
+      ]
+    }
+  ],
+  "http_status": 200,
+  "name": "Pittsburg/Bay Point",
+  "other_sections": [],
+  "outage_intro": "In case of an elevator outage, use the following options or contact the station agent for assistance. Agents can arrange a ride to a different station in an accessible van if needed.",
+  "page_name": "Pittsburg / Bay Point",
+  "pathways": [],
+  "pathways_status": "unknown",
+  "scrape_method": "Chrome same-origin fetch, text blocks, 1 request per 1.1 s",
+  "scraped_at": "2026-09-11T18:24:04.007Z",
+  "source_url": "https://www.bart.gov/stations/PITT/accessible"
+}

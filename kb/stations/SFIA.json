@@ -1,0 +1,77 @@
+{
+  "abbr": "SFIA",
+  "documented_outage_options": [
+    {
+      "elevator": "PLATFORMS 1 AND 2 ELEVATOR (ALL DESTINATIONS)",
+      "elevator_kind": "platform",
+      "label": "Can't enter station",
+      "situation": "cant_enter",
+      "text": "Take the other platform elevator."
+    },
+    {
+      "elevator": "PLATFORMS 1 AND 2 ELEVATOR (ALL DESTINATIONS)",
+      "elevator_kind": "platform",
+      "label": "Can't exit station",
+      "situation": "cant_exit",
+      "text": "Take the other platform elevator."
+    },
+    {
+      "elevator": "PLATFORMS 3 AND 4 ELEVATOR (ALL DESTINATIONS)",
+      "elevator_kind": "platform",
+      "label": "Can't enter station",
+      "situation": "cant_enter",
+      "text": "Take the other platform elevator."
+    },
+    {
+      "elevator": "PLATFORMS 3 AND 4 ELEVATOR (ALL DESTINATIONS)",
+      "elevator_kind": "platform",
+      "label": "Can't exit station",
+      "situation": "cant_exit",
+      "text": "Take the other platform elevator."
+    }
+  ],
+  "elevators": [
+    {
+      "kind": "platform",
+      "name": "PLATFORMS 1 AND 2 ELEVATOR (ALL DESTINATIONS)",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "situation": "cant_enter",
+          "text": "Take the other platform elevator."
+        },
+        {
+          "label": "Can't exit station",
+          "situation": "cant_exit",
+          "text": "Take the other platform elevator."
+        }
+      ]
+    },
+    {
+      "kind": "platform",
+      "name": "PLATFORMS 3 AND 4 ELEVATOR (ALL DESTINATIONS)",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "situation": "cant_enter",
+          "text": "Take the other platform elevator."
+        },
+        {
+          "label": "Can't exit station",
+          "situation": "cant_exit",
+          "text": "Take the other platform elevator."
+        }
+      ]
+    }
+  ],
+  "http_status": 200,
+  "name": "San Francisco Int'l Airport",
+  "other_sections": [],
+  "outage_intro": "In case of an elevator outage, use the following options or contact the station agent for assistance. Agents can arrange a ride to a different station in an accessible van if needed.",
+  "page_name": "San Francisco International Airport",
+  "pathways": [],
+  "pathways_status": "unknown",
+  "scrape_method": "Chrome same-origin fetch, text blocks, 1 request per 1.1 s",
+  "scraped_at": "2026-09-11T18:25:06.008Z",
+  "source_url": "https://www.bart.gov/stations/SFIA/accessible"
+}

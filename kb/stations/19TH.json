@@ -1,0 +1,115 @@
+{
+  "abbr": "19TH",
+  "documented_outage_options": [
+    {
+      "elevator": "STREET ELEVATOR",
+      "elevator_kind": "street",
+      "label": "Can't enter station",
+      "situation": "cant_enter",
+      "text": "Walk, roll, or take AC Transit 0.3 miles south on Broadway to access the street elevator at Broadway and 14th Street on Ogawa plaza."
+    },
+    {
+      "elevator": "STREET ELEVATOR",
+      "elevator_kind": "street",
+      "label": "Can't exit station",
+      "situation": "cant_exit",
+      "text": "Continue on BART to exit at another station. The closest station is 12th St. Oakland City Center (0.3 miles)."
+    },
+    {
+      "elevator": "PLATFORM ELEVATOR 1 (NEAR 17th ST EXIT)",
+      "elevator_kind": "platform",
+      "label": "Can't enter station",
+      "situation": "cant_enter",
+      "text": "Take the alternative platform elevator located at the other end of the station near the exit to 20th street."
+    },
+    {
+      "elevator": "PLATFORM ELEVATOR 1 (NEAR 17th ST EXIT)",
+      "elevator_kind": "platform",
+      "label": "Can't exit station",
+      "situation": "cant_exit",
+      "text": "Take the alternative elevator located at the other end of the platform."
+    },
+    {
+      "elevator": "PLATFORM ELEVATOR 2 (NEAR 20th ST EXIT)",
+      "elevator_kind": "platform",
+      "label": "Can't enter station",
+      "situation": "cant_enter",
+      "text": "Take the alternative platform elevator located at the other end of the station near the exit to 17th Street."
+    },
+    {
+      "elevator": "PLATFORM ELEVATOR 2 (NEAR 20th ST EXIT)",
+      "elevator_kind": "platform",
+      "label": "Can't exit station",
+      "situation": "cant_exit",
+      "text": "Take the alternative elevator located at the other end of the platform."
+    }
+  ],
+  "elevators": [
+    {
+      "kind": "street",
+      "name": "STREET ELEVATOR",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "situation": "cant_enter",
+          "text": "Walk, roll, or take AC Transit 0.3 miles south on Broadway to access the street elevator at Broadway and 14th Street on Ogawa plaza."
+        },
+        {
+          "label": "Can't exit station",
+          "situation": "cant_exit",
+          "text": "Continue on BART to exit at another station. The closest station is 12th St. Oakland City Center (0.3 miles)."
+        }
+      ]
+    },
+    {
+      "kind": "platform",
+      "name": "PLATFORM ELEVATOR 1 (NEAR 17th ST EXIT)",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "situation": "cant_enter",
+          "text": "Take the alternative platform elevator located at the other end of the station near the exit to 20th street."
+        },
+        {
+          "label": "Can't exit station",
+          "situation": "cant_exit",
+          "text": "Take the alternative elevator located at the other end of the platform."
+        }
+      ]
+    },
+    {
+      "kind": "platform",
+      "name": "PLATFORM ELEVATOR 2 (NEAR 20th ST EXIT)",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "situation": "cant_enter",
+          "text": "Take the alternative platform elevator located at the other end of the station near the exit to 17th Street."
+        },
+        {
+          "label": "Can't exit station",
+          "situation": "cant_exit",
+          "text": "Take the alternative elevator located at the other end of the platform."
+        }
+      ]
+    }
+  ],
+  "http_status": 200,
+  "name": "19th St. Oakland",
+  "other_sections": [
+    {
+      "section": "BART Station Real Time Service Notification",
+      "text": [
+        "Follow our Service Alert Twitter Page@SFBARTalert",
+        "Sign up forBART Email and Text Alerts"
+      ]
+    }
+  ],
+  "outage_intro": "In case of an elevator outage, use the following options or contact the station agent for assistance. Agents can arrange a ride to a different station in an accessible van if needed.",
+  "page_name": "19th St. Oakland",
+  "pathways": [],
+  "pathways_status": "unknown",
+  "scrape_method": "Chrome same-origin fetch, text blocks, 1 request per 1.1 s",
+  "scraped_at": "2026-09-11T18:19:21.007Z",
+  "source_url": "https://www.bart.gov/stations/19TH/accessible"
+}

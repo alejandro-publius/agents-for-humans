@@ -33,7 +33,7 @@ Constraints that hold all night.
 
 ## Block B. Last Elevator (only after Block A is fully checked)
 
-- [ ] B1. Station knowledge base. Scrape https://www.bart.gov/guide/accessibility/elevators and the linked accessible-pathway pages and station-specific outage-option pages into `kb/stations/<ABBR>.json` with fields `name, abbr, elevators[], pathways[], documented_outage_options[], source_url, scraped_at`. Rate limit one request per second. If a page is a PDF, extract text with pdfplumber. Commit the JSON so nothing later depends on live scraping.
+- [x] B1. Station knowledge base. Scrape https://www.bart.gov/guide/accessibility/elevators and the linked accessible-pathway pages and station-specific outage-option pages into `kb/stations/<ABBR>.json` with fields `name, abbr, elevators[], pathways[], documented_outage_options[], source_url, scraped_at`. Rate limit one request per second. If a page is a PDF, extract text with pdfplumber. Commit the JSON so nothing later depends on live scraping.
       Accept. `python -m kb.build` reports the number of stations with pathways and the number with documented outage options, and `pytest tests/test_kb.py` checks every file has a source URL and timestamp.
 - [ ] B2. BART client. `src/bart/client.py` for `bsa.aspx?cmd=elev`, `cmd=bsa`, `etd.aspx`, `sched.aspx?cmd=depart`, `stn.aspx`, JSON mode. Live only with `BART_API_KEY`; otherwise reads `fixtures/bart/`. Record three real responses into fixtures if the key is present, else author realistic fixtures from the documented samples at https://api.bart.gov/docs/bsa/elev.aspx and mark them synthetic.
       Accept. `pytest tests/test_bart_client.py -q` passes offline.

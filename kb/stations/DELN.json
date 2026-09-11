@@ -1,0 +1,77 @@
+{
+  "abbr": "DELN",
+  "documented_outage_options": [
+    {
+      "elevator": "PLATFORM 1 ELEVATOR (RICHMOND DIRECTION)",
+      "elevator_kind": "platform",
+      "label": "Can't enter station",
+      "situation": "cant_enter",
+      "text": "Take the Platform 2 elevator on the opposite platform and travel to El Cerrito Plaza, then board the desired train."
+    },
+    {
+      "elevator": "PLATFORM 1 ELEVATOR (RICHMOND DIRECTION)",
+      "elevator_kind": "platform",
+      "label": "Can't exit station",
+      "situation": "cant_exit",
+      "text": "Continue on BART to Richmond then return to El Cerrito del Norte and exit using the elevator on the opposite platform (Platform 2)."
+    },
+    {
+      "elevator": "PLATFORM 2 ELEVATOR (BERRYESSA, SFO/MILLBRAE/DALY CITY DIRECTION)",
+      "elevator_kind": "platform",
+      "label": "Can't enter station",
+      "situation": "cant_enter",
+      "text": "Take the Platform 1 elevator to the opposite platform and travel to Richmond Station, then board the desired train."
+    },
+    {
+      "elevator": "PLATFORM 2 ELEVATOR (BERRYESSA, SFO/MILLBRAE/DALY CITY DIRECTION)",
+      "elevator_kind": "platform",
+      "label": "Can't exit station",
+      "situation": "cant_exit",
+      "text": "Continue on BART to El Cerrito Plaza and then return to El Cerrito del Norte. Exit using Platform 1 elevator."
+    }
+  ],
+  "elevators": [
+    {
+      "kind": "platform",
+      "name": "PLATFORM 1 ELEVATOR (RICHMOND DIRECTION)",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "situation": "cant_enter",
+          "text": "Take the Platform 2 elevator on the opposite platform and travel to El Cerrito Plaza, then board the desired train."
+        },
+        {
+          "label": "Can't exit station",
+          "situation": "cant_exit",
+          "text": "Continue on BART to Richmond then return to El Cerrito del Norte and exit using the elevator on the opposite platform (Platform 2)."
+        }
+      ]
+    },
+    {
+      "kind": "platform",
+      "name": "PLATFORM 2 ELEVATOR (BERRYESSA, SFO/MILLBRAE/DALY CITY DIRECTION)",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "situation": "cant_enter",
+          "text": "Take the Platform 1 elevator to the opposite platform and travel to Richmond Station, then board the desired train."
+        },
+        {
+          "label": "Can't exit station",
+          "situation": "cant_exit",
+          "text": "Continue on BART to El Cerrito Plaza and then return to El Cerrito del Norte. Exit using Platform 1 elevator."
+        }
+      ]
+    }
+  ],
+  "http_status": 200,
+  "name": "El Cerrito del Norte",
+  "other_sections": [],
+  "outage_intro": "In case of an elevator outage, use the following options or contact the station agent for assistance. Agents can arrange a ride to a different station in an accessible van if needed.",
+  "page_name": "El Cerrito del Norte",
+  "pathways": [],
+  "pathways_status": "unknown",
+  "scrape_method": "Chrome same-origin fetch, text blocks, 1 request per 1.1 s",
+  "scraped_at": "2026-09-11T18:21:22.007Z",
+  "source_url": "https://www.bart.gov/stations/DELN/accessible"
+}

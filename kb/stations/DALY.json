@@ -1,0 +1,107 @@
+{
+  "abbr": "DALY",
+  "documented_outage_options": [
+    {
+      "elevator": "PLATFORMS 1 AND 2 ELEVATOR (EAST BAY DIRECTION)",
+      "elevator_kind": "platform",
+      "label": "Can't enter station",
+      "situation": "cant_enter",
+      "text": "Take the elevator on the opposite platform and go back to Colma to board desired train."
+    },
+    {
+      "elevator": "PLATFORMS 1 AND 2 ELEVATOR (EAST BAY DIRECTION)",
+      "elevator_kind": "platform",
+      "label": "Can't exit station",
+      "situation": "cant_exit",
+      "text": "Continue on BART to Balboa Park and then return to Daly City. Exit using Platform 3 elevator."
+    },
+    {
+      "elevator": "PLATFORM 3 ELEVATOR (SFO/MILLBRAE DIRECTION)",
+      "elevator_kind": "platform",
+      "label": "Can't enter station",
+      "situation": "cant_enter",
+      "text": "Take the elevator on the opposite platform and go back to Balboa park to board desired train."
+    },
+    {
+      "elevator": "PLATFORM 3 ELEVATOR (SFO/MILLBRAE DIRECTION)",
+      "elevator_kind": "platform",
+      "label": "Can't exit station",
+      "situation": "cant_exit",
+      "text": "Continue on BART to Colma and then return to Daly City. Exit using the Platform 1/2 elevator."
+    },
+    {
+      "elevator": "ELEVATORS TO PEDESTRIAN TUNNEL",
+      "elevator_kind": "tunnel",
+      "label": "Can't enter station from tunnel",
+      "situation": "cant_enter_from_tunnel",
+      "text": "Drive, walk, or roll to the main station entrance on De Long Street (about 0.3 miles). Turn right on John Daly Boulevard and then left on De Long Street."
+    },
+    {
+      "elevator": "ELEVATORS TO PEDESTRIAN TUNNEL",
+      "elevator_kind": "tunnel",
+      "label": "Can't exit station from tunnel",
+      "situation": "cant_exit_from_tunnel",
+      "text": "Walk or roll about 0.3 miles to the parking area on the other side of the tunnel. Exit the station and take the ramp to the De Long Street parking lot. Cross the parking lot and turn right on John Daly Boulevard."
+    }
+  ],
+  "elevators": [
+    {
+      "kind": "platform",
+      "name": "PLATFORMS 1 AND 2 ELEVATOR (EAST BAY DIRECTION)",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "situation": "cant_enter",
+          "text": "Take the elevator on the opposite platform and go back to Colma to board desired train."
+        },
+        {
+          "label": "Can't exit station",
+          "situation": "cant_exit",
+          "text": "Continue on BART to Balboa Park and then return to Daly City. Exit using Platform 3 elevator."
+        }
+      ]
+    },
+    {
+      "kind": "platform",
+      "name": "PLATFORM 3 ELEVATOR (SFO/MILLBRAE DIRECTION)",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "situation": "cant_enter",
+          "text": "Take the elevator on the opposite platform and go back to Balboa park to board desired train."
+        },
+        {
+          "label": "Can't exit station",
+          "situation": "cant_exit",
+          "text": "Continue on BART to Colma and then return to Daly City. Exit using the Platform 1/2 elevator."
+        }
+      ]
+    },
+    {
+      "kind": "tunnel",
+      "name": "ELEVATORS TO PEDESTRIAN TUNNEL",
+      "outage_options": [
+        {
+          "label": "Can't enter station from tunnel",
+          "situation": "cant_enter_from_tunnel",
+          "text": "Drive, walk, or roll to the main station entrance on De Long Street (about 0.3 miles). Turn right on John Daly Boulevard and then left on De Long Street."
+        },
+        {
+          "label": "Can't exit station from tunnel",
+          "situation": "cant_exit_from_tunnel",
+          "text": "Walk or roll about 0.3 miles to the parking area on the other side of the tunnel. Exit the station and take the ramp to the De Long Street parking lot. Cross the parking lot and turn right on John Daly Boulevard."
+        }
+      ]
+    }
+  ],
+  "http_status": 200,
+  "name": "Daly City",
+  "other_sections": [],
+  "outage_intro": "In case of an elevator outage, use the following options or contact the station agent for assistance. Agents can arrange a ride to a different station in an accessible van if needed.",
+  "page_name": "Daly City",
+  "pathways": [],
+  "pathways_status": "unknown",
+  "scrape_method": "Chrome same-origin fetch, text blocks, 1 request per 1.1 s",
+  "scraped_at": "2026-09-11T18:21:16.014Z",
+  "source_url": "https://www.bart.gov/stations/DALY/accessible"
+}

@@ -1,0 +1,47 @@
+{
+  "abbr": "COLM",
+  "documented_outage_options": [
+    {
+      "elevator": "PLATFORM ELEVATOR",
+      "elevator_kind": "platform",
+      "label": "Can't enter station",
+      "situation": "cant_enter",
+      "text": "Take another mode of transportation such as a SamTrans bus to another BART station. The closest stations are Daly City and South San Francisco, both about 2 miles away."
+    },
+    {
+      "elevator": "PLATFORM ELEVATOR",
+      "elevator_kind": "platform",
+      "label": "Can't exit station",
+      "situation": "cant_exit",
+      "text": "Continue on BART to another station. The closest stations are Daly City and South San Francisco, both about 2 miles away."
+    }
+  ],
+  "elevators": [
+    {
+      "kind": "platform",
+      "name": "PLATFORM ELEVATOR",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "situation": "cant_enter",
+          "text": "Take another mode of transportation such as a SamTrans bus to another BART station. The closest stations are Daly City and South San Francisco, both about 2 miles away."
+        },
+        {
+          "label": "Can't exit station",
+          "situation": "cant_exit",
+          "text": "Continue on BART to another station. The closest stations are Daly City and South San Francisco, both about 2 miles away."
+        }
+      ]
+    }
+  ],
+  "http_status": 200,
+  "name": "Colma",
+  "other_sections": [],
+  "outage_intro": "In case of an elevator outage, use the following options or contact the station agent for assistance. Agents can arrange a ride to a different station in an accessible van if needed.",
+  "page_name": "Colma",
+  "pathways": [],
+  "pathways_status": "unknown",
+  "scrape_method": "Chrome same-origin fetch, text blocks, 1 request per 1.1 s",
+  "scraped_at": "2026-09-11T18:21:12.007Z",
+  "source_url": "https://www.bart.gov/stations/COLM/accessible"
+}

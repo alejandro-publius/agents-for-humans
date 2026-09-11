@@ -1,0 +1,107 @@
+{
+  "abbr": "RICH",
+  "documented_outage_options": [
+    {
+      "elevator": "PLATFORM ELEVATOR",
+      "elevator_kind": "platform",
+      "label": "Can't enter station",
+      "situation": "cant_enter",
+      "text": "Take another mode of transportation such as an AC Transit bus to another BART station. The closest station is El Cerrito del Norte."
+    },
+    {
+      "elevator": "PLATFORM ELEVATOR",
+      "elevator_kind": "platform",
+      "label": "Can't exit station",
+      "situation": "cant_exit",
+      "text": "Continue on BART to exit at another station. The closest station is El Cerrito del Norte."
+    },
+    {
+      "elevator": "STREET ELEVATOR (EAST SIDE OF STATION)",
+      "elevator_kind": "street",
+      "label": "Can't enter station",
+      "situation": "cant_enter",
+      "text": "Use the ramp to enter the station."
+    },
+    {
+      "elevator": "STREET ELEVATOR (EAST SIDE OF STATION)",
+      "elevator_kind": "street",
+      "label": "Can't exit station",
+      "situation": "cant_exit",
+      "text": "Use the ramp to exit the station."
+    },
+    {
+      "elevator": "STREET ELEVATOR (WEST SIDE OF STATION)",
+      "elevator_kind": "street",
+      "label": "Can't enter station",
+      "situation": "cant_enter",
+      "text": "Take another mode of transportation such as an AC Transit bus to another BART station. The closest station is El Cerrito del Norte. An alternative elevator is also available on the east side of the station."
+    },
+    {
+      "elevator": "STREET ELEVATOR (WEST SIDE OF STATION)",
+      "elevator_kind": "street",
+      "label": "Can't exit station",
+      "situation": "cant_exit",
+      "text": "Take the ramp or elevator to the east side of the station, or go back to El Cerrito del Norte Station to exit BART."
+    }
+  ],
+  "elevators": [
+    {
+      "kind": "platform",
+      "name": "PLATFORM ELEVATOR",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "situation": "cant_enter",
+          "text": "Take another mode of transportation such as an AC Transit bus to another BART station. The closest station is El Cerrito del Norte."
+        },
+        {
+          "label": "Can't exit station",
+          "situation": "cant_exit",
+          "text": "Continue on BART to exit at another station. The closest station is El Cerrito del Norte."
+        }
+      ]
+    },
+    {
+      "kind": "street",
+      "name": "STREET ELEVATOR (EAST SIDE OF STATION)",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "situation": "cant_enter",
+          "text": "Use the ramp to enter the station."
+        },
+        {
+          "label": "Can't exit station",
+          "situation": "cant_exit",
+          "text": "Use the ramp to exit the station."
+        }
+      ]
+    },
+    {
+      "kind": "street",
+      "name": "STREET ELEVATOR (WEST SIDE OF STATION)",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "situation": "cant_enter",
+          "text": "Take another mode of transportation such as an AC Transit bus to another BART station. The closest station is El Cerrito del Norte. An alternative elevator is also available on the east side of the station."
+        },
+        {
+          "label": "Can't exit station",
+          "situation": "cant_exit",
+          "text": "Take the ramp or elevator to the east side of the station, or go back to El Cerrito del Norte Station to exit BART."
+        }
+      ]
+    }
+  ],
+  "http_status": 200,
+  "name": "Richmond",
+  "other_sections": [],
+  "outage_intro": "In case of an elevator outage, use the following options or contact the station agent for assistance. Agents can arrange a ride to a different station in an accessible van if needed.",
+  "page_name": "Richmond",
+  "pathways": [],
+  "pathways_status": "unknown",
+  "scrape_method": "Chrome same-origin fetch, text blocks, 1 request per 1.1 s",
+  "scraped_at": "2026-09-11T18:24:12.006Z",
+  "source_url": "https://www.bart.gov/stations/RICH/accessible"
+}

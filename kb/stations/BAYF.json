@@ -1,0 +1,55 @@
+{
+  "abbr": "BAYF",
+  "documented_outage_options": [
+    {
+      "elevator": "STATION ELEVATOR",
+      "elevator_kind": "station",
+      "label": "Can't enter station",
+      "situation": "cant_enter",
+      "text": "Take another mode of transportation such as an AC Transit bus to another BART station. The closest station is San Leandro."
+    },
+    {
+      "elevator": "STATION ELEVATOR",
+      "elevator_kind": "station",
+      "label": "Can't exit station",
+      "situation": "cant_exit",
+      "text": "Continue on BART to exit at another station. The closest station is San Leandro."
+    }
+  ],
+  "elevators": [
+    {
+      "kind": "station",
+      "name": "STATION ELEVATOR",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "situation": "cant_enter",
+          "text": "Take another mode of transportation such as an AC Transit bus to another BART station. The closest station is San Leandro."
+        },
+        {
+          "label": "Can't exit station",
+          "situation": "cant_exit",
+          "text": "Continue on BART to exit at another station. The closest station is San Leandro."
+        }
+      ]
+    }
+  ],
+  "http_status": 200,
+  "name": "Bay Fair (San Leandro)",
+  "other_sections": [
+    {
+      "section": "BART Station Real Time Service Notification",
+      "text": [
+        "Follow our Service Alert Twitter Page@SFBARTalert",
+        "Sign up forBART Email and Text Alerts"
+      ]
+    }
+  ],
+  "outage_intro": "In case of an elevator outage, use the following options or contact the station agent for assistance. Agents can arrange a ride to a different station in an accessible van if needed.",
+  "page_name": "Bay Fair",
+  "pathways": [],
+  "pathways_status": "unknown",
+  "scrape_method": "Chrome same-origin fetch, text blocks, 1 request per 1.1 s",
+  "scraped_at": "2026-09-11T18:19:31.007Z",
+  "source_url": "https://www.bart.gov/stations/BAYF/accessible"
+}

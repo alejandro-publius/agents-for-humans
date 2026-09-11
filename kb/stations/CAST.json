@@ -1,0 +1,75 @@
+{
+  "abbr": "CAST",
+  "documented_outage_options": [
+    {
+      "elevator": "STATION ELEVATOR",
+      "elevator_kind": "station",
+      "label": "Can't enter station",
+      "situation": "cant_enter",
+      "text": "Take another mode of transportation such as an AC Transit bus to another BART station. The closest station is Hayward."
+    },
+    {
+      "elevator": "STATION ELEVATOR",
+      "elevator_kind": "station",
+      "label": "Can't exit station",
+      "situation": "cant_exit",
+      "text": "Continue on BART to exit at another station. The closest station is Hayward."
+    }
+  ],
+  "elevators": [
+    {
+      "kind": "station",
+      "name": "STATION ELEVATOR",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "situation": "cant_enter",
+          "text": "Take another mode of transportation such as an AC Transit bus to another BART station. The closest station is Hayward."
+        },
+        {
+          "label": "Can't exit station",
+          "situation": "cant_exit",
+          "text": "Continue on BART to exit at another station. The closest station is Hayward."
+        }
+      ]
+    }
+  ],
+  "http_status": 200,
+  "name": "Castro Valley",
+  "other_sections": [
+    {
+      "section": "BART Station Real Time Service Notification",
+      "text": [
+        "Follow our Service Alert Twitter Page@SFBARTalert",
+        "Sign up forBART Email and Text Alerts"
+      ]
+    }
+  ],
+  "outage_intro": "In case of an elevator outage, use the following options or contact the station agent for assistance. Agents can arrange a ride to a different station in an accessible van if needed.",
+  "page_name": "Castro Valley",
+  "pathways": [
+    {
+      "section": "Entering Castro Valley Station",
+      "text": [
+        "Check the status of out of service elevators ELEVATOR ALERTS",
+        "The train platforms at Castro Valley Station are located on a raised platform. Concourse is on the street level.",
+        "Only one elevator is needed to get from the street to the train platform.",
+        "The elevator is located inside the paid area on the concourse level. Press “P” for train platform level.",
+        "At the train platform level, you will be approximately at the center of the train boarding platform."
+      ]
+    },
+    {
+      "section": "Exiting Castro Valley Station",
+      "text": [
+        "The train platforms at Castro Valley Station are located on a raised platform.",
+        "Only one elevator is needed to get from the train platform to the street.",
+        "Exiting the train, the street elevator you will be approximately at the center of the train platform. Press “C” for concourse level.",
+        "When exiting the elevator, you will be inside the paid area."
+      ]
+    }
+  ],
+  "pathways_status": "documented",
+  "scrape_method": "Chrome same-origin fetch, text blocks, 1 request per 1.1 s",
+  "scraped_at": "2026-09-11T18:19:35.007Z",
+  "source_url": "https://www.bart.gov/stations/CAST/accessible"
+}

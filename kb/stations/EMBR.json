@@ -1,0 +1,77 @@
+{
+  "abbr": "EMBR",
+  "documented_outage_options": [
+    {
+      "elevator": "STREET ELEVATOR",
+      "elevator_kind": "street",
+      "label": "Can't enter station",
+      "situation": "cant_enter",
+      "text": "Use the Montgomery Station street elevator at Market and Sutter streets (0.3 miles/ 3 short blocks)"
+    },
+    {
+      "elevator": "STREET ELEVATOR",
+      "elevator_kind": "street",
+      "label": "Can't exit station",
+      "situation": "cant_exit",
+      "text": "Continue on train to exit at another station. The closest station is Montgomery St. (0.3 miles/ 3 short blocks)"
+    },
+    {
+      "elevator": "PLATFORM ELEVATOR",
+      "elevator_kind": "platform",
+      "label": "Can't enter station",
+      "situation": "cant_enter",
+      "text": "Use to the Montgomery Station street elevator at Market and Sutter streets (0.3 miles/ 3 short blocks)"
+    },
+    {
+      "elevator": "PLATFORM ELEVATOR",
+      "elevator_kind": "platform",
+      "label": "Can't exit station",
+      "situation": "cant_exit",
+      "text": "Continue on train to exit at another station. The closest station is Montgomery St. (0.3 miles)."
+    }
+  ],
+  "elevators": [
+    {
+      "kind": "street",
+      "name": "STREET ELEVATOR",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "situation": "cant_enter",
+          "text": "Use the Montgomery Station street elevator at Market and Sutter streets (0.3 miles/ 3 short blocks)"
+        },
+        {
+          "label": "Can't exit station",
+          "situation": "cant_exit",
+          "text": "Continue on train to exit at another station. The closest station is Montgomery St. (0.3 miles/ 3 short blocks)"
+        }
+      ]
+    },
+    {
+      "kind": "platform",
+      "name": "PLATFORM ELEVATOR",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "situation": "cant_enter",
+          "text": "Use to the Montgomery Station street elevator at Market and Sutter streets (0.3 miles/ 3 short blocks)"
+        },
+        {
+          "label": "Can't exit station",
+          "situation": "cant_exit",
+          "text": "Continue on train to exit at another station. The closest station is Montgomery St. (0.3 miles)."
+        }
+      ]
+    }
+  ],
+  "http_status": 200,
+  "name": "Embarcadero (SF)",
+  "other_sections": [],
+  "outage_intro": "In case of an elevator outage, use the following options or contact the station agent for assistance. Agents can arrange a ride to a different station in an accessible van if needed.",
+  "page_name": "Embarcadero",
+  "pathways": [],
+  "pathways_status": "unknown",
+  "scrape_method": "Chrome same-origin fetch, text blocks, 1 request per 1.1 s",
+  "scraped_at": "2026-09-11T18:21:26.007Z",
+  "source_url": "https://www.bart.gov/stations/EMBR/accessible"
+}

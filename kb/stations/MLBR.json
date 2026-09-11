@@ -1,0 +1,137 @@
+{
+  "abbr": "MLBR",
+  "documented_outage_options": [
+    {
+      "elevator": "STREET ELEVATOR FROM THE EAST PLAZA",
+      "elevator_kind": "street",
+      "label": "Can't enter station",
+      "situation": "cant_enter",
+      "text": "Take the elevator in the BART parking garage to access the walkway to the station concourse."
+    },
+    {
+      "elevator": "STREET ELEVATOR FROM THE EAST PLAZA",
+      "elevator_kind": "street",
+      "label": "Can't exit station",
+      "situation": "cant_exit",
+      "text": "Exit the station using the elevator in the BART parking garage."
+    },
+    {
+      "elevator": "CALTRAIN ELEVATOR - WEST PLAZA TO CONCOURSE",
+      "elevator_kind": "caltrain",
+      "label": "Can't enter station",
+      "situation": "cant_enter",
+      "text": "Access the station from the opposite (East Plaza) side."
+    },
+    {
+      "elevator": "CALTRAIN ELEVATOR - WEST PLAZA TO CONCOURSE",
+      "elevator_kind": "caltrain",
+      "label": "Can't exit station",
+      "situation": "cant_exit",
+      "text": "Exit the station from the opposite (East Plaza) side."
+    },
+    {
+      "elevator": "PLATFORM 3 ELEVATOR (ALL DESTINATIONS)",
+      "elevator_kind": "platform",
+      "label": "Can't enter station",
+      "situation": "cant_enter",
+      "text": "Use the Caltrain Platform 4/Northbound elevator."
+    },
+    {
+      "elevator": "PLATFORM 3 ELEVATOR (ALL DESTINATIONS)",
+      "elevator_kind": "platform",
+      "label": "Can't exit station",
+      "situation": "cant_exit",
+      "text": "Use the Caltrain platform 4/Northbound elevator."
+    },
+    {
+      "elevator": "CALTRAIN ELEVATOR - CONCOURSE TO NORTHBOUND PLATFORM",
+      "elevator_kind": "caltrain",
+      "label": "Can't enter station",
+      "situation": "cant_enter",
+      "text": "Use the BART Platform 3 elevator."
+    },
+    {
+      "elevator": "CALTRAIN ELEVATOR - CONCOURSE TO NORTHBOUND PLATFORM",
+      "elevator_kind": "caltrain",
+      "label": "Can't exit station",
+      "situation": "cant_exit",
+      "text": "Use the BART Platform 3 elevator."
+    }
+  ],
+  "elevators": [
+    {
+      "kind": "street",
+      "name": "STREET ELEVATOR FROM THE EAST PLAZA",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "situation": "cant_enter",
+          "text": "Take the elevator in the BART parking garage to access the walkway to the station concourse."
+        },
+        {
+          "label": "Can't exit station",
+          "situation": "cant_exit",
+          "text": "Exit the station using the elevator in the BART parking garage."
+        }
+      ]
+    },
+    {
+      "kind": "caltrain",
+      "name": "CALTRAIN ELEVATOR - WEST PLAZA TO CONCOURSE",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "situation": "cant_enter",
+          "text": "Access the station from the opposite (East Plaza) side."
+        },
+        {
+          "label": "Can't exit station",
+          "situation": "cant_exit",
+          "text": "Exit the station from the opposite (East Plaza) side."
+        }
+      ]
+    },
+    {
+      "kind": "platform",
+      "name": "PLATFORM 3 ELEVATOR (ALL DESTINATIONS)",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "situation": "cant_enter",
+          "text": "Use the Caltrain Platform 4/Northbound elevator."
+        },
+        {
+          "label": "Can't exit station",
+          "situation": "cant_exit",
+          "text": "Use the Caltrain platform 4/Northbound elevator."
+        }
+      ]
+    },
+    {
+      "kind": "caltrain",
+      "name": "CALTRAIN ELEVATOR - CONCOURSE TO NORTHBOUND PLATFORM",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "situation": "cant_enter",
+          "text": "Use the BART Platform 3 elevator."
+        },
+        {
+          "label": "Can't exit station",
+          "situation": "cant_exit",
+          "text": "Use the BART Platform 3 elevator."
+        }
+      ]
+    }
+  ],
+  "http_status": 200,
+  "name": "Millbrae",
+  "other_sections": [],
+  "outage_intro": "In case of an elevator outage, use the following options or contact the station agent for assistance. Agents can arrange a ride to a different station in an accessible van if needed.",
+  "page_name": "Millbrae",
+  "pathways": [],
+  "pathways_status": "unknown",
+  "scrape_method": "Chrome same-origin fetch, text blocks, 1 request per 1.1 s",
+  "scraped_at": "2026-09-11T18:22:40.008Z",
+  "source_url": "https://www.bart.gov/stations/MLBR/accessible"
+}

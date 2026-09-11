@@ -1,0 +1,85 @@
+{
+  "abbr": "24TH",
+  "documented_outage_options": [
+    {
+      "elevator": "STREET ELEVATOR",
+      "elevator_kind": "street",
+      "label": "Can't enter station",
+      "situation": "cant_enter",
+      "text": "Take an alternative mode of transportation such as Muni to another BART station. The closest station is 16th St. Mission (0.9 miles)."
+    },
+    {
+      "elevator": "STREET ELEVATOR",
+      "elevator_kind": "street",
+      "label": "Can't exit station",
+      "situation": "cant_exit",
+      "text": "Continue on BART to exit at another station. The closest station is 16th St. Mission (0.9 miles). 24th St. Mission"
+    },
+    {
+      "elevator": "PLATFORM ELEVATOR",
+      "elevator_kind": "platform",
+      "label": "Can't enter station",
+      "situation": "cant_enter",
+      "text": "Take an alternative mode of transportation such as Muni to another BART station. The closest station is 16th St. Mission (0.9 miles)."
+    },
+    {
+      "elevator": "PLATFORM ELEVATOR",
+      "elevator_kind": "platform",
+      "label": "Can't exit station",
+      "situation": "cant_exit",
+      "text": "Continue on BART to exit at another station. The closest station is 16th St. Mission (0.9 miles)."
+    }
+  ],
+  "elevators": [
+    {
+      "kind": "street",
+      "name": "STREET ELEVATOR",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "situation": "cant_enter",
+          "text": "Take an alternative mode of transportation such as Muni to another BART station. The closest station is 16th St. Mission (0.9 miles)."
+        },
+        {
+          "label": "Can't exit station",
+          "situation": "cant_exit",
+          "text": "Continue on BART to exit at another station. The closest station is 16th St. Mission (0.9 miles). 24th St. Mission"
+        }
+      ]
+    },
+    {
+      "kind": "platform",
+      "name": "PLATFORM ELEVATOR",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "situation": "cant_enter",
+          "text": "Take an alternative mode of transportation such as Muni to another BART station. The closest station is 16th St. Mission (0.9 miles)."
+        },
+        {
+          "label": "Can't exit station",
+          "situation": "cant_exit",
+          "text": "Continue on BART to exit at another station. The closest station is 16th St. Mission (0.9 miles)."
+        }
+      ]
+    }
+  ],
+  "http_status": 200,
+  "name": "24th St. Mission (SF)",
+  "other_sections": [
+    {
+      "section": "BART Station Real Time Service Notification",
+      "text": [
+        "Follow our Service Alert Twitter Page@SFBARTalert",
+        "Sign up forBART Email and Text Alerts"
+      ]
+    }
+  ],
+  "outage_intro": "In case of an elevator outage, use the following options or contact the station agent for assistance. Agents can arrange a ride to a different station in an accessible van if needed.",
+  "page_name": "24th Street Mission",
+  "pathways": [],
+  "pathways_status": "unknown",
+  "scrape_method": "Chrome same-origin fetch, text blocks, 1 request per 1.1 s",
+  "scraped_at": "2026-09-11T18:19:23.006Z",
+  "source_url": "https://www.bart.gov/stations/24TH/accessible"
+}
