@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import argparse
 import logging
+import os
 import sqlite3
 import sys
 import time
@@ -126,6 +127,17 @@ def poll_once(
     return PollResult(taken_at, source, fragments, inserted, cleared, unchanged)
 
 
+def read_env_key(path: Path, name: str) -> str | None:
+    """Read NAME=value from a dotenv-style file. Used only with an explicit --env-file."""
+    if not path.exists():
+        return None
+    for line in path.read_text().splitlines():
+        line = line.strip()
+        if line.startswith(f"{name}=") and not line.startswith("#"):
+            return line.split("=", 1)[1].strip().strip('"').strip("'") or None
+    return None
+
+
 def archive_payload(archive_dir: Path, payload: dict, taken_at: str, source: str) -> Path:
     """Save one raw feed payload and append it to ``manifest.json`` in the replay format."""
     import json
@@ -160,7 +172,14 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--archive-dir", type=Path, help="also save every raw payload here plus manifest.json (replayable)"
     )
+    parser.add_argument(
+        "--env-file", type=Path, help="read BART_API_KEY from this KEY=value file if not in the environment"
+    )
     args = parser.parse_args(argv)
+    if args.env_file and not os.getenv("BART_API_KEY"):
+        key = read_env_key(args.env_file, "BART_API_KEY")
+        if key:
+            os.environ["BART_API_KEY"] = key
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(name)s %(levelname)s %(message)s")
 
     client = BartClient()

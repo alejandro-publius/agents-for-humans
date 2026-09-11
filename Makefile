@@ -6,7 +6,7 @@ PY    := $(VENV)/bin/python
 UV    := $(shell command -v uv 2>/dev/null)
 ABLATE ?= 0
 
-.PHONY: help setup lint test evals evals-ablate results render-claims verify-claims secret-scan verify replay poll demo-one app inbox-replay report labels relevance archive clean
+.PHONY: help setup lint test evals evals-ablate results render-claims verify-claims secret-scan verify replay poll demo-one app inbox-replay report labels relevance archive quota clean
 
 help: ## list targets
 	@grep -E '^[a-z-]+:.*## ' $(MAKEFILE_LIST) | awk -F ':.*## ' '{printf "  %-10s %s\n", $$1, $$2}'
@@ -52,8 +52,11 @@ labels: ## export evals/labels/relevance.csv from the inbox (keeps existing huma
 relevance: ## score agent interruptions against the two label columns -> results/relevance.json
 	$(PY) -m evals.relevance
 
-archive: ## live: poll every 5 minutes with BART_API_KEY and archive every payload to data/archive/ (Ctrl-C to stop)
-	$(PY) -m src.poller --interval 300 --archive-dir data/archive
+archive: ## live: poll every 5 min with BART_API_KEY into data/archive/ (own db, never touched by make replay)
+	$(PY) -m src.poller --interval 300 --archive-dir data/archive --db data/archive/outages.sqlite --env-file .env
+
+quota: ## read-only: print the Amazon Bedrock AgentCore Runtime quotas for this account/region (needs AWS creds)
+	$(PY) scripts/agentcore_quota.py
 
 report: ## weekly quiet report for one rider -> results/interruptions.json (RIDER=demo)
 	$(PY) -m src.report --rider $(or $(RIDER),demo)

@@ -61,3 +61,13 @@ def test_cli_once_with_fixture(tmp_path, capsys):
     assert main(["--once", "--fixture", str(FIXTURES_DIR / "elev_sample.json"), "--db", str(db)]) == 0
     out = capsys.readouterr().out
     assert "inserted=1" in out and "inserted=0" in out
+
+
+def test_env_file_key_is_read_only_from_the_given_file(tmp_path):
+    from src.poller import read_env_key
+
+    f = tmp_path / "env"
+    f.write_text("# comment\nOTHER=1\nBART_API_KEY='NOT-A-REAL-KEY-0000'\n")
+    assert read_env_key(f, "BART_API_KEY") == "NOT-A-REAL-KEY-0000"
+    assert read_env_key(f, "MISSING") is None
+    assert read_env_key(tmp_path / "absent", "BART_API_KEY") is None
