@@ -8,7 +8,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
-from policy import Trip
+from policy import Preferences, Trip
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_DB = REPO_ROOT / "data" / "riders.sqlite"
@@ -114,16 +114,27 @@ class RiderStore:
         rows = self.conn.execute(sql, (rider_id,) if rider_id else ()).fetchall()
         return [{**dict(r), "days": json.loads(r["days"]), "needs": json.loads(r["needs"])} for r in rows]
 
-    @staticmethod
-    def as_policy_trip(row: dict[str, Any]) -> Trip:
+    def as_policy_trip(self, row: dict[str, Any]) -> Trip:
+        """The policy Trip for a stored trip, with the rider's preferences folded into its needs."""
+        prefs = Preferences.from_dict(self.preferences(row["rider_id"]))
         return Trip(
             origin=row["origin"],
             dest=row["dest"],
             days=tuple(row["days"]),
             window=(row["window_start"], row["window_end"]),
-            needs=frozenset(row["needs"]),
+            needs=frozenset(row["needs"]) | prefs.needs(),
             rider_id=row["rider_id"],
         )
+
+    def preferences(self, rider_id: str) -> dict[str, Any]:
+        row = self.conn.execute("SELECT preferences FROM riders WHERE id=?", (rider_id,)).fetchone()
+        return json.loads(row["preferences"]) if row else {}
+
+    def set_preferences(self, rider_id: str, prefs: Preferences) -> None:
+        self.ensure_rider(rider_id)
+        with self.conn:
+            payload = json.dumps(prefs.as_dict())
+            self.conn.execute("UPDATE riders SET preferences=? WHERE id=?", (payload, rider_id))
 
     # --- inbox -------------------------------------------------------------------------------
     def add_decision(self, **fields: Any) -> int:

@@ -56,9 +56,9 @@ These are the items that move the entry from "proof of concept" to "complete pro
 
 - [x] C1. Rider app. One page served by FastAPI. Register a trip (origin, destination, days, window, needs), an inbox of every decision the agent made with the reasoning and the BART option ranking shown, and a replay timeline a judge can scrub through the weekend's real outages.
       Accept. `make app` serves on localhost, a registered trip appears in `data/riders.sqlite`, and `make replay` populates the inbox from the archived feed with no network.
-- [ ] C2. Weekly quiet report. From `data/outages.sqlite`, generate "N outages touched your stations, M touched your trips, K interruptions sent" per rider, plus the BART-style alert count for comparison.
+- [x] C2. Weekly quiet report. From `data/outages.sqlite`, generate "N outages touched your stations, M touched your trips, K interruptions sent" per rider, plus the BART-style alert count for comparison.
       Accept. `python -m src.report --rider demo` prints the four numbers and writes `results/interruptions.json`.
-- [ ] C3. Rider preferences memory. A `preferences` object per rider (prefers backtracking to buses, never travels after dark, needs the larger elevator) that changes option ranking. Store in AgentCore Memory when credentials are present, local JSON otherwise, behind one interface.
+- [x] C3. Rider preferences memory. A `preferences` object per rider (prefers backtracking to buses, never travels after dark, needs the larger elevator) that changes option ranking. Store in AgentCore Memory when credentials are present, local JSON otherwise, behind one interface.
       Accept. `pytest tests/test_preferences.py` shows the same outage producing two different top options for two riders.
 - [ ] C4. Live archive and labels. With `BART_API_KEY`, run the poller continuously through Sunday. Export `evals/labels/relevance.csv` with one row per outage per demo trip and two label columns for two independent labelers. Report agreement.
       Accept. `results/relevance.json` reports precision, recall, and inter-labeler agreement.

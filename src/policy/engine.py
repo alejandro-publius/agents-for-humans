@@ -231,6 +231,8 @@ def _rank_options(trip, record, documented, station, origin, dest, when, client,
         label = documented["option_label"]
         feasible, reason = True, None
         minutes, basis = None, None
+        if label == "alternate_elevator" and "larger_elevator" in trip.needs:
+            feasible, reason = False, "rider needs a larger elevator; elevator dimensions are not in the KB"
         if label == "backtracking":
             if last_train:
                 feasible, reason = False, "no later train to return on (last train)"
@@ -279,5 +281,13 @@ def _rank_options(trip, record, documented, station, origin, dest, when, client,
         )
     if flags.get("after_dark"):
         notes.append("after dark: BART lists it as a Mitigation Trip justification (order unverified)")
+        if "no_after_dark" in trip.needs:
+            # Rider preference: after dark, the Station Agent's accessible van outranks riding or rolling
+            # elsewhere. Rank comes from the preference, not from BART's order; the note says so.
+            for o in options:
+                if o.option in ("backtracking", "transit", "alternate_elevator") and o.feasible:
+                    o.feasible = False
+                    o.reason = "rider does not travel after dark; Mitigation Trip preferred"
+            notes.append("rider preference: never after dark; Mitigation Trip ranked first")
     options.sort(key=lambda o: o.rank)
     return options
