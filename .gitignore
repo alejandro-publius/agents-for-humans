@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Secrets & local config -- never commit credentials
+.env
+.env.*
+!.env.example
+*.pem
+
+# Agent runtime state
+.sessions/
+.agent-state/
+*.log
+
+# AgentCore / AWS tooling
+.bedrock_agentcore.yaml
+.bedrock_agentcore/
+Dockerfile.agentcore
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store

@@ -1,0 +1,48 @@
+[project]
+name = "afh-agent"
+version = "0.1.0"
+description = "Agents for Humans hackathon entry: a Strands Agents SDK agent that handles a repetitive task end to end."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Alex Vintera" },
+    { name = "Rachel Selbrede" },
+]
+requires-python = ">=3.10"
+dependencies = [
+    "strands-agents>=1.55.1",
+    "strands-agents-tools>=0.8.8",
+]
+
+[project.optional-dependencies]
+anthropic = ["strands-agents[anthropic]"]
+openai = ["strands-agents[openai]"]
+ollama = ["strands-agents[ollama]"]
+agentcore = [
+    "bedrock-agentcore>=1.22",
+    "bedrock-agentcore-starter-toolkit>=0.3",
+]
+
+[project.scripts]
+afh = "afh_agent.cli:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.16.7",
+]
+
+[build-system]
+requires = ["uv_build>=0.11.28,<0.12.0"]
+build-backend = "uv_build"
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
