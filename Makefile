@@ -6,7 +6,7 @@ PY    := $(VENV)/bin/python
 UV    := $(shell command -v uv 2>/dev/null)
 ABLATE ?= 0
 
-.PHONY: help setup lint test evals evals-ablate results verify-claims secret-scan verify replay clean
+.PHONY: help setup lint test evals evals-ablate results render-claims verify-claims secret-scan verify replay clean
 
 help: ## list targets
 	@grep -E '^[a-z-]+:.*## ' $(MAKEFILE_LIST) | awk -F ':.*## ' '{printf "  %-10s %s\n", $$1, $$2}'
@@ -39,6 +39,9 @@ replay: ## offline: run every case through the agent and write results/replay.md
 
 results: ## print results/summary.json
 	@cat results/summary.json
+
+render-claims: ## copy current results/*.json values into the README claim markers (never type numbers)
+	$(PY) scripts/render_claims.py
 
 verify-claims: ## every number in README.md marked <!-- claim:key --> must match results/*.json
 	$(PY) scripts/verify_claims.py

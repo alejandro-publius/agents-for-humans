@@ -3,15 +3,16 @@
   "ablated": false,
   "note": "mock provider: scripted model turns from fixtures/model; these suites measure the harness (hook, steering, schema), not model quality",
   "network_attempts": 0,
-  "cases_run": 7,
-  "cases_passed": 7,
+  "cases_run": 17,
+  "cases_passed": 17,
   "accuracy": 1.0,
   "accuracy_pct": 100.0,
   "hook_cancellations": 1,
   "steering_rewrites": 1,
-  "model_calls": 11,
+  "model_calls": 21,
   "suites": {
     "harness_hook": {
+      "baselines": {},
       "suite": "harness_hook",
       "description": "Does the BeforeToolCall hook cancel tool calls whose arguments name an unknown station? Output is the status of the first tool call: 'cancelled' or 'executed'.",
       "output_of": "first_tool_status",
@@ -39,6 +40,7 @@
       }
     },
     "harness_steering": {
+      "baselines": {},
       "suite": "harness_steering",
       "description": "Does the steering handler make the final response recommend code's top feasible option? Output is the first option named in the final text.",
       "output_of": "first_option_in_text",
@@ -66,6 +68,7 @@
       }
     },
     "harness_structured": {
+      "baselines": {},
       "suite": "harness_structured",
       "description": "Does every run end in a schema-valid Plan? Output is plan.option from the structured output.",
       "output_of": "plan_option",
@@ -93,6 +96,267 @@
         "invalid_plan_then_valid": {
           "expected": "transit",
           "actual": "transit",
+          "pass": true
+        }
+      }
+    },
+    "outage_parse": {
+      "baselines": {
+        "regex_accuracy_pct": 100.0,
+        "regex_cases_passed": 10
+      },
+      "suite": "outage_parse",
+      "description": "Free-text outage fragment -> {station_abbr, level_from, level_to, platform_label, kb_elevator}. The model proposes (mock: scripted proposal per case); code validates against kb/ and resolves the elevator. Case 1 is BART's documented sample; the rest are authored in the same shape from KB elevator names. A regex baseline is reported alongside.",
+      "output_of": "outage_parse",
+      "cases_run": 10,
+      "cases_passed": 10,
+      "accuracy": 1.0,
+      "accuracy_pct": 100.0,
+      "strands_evals_overall_score": 1.0,
+      "mechanisms": {
+        "hook_cancellations": 0,
+        "steering_rewrites": 0,
+        "model_calls": 10
+      },
+      "cases": {
+        "deln_platform_richmond_documented_sample": {
+          "expected": {
+            "station_abbr": "DELN",
+            "level_from": "platform",
+            "level_to": null,
+            "platform_label": "Richmond",
+            "kb_elevator": "PLATFORM 1 ELEVATOR (RICHMOND DIRECTION)"
+          },
+          "actual": {
+            "station_abbr": "DELN",
+            "level_from": "platform",
+            "level_to": null,
+            "platform_label": "Richmond",
+            "kb_elevator": "PLATFORM 1 ELEVATOR (RICHMOND DIRECTION)"
+          },
+          "regex_baseline": {
+            "station_abbr": "DELN",
+            "level_from": "platform",
+            "level_to": null,
+            "platform_label": "Richmond",
+            "kb_elevator": "PLATFORM 1 ELEVATOR (RICHMOND DIRECTION)"
+          },
+          "pass": true
+        },
+        "sanl_platform_sfo_direction": {
+          "expected": {
+            "station_abbr": "SANL",
+            "level_from": "platform",
+            "level_to": null,
+            "platform_label": "SFO/Millbrae/Daly City",
+            "kb_elevator": "PLATFORM 2 ELEVATOR (RICHMOND, SFO/MILLBRAE/DALY CITY DIRECTIONS)"
+          },
+          "actual": {
+            "station_abbr": "SANL",
+            "level_from": "platform",
+            "level_to": null,
+            "platform_label": "SFO/Millbrae/Daly City",
+            "kb_elevator": "PLATFORM 2 ELEVATOR (RICHMOND, SFO/MILLBRAE/DALY CITY DIRECTIONS)"
+          },
+          "regex_baseline": {
+            "station_abbr": "SANL",
+            "level_from": "platform",
+            "level_to": null,
+            "platform_label": "SFO/Millbrae/Daly City",
+            "kb_elevator": "PLATFORM 2 ELEVATOR (RICHMOND, SFO/MILLBRAE/DALY CITY DIRECTIONS)"
+          },
+          "pass": true
+        },
+        "plza_platform_richmond": {
+          "expected": {
+            "station_abbr": "PLZA",
+            "level_from": "platform",
+            "level_to": null,
+            "platform_label": "Richmond",
+            "kb_elevator": "PLATFORM 1 ELEVATOR (RICHMOND DIRECTION)"
+          },
+          "actual": {
+            "station_abbr": "PLZA",
+            "level_from": "platform",
+            "level_to": null,
+            "platform_label": "Richmond",
+            "kb_elevator": "PLATFORM 1 ELEVATOR (RICHMOND DIRECTION)"
+          },
+          "regex_baseline": {
+            "station_abbr": "PLZA",
+            "level_from": "platform",
+            "level_to": null,
+            "platform_label": "Richmond",
+            "kb_elevator": "PLATFORM 1 ELEVATOR (RICHMOND DIRECTION)"
+          },
+          "pass": true
+        },
+        "embr_street_concourse": {
+          "expected": {
+            "station_abbr": "EMBR",
+            "level_from": "street",
+            "level_to": "concourse",
+            "platform_label": null,
+            "kb_elevator": "STREET ELEVATOR"
+          },
+          "actual": {
+            "station_abbr": "EMBR",
+            "level_from": "street",
+            "level_to": "concourse",
+            "platform_label": null,
+            "kb_elevator": "STREET ELEVATOR"
+          },
+          "regex_baseline": {
+            "station_abbr": "EMBR",
+            "level_from": "street",
+            "level_to": "concourse",
+            "platform_label": null,
+            "kb_elevator": "STREET ELEVATOR"
+          },
+          "pass": true
+        },
+        "12th_street_ogawa_plaza": {
+          "expected": {
+            "station_abbr": "12TH",
+            "level_from": "street",
+            "level_to": null,
+            "platform_label": "14th St/Ogawa Plaza",
+            "kb_elevator": "STREET ELEVATOR (14TH STREET/OGAWA PLAZA)"
+          },
+          "actual": {
+            "station_abbr": "12TH",
+            "level_from": "street",
+            "level_to": null,
+            "platform_label": "14th St/Ogawa Plaza",
+            "kb_elevator": "STREET ELEVATOR (14TH STREET/OGAWA PLAZA)"
+          },
+          "regex_baseline": {
+            "station_abbr": "12TH",
+            "level_from": "street",
+            "level_to": null,
+            "platform_label": "14th St/Ogawa Plaza",
+            "kb_elevator": "STREET ELEVATOR (14TH STREET/OGAWA PLAZA)"
+          },
+          "pass": true
+        },
+        "ashb_street_concourse": {
+          "expected": {
+            "station_abbr": "ASHB",
+            "level_from": "street",
+            "level_to": "concourse",
+            "platform_label": null,
+            "kb_elevator": "STREET ELEVATOR"
+          },
+          "actual": {
+            "station_abbr": "ASHB",
+            "level_from": "street",
+            "level_to": "concourse",
+            "platform_label": null,
+            "kb_elevator": "STREET ELEVATOR"
+          },
+          "regex_baseline": {
+            "station_abbr": "ASHB",
+            "level_from": "street",
+            "level_to": "concourse",
+            "platform_label": null,
+            "kb_elevator": "STREET ELEVATOR"
+          },
+          "pass": true
+        },
+        "mcar_platform_antioch_richmond": {
+          "expected": {
+            "station_abbr": "MCAR",
+            "level_from": "platform",
+            "level_to": null,
+            "platform_label": "Antioch/Richmond",
+            "kb_elevator": "PLATFORMS 1 AND 3 ELEVATOR (ANTIOCH, RICHMOND DIRECTIONS)"
+          },
+          "actual": {
+            "station_abbr": "MCAR",
+            "level_from": "platform",
+            "level_to": null,
+            "platform_label": "Antioch/Richmond",
+            "kb_elevator": "PLATFORMS 1 AND 3 ELEVATOR (ANTIOCH, RICHMOND DIRECTIONS)"
+          },
+          "regex_baseline": {
+            "station_abbr": "MCAR",
+            "level_from": "platform",
+            "level_to": null,
+            "platform_label": "Antioch/Richmond",
+            "kb_elevator": "PLATFORMS 1 AND 3 ELEVATOR (ANTIOCH, RICHMOND DIRECTIONS)"
+          },
+          "pass": true
+        },
+        "wdub_garage_north_is_ambiguous": {
+          "expected": {
+            "station_abbr": "WDUB",
+            "level_from": "garage",
+            "level_to": null,
+            "platform_label": "North/Dublin",
+            "kb_elevator": null
+          },
+          "actual": {
+            "station_abbr": "WDUB",
+            "level_from": "garage",
+            "level_to": null,
+            "platform_label": "North/Dublin",
+            "kb_elevator": null
+          },
+          "regex_baseline": {
+            "station_abbr": "WDUB",
+            "level_from": "garage",
+            "level_to": null,
+            "platform_label": "North/Dublin",
+            "kb_elevator": null
+          },
+          "pass": true
+        },
+        "unknown_station_is_nulled_by_code": {
+          "expected": {
+            "station_abbr": null,
+            "level_from": "platform",
+            "level_to": null,
+            "platform_label": "Nowhere",
+            "kb_elevator": null
+          },
+          "actual": {
+            "station_abbr": null,
+            "level_from": "platform",
+            "level_to": null,
+            "platform_label": "Nowhere",
+            "kb_elevator": null
+          },
+          "regex_baseline": {
+            "station_abbr": null,
+            "level_from": "platform",
+            "level_to": null,
+            "platform_label": "Nowhere",
+            "kb_elevator": null
+          },
+          "pass": true
+        },
+        "cols_platform_falls_back_to_station_elevator": {
+          "expected": {
+            "station_abbr": "COLS",
+            "level_from": "platform",
+            "level_to": null,
+            "platform_label": "Fruitvale",
+            "kb_elevator": "STATION ELEVATOR"
+          },
+          "actual": {
+            "station_abbr": "COLS",
+            "level_from": "platform",
+            "level_to": null,
+            "platform_label": "Fruitvale",
+            "kb_elevator": "STATION ELEVATOR"
+          },
+          "regex_baseline": {
+            "station_abbr": "COLS",
+            "level_from": "platform",
+            "level_to": null,
+            "platform_label": "Fruitvale",
+            "kb_elevator": "STATION ELEVATOR"
+          },
           "pass": true
         }
       }

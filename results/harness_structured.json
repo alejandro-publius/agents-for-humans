@@ -1,4 +1,5 @@
 {
+  "baselines": {},
   "suite": "harness_structured",
   "description": "Does every run end in a schema-valid Plan? Output is plan.option from the structured output.",
   "output_of": "plan_option",

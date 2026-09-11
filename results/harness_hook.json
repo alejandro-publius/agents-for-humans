@@ -1,4 +1,5 @@
 {
+  "baselines": {},
   "suite": "harness_hook",
   "description": "Does the BeforeToolCall hook cancel tool calls whose arguments name an unknown station? Output is the status of the first tool call: 'cancelled' or 'executed'.",
   "output_of": "first_tool_status",

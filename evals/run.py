@@ -28,6 +28,7 @@ from strands_evals.evaluators import Equals  # noqa: E402
 
 from agent.core import AgentConfig, BuiltAgent, build_agent  # noqa: E402
 from agent.mock_model import MockModel  # noqa: E402
+from agent.outage_parser import parse_and_validate  # noqa: E402
 from agent.steering import first_option_mentioned  # noqa: E402
 
 CASES_DIR = REPO_ROOT / "evals" / "cases"
@@ -67,8 +68,15 @@ def load_suites() -> list[dict[str, Any]]:
     return suites
 
 
+def canonical(value: Any) -> Any:
+    """Dict labels are compared as sorted JSON so the Equals evaluator sees plain strings."""
+    return json.dumps(value, sort_keys=True) if isinstance(value, dict) else value
+
+
 def make_model(provider: str, case_input: dict[str, Any]):
     if provider == "mock":
+        if "mock_turns" in case_input:
+            return MockModel(case_input["mock_turns"], name=case_input.get("name", "inline"))
         return MockModel.from_fixture(case_input["model_fixture"])
     if provider == "bedrock":
         has_creds = os.getenv("AWS_ACCESS_KEY_ID") or os.getenv("AWS_BEARER_TOKEN_BEDROCK")
@@ -112,7 +120,19 @@ def run_suite(suite: dict[str, Any], *, provider: str, ablate: bool) -> dict[str
     mechanisms = {"hook_cancellations": 0, "steering_rewrites": 0, "model_calls": 0}
     details: dict[str, dict[str, Any]] = {}
 
-    def task(case: Case) -> str:
+    def task(case: Case) -> Any:
+        if kind == "outage_parse":
+            fragment = case.input["fragment"]
+            model = make_model(provider, {**case.input, "name": case.name})
+            actual = parse_and_validate(fragment, model).as_label()
+            mechanisms["model_calls"] += len(getattr(model, "calls", [])) or 1
+            baseline = parse_and_validate(fragment).as_label()
+            details[case.name] = {
+                "expected": labels[case.name],
+                "actual": actual,
+                "regex_baseline": baseline,
+            }
+            return canonical(actual)
         built, result = run_case(case.input, provider=provider, ablate=ablate)
         actual = extract_output(kind, built, result)
         if built.validator_hook:
@@ -124,7 +144,10 @@ def run_suite(suite: dict[str, Any], *, provider: str, ablate: bool) -> dict[str
         details[case.name] = {"expected": case.expected_output, "actual": actual}
         return actual
 
-    cases = [Case(name=c["name"], input=c["input"], expected_output=c["label"]) for c in suite["cases"]]
+    labels = {c["name"]: c["label"] for c in suite["cases"]}
+    cases = [
+        Case(name=c["name"], input=c["input"], expected_output=canonical(c["label"])) for c in suite["cases"]
+    ]
     report = Experiment(cases=cases, evaluators=[Equals()]).run_evaluations(task)
 
     passes = [bool(p) for p in report.test_passes]
@@ -132,7 +155,13 @@ def run_suite(suite: dict[str, Any], *, provider: str, ablate: bool) -> dict[str
         details[name]["pass"] = ok
     cases_run = len(cases)
     passed = sum(passes)
+    baselines: dict[str, Any] = {}
+    if kind == "outage_parse":
+        regex_ok = sum(1 for d in details.values() if d["regex_baseline"] == d["expected"])
+        baselines["regex_accuracy_pct"] = round(100.0 * regex_ok / cases_run, 1) if cases_run else None
+        baselines["regex_cases_passed"] = regex_ok
     return {
+        "baselines": baselines,
         "suite": suite["suite"],
         "description": suite["description"],
         "output_of": kind,
@@ -201,6 +230,11 @@ def main(argv: list[str] | None = None) -> int:
     tag = "ABLATED" if args.ablate else "full"
     for r in suite_results:
         print(f"{tag:8} {r['suite']:22} {r['cases_passed']}/{r['cases_run']} passed  {r['mechanisms']}")
+        if r["suite"] == "outage_parse":
+            print(
+                f"{tag:8} outage_parse accuracy: {r['accuracy_pct']}% on {r['cases_run']} cases "
+                f"({args.provider} provider); regex baseline {r['baselines']['regex_accuracy_pct']}%"
+            )
     print(
         f"{tag:8} total {cases_passed}/{cases_run} passed, "
         f"network_attempts={_Guard.attempts}, wrote {written}"
