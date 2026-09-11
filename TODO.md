@@ -26,7 +26,7 @@ Constraints that hold all night.
       Accept. `make verify` exits 0 with one real claim in the README, and exits 1 when a README number is deliberately changed (show both runs).
 - [x] A7. CI. `.github/workflows/ci.yml` runs `make verify` on push with no secrets. Secret scan step using gitleaks or a regex script.
       Accept. Workflow file lints (`python -c "import yaml;yaml.safe_load(open('.github/workflows/ci.yml'))"`) and `make verify` passes locally.
-- [ ] A8. `JUDGING.md` with a 60-second route: clone, `make setup`, `make replay`, open one output file. `make replay` must work offline.
+- [x] A8. `JUDGING.md` with a 60-second route: clone, `make setup`, `make replay`, open one output file. `make replay` must work offline.
       Accept. Run the route from a fresh clone into `/tmp` and paste the timing.
 - [ ] A9. `docs/reports/day-1.md` with three sections, proven by a command with observed output, claimed but not proven, deliberately not built.
       Accept. File exists and every "proven" line names a command run in this session.

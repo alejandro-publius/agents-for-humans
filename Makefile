@@ -6,7 +6,7 @@ PY    := $(VENV)/bin/python
 UV    := $(shell command -v uv 2>/dev/null)
 ABLATE ?= 0
 
-.PHONY: help setup lint test evals evals-ablate results verify-claims secret-scan verify clean
+.PHONY: help setup lint test evals evals-ablate results verify-claims secret-scan verify replay clean
 
 help: ## list targets
 	@grep -E '^[a-z-]+:.*## ' $(MAKEFILE_LIST) | awk -F ':.*## ' '{printf "  %-10s %s\n", $$1, $$2}'
@@ -33,6 +33,9 @@ evals: ## run eval cases on the mock provider and write results/*.json; ABLATE=1
 
 evals-ablate: ## same cases with hook + steering disabled -> results/ablation.json
 	$(PY) evals/run.py --ablate
+
+replay: ## offline: run every case through the agent and write results/replay.md (the judging route)
+	$(PY) scripts/replay.py
 
 results: ## print results/summary.json
 	@cat results/summary.json
