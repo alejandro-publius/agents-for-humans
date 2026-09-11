@@ -33,12 +33,17 @@ def test_suite_filter_runs_only_the_named_suite(tmp_path):
 
 
 def test_mock_run_never_overwrites_a_frozen_live_result(tmp_path):
-    frozen = {"suite": "policy_agreement", "mode": "bedrock", "frozen": True, "agreement_pct": 12.3}
+    entry = {"mode": "bedrock", "frozen": True, "agreement_pct": 12.3, "cases_run": 40}
+    frozen = {"suite": "policy_agreement", "frozen": True, "enforced": entry}
     (tmp_path / "policy_agreement.json").write_text(json.dumps(frozen))
     assert evals_run.main(["--suite", "policy_agreement", "--out", str(tmp_path)]) == 0
+    assert evals_run.main(["--no-steering", "--out", str(tmp_path)]) == 0
     assert json.loads((tmp_path / "policy_agreement.json").read_text()) == frozen
     mock = json.loads((tmp_path / "policy_agreement.mock.json").read_text())
-    assert mock["mode"] == "mock" and mock["cases_run"] == 194
+    assert mock["enforced"]["mode"] == "mock" and mock["enforced"]["cases_run"] == 194
+    assert mock["no_steering"]["steering"] is False
+    assert "get_station_facts" not in mock["no_steering"]["tools"]
+    assert mock["no_steering"]["cases_run"] == 194
 
 
 def test_live_run_refuses_without_credentials_and_refuses_to_reclobber(tmp_path, monkeypatch):
@@ -46,7 +51,10 @@ def test_live_run_refuses_without_credentials_and_refuses_to_reclobber(tmp_path,
         monkeypatch.delenv(var, raising=False)
     with pytest.raises(SystemExit, match="credentials are not set"):
         evals_run.main(["--provider", "bedrock", "--suite", "policy_agreement", "--out", str(tmp_path)])
-    (tmp_path / "policy_agreement.json").write_text(json.dumps({"mode": "bedrock", "frozen": True}))
+    frozen = {"suite": "policy_agreement", "frozen": True, "enforced": {"mode": "bedrock", "frozen": True}}
+    (tmp_path / "policy_agreement.json").write_text(json.dumps(frozen))
     live = ["--provider", "bedrock", "--suite", "policy_agreement", "--out", str(tmp_path)]
     assert evals_run.main(live) == 4
+    with pytest.raises(SystemExit, match="credentials are not set"):  # the other entry is not frozen
+        evals_run.main([*live, "--no-steering"])
     assert evals_run.main(["--provider", "bedrock", "--ablate", "--out", str(tmp_path)]) == 2

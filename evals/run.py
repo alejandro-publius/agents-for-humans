@@ -24,6 +24,7 @@ from typing import Any
 REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT / "src"))
 
+from strands.models.bedrock import DEFAULT_BEDROCK_MODEL_ID  # noqa: E402
 from strands_evals import Case, Experiment  # noqa: E402
 from strands_evals.evaluators import Equals  # noqa: E402
 
@@ -34,6 +35,7 @@ from agent.mock_model import MockModel  # noqa: E402
 from agent.outage_parser import parse_and_validate  # noqa: E402
 from agent.run import run_condition  # noqa: E402
 from agent.steering import first_option_mentioned  # noqa: E402
+from agent.tools import draft_message, plan_alternatives  # noqa: E402
 from policy import Trip  # noqa: E402
 from policy.sun import PACIFIC  # noqa: E402
 
@@ -142,13 +144,32 @@ LIVE_ENV_NAMES = (
 )
 
 
-def frozen_live_result(out_dir: Path) -> dict[str, Any] | None:
-    """The frozen live policy_agreement result, if one exists."""
-    path = out_dir / "policy_agreement.json"
-    if not path.exists():
-        return None
-    data = json.loads(path.read_text())
-    return data if data.get("frozen") and data.get("mode") != "mock" else None
+POLICY_FILE = "policy_agreement.json"
+POLICY_MOCK_FILE = "policy_agreement.mock.json"
+
+
+def read_policy_file(out_dir: Path, name: str = POLICY_FILE) -> dict[str, Any]:
+    path = out_dir / name
+    return json.loads(path.read_text()) if path.exists() else {"suite": "policy_agreement"}
+
+
+def frozen_live_result(out_dir: Path, entry: str | None = None) -> dict[str, Any] | None:
+    """A frozen live entry ('enforced' or 'no_steering') in results/policy_agreement.json, if any."""
+    data = read_policy_file(out_dir)
+    entries = [entry] if entry else list(POLICY_VARIANTS)
+    for name in entries:
+        e = data.get(name)
+        if isinstance(e, dict) and e.get("frozen") and e.get("mode") != "mock":
+            return e
+    return None
+
+
+def merge_policy_entry(out_dir: Path, name: str, entry: str, result: dict[str, Any]) -> None:
+    """Write one variant's result next to the other's; the two entries are independent."""
+    data = read_policy_file(out_dir, name)
+    data[entry] = result
+    data["frozen"] = any(isinstance(v, dict) and v.get("frozen") for v in data.values())
+    (out_dir / name).write_text(json.dumps(data, indent=2) + "\n")
 
 
 def git_describe() -> str:
@@ -163,10 +184,30 @@ def git_describe() -> str:
         return "unknown"
 
 
+POLICY_VARIANTS = {
+    # enforced: the wired agent as shipped (steering on, all three tools)
+    "enforced": {"steering": True, "tools": None},
+    # no_steering: the model's unaided choice: no steering handler, no get_station_facts tool
+    "no_steering": {"steering": False, "tools": [plan_alternatives, draft_message]},
+}
+
+
+def variant_tool_names(spec: dict[str, Any]) -> list[str]:
+    if spec["tools"]:
+        return [t.tool_name for t in spec["tools"]]
+    return ["get_station_facts", "plan_alternatives", "draft_message"]
+
+
 def run_suite(
-    suite: dict[str, Any], *, provider: str, ablate: bool, max_model_calls: int | None = None
+    suite: dict[str, Any],
+    *,
+    provider: str,
+    ablate: bool,
+    max_model_calls: int | None = None,
+    variant: str = "enforced",
 ) -> dict[str, Any]:
     kind = suite["output_of"]
+    spec = POLICY_VARIANTS[variant]
     mechanisms = {"hook_cancellations": 0, "steering_rewrites": 0, "steering_guides": 0, "model_calls": 0}
     details: dict[str, dict[str, Any]] = {}
     skipped: list[str] = []
@@ -181,9 +222,17 @@ def run_suite(
             inp = case.input
             model = make_model(provider, {**inp, "name": case.name}, budget)
             trip = Trip(origin=inp["trip"]["origin"], dest=inp["trip"]["dest"])
+            cfg = AgentConfig(steering_enabled=spec["steering"])
             try:
                 report = run_condition(
-                    trip, inp["station"], inp["elevator"], inp["situation"], EVAL_WHEN, model
+                    trip,
+                    inp["station"],
+                    inp["elevator"],
+                    inp["situation"],
+                    EVAL_WHEN,
+                    model,
+                    config=cfg,
+                    tools=spec["tools"],
                 )
             except BudgetExhausted:
                 skipped.append(case.name)
@@ -259,6 +308,9 @@ def run_suite(
     return {
         "baselines": baselines,
         "mode": provider,
+        "variant": variant if kind == "policy_agreement" else None,
+        "steering": spec["steering"] if kind == "policy_agreement" else None,
+        "tools": variant_tool_names(spec) if kind == "policy_agreement" else None,
         "agreement_pct": round(100.0 * passed / cases_run, 1) if cases_run else None,
         "model_call_budget": max_model_calls if provider != "mock" else None,
         "suite": suite["suite"],
@@ -289,7 +341,15 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--force-live", action="store_true", help="overwrite a frozen live policy_agreement result"
     )
+    parser.add_argument(
+        "--no-steering",
+        action="store_true",
+        help="policy_agreement ablation: no steering handler, no get_station_facts (unaided choice)",
+    )
     args = parser.parse_args(argv)
+    variant = "no_steering" if args.no_steering else "enforced"
+    if args.no_steering:
+        args.suite = ["policy_agreement"]
 
     if args.env_file:
         load_env_file(args.env_file, LIVE_ENV_NAMES)
@@ -298,8 +358,9 @@ def main(argv: list[str] | None = None) -> int:
     elif args.ablate:
         print("evals: --ablate runs on the mock provider only (no spend on ablations)", file=sys.stderr)
         return 2
-    elif not args.force_live and frozen_live_result(args.out) is not None:
-        print("evals: results/policy_agreement.json is a frozen live run; pass --force-live", file=sys.stderr)
+    elif not args.force_live and frozen_live_result(args.out, variant) is not None:
+        msg = f"evals: policy_agreement.json has a frozen live '{variant}' entry; pass --force-live"
+        print(msg, file=sys.stderr)
         return 4
 
     try:
@@ -312,7 +373,13 @@ def main(argv: list[str] | None = None) -> int:
         return 2
 
     suite_results = [
-        run_suite(s, provider=args.provider, ablate=args.ablate, max_model_calls=args.max_model_calls)
+        run_suite(
+            s,
+            provider=args.provider,
+            ablate=args.ablate,
+            max_model_calls=args.max_model_calls,
+            variant=variant,
+        )
         for s in suites
     ]
     cases_run = sum(r["cases_run"] for r in suite_results)
@@ -342,32 +409,44 @@ def main(argv: list[str] | None = None) -> int:
         (args.out / "ablation.json").write_text(json.dumps(summary, indent=2) + "\n")
         written = ["ablation.json"]
     elif args.provider != "mock":
-        # A live run writes only its own suite files, stamped frozen; summary.json stays the mock harness.
+        # A live run writes only its own entry, stamped frozen; summary.json stays the mock harness.
         written = []
         for r in suite_results:
             r["frozen"] = True
+            r["provider"] = "bedrock"
             r["run_at"] = datetime.now(UTC).isoformat(timespec="seconds")
-            r["model_id"] = os.getenv("EVAL_MODEL_ID") or "bedrock default (strands)"
+            r["model_id"] = os.getenv("EVAL_MODEL_ID") or DEFAULT_BEDROCK_MODEL_ID
             r["labels_git"] = git_describe()
-            (args.out / f"{r['suite']}.json").write_text(json.dumps(r, indent=2) + "\n")
-            written.append(f"{r['suite']}.json")
+            if r["suite"] == "policy_agreement":
+                merge_policy_entry(args.out, POLICY_FILE, variant, r)
+                written.append(f"{POLICY_FILE}[{variant}]")
+            else:
+                (args.out / f"{r['suite']}.json").write_text(json.dumps(r, indent=2) + "\n")
+                written.append(f"{r['suite']}.json")
     else:
-        (args.out / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")
-        written = ["summary.json"]
+        written = []
+        if not args.no_steering:
+            (args.out / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")
+            written.append("summary.json")
         for r in suite_results:
-            name = f"{r['suite']}.json"
-            if r["suite"] == "policy_agreement" and frozen_live_result(args.out) is not None:
-                name = "policy_agreement.mock.json"  # never overwrite the frozen live run
-            (args.out / name).write_text(json.dumps(r, indent=2) + "\n")
-            written.append(name)
+            if r["suite"] == "policy_agreement":
+                r["provider"] = "mock"
+                # never overwrite a frozen live entry: shadow the whole file instead
+                name = POLICY_MOCK_FILE if frozen_live_result(args.out) is not None else POLICY_FILE
+                merge_policy_entry(args.out, name, variant, r)
+                written.append(f"{name}[{variant}]")
+            else:
+                (args.out / f"{r['suite']}.json").write_text(json.dumps(r, indent=2) + "\n")
+                written.append(f"{r['suite']}.json")
 
     tag = "ABLATED" if args.ablate else "full"
     for r in suite_results:
         print(f"{tag:8} {r['suite']:22} {r['cases_passed']}/{r['cases_run']} passed  {r['mechanisms']}")
         if r["suite"] == "policy_agreement":
             print(
-                f"{tag:8} policy_agreement: agreement {r['agreement_pct']}% on {r['cases_run']} cases "
-                f"(mode={r['mode']}, skipped for budget={r['baselines']['cases_skipped_for_budget']}, "
+                f"{tag:8} policy_agreement[{variant}]: agreement {r['agreement_pct']}% on {r['cases_run']} "
+                f"cases (mode={r['mode']}, steering={r['steering']}, tools={r['tools']}, "
+                f"skipped for budget={r['baselines']['cases_skipped_for_budget']}, "
                 f"steering guides={r['mechanisms']['steering_guides']})"
             )
         if r["suite"] == "outage_parse":

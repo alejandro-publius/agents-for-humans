@@ -1,6 +1,9 @@
 {
   "baselines": {},
   "mode": "mock",
+  "variant": null,
+  "steering": null,
+  "tools": null,
   "agreement_pct": 100.0,
   "model_call_budget": null,
   "suite": "harness_steering",

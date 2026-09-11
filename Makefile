@@ -6,7 +6,7 @@ PY    := $(VENV)/bin/python
 UV    := $(shell command -v uv 2>/dev/null)
 ABLATE ?= 0
 
-.PHONY: help setup lint test evals evals-ablate results render-claims verify-claims secret-scan verify replay poll demo-one app inbox-replay report labels relevance archive quota eval-live clean
+.PHONY: help setup lint test evals evals-ablate evals-no-steering results render-claims verify-claims secret-scan verify replay poll demo-one app inbox-replay report labels relevance archive quota bedrock-smoke eval-live clean
 
 help: ## list targets
 	@grep -E '^[a-z-]+:.*## ' $(MAKEFILE_LIST) | awk -F ':.*## ' '{printf "  %-10s %s\n", $$1, $$2}'
@@ -34,6 +34,9 @@ evals: ## run eval cases on the mock provider and write results/*.json; ABLATE=1
 evals-ablate: ## same cases with hook + steering disabled -> results/ablation.json
 	$(PY) evals/run.py --ablate
 
+evals-no-steering: ## policy_agreement ablation on the mock provider: no steering, no get_station_facts
+	$(PY) evals/run.py --no-steering
+
 demo-one: ## one synthetic outage against one synthetic trip on the mock provider; prints decision, mechanisms, plan
 	$(PY) scripts/demo_one.py
 
@@ -55,8 +58,12 @@ relevance: ## score agent interruptions against the two label columns -> results
 archive: ## live: poll every 5 min with BART_API_KEY into data/archive/ (own db, never touched by make replay)
 	$(PY) -m src.poller --interval 300 --archive-dir data/archive --db data/archive/outages.sqlite --env-file .env
 
-eval-live: ## exactly once: policy_agreement on Bedrock, hard cap 200 model calls, result frozen (needs AWS creds)
+bedrock-smoke: ## one Converse call to the eval model in AWS_REGION; prints the reply; creates nothing
+	$(PY) scripts/bedrock_smoke.py
+
+eval-live: ## exactly once: policy_agreement on Bedrock, enforced then --no-steering, hard cap 200 calls each
 	$(PY) evals/run.py --provider bedrock --suite policy_agreement --max-model-calls 200 --env-file .env
+	$(PY) evals/run.py --provider bedrock --no-steering --max-model-calls 200 --env-file .env
 
 quota: ## read-only: print the Amazon Bedrock AgentCore Runtime quotas for this account/region (needs AWS creds)
 	$(PY) scripts/agentcore_quota.py
@@ -82,7 +89,7 @@ verify-claims: ## every number in README.md marked <!-- claim:key --> must match
 secret-scan: ## regex scan of every tracked file for keys and tokens
 	$(PY) scripts/secret_scan.py
 
-verify: lint test evals evals-ablate verify-claims secret-scan ## everything CI runs, no secrets needed
+verify: lint test evals evals-ablate evals-no-steering verify-claims secret-scan ## everything CI runs, no secrets needed
 	@echo "verify: OK"
 
 clean: ## remove the virtualenv and caches

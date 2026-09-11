@@ -4,6 +4,9 @@
     "regex_cases_passed": 10
   },
   "mode": "mock",
+  "variant": null,
+  "steering": null,
+  "tools": null,
   "agreement_pct": 100.0,
   "model_call_budget": null,
   "suite": "outage_parse",

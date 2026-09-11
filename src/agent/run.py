@@ -116,6 +116,7 @@ def run_condition(
     *,
     config: AgentConfig | None = None,
     client: BartClient | None = None,
+    tools: list[Any] | None = None,
 ) -> RunReport:
     """Run for a (station, elevator, condition) triple the caller already knows (policy-agreement eval)."""
     decision = assess_condition(trip, station_abbr, elevator, situation, when, client)
@@ -127,7 +128,7 @@ def run_condition(
         "kb_elevator": elevator,
     }
     raw = f"{station_abbr}: {elevator} ({situation})"
-    return run_with_decision(trip, raw, parsed, decision, when, model, config=config)
+    return run_with_decision(trip, raw, parsed, decision, when, model, config=config, tools=tools)
 
 
 def run_with_decision(
@@ -139,6 +140,7 @@ def run_with_decision(
     model: Any,
     *,
     config: AgentConfig | None = None,
+    tools: list[Any] | None = None,
 ) -> RunReport:
     trip_dict = {
         "origin": trip.origin,
@@ -155,7 +157,7 @@ def run_with_decision(
         required_option=decision.top_option,
         system_prompt=base.system_prompt,
     )
-    built: BuiltAgent = build_agent(model, config=cfg)
+    built: BuiltAgent = build_agent(model, config=cfg, tools=tools)
 
     error = None
     model_plan: Plan | None = None

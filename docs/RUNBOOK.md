@@ -18,11 +18,12 @@ Writes `data/archive/manifest.json`, one raw payload per poll, and `data/archive
 ## 2. Freeze labels, then the live policy-agreement run (needs AWS credentials + Bedrock access)
 
 ```bash
-git tag kb-labels-v1 <commit>                # after saying "freeze"; candidate is 0e00695
-git push origin kb-labels-v1
-export AWS_REGION=us-west-2                  # plus AWS_ACCESS_KEY_ID/SECRET or AWS_PROFILE or AWS_BEARER_TOKEN_BEDROCK
-# optional: export EVAL_MODEL_ID=global.anthropic.claude-sonnet-4-6   (the Strands default if unset)
-make eval-live                               # exactly once; hard cap 200 model calls; ~4 calls per case
+# labels are frozen: tag kb-labels-v1 (Sat Sept 12, 2026)
+# credentials: ~/.aws/credentials and ~/.aws/config (region us-west-2); boto3 reads them, no exports needed
+# optional: EVAL_MODEL_ID=... in .env (default: the Strands Bedrock model id, a Claude Sonnet profile)
+make quota                                   # read-only: AgentCore quotas, Runtime ones starred
+make bedrock-smoke                           # one Converse call; stop here if it fails
+make eval-live                               # exactly once per variant: enforced, then --no-steering; 200 calls each
 make render-claims && make verify
 ```
 
