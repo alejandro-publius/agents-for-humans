@@ -66,9 +66,11 @@ def test_index_counts_match_files():
     )
 
 
-def test_policy_order_is_marked_unverified():
+def test_policy_order_is_verified_with_its_source():
     policy = json.loads(kb_build.POLICY_FILE.read_text())
-    assert policy["option_order"]["verified"] is False
+    assert policy["option_order"]["verified"] is True
+    assert policy["option_order"]["source_url"] == "https://www.bart.gov/guide/accessibility/elevators"
+    assert policy["option_order"]["order"] == list(kb_build.OPTION_ORDER)
     assert "Using Elevators" in policy["sections"]
 
 

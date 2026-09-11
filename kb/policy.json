@@ -1,14 +1,16 @@
 {
   "option_order": {
-    "note": "Order cited in docs/strategy.md from https://www.bart.gov/guide/accessibility/elevators, which returned HTTP 403 on 2026-09-11. Treat as unverified until a human confirms it against the BART Accessibility Guide PDF or a live page.",
+    "note": "Alternate elevator is always the primary option when one exists, then backtracking, then transit, then Mitigation Trip, then Mitigation Shuttle. The automated capture got HTTP 403 for this page: BART's WAF blocks this laptop's IP; the page itself is live.",
     "order": [
-      "alternate elevator",
+      "alternate_elevator",
       "backtracking",
       "transit",
-      "mitigation trip",
-      "mitigation shuttle"
+      "mitigation_trip",
+      "mitigation_shuttle"
     ],
-    "verified": false
+    "source_url": "https://www.bart.gov/guide/accessibility/elevators",
+    "verified": true,
+    "verified_by": "reviewer, read on the live page Fri Sept 11, 2026"
   },
   "scraped_at": "2026-09-11T18:19:15.629Z",
   "sections": {

@@ -270,7 +270,7 @@ def _rank_options(trip, record, documented, station, origin, dest, when, client,
     generic = {
         "transit": ("Take a bus or other transit to the nearest station with working elevators.", no_bus),
         "mitigation_trip": (van_text, (True, None)),
-        "mitigation_shuttle": ("Mitigation Shuttle (order unverified; see kb/policy.json).", (True, None)),
+        "mitigation_shuttle": ("Mitigation Shuttle, BART's last-ranked option.", (True, None)),
     }
     for label, (text, (feasible, reason)) in generic.items():
         if label == documented_label:
@@ -280,7 +280,7 @@ def _rank_options(trip, record, documented, station, origin, dest, when, client,
             RankedOption(label, rank, "generic fallback", text, feasible, reason, None, "not computed")
         )
     if flags.get("after_dark"):
-        notes.append("after dark: BART lists it as a Mitigation Trip justification (order unverified)")
+        notes.append("after dark: a Mitigation Trip justification per docs/strategy.md")
         if "no_after_dark" in trip.needs:
             # Rider preference: after dark, the Station Agent's accessible van outranks riding or rolling
             # elsewhere. Rank comes from the preference, not from BART's order; the note says so.

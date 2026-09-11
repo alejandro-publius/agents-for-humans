@@ -41,16 +41,11 @@ STATION_PAGE = "https://www.bart.gov/stations/{abbr}/accessible"
 STATUS_PAGE = "https://www.bart.gov/stations/elevators"
 NOISE = ("The referenced media source is missing",)
 
-# BART's ranked outage options. The page that stated this order (guide/accessibility/elevators)
-# returned HTTP 403 on 2026-09-11, so the order is recorded as UNVERIFIED tonight and is not used
-# as a scraped fact anywhere in kb/stations.
-OPTION_ORDER_UNVERIFIED = [
-    "alternate elevator",
-    "backtracking",
-    "transit",
-    "mitigation trip",
-    "mitigation shuttle",
-]
+# BART's ranked outage options, verified by a human against the live page on Fri Sept 11, 2026.
+# The automated capture saw HTTP 403 for this page because BART's WAF blocks this laptop's IP, not
+# because the page is gone.
+OPTION_ORDER_SOURCE = "https://www.bart.gov/guide/accessibility/elevators"
+OPTION_ORDER_VERIFIED = list(OPTION_ORDER)
 
 
 def elevator_kind(heading: str) -> str:
@@ -182,12 +177,14 @@ def parse_policy(record: dict[str, Any]) -> dict[str, Any]:
         "scraped_at": record["fetched_at"],
         "sections": sections,
         "option_order": {
-            "order": OPTION_ORDER_UNVERIFIED,
-            "verified": False,
+            "order": OPTION_ORDER_VERIFIED,
+            "verified": True,
+            "source_url": OPTION_ORDER_SOURCE,
+            "verified_by": "reviewer, read on the live page Fri Sept 11, 2026",
             "note": (
-                "Order cited in docs/strategy.md from https://www.bart.gov/guide/accessibility/elevators, "
-                "which returned HTTP 403 on 2026-09-11. Treat as unverified until a human confirms it "
-                "against the BART Accessibility Guide PDF or a live page."
+                "Alternate elevator is always the primary option when one exists, then backtracking, "
+                "then transit, then Mitigation Trip, then Mitigation Shuttle. The automated capture got "
+                "HTTP 403 for this page: BART's WAF blocks this laptop's IP; the page itself is live."
             ),
         },
     }
