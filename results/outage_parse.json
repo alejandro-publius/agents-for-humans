@@ -5,6 +5,7 @@
   },
   "mode": "mock",
   "agreement_pct": 100.0,
+  "model_call_budget": null,
   "suite": "outage_parse",
   "description": "Free-text outage fragment -> {station_abbr, level_from, level_to, platform_label, kb_elevator}. The model proposes (mock: scripted proposal per case); code validates against kb/ and resolves the elevator. Case 1 is BART's documented sample; the rest are authored in the same shape from KB elevator names. A regex baseline is reported alongside.",
   "output_of": "outage_parse",

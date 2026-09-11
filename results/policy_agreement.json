@@ -19,6 +19,7 @@
   },
   "mode": "mock",
   "agreement_pct": 100.0,
+  "model_call_budget": null,
   "suite": "policy_agreement",
   "description": "One case per (station, elevator, condition) from kb/stations. Label = the option label derived from BART's documented text (kb/labels.py). Output is the option the model put in its Plan before code verification. Mock mode proves plumbing (scripted model echoes the label); live mode reports the real number and is capped by --max-model-calls.",
   "output_of": "policy_agreement",

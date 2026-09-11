@@ -14,7 +14,22 @@ import sys
 import boto3
 from botocore.exceptions import BotoCoreError, ClientError, NoCredentialsError, NoRegionError
 
-SERVICE_CODES = ("bedrock-agentcore", "bedrock-agentcore-runtime")
+FALLBACK_CODES = ("bedrock-agentcore", "bedrock-agentcore-control")
+
+
+def agentcore_service_codes(sq) -> list[str]:
+    """Discover Service Quotas codes whose name or code mentions AgentCore; fall back to known guesses."""
+    try:
+        pages = sq.get_paginator("list_services").paginate()
+        found = [
+            svc["ServiceCode"]
+            for page in pages
+            for svc in page["Services"]
+            if "agentcore" in (svc["ServiceCode"] + svc.get("ServiceName", "")).lower()
+        ]
+        return found or list(FALLBACK_CODES)
+    except ClientError:
+        return list(FALLBACK_CODES)
 
 
 def main() -> int:
@@ -28,7 +43,9 @@ def main() -> int:
         print(f"account {ident['Account']} region {region}")
         sq = boto3.client("service-quotas", region_name=region)
         found = 0
-        for code in SERVICE_CODES:
+        codes = agentcore_service_codes(sq)
+        print(f"service codes: {codes}")
+        for code in codes:
             try:
                 pages = sq.get_paginator("list_service_quotas").paginate(ServiceCode=code)
                 quotas = [q for page in pages for q in page["Quotas"]]

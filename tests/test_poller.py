@@ -63,11 +63,14 @@ def test_cli_once_with_fixture(tmp_path, capsys):
     assert "inserted=1" in out and "inserted=0" in out
 
 
-def test_env_file_key_is_read_only_from_the_given_file(tmp_path):
-    from src.poller import read_env_key
+def test_env_file_loads_only_named_unset_keys(tmp_path, monkeypatch):
+    """Uses a made-up variable name so no real key name is ever set in the test process."""
+    from agent.envfile import load_env_file
 
+    monkeypatch.delenv("LE_TEST_KEY", raising=False)
+    monkeypatch.setenv("LE_TEST_OTHER", "keep")
     f = tmp_path / "env"
-    f.write_text("# comment\nOTHER=1\nBART_API_KEY='NOT-A-REAL-KEY-0000'\n")
-    assert read_env_key(f, "BART_API_KEY") == "NOT-A-REAL-KEY-0000"
-    assert read_env_key(f, "MISSING") is None
-    assert read_env_key(tmp_path / "absent", "BART_API_KEY") is None
+    f.write_text("# comment\nLE_TEST_OTHER=1\nLE_TEST_KEY='not-a-real-key'\nLE_TEST_EMPTY=\n")
+    assert load_env_file(f, ("LE_TEST_KEY", "LE_TEST_OTHER")) == ["LE_TEST_KEY"]
+    assert load_env_file(tmp_path / "absent") == []
+    monkeypatch.delenv("LE_TEST_KEY", raising=False)

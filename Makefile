@@ -6,7 +6,7 @@ PY    := $(VENV)/bin/python
 UV    := $(shell command -v uv 2>/dev/null)
 ABLATE ?= 0
 
-.PHONY: help setup lint test evals evals-ablate results render-claims verify-claims secret-scan verify replay poll demo-one app inbox-replay report labels relevance archive quota clean
+.PHONY: help setup lint test evals evals-ablate results render-claims verify-claims secret-scan verify replay poll demo-one app inbox-replay report labels relevance archive quota eval-live clean
 
 help: ## list targets
 	@grep -E '^[a-z-]+:.*## ' $(MAKEFILE_LIST) | awk -F ':.*## ' '{printf "  %-10s %s\n", $$1, $$2}'
@@ -54,6 +54,9 @@ relevance: ## score agent interruptions against the two label columns -> results
 
 archive: ## live: poll every 5 min with BART_API_KEY into data/archive/ (own db, never touched by make replay)
 	$(PY) -m src.poller --interval 300 --archive-dir data/archive --db data/archive/outages.sqlite --env-file .env
+
+eval-live: ## exactly once: policy_agreement on Bedrock, hard cap 200 model calls, result frozen (needs AWS creds)
+	$(PY) evals/run.py --provider bedrock --suite policy_agreement --max-model-calls 200 --env-file .env
 
 quota: ## read-only: print the Amazon Bedrock AgentCore Runtime quotas for this account/region (needs AWS creds)
 	$(PY) scripts/agentcore_quota.py

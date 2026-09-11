@@ -17,7 +17,7 @@ import json
 import os
 import socket
 import sys
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -28,6 +28,8 @@ from strands_evals import Case, Experiment  # noqa: E402
 from strands_evals.evaluators import Equals  # noqa: E402
 
 from agent.core import AgentConfig, BuiltAgent, build_agent  # noqa: E402
+from agent.counting_model import BudgetExhausted, CallBudget, CountingModel  # noqa: E402
+from agent.envfile import load_env_file  # noqa: E402
 from agent.mock_model import MockModel  # noqa: E402
 from agent.outage_parser import parse_and_validate  # noqa: E402
 from agent.run import run_condition  # noqa: E402
@@ -60,11 +62,13 @@ def install_network_guard() -> None:
 
 
 # --- suites ------------------------------------------------------------------------------------
-def load_suites() -> list[dict[str, Any]]:
+def load_suites(only: list[str] | None = None) -> list[dict[str, Any]]:
     suites = []
     for path in sorted(CASES_DIR.glob("*.json")):
         data = json.loads(path.read_text())
         data.setdefault("suite", path.stem)
+        if only and data["suite"] not in only:
+            continue
         for case in data["cases"]:
             if "label" not in case:
                 raise MissingLabel(f"case {case.get('name')!r} in {path.name} has no label")
@@ -77,18 +81,25 @@ def canonical(value: Any) -> Any:
     return json.dumps(value, sort_keys=True) if isinstance(value, dict) else value
 
 
-def make_model(provider: str, case_input: dict[str, Any]):
+def bedrock_credentials_present() -> bool:
+    cred_vars = ("AWS_ACCESS_KEY_ID", "AWS_BEARER_TOKEN_BEDROCK", "AWS_PROFILE")
+    return bool(os.getenv("AWS_REGION") and any(os.getenv(v) for v in cred_vars))
+
+
+def make_model(provider: str, case_input: dict[str, Any], budget: CallBudget | None = None):
     if provider == "mock":
         if "mock_turns" in case_input:
             return MockModel(case_input["mock_turns"], name=case_input.get("name", "inline"))
         return MockModel.from_fixture(case_input["model_fixture"])
     if provider == "bedrock":
-        has_creds = os.getenv("AWS_ACCESS_KEY_ID") or os.getenv("AWS_BEARER_TOKEN_BEDROCK")
-        if not (os.getenv("AWS_REGION") and has_creds):
+        if not bedrock_credentials_present():
             raise SystemExit("bedrock provider requested but AWS_REGION and credentials are not set")
         from strands.models import BedrockModel
 
-        return BedrockModel(region_name=os.environ["AWS_REGION"])
+        model_id = os.getenv("EVAL_MODEL_ID")
+        extra = {"model_id": model_id} if model_id else {}
+        inner = BedrockModel(region_name=os.environ["AWS_REGION"], **extra)
+        return CountingModel(inner, budget or CallBudget(cap=10**9), name=case_input.get("name", "live"))
     raise SystemExit(f"unknown provider {provider!r}")
 
 
@@ -120,6 +131,36 @@ def extract_output(kind: str, built: BuiltAgent, result: Any) -> str:
 
 
 EVAL_WHEN = datetime(2026, 9, 12, 8, 0, tzinfo=PACIFIC)  # daytime, so documented options are feasible
+LIVE_ENV_NAMES = (
+    "AWS_REGION",
+    "AWS_ACCESS_KEY_ID",
+    "AWS_SECRET_ACCESS_KEY",
+    "AWS_SESSION_TOKEN",
+    "AWS_BEARER_TOKEN_BEDROCK",
+    "AWS_PROFILE",
+    "EVAL_MODEL_ID",
+)
+
+
+def frozen_live_result(out_dir: Path) -> dict[str, Any] | None:
+    """The frozen live policy_agreement result, if one exists."""
+    path = out_dir / "policy_agreement.json"
+    if not path.exists():
+        return None
+    data = json.loads(path.read_text())
+    return data if data.get("frozen") and data.get("mode") != "mock" else None
+
+
+def git_describe() -> str:
+    import subprocess
+
+    try:
+        out = subprocess.run(
+            ["git", "describe", "--tags", "--always", "--dirty"], capture_output=True, text=True, check=True
+        )
+        return out.stdout.strip()
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return "unknown"
 
 
 def run_suite(
@@ -129,18 +170,26 @@ def run_suite(
     mechanisms = {"hook_cancellations": 0, "steering_rewrites": 0, "steering_guides": 0, "model_calls": 0}
     details: dict[str, dict[str, Any]] = {}
     skipped: list[str] = []
+    budget = CallBudget(cap=max_model_calls) if (max_model_calls and provider != "mock") else None
 
     def task(case: Case) -> Any:
         if kind == "policy_agreement":
-            over_budget = max_model_calls is not None and mechanisms["model_calls"] >= max_model_calls
-            if provider != "mock" and over_budget:
+            if budget is not None and budget.exhausted:
                 skipped.append(case.name)
                 details[case.name] = {"expected": labels[case.name], "actual": None, "skipped": "budget"}
                 return "__skipped__"
             inp = case.input
-            model = make_model(provider, {**inp, "name": case.name})
+            model = make_model(provider, {**inp, "name": case.name}, budget)
             trip = Trip(origin=inp["trip"]["origin"], dest=inp["trip"]["dest"])
-            report = run_condition(trip, inp["station"], inp["elevator"], inp["situation"], EVAL_WHEN, model)
+            try:
+                report = run_condition(
+                    trip, inp["station"], inp["elevator"], inp["situation"], EVAL_WHEN, model
+                )
+            except BudgetExhausted:
+                skipped.append(case.name)
+                mechanisms["model_calls"] += len(model.calls)
+                details[case.name] = {"expected": labels[case.name], "actual": None, "skipped": "budget"}
+                return "__skipped__"
             mechanisms["model_calls"] += report.mechanisms.get("model_calls", 0)
             mechanisms["hook_cancellations"] += report.mechanisms.get("hook_cancellations", 0)
             mechanisms["steering_guides"] += report.mechanisms.get("steering_guides", 0)
@@ -211,6 +260,7 @@ def run_suite(
         "baselines": baselines,
         "mode": provider,
         "agreement_pct": round(100.0 * passed / cases_run, 1) if cases_run else None,
+        "model_call_budget": max_model_calls if provider != "mock" else None,
         "suite": suite["suite"],
         "description": suite["description"],
         "output_of": kind,
@@ -232,17 +282,33 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--ablate", action="store_true", help="disable the hook and the steering handler")
     parser.add_argument("--out", type=Path, default=RESULTS_DIR)
     parser.add_argument(
-        "--max-model-calls", type=int, default=200, help="live providers only: stop past this many calls"
+        "--max-model-calls", type=int, default=200, help="live providers only: hard cap on model calls"
+    )
+    parser.add_argument("--suite", action="append", help="run only this suite (repeatable)")
+    parser.add_argument("--env-file", type=Path, help="load AWS_* / EVAL_MODEL_ID from this KEY=value file")
+    parser.add_argument(
+        "--force-live", action="store_true", help="overwrite a frozen live policy_agreement result"
     )
     args = parser.parse_args(argv)
 
+    if args.env_file:
+        load_env_file(args.env_file, LIVE_ENV_NAMES)
     if args.provider == "mock":
         install_network_guard()
+    elif args.ablate:
+        print("evals: --ablate runs on the mock provider only (no spend on ablations)", file=sys.stderr)
+        return 2
+    elif not args.force_live and frozen_live_result(args.out) is not None:
+        print("evals: results/policy_agreement.json is a frozen live run; pass --force-live", file=sys.stderr)
+        return 4
 
     try:
-        suites = load_suites()
+        suites = load_suites(args.suite)
     except MissingLabel as exc:
         print(f"evals: {exc}", file=sys.stderr)
+        return 2
+    if not suites:
+        print(f"evals: no suites matched {args.suite}", file=sys.stderr)
         return 2
 
     suite_results = [
@@ -275,12 +341,25 @@ def main(argv: list[str] | None = None) -> int:
     if args.ablate:
         (args.out / "ablation.json").write_text(json.dumps(summary, indent=2) + "\n")
         written = ["ablation.json"]
+    elif args.provider != "mock":
+        # A live run writes only its own suite files, stamped frozen; summary.json stays the mock harness.
+        written = []
+        for r in suite_results:
+            r["frozen"] = True
+            r["run_at"] = datetime.now(UTC).isoformat(timespec="seconds")
+            r["model_id"] = os.getenv("EVAL_MODEL_ID") or "bedrock default (strands)"
+            r["labels_git"] = git_describe()
+            (args.out / f"{r['suite']}.json").write_text(json.dumps(r, indent=2) + "\n")
+            written.append(f"{r['suite']}.json")
     else:
         (args.out / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")
         written = ["summary.json"]
         for r in suite_results:
-            (args.out / f"{r['suite']}.json").write_text(json.dumps(r, indent=2) + "\n")
-            written.append(f"{r['suite']}.json")
+            name = f"{r['suite']}.json"
+            if r["suite"] == "policy_agreement" and frozen_live_result(args.out) is not None:
+                name = "policy_agreement.mock.json"  # never overwrite the frozen live run
+            (args.out / name).write_text(json.dumps(r, indent=2) + "\n")
+            written.append(name)
 
     tag = "ABLATED" if args.ablate else "full"
     for r in suite_results:

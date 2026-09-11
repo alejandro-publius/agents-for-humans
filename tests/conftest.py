@@ -27,6 +27,27 @@ class NetworkGuard:
         return _blocked
 
 
+LIVE_KEY_NAMES = (
+    "BART_API_KEY",
+    "AWS_REGION",
+    "AWS_DEFAULT_REGION",
+    "AWS_ACCESS_KEY_ID",
+    "AWS_SECRET_ACCESS_KEY",
+    "AWS_SESSION_TOKEN",
+    "AWS_BEARER_TOKEN_BEDROCK",
+    "AWS_PROFILE",
+    "AGENTCORE_MEMORY_ID",
+    "EVAL_MODEL_ID",
+)
+
+
+@pytest.fixture(autouse=True)
+def no_live_keys(monkeypatch) -> None:
+    """Tests never see a live key, even when the developer's shell has one exported."""
+    for name in LIVE_KEY_NAMES:
+        monkeypatch.delenv(name, raising=False)
+
+
 @pytest.fixture(autouse=True)
 def no_network(monkeypatch) -> NetworkGuard:
     """Block outbound connections and DNS for the duration of each test.
