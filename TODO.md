@@ -28,7 +28,7 @@ Constraints that hold all night.
       Accept. Workflow file lints (`python -c "import yaml;yaml.safe_load(open('.github/workflows/ci.yml'))"`) and `make verify` passes locally.
 - [x] A8. `JUDGING.md` with a 60-second route: clone, `make setup`, `make replay`, open one output file. `make replay` must work offline.
       Accept. Run the route from a fresh clone into `/tmp` and paste the timing.
-- [ ] A9. `docs/reports/day-1.md` with three sections, proven by a command with observed output, claimed but not proven, deliberately not built.
+- [x] A9. `docs/reports/day-1.md` with three sections, proven by a command with observed output, claimed but not proven, deliberately not built.
       Accept. File exists and every "proven" line names a command run in this session.
 
 ## Block B. Last Elevator (only after Block A is fully checked)
