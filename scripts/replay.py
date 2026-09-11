@@ -16,6 +16,8 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT / "src"))
 sys.path.insert(0, str(REPO_ROOT))
 
+from agent.mock_model import MockModel  # noqa: E402
+from agent.outage_parser import parse_and_validate  # noqa: E402
 from evals.run import extract_output, install_network_guard, load_suites, run_case  # noqa: E402
 
 OUT = REPO_ROOT / "results" / "replay.md"
@@ -25,7 +27,29 @@ def _text(blocks: list[dict]) -> str:
     return " ".join(b["text"] for b in blocks if "text" in b)
 
 
+def render_parse_case(suite: dict, case: dict) -> tuple[str, bool]:
+    """outage_parse cases: the model proposes a parse (scripted), code validates against the KB."""
+    fragment = case["input"]["fragment"]
+    model = MockModel(case["input"]["mock_turns"], name=case["name"])
+    validated = parse_and_validate(fragment, model)
+    actual = validated.as_label()
+    ok = actual == case["label"]
+    lines = [f"### {suite['suite']} / {case['name']}  {'PASS' if ok else 'FAIL'}", ""]
+    lines.append(f"- Fragment: `{fragment}` ({case['input'].get('source', 'authored')})")
+    lines.append(
+        f"- Model proposal (mock provider, scripted): `{json.dumps(case['input']['mock_turns'][0]['input'])}`"
+    )
+    lines.append(f"- Code validation: `{json.dumps(actual)}`")
+    if validated.problems:
+        lines.append(f"- Problems recorded by code: {validated.problems}")
+    lines.append(f"- Expected: `{json.dumps(case['label'])}`")
+    lines.append("")
+    return "\n".join(lines), ok
+
+
 def render_case(suite: dict, case: dict) -> tuple[str, bool]:
+    if suite["output_of"] == "outage_parse":
+        return render_parse_case(suite, case)
     built, result = run_case(case["input"], provider="mock", ablate=False)
     actual = extract_output(suite["output_of"], built, result)
     ok = actual == case["label"]
