@@ -1,0 +1,8 @@
+{
+  "name": "structured_forced",
+  "description": "Model ends its turn with prose. The loop must force a Plan on the next call; the model then complies.",
+  "turns": [
+    {"type": "text", "text": "Here is my plan in prose: backtrack one stop and return."},
+    {"type": "tool_use", "name": "Plan", "input": {"affected": true, "option": "backtracking", "steps": ["Ride one stop past", "Return"], "added_minutes": 12, "message": "Backtrack one stop and return."}}
+  ]
+}

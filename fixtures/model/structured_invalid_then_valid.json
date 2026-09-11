@@ -1,0 +1,8 @@
+{
+  "name": "structured_invalid_then_valid",
+  "description": "First Plan is missing the required 'message' field and must be rejected by schema validation; the second is valid.",
+  "turns": [
+    {"type": "tool_use", "name": "Plan", "input": {"affected": true, "option": "transit", "steps": ["Take AC Transit 72"]}},
+    {"type": "tool_use", "name": "Plan", "input": {"affected": true, "option": "transit", "steps": ["Take AC Transit 72"], "added_minutes": 25, "message": "Both platform elevators are out; take the 72 bus one stop."}}
+  ]
+}

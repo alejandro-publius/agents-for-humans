@@ -1,0 +1,8 @@
+{
+  "name": "hook_bad_station",
+  "description": "Model calls get_station_facts with a station code that is not known. The BeforeToolCall hook must cancel it. The model then submits a Plan.",
+  "turns": [
+    {"type": "tool_use", "name": "get_station_facts", "input": {"station": "ZZZZ"}},
+    {"type": "tool_use", "name": "Plan", "input": {"affected": false, "option": "none", "steps": [], "message": "Station unknown; no plan."}}
+  ]
+}
