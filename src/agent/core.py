@@ -11,6 +11,7 @@ from typing import Any
 
 from strands import Agent
 from strands.agent.conversation_manager import SlidingWindowConversationManager
+from strands.session import FileSessionManager
 
 from agent.hooks import ArgumentValidatorHook, Validator, kb_elevator_validator, kb_station_validator
 from agent.option_steering import OptionOrderSteering
@@ -35,6 +36,13 @@ class AgentConfig:
     steering_enabled: bool = True
     structured_output: bool = True
     required_option: str | None = None
+    # rider decisions (E1): case key, flags that need a human, the card shown, remembered answers
+    case_key: str | None = None
+    decision_flags: list[str] = field(default_factory=list)
+    decision_card: dict[str, Any] = field(default_factory=dict)
+    decisions: dict[str, str] = field(default_factory=dict)
+    session_id: str | None = None
+    session_dir: str | None = None
     known_stations: frozenset[str] = field(default_factory=known_abbrs)
     validators: dict[str, Validator] = field(default_factory=dict)
     system_prompt: str = SYSTEM_PROMPT
@@ -92,8 +100,19 @@ def build_agent(
         steering = SteeringHandler(
             option_order_policy(config.required_option), option_order_rewrite(config.required_option)
         )
-        option_steering = OptionOrderSteering(config.required_option)
+        option_steering = OptionOrderSteering(
+            config.required_option,
+            case_key=config.case_key,
+            decision_flags=config.decision_flags,
+            card=config.decision_card,
+            decisions=config.decisions,
+        )
 
+    session_manager = (
+        FileSessionManager(session_id=config.session_id, storage_dir=config.session_dir)
+        if config.session_id
+        else None
+    )
     agent = Agent(
         name="last-elevator",
         model=model,
@@ -104,6 +123,7 @@ def build_agent(
         interventions=[steering] if steering else None,
         plugins=[option_steering] if option_steering else None,
         structured_output_model=Plan if config.structured_output else None,
+        session_manager=session_manager,
         callback_handler=None,
     )
     return BuiltAgent(agent, config, hook, steering, option_steering)

@@ -15,8 +15,9 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT / "src"))
 
+from agent.core import AgentConfig  # noqa: E402
 from agent.mock_model import MockModel  # noqa: E402
-from agent.run import run_one  # noqa: E402
+from agent.run import resume_run, run_one  # noqa: E402
 from evals.run import install_network_guard  # noqa: E402
 from policy import Trip  # noqa: E402
 from policy.sun import PACIFIC  # noqa: E402
@@ -26,7 +27,49 @@ TRIP = Trip(origin="SANL", dest="EMBR")  # synthetic rider trip
 WHEN = datetime(2026, 9, 12, 8, 0, tzinfo=PACIFIC)
 
 
+NIGHT = datetime(2026, 9, 12, 23, 30, tzinfo=PACIFIC)  # after sunset, past the fixture's last train
+
+
+def after_dark_demo() -> int:
+    """The run pauses on a real Interrupt, the decision card is shown, the rider accepts, it resumes."""
+    install_network_guard()
+    decisions: dict[str, str] = {}
+    cfg = AgentConfig(decisions=decisions)
+    report = run_one(TRIP, FRAGMENT, NIGHT, MockModel.from_fixture("demo_one_night"), config=cfg)
+    print("== demo-one --after-dark (mock provider, synthetic outage and trip) ==")
+    d = report.decision
+    flags = d["flags"]
+    print(f"policy     : top_option={d['top_option']} after_dark={flags['after_dark']}")
+    print(f"             last_train={flags['last_train']}")
+    if not report.paused:
+        print(f"error      : run did not pause ({report.error})")
+        return 1
+    card = report.card
+    print("PAUSED     : run stopped with stop_reason=interrupt; decision card written for the rider:")
+    print(f"             station   {card['station_name']} ({card['station']}), {card['elevator']}")
+    print(f"             BART says {card['bart_option']}")
+    print(f"             recommend {card['recommended']} (+{card['added_minutes']} min)")
+    print(f"             minutes   {card['minutes_basis']}")
+    print(f"             flags     {card['flags']}")
+    print(f"             source    {card['source_url']} (scraped {card['scraped_at']})")
+    for r in card["rejected_options"]:
+        print(f"             rejected  {r['option']}: {r['reason']}")
+    print("rider      : accept")
+    resumed = resume_run(report, "accept")
+    print(f"RESUMED    : final plan option={resumed.final_plan['option']} verified={resumed.verification}")
+    print(f"remembered : {decisions}")
+    cfg2 = AgentConfig(decisions=decisions)
+    again = run_one(TRIP, FRAGMENT, NIGHT, MockModel.from_fixture("demo_one_night"), config=cfg2)
+    n_int = again.mechanisms["steering_interrupts"]
+    print(f"same case  : paused={again.paused} interrupts={n_int} option={again.final_plan['option']}")
+    ok = resumed.final_plan["option"] == d["top_option"] and not again.paused
+    print(f"RESULT     : pause, resume, remembered: {ok}")
+    return 0 if ok else 1
+
+
 def main() -> int:
+    if "--after-dark" in sys.argv[1:]:
+        return after_dark_demo()
     install_network_guard()
     report = run_one(TRIP, FRAGMENT, WHEN, MockModel.from_fixture("demo_one"))
     d = report.decision

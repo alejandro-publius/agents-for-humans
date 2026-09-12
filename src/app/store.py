@@ -66,6 +66,15 @@ class RiderStore:
         self.conn = sqlite3.connect(self.db_path, check_same_thread=False)
         self.conn.row_factory = sqlite3.Row
         self.conn.executescript(SCHEMA)
+        self._migrate()
+
+    def _migrate(self) -> None:
+        """Add columns introduced after the first schema; existing rows get NULLs."""
+        have = {row[1] for row in self.conn.execute("PRAGMA table_info(inbox)")}
+        for column in ("session_id TEXT", "card TEXT", "interrupt_id TEXT", "answer TEXT"):
+            if column.split()[0] not in have:
+                self.conn.execute(f"ALTER TABLE inbox ADD COLUMN {column}")
+        self.conn.commit()
 
     # --- riders ------------------------------------------------------------------------------
     def ensure_rider(self, rider_id: str, name: str | None = None, preferences: dict | None = None) -> None:
@@ -141,12 +150,13 @@ class RiderStore:
         cols = (
             "rider_id", "trip_id", "at", "fragment", "station", "elevator", "condition",
             "affected", "top_option", "ranked_options", "reasoning", "message", "mechanisms",
-            "provider", "source", "sent",
+            "provider", "source", "sent", "session_id", "card", "interrupt_id", "answer",
         )  # fmt: skip
         values = [fields.get(c) for c in cols]
         for i, c in enumerate(cols):
-            if c in ("ranked_options", "mechanisms") and not isinstance(values[i], str):
-                values[i] = json.dumps(values[i] or [], default=str)
+            if c in ("ranked_options", "mechanisms", "card") and values[i] is not None:
+                if not isinstance(values[i], str):
+                    values[i] = json.dumps(values[i], default=str)
             if c == "affected":
                 values[i] = "unknown" if values[i] is None else ("yes" if values[i] else "no")
         with self.conn:
@@ -172,8 +182,31 @@ class RiderStore:
             row = dict(r)
             row["ranked_options"] = json.loads(r["ranked_options"])
             row["mechanisms"] = json.loads(r["mechanisms"])
+            row["card"] = json.loads(r["card"]) if r["card"] else None
             out.append(row)
         return out
+
+    def inbox_row(self, row_id: int) -> dict[str, Any] | None:
+        rows = [r for r in self.inbox() if r["id"] == row_id]
+        return rows[0] if rows else None
+
+    def answer_decision(self, row_id: int, answer: str, message: str | None, condition: str) -> None:
+        with self.conn:
+            self.conn.execute(
+                "UPDATE inbox SET answer=?, message=?, condition=?, sent=1 WHERE id=?",
+                (answer, message, condition, row_id),
+            )
+
+    # --- remembered decisions (stored with the rider's preferences) ---------------------------
+    def decisions(self, rider_id: str) -> dict[str, str]:
+        return dict(self.preferences(rider_id).get("decisions") or {})
+
+    def remember_decision(self, rider_id: str, key: str, answer: str) -> None:
+        prefs = self.preferences(rider_id)
+        prefs.setdefault("decisions", {})[key] = answer
+        self.ensure_rider(rider_id)
+        with self.conn:
+            self.conn.execute("UPDATE riders SET preferences=? WHERE id=?", (json.dumps(prefs), rider_id))
 
     def clear_inbox(self) -> None:
         with self.conn:

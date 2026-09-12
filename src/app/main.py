@@ -14,6 +14,7 @@ from typing import Any
 from fastapi import FastAPI, Form
 from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse
 
+from app.replay import answer_pending
 from app.store import DEFAULT_DB, WEEKDAYS, RiderStore
 from kb.load import load_stations
 from src.poller import DEFAULT_DB as OUTAGES_DB
@@ -105,6 +106,17 @@ def post_trip(
 
 
 STATIC = Path(__file__).resolve().parent / "static"
+
+
+@app.post("/decisions/{row_id}")
+def post_decision(row_id: int, answer: str = Form(...)):
+    """The rider answers a decision card; the paused run resumes from its persisted session."""
+    try:
+        sessions = _paths["riders"].parent / "sessions"
+        result = answer_pending(store(), row_id, answer, sessions_dir=sessions)
+    except ValueError as exc:
+        return JSONResponse({"error": str(exc)}, status_code=400)
+    return JSONResponse(result)
 
 
 @app.get("/", response_class=HTMLResponse)

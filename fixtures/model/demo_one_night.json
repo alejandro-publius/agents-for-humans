@@ -1,0 +1,8 @@
+{
+  "name": "demo_one_night",
+  "description": "demo-one --after-dark. At 23:30 the policy top option is transit (last train makes backtracking infeasible). The model drafts transit; the steering handler raises a real Interrupt because the case is after dark and past the last train; on resume the model submits the Plan.",
+  "turns": [
+    {"type": "tool_use", "name": "draft_message", "input": {"option": "transit", "station_abbr": "SANL", "elevator": "PLATFORM 2 ELEVATOR (RICHMOND, SFO/MILLBRAE/DALY CITY DIRECTIONS)", "steps": ["Take an AC Transit bus toward Bay Fair and board there."], "added_minutes": null}},
+    {"type": "tool_use", "name": "Plan", "input": {"affected": true, "option": "transit", "steps": ["Take an AC Transit bus toward Bay Fair and board there."], "added_minutes": null, "needs_human_decision": true, "message": "San Leandro: the SF-direction platform elevator is out and the last train has left. Take an AC Transit bus toward Bay Fair and board there."}}
+  ]
+}

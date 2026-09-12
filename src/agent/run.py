@@ -20,6 +20,7 @@ from typing import Any
 from strands.types.exceptions import StructuredOutputException
 
 from agent.core import AgentConfig, BuiltAgent, build_agent
+from agent.decision_card import build_card, case_key, decision_flags
 from agent.outage_parser import parse_and_validate
 from agent.schema import Plan, normalize_option
 from bart import BartClient
@@ -44,9 +45,20 @@ class RunReport:
     verification: Verification | None
     mechanisms: dict[str, Any]
     error: str | None = None
+    interrupt: dict[str, Any] | None = None  # set while the run is paused for a rider decision
+    card: dict[str, Any] | None = None  # the decision card shown to the rider, when one exists
+    _built: Any = field(default=None, repr=False, compare=False)
+    _decision: Any = field(default=None, repr=False, compare=False)
+
+    @property
+    def paused(self) -> bool:
+        return self.interrupt is not None
 
     def as_dict(self) -> dict[str, Any]:
-        return asdict(self)
+        data = asdict(self)
+        data.pop("_built", None)
+        data.pop("_decision", None)
+        return data
 
 
 def verify_plan(plan: Plan, decision: Decision) -> tuple[Plan, Verification]:
@@ -148,22 +160,53 @@ def run_with_decision(
         "needs": sorted(trip.needs),
         "when": when.isoformat(),
     }
-    fragment = raw
     base = config or AgentConfig()
+    flags = decision_flags(decision) if base.steering_enabled else []
+    card = build_card(decision) if flags else {}
     cfg = AgentConfig(
         hooks_enabled=base.hooks_enabled,
         steering_enabled=base.steering_enabled,
         structured_output=True,
         required_option=decision.top_option,
+        case_key=case_key(decision.station, decision.elevator, decision.condition),
+        decision_flags=flags,
+        decision_card=card,
+        decisions=base.decisions,
+        session_id=base.session_id,
+        session_dir=base.session_dir,
         system_prompt=base.system_prompt,
     )
     built: BuiltAgent = build_agent(model, config=cfg, tools=tools)
+    report = RunReport(
+        fragment=raw,
+        trip=trip_dict,
+        parsed=parsed_label,
+        decision=decision.as_dict(),
+        model_plan=None,
+        final_plan=None,
+        verification=None,
+        mechanisms={},
+        card=card or None,
+        _built=built,
+        _decision=decision,
+    )
+    return _drive(report, lambda: built(prompt_for(trip, raw, parsed_label, when)))
 
+
+def _drive(report: RunReport, invoke) -> RunReport:
+    """Run (or resume) the agent via ``invoke`` and fill the report from the outcome."""
+    built: BuiltAgent = report._built
+    decision: Decision = report._decision
+    model = built.agent.model
     error = None
     model_plan: Plan | None = None
+    interrupt = None
     try:
-        result = built(prompt_for(trip, raw, parsed_label, when))
-        if isinstance(result.structured_output, Plan):
+        result = invoke()
+        if result.stop_reason == "interrupt" and result.interrupts:
+            first = result.interrupts[0]
+            interrupt = {"id": first.id, "name": first.name, "reason": first.reason}
+        elif isinstance(result.structured_output, Plan):
             model_plan = result.structured_output
         else:
             error = "agent ended without a Plan"
@@ -171,23 +214,83 @@ def run_with_decision(
         error = f"no Plan produced: {exc}"
 
     final_plan, verification = verify_plan(model_plan, decision) if model_plan else (None, None)
-    mechanisms = {
+    steering = built.option_steering
+    report.mechanisms = {
         "hook_cancellations": len(built.validator_hook.cancelled) if built.validator_hook else 0,
         "hook_cancelled_calls": built.validator_hook.cancelled if built.validator_hook else [],
-        "steering_guides": len(built.option_steering.guides) if built.option_steering else 0,
-        "steering_guide_details": built.option_steering.guides if built.option_steering else [],
+        "steering_guides": len(steering.guides) if steering else 0,
+        "steering_guide_details": steering.guides if steering else [],
+        "steering_interrupts": len(steering.interrupts) if steering else 0,
         "text_rewrites": len(built.steering.rewrites) if built.steering else 0,
         "model_calls": len(getattr(model, "calls", [])) or 0,
-        "ablated": not (cfg.hooks_enabled and cfg.steering_enabled),
+        "ablated": not (built.config.hooks_enabled and built.config.steering_enabled),
     }
+    report.model_plan = model_plan.model_dump() if model_plan else None
+    report.final_plan = final_plan.model_dump() if final_plan else None
+    report.verification = verification
+    report.error = error
+    report.interrupt = interrupt
+    return report
+
+
+def reopen_paused_run(
+    trip: Trip,
+    raw: str,
+    parsed_label: dict[str, Any],
+    decision: Decision,
+    interrupt_id: str,
+    model: Any,
+    *,
+    config: AgentConfig,
+) -> RunReport:
+    """Rebuild a paused run from its persisted session (config.session_id) so it can be resumed later,
+    for example from the rider app after the rider answers the decision card."""
+    if not config.session_id:
+        raise ValueError("reopening a paused run needs config.session_id")
+    flags = decision_flags(decision)
+    card = build_card(decision) if flags else {}
+    cfg = AgentConfig(
+        hooks_enabled=config.hooks_enabled,
+        steering_enabled=config.steering_enabled,
+        structured_output=True,
+        required_option=decision.top_option,
+        case_key=case_key(decision.station, decision.elevator, decision.condition),
+        decision_flags=flags,
+        decision_card=card,
+        decisions=config.decisions,
+        session_id=config.session_id,
+        session_dir=config.session_dir,
+        system_prompt=config.system_prompt,
+    )
+    built = build_agent(model, config=cfg)
     return RunReport(
-        fragment,
-        trip_dict,
-        parsed_label,
-        decision.as_dict(),
-        model_plan.model_dump() if model_plan else None,
-        final_plan.model_dump() if final_plan else None,
-        verification,
-        mechanisms,
-        error,
+        fragment=raw,
+        trip={"origin": trip.origin, "dest": trip.dest, "needs": sorted(trip.needs), "when": None},
+        parsed=parsed_label,
+        decision=decision.as_dict(),
+        model_plan=None,
+        final_plan=None,
+        verification=None,
+        mechanisms={},
+        interrupt={"id": interrupt_id, "name": "steering_input_draft_message", "reason": None},
+        card=card or None,
+        _built=built,
+        _decision=decision,
+    )
+
+
+def resume_run(report: RunReport, answer: str) -> RunReport:
+    """Answer a paused run ('accept' or 'decline'). The answer is remembered for the case key in
+    agent state (persisted by the session manager) and in the caller's decisions dict."""
+    if not report.paused or report._built is None:
+        raise ValueError("report is not paused")
+    built: BuiltAgent = report._built
+    if built.option_steering is not None:
+        built.option_steering.remember(built.agent, answer)
+    interrupt_id = report.interrupt["id"]
+    response = answer == "accept"
+    report.interrupt = None
+    return _drive(
+        report,
+        lambda: built.agent([{"interruptResponse": {"interruptId": interrupt_id, "response": response}}]),
     )

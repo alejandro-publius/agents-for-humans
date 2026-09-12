@@ -59,3 +59,42 @@ def test_replay_populates_inbox_and_timeline_offline(tmp_path, no_network):
     assert no_network.attempts == []
     page = client.get("/").text
     assert "Register a trip" in page and "Replay timeline" in page
+
+
+def test_night_replay_writes_a_decision_card_and_answering_resumes(tmp_path, no_network):
+    """E1 in the app: a pending decision row with the card; POST answer resumes from the persisted session."""
+    from bart.client import FIXTURES_DIR
+
+    client = _client(tmp_path)
+    store = RiderStore(tmp_path / "riders.sqlite")
+    store.seed_demo()
+    stats = replay(
+        store, connect(tmp_path / "outages.sqlite"), FIXTURES_DIR / "archive_night_test.json",
+        sessions_dir=tmp_path / "sessions",
+    )  # fmt: skip
+    assert stats["pending"] >= 1
+    pending = [r for r in client.get("/api/inbox").json() if r["condition"] == "pending_decision"]
+    assert pending, "the SANL night outage on the SANL->EMBR trip needs a rider decision"
+    row = next(r for r in pending if r["station"] == "SANL")
+    assert row["card"]["flags"] == ["after_dark", "last_train"] and row["card"]["recommended"] == "transit"
+    assert row["session_id"] and row["interrupt_id"] and row["message"] is None
+
+    r = client.post(f"/decisions/{row['id']}", data={"answer": "accept"})
+    assert r.status_code == 200, r.text
+    body = r.json()
+    assert body["message"] and body["error"] is None
+    updated = store.inbox_row(row["id"])
+    assert updated["answer"] == "accept" and updated["condition"] == "cant_enter" and updated["sent"] == 1
+    assert store.decisions("demo") == {row["card"]["case_key"]: "accept"}
+
+    # the same case, replayed again for the same rider, no longer pauses
+    store.clear_inbox()
+    stats2 = replay(
+        store, connect(tmp_path / "outages2.sqlite"), FIXTURES_DIR / "archive_night_test.json",
+        sessions_dir=tmp_path / "sessions2",
+    )  # fmt: skip
+    assert stats2["pending"] == stats["pending"] - 1, "only the answered case stops pausing"
+    still = [r for r in store.inbox() if r["condition"] == "pending_decision"]
+    assert all(r["card"]["case_key"] != row["card"]["case_key"] for r in still)
+    assert client.post(f"/decisions/{row['id']}", data={"answer": "accept"}).status_code == 400
+    assert no_network.attempts == []

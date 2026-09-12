@@ -33,3 +33,4 @@ Dockerfile.agentcore
 .vscode/
 .idea/
 .DS_Store
+data/sessions/

@@ -37,8 +37,8 @@ evals-ablate: ## same cases with hook + steering disabled -> results/ablation.js
 evals-no-steering: ## policy_agreement ablation on the mock provider: no steering, no get_station_facts
 	$(PY) evals/run.py --no-steering
 
-demo-one: ## one synthetic outage against one synthetic trip on the mock provider; prints decision, mechanisms, plan
-	$(PY) scripts/demo_one.py
+demo-one: ## one synthetic outage against one synthetic trip on the mock provider; ARGS=--after-dark shows the pause
+	$(PY) scripts/demo_one.py $(ARGS)
 
 poll: ## one poll of the elevator feed into data/outages.sqlite; FIXTURE=path runs offline, else needs BART_API_KEY
 	$(PY) -m src.poller --once $(if $(FIXTURE),--fixture $(FIXTURE),)
