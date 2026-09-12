@@ -6,7 +6,7 @@ PY    := $(VENV)/bin/python
 UV    := $(shell command -v uv 2>/dev/null)
 ABLATE ?= 0
 
-.PHONY: help setup lint test evals evals-ablate evals-no-steering results render-claims verify-claims secret-scan verify replay poll demo-one app inbox-replay report labels relevance archive quota bedrock-smoke eval-live red-team clean
+.PHONY: help setup lint test evals evals-ablate evals-no-steering results render-claims verify-claims secret-scan verify replay poll demo-one app inbox-replay report labels relevance archive quota bedrock-smoke eval-live red-team a11y clean
 
 help: ## list targets
 	@grep -E '^[a-z-]+:.*## ' $(MAKEFILE_LIST) | awk -F ':.*## ' '{printf "  %-10s %s\n", $$1, $$2}'
@@ -88,6 +88,9 @@ verify-claims: ## every number in README.md marked <!-- claim:key --> must match
 
 secret-scan: ## regex scan of every tracked file for keys and tokens
 	$(PY) scripts/secret_scan.py
+
+a11y: ## axe-core audit of the served rider app (Playwright Chromium) -> results/axe.json; exits 1 on violations
+	$(PY) scripts/a11y.py
 
 red-team: ## adversarial scripted model vs the full agent -> results/red_team.json (expect all zeros reach the rider)
 	$(PY) scripts/red_team.py

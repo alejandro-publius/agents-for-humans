@@ -48,3 +48,9 @@ extend-immutable-calls = ["fastapi.Form"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["."]
+
+[dependency-groups]
+dev = [
+    "axe-playwright-python>=0.1.8",
+    "playwright>=1.62.0",
+]

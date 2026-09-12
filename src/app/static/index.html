@@ -2,18 +2,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body{font:15px/1.45 system-ui,sans-serif;margin:0;padding:16px 20px;background:#f6f7f9;color:#1b1f24;max-width:1100px}
-h1{margin:0 0 4px;font-size:22px} h2{font-size:16px;margin:24px 0 8px} .muted{color:#5c6570}
+h1{margin:0 0 4px;font-size:22px} h2{font-size:16px;margin:24px 0 8px} .muted{color:#4b5563}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}@media(max-width:800px){.grid{grid-template-columns:1fr}}
 .card{background:#fff;border:1px solid #dde1e6;border-radius:8px;padding:12px 14px}
 table{border-collapse:collapse;width:100%;font-size:13px} th,td{text-align:left;padding:6px 8px;border-bottom:1px solid #eceff2;vertical-align:top}
-.sent{background:#eaf7ee} .quiet{color:#6b7480} code{background:#f0f2f4;padding:1px 4px;border-radius:3px}
+.sent{background:#eaf7ee} .quiet{color:#4b5563} code{background:#f0f2f4;padding:1px 4px;border-radius:3px}
 input,select,button{font:inherit;padding:4px 6px} form label{display:block;margin:6px 0}
 .rank{margin:0;padding-left:16px} .badge{display:inline-block;padding:0 6px;border-radius:10px;background:#e5e9ef;font-size:12px}
 </style></head><body>
+<header>
 <h1>Last Elevator</h1>
 <div class="muted">A background agent for BART riders who depend on elevators. Everything on this page is offline
 and reproducible: <code>make replay</code> rebuilds the inbox from the archived feed.
 <span id="status"></span></div>
+</header>
+<main>
 <div class="grid">
 <div class="card"><h2>Register a trip</h2>
 <form method="post" action="/trips">
@@ -27,12 +30,14 @@ and reproducible: <code>make replay</code> rebuilds the inbox from the archived 
 <h2>Registered trips</h2><table id="trips"></table></div>
 <div class="card"><h2>Replay timeline</h2>
 <div class="muted">Scrub through the archived feed. The inbox below shows decisions up to the selected snapshot.</div>
-<input type="range" id="scrub" min="0" max="0" value="0" style="width:100%">
+<label for="scrub">Snapshot</label>
+<input type="range" id="scrub" min="0" max="0" value="0" style="width:100%" aria-label="Replay timeline snapshot">
 <div id="snap"></div></div>
 </div>
 <div class="card" style="margin-top:16px"><h2>Inbox: every decision, with reasoning and BART's option ranking</h2>
 <div class="muted">Rows shaded green were sent to the rider. Quiet rows are decisions the agent made silently.</div>
 <table id="inbox"></table></div>
+</main>
 <script>
 const WEEKDAYS=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
 document.getElementById('days').innerHTML=WEEKDAYS.map(d=>`<label style="display:inline;margin-right:8px"><input type="checkbox" name="days" value="${d}" ${d.length&&"MonTueWedThuFri".includes(d)?"checked":""}>${d}</label>`).join("");
