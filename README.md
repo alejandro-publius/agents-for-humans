@@ -65,6 +65,8 @@ the tests assert that with a socket-blocking fixture.
 | Demo rider, synthetic weekend archive: outages touching their stations / their trips | <!-- claim:interruptions.rider.outages_touching_your_stations -->3/ <!-- claim:interruptions.rider.outages_touching_your_trips -->3|
 | Interruptions the agent sent / what per-station BART alerts would have sent | <!-- claim:interruptions.rider.interruptions_sent -->4/ <!-- claim:interruptions.rider.bart_style_station_alerts -->6|
 | Relevance rows exported for two human labelers / rows labeled so far | <!-- claim:relevance.rows_total -->8/ <!-- claim:relevance.rows_labeled_by_both -->0|
+| Red team, 20 adversarial runs (fake stations, wrong options, invented minutes): reached the rider | <!-- claim:red_team.reached_rider.hallucinated_stations -->0stations / <!-- claim:red_team.reached_rider.wrong_options -->0options / <!-- claim:red_team.reached_rider.minutes_not_from_policy -->0minutes, over <!-- claim:red_team.runs -->20runs |
+| Quiet metric, synthetic replay: interruptions / decisions / days covered | <!-- claim:quiet.synthetic_replay.interruptions -->4/ <!-- claim:quiet.synthetic_replay.decisions -->8/ <!-- claim:quiet.synthetic_replay.days_covered -->0.0104|
 
 The interruption numbers come from a synthetic four-snapshot archive replayed through the pipeline
 (`fixtures/bart/archive_synthetic.json`), not from a real weekend; the relevance score is unfilled

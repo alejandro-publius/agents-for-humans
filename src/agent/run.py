@@ -23,6 +23,7 @@ from agent.core import AgentConfig, BuiltAgent, build_agent
 from agent.decision_card import build_card, case_key, decision_flags
 from agent.outage_parser import parse_and_validate
 from agent.schema import Plan, normalize_option
+from agent.scrub import unknown_station_codes
 from bart import BartClient
 from policy import Decision, Outage, Trip, assess, assess_condition
 
@@ -32,6 +33,7 @@ class Verification:
     option_ok: bool
     minutes_ok: bool
     corrections: list[str] = field(default_factory=list)
+    unknown_stations: list[str] = field(default_factory=list)
 
 
 @dataclass
@@ -76,14 +78,22 @@ def verify_plan(plan: Plan, decision: Decision) -> tuple[Plan, Verification]:
     affected = bool(decision.affected)
     if plan.affected != affected:
         corrections.append(f"affected {plan.affected!r} replaced with policy {affected!r}")
-    final = plan.model_copy(
-        update={
-            "option": top if top is not None else plan.option,
-            "added_minutes": top_minutes,
-            "affected": affected,
-        }
-    )
-    return final, Verification(option_ok, minutes_ok, corrections)
+    update: dict[str, Any] = {
+        "option": top if top is not None else plan.option,
+        "added_minutes": top_minutes,
+        "affected": affected,
+    }
+    unknown = unknown_station_codes(plan.message, *plan.steps)
+    if unknown:
+        # A station the KB does not know never reaches the rider: fall back to BART's own text.
+        documented = (decision.documented_option or {}).get(
+            "text"
+        ) or "Contact the Station Agent for assistance."
+        update["steps"] = [documented]
+        update["message"] = documented
+        corrections.append(f"message and steps replaced: unknown station code(s) {unknown}")
+    final = plan.model_copy(update=update)
+    return final, Verification(option_ok, minutes_ok, corrections, unknown_stations=unknown)
 
 
 def prompt_for(trip: Trip, raw: str, parsed: dict[str, Any], when: datetime) -> str:
