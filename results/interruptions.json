@@ -3,6 +3,8 @@
     "demo": {
       "assumption": "BART-style alerts = one per outage start plus one per clearance at each registered station",
       "bart_style_station_alerts": 6,
+      "days_covered": 0.0104,
+      "interruptions_per_rider_week": 2692.31,
       "interruptions_sent": 4,
       "outages_on_feed": 4,
       "outages_touching_your_stations": 3,
@@ -21,6 +23,8 @@
   "rider": {
     "assumption": "BART-style alerts = one per outage start plus one per clearance at each registered station",
     "bart_style_station_alerts": 6,
+    "days_covered": 0.0104,
+    "interruptions_per_rider_week": 2692.31,
     "interruptions_sent": 4,
     "outages_on_feed": 4,
     "outages_touching_your_stations": 3,

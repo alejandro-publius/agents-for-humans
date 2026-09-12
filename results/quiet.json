@@ -1,0 +1,17 @@
+{
+  "archive": {
+    "note": "make archive has not recorded data yet",
+    "status": "awaiting archive"
+  },
+  "synthetic_replay": {
+    "days_covered": 0.0104,
+    "decisions": 8,
+    "interruptions": 4,
+    "interruptions_per_rider_week": 2692.31,
+    "note": "interruptions = inbox rows sent to a rider (messages and decision cards); rider-weeks = riders x days covered by the snapshots / 7. A synthetic archive spanning minutes gives a large per-week rate; the archive entry is the one that matters once the poller has run.",
+    "rider_weeks": 0.0015,
+    "riders": 1,
+    "snapshots": 4,
+    "source": "make replay on fixtures/bart/archive_synthetic.json"
+  }
+}

@@ -40,8 +40,13 @@ def rider_report(store: RiderStore, outages_db: Path, rider_id: str) -> dict[str
     sent = [r for r in inbox if r["sent"]]
     bart_style = sum(1 for kind, fragment in events if station_of.get(fragment) in stations)
 
+    days = _days_covered(conn)
+    riders_total = max(1, len(store.riders()))
+    rider_weeks = riders_total * days / 7 if days else 0.0
     return {
         "rider_id": rider_id,
+        "days_covered": days,
+        "interruptions_per_rider_week": round(len(sent) / rider_weeks, 2) if rider_weeks else None,
         "registered_trips": len(trips),
         "registered_stations": stations,
         "outages_on_feed": len(outages),
@@ -54,6 +59,62 @@ def rider_report(store: RiderStore, outages_db: Path, rider_id: str) -> dict[str
             "BART-style alerts = one per outage start plus one per clearance at each registered station"
         ),
     }
+
+
+def _days_covered(conn: sqlite3.Connection | None) -> float:
+    """Days spanned by the snapshots in the outage db, from first poll to last, as a fraction."""
+    if conn is None:
+        return 0.0
+    row = conn.execute("SELECT MIN(taken_at), MAX(taken_at) FROM snapshots").fetchone()
+    if not row or not row[0]:
+        return 0.0
+    from datetime import datetime
+
+    first, last = datetime.fromisoformat(row[0]), datetime.fromisoformat(row[1])
+    return round(max((last - first).total_seconds(), 0) / 86400, 4)
+
+
+def quiet_metric(store: RiderStore, outages_db: Path, source: str) -> dict[str, Any]:
+    """Interrupts per rider-week across every rider in the store, for results/quiet.json."""
+    riders = [r["id"] for r in store.riders()]
+    conn = sqlite3.connect(outages_db) if outages_db.exists() else None
+    days = _days_covered(conn)
+    inbox = store.inbox()
+    sent = sum(1 for r in inbox if r["sent"])
+    rider_weeks = len(riders) * days / 7 if days else 0.0
+    return {
+        "source": source,
+        "riders": len(riders),
+        "days_covered": days,
+        "snapshots": conn.execute("SELECT COUNT(*) FROM snapshots").fetchone()[0] if conn else 0,
+        "decisions": len(inbox),
+        "interruptions": sent,
+        "rider_weeks": round(rider_weeks, 4),
+        "interruptions_per_rider_week": round(sent / rider_weeks, 2) if rider_weeks else None,
+        "note": (
+            "interruptions = inbox rows sent to a rider (messages and decision cards); rider-weeks = "
+            "riders x days covered by the snapshots / 7. A synthetic archive spanning minutes gives a "
+            "large per-week rate; the archive entry is the one that matters once the poller has run."
+        ),
+    }
+
+
+def write_quiet(
+    store: RiderStore, outages_db: Path, out: Path = REPO_ROOT / "results" / "quiet.json"
+) -> dict:
+    entries = {
+        "synthetic_replay": quiet_metric(
+            store, outages_db, "make replay on fixtures/bart/archive_synthetic.json"
+        )
+    }
+    archive_manifest = REPO_ROOT / "data" / "archive" / "manifest.json"
+    archive_db = REPO_ROOT / "data" / "archive" / "outages.sqlite"
+    if archive_manifest.exists() and archive_db.exists():
+        entries["archive"] = quiet_metric(store, archive_db, "live archive (data/archive), same riders")
+    else:
+        entries["archive"] = {"status": "awaiting archive", "note": "make archive has not recorded data yet"}
+    out.write_text(json.dumps(entries, indent=2, sort_keys=True) + "\n")
+    return entries
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -73,6 +134,9 @@ def main(argv: list[str] | None = None) -> int:
         return 2
     reports = {rid: rider_report(store, args.outages_db, rid) for rid in riders}
     me = reports[args.rider]
+    quiet = write_quiet(store, args.outages_db)
+    q = quiet["synthetic_replay"]
+    print(f"{q['days_covered']} days, {q['interruptions']} interruptions, {q['decisions']} decisions")
     print(
         f"{me['outages_touching_your_stations']} outages touched your stations, "
         f"{me['outages_touching_your_trips']} touched your trips, "

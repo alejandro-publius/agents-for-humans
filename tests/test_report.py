@@ -41,3 +41,31 @@ def test_cli_prints_and_writes_results(tmp_path, capsys, no_network):
     assert "3 outages touched your stations, 3 touched your trips, 4 interruptions sent" in printed
     assert json.loads(out.read_text())["rider"]["bart_style_station_alerts"] == 6
     assert main(["--rider", "nobody", "--db", str(tmp_path / "riders.sqlite")]) == 2
+
+
+def test_quiet_metric_and_opening_line(tmp_path, capsys, no_network):
+    from src.report import quiet_metric, write_quiet
+
+    store = _replayed(tmp_path)
+    q = quiet_metric(store, tmp_path / "outages.sqlite", "test")
+    assert q["riders"] == 1 and q["snapshots"] == 4 and q["decisions"] == 8 and q["interruptions"] == 4
+    assert 0 < q["days_covered"] < 1  # the synthetic archive spans 15 minutes
+    assert q["interruptions_per_rider_week"] == round(4 / (q["days_covered"] / 7), 2)
+    out = tmp_path / "quiet.json"
+    entries = write_quiet(store, tmp_path / "outages.sqlite", out)
+    assert set(entries) == {"synthetic_replay", "archive"}
+    assert entries["archive"].get("status") in (None, "awaiting archive")
+    main(
+        [
+            "--rider",
+            "demo",
+            "--db",
+            str(tmp_path / "riders.sqlite"),
+            "--outages-db",
+            str(tmp_path / "outages.sqlite"),
+            "--out",
+            str(tmp_path / "i.json"),
+        ]
+    )
+    first_line = capsys.readouterr().out.splitlines()[0]
+    assert first_line.endswith("days, 4 interruptions, 8 decisions")
