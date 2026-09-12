@@ -58,3 +58,17 @@ def test_live_run_refuses_without_credentials_and_refuses_to_reclobber(tmp_path,
     with pytest.raises(SystemExit, match="credentials are not set"):  # the other entry is not frozen
         evals_run.main([*live, "--no-steering"])
     assert evals_run.main(["--provider", "bedrock", "--ablate", "--out", str(tmp_path)]) == 2
+
+
+def test_model_specific_entry_names_keep_sonnet_and_nova_apart(tmp_path, monkeypatch):
+    from evals.run import entry_name, frozen_live_result, model_slug
+
+    assert model_slug(None) == "" and model_slug("us.amazon.nova-lite-v1:0") == "us-amazon-nova-lite-v1-0"
+    assert entry_name("enforced", None) == "enforced"
+    assert entry_name("no_steering", "us.amazon.nova-lite-v1:0") == "no_steering-us-amazon-nova-lite-v1-0"
+    frozen = {"suite": "policy_agreement", "frozen": True, "enforced": {"mode": "bedrock", "frozen": True}}
+    (tmp_path / "policy_agreement.json").write_text(json.dumps(frozen))
+    assert frozen_live_result(tmp_path, "enforced") is not None
+    assert (
+        frozen_live_result(tmp_path, "enforced-us-amazon-nova-lite-v1-0") is None
+    )  # a Nova run is not blocked

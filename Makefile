@@ -6,7 +6,7 @@ PY    := $(VENV)/bin/python
 UV    := $(shell command -v uv 2>/dev/null)
 ABLATE ?= 0
 
-.PHONY: help setup lint test evals evals-ablate evals-no-steering results render-claims verify-claims secret-scan verify replay poll demo-one app inbox-replay report labels relevance archive quota bedrock-smoke eval-live red-team a11y trace mcp-test dataset clean
+.PHONY: help setup lint test evals evals-ablate evals-no-steering results render-claims verify-claims secret-scan verify replay poll demo-one app inbox-replay report labels relevance archive quota bedrock-smoke eval-live eval-live-nova red-team a11y trace mcp-test dataset clean
 
 help: ## list targets
 	@grep -E '^[a-z-]+:.*## ' $(MAKEFILE_LIST) | awk -F ':.*## ' '{printf "  %-10s %s\n", $$1, $$2}'
@@ -61,9 +61,14 @@ archive: ## live: poll every 5 min with BART_API_KEY into data/archive/ (own db,
 bedrock-smoke: ## one Converse call to the eval model in AWS_REGION; prints the reply; creates nothing
 	$(PY) scripts/bedrock_smoke.py
 
-eval-live: ## exactly once: policy_agreement on Bedrock, enforced then --no-steering, hard cap 200 calls each
+eval-live: ## exactly once: policy_agreement on Bedrock (Sonnet profile), enforced then --no-steering, 200 calls each
 	$(PY) evals/run.py --provider bedrock --suite policy_agreement --max-model-calls 200 --env-file .env
 	$(PY) evals/run.py --provider bedrock --no-steering --max-model-calls 200 --env-file .env
+
+NOVA_MODEL_ID ?= us.amazon.nova-lite-v1:0
+eval-live-nova: ## the same two runs on Amazon Nova Lite (EVAL_MODEL_ID), entries suffixed with the model slug
+	EVAL_MODEL_ID=$(NOVA_MODEL_ID) $(PY) evals/run.py --provider bedrock --suite policy_agreement --max-model-calls 200 --env-file .env
+	EVAL_MODEL_ID=$(NOVA_MODEL_ID) $(PY) evals/run.py --provider bedrock --no-steering --max-model-calls 200 --env-file .env
 
 quota: ## read-only: print the Amazon Bedrock AgentCore Runtime quotas for this account/region (needs AWS creds)
 	$(PY) scripts/agentcore_quota.py

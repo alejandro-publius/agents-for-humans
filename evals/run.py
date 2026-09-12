@@ -15,6 +15,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import socket
 import sys
 from datetime import UTC, datetime
@@ -148,6 +149,19 @@ POLICY_FILE = "policy_agreement.json"
 POLICY_MOCK_FILE = "policy_agreement.mock.json"
 
 
+def model_slug(model_id: str | None) -> str:
+    """'us.amazon.nova-lite-v1:0' -> 'us-amazon-nova-lite-v1-0'; empty for the default model."""
+    if not model_id:
+        return ""
+    return re.sub(r"[^a-z0-9]+", "-", model_id.lower()).strip("-")
+
+
+def entry_name(variant: str, model_id: str | None) -> str:
+    """Entry key in results/policy_agreement.json: 'enforced' for the default model, else with a slug."""
+    slug = model_slug(model_id)
+    return f"{variant}-{slug}" if slug else variant
+
+
 def read_policy_file(out_dir: Path, name: str = POLICY_FILE) -> dict[str, Any]:
     path = out_dir / name
     return json.loads(path.read_text()) if path.exists() else {"suite": "policy_agreement"}
@@ -156,8 +170,8 @@ def read_policy_file(out_dir: Path, name: str = POLICY_FILE) -> dict[str, Any]:
 def frozen_live_result(out_dir: Path, entry: str | None = None) -> dict[str, Any] | None:
     """A frozen live entry ('enforced' or 'no_steering') in results/policy_agreement.json, if any."""
     data = read_policy_file(out_dir)
-    entries = [entry] if entry else list(POLICY_VARIANTS)
-    for name in entries:
+    names = [entry] if entry else [k for k, v in data.items() if isinstance(v, dict) and "mode" in v]
+    for name in names:
         e = data.get(name)
         if isinstance(e, dict) and e.get("frozen") and e.get("mode") != "mock":
             return e
@@ -350,16 +364,17 @@ def main(argv: list[str] | None = None) -> int:
     variant = "no_steering" if args.no_steering else "enforced"
     if args.no_steering:
         args.suite = ["policy_agreement"]
-
     if args.env_file:
         load_env_file(args.env_file, LIVE_ENV_NAMES)
+    entry = entry_name(variant, os.getenv("EVAL_MODEL_ID") if args.provider != "mock" else None)
+
     if args.provider == "mock":
         install_network_guard()
     elif args.ablate:
         print("evals: --ablate runs on the mock provider only (no spend on ablations)", file=sys.stderr)
         return 2
-    elif not args.force_live and frozen_live_result(args.out, variant) is not None:
-        msg = f"evals: policy_agreement.json has a frozen live '{variant}' entry; pass --force-live"
+    elif not args.force_live and frozen_live_result(args.out, entry) is not None:
+        msg = f"evals: policy_agreement.json has a frozen live '{entry}' entry; pass --force-live"
         print(msg, file=sys.stderr)
         return 4
 
@@ -418,8 +433,8 @@ def main(argv: list[str] | None = None) -> int:
             r["model_id"] = os.getenv("EVAL_MODEL_ID") or DEFAULT_BEDROCK_MODEL_ID
             r["labels_git"] = git_describe()
             if r["suite"] == "policy_agreement":
-                merge_policy_entry(args.out, POLICY_FILE, variant, r)
-                written.append(f"{POLICY_FILE}[{variant}]")
+                merge_policy_entry(args.out, POLICY_FILE, entry, r)
+                written.append(f"{POLICY_FILE}[{entry}]")
             else:
                 (args.out / f"{r['suite']}.json").write_text(json.dumps(r, indent=2) + "\n")
                 written.append(f"{r['suite']}.json")
