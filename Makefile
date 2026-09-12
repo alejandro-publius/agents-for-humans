@@ -6,7 +6,7 @@ PY    := $(VENV)/bin/python
 UV    := $(shell command -v uv 2>/dev/null)
 ABLATE ?= 0
 
-.PHONY: help setup lint test evals evals-ablate evals-no-steering results render-claims verify-claims secret-scan verify replay poll demo-one app inbox-replay report labels relevance archive quota bedrock-smoke eval-live red-team a11y trace clean
+.PHONY: help setup lint test evals evals-ablate evals-no-steering results render-claims verify-claims secret-scan verify replay poll demo-one app inbox-replay report labels relevance archive quota bedrock-smoke eval-live red-team a11y trace mcp-test clean
 
 help: ## list targets
 	@grep -E '^[a-z-]+:.*## ' $(MAKEFILE_LIST) | awk -F ':.*## ' '{printf "  %-10s %s\n", $$1, $$2}'
@@ -88,6 +88,9 @@ verify-claims: ## every number in README.md marked <!-- claim:key --> must match
 
 secret-scan: ## regex scan of every tracked file for keys and tokens
 	$(PY) scripts/secret_scan.py
+
+mcp-test: ## a Strands agent over MCP stdio gets the same plan as make demo-one; unknown stations are refused
+	$(PY) -m pytest tests/test_mcp.py -q
 
 trace: ## capture make demo-one spans to docs/traces/demo_one.jsonl and render docs/traces/demo_one.txt
 	$(PY) scripts/demo_one.py --trace docs/traces/demo_one.jsonl > /dev/null
