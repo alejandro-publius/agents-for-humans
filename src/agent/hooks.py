@@ -12,6 +12,8 @@ from typing import Any
 
 from strands.hooks import BeforeToolCallEvent, HookProvider, HookRegistry
 
+from agent.tracing import span_event
+
 # A validator returns None when the arguments are acceptable, else a short reason.
 Validator = Callable[[dict[str, Any]], str | None]
 
@@ -74,3 +76,4 @@ class ArgumentValidatorHook(HookProvider):
             return
         event.cancel_tool = f"CANCELLED by ArgumentValidatorHook: {reason}"
         self.cancelled.append({"tool": name, "input": event.tool_use.get("input"), "reason": reason})
+        span_event("hook.cancel_tool", {"tool": name, "reason": reason})

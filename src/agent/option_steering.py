@@ -22,6 +22,7 @@ from strands.vended_plugins.steering.core.action import Guide, Interrupt, Procee
 from strands.vended_plugins.steering.core.handler import SteeringHandler
 
 from agent.schema import normalize_option
+from agent.tracing import span_event
 
 STEERED_TOOL = "draft_message"
 STATE_KEY = "decisions"
@@ -76,6 +77,7 @@ class OptionOrderSteering(SteeringHandler):
         proposed = normalize_option(str((tool_use.get("input") or {}).get("option", "")))
         if proposed != self.required_option:
             self.guides.append({"proposed": proposed, "required": self.required_option})
+            span_event("steering.guide", {"proposed": proposed, "required": self.required_option})
             return Guide(
                 reason=(
                     f"'{proposed}' is not BART's first feasible option for this outage; "
@@ -84,6 +86,7 @@ class OptionOrderSteering(SteeringHandler):
             )
         if self.decision_flags and answer is None:
             self.interrupts.append({"case_key": self.case_key, "flags": self.decision_flags})
+            span_event("steering.interrupt", {"case_key": self.case_key, "flags": self.decision_flags})
             # The vended Interrupt action requires a string reason (pydantic), and the vended handler
             # swallows handler exceptions and lets the tool proceed, so the card goes in as JSON text.
             return Interrupt(reason=json.dumps(self.card or {"flags": self.decision_flags}))

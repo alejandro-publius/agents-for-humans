@@ -68,7 +68,14 @@ def after_dark_demo() -> int:
 
 
 def main() -> int:
-    if "--after-dark" in sys.argv[1:]:
+    args = sys.argv[1:]
+    if "--trace" in args:
+        from agent.tracing import setup_file_tracing
+
+        trace_path = args[args.index("--trace") + 1]
+        setup_file_tracing(trace_path)
+        print(f"tracing    : every span -> {trace_path}")
+    if "--after-dark" in args:
         return after_dark_demo()
     install_network_guard()
     report = run_one(TRIP, FRAGMENT, WHEN, MockModel.from_fixture("demo_one"))
