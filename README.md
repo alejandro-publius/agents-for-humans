@@ -5,13 +5,15 @@ BART's own published outage options to your route, and interrupts you only when 
 with the workaround already worked out. Entry for the
 [AWS Agents for Humans Hackathon](https://agentsforhumans.devpost.com/), Everyday Agents track.
 
-> **Status (Sat Sept 12, 2026, overnight build).** Built and tested offline: knowledge base, BART
-> client, outage parser, policy engine, poller, wired agent, evals, the one-page rider app with a
-> decisions inbox and replay timeline, the weekly quiet report, rider preferences, and the label
-> export and relevance scorer. Every number below was produced by `make evals` or `make replay` on
-> the offline mock model provider and is checked by `scripts/verify_claims.py`. What is simulated is
-> labeled as simulated here, in the code, and in `docs/reports/day-1.md`. Not built: deployment,
-> the live weekend archive, and human relevance labels.
+> **Status (Sat Sept 12, 2026).** Built and tested offline: knowledge base, BART client, outage
+> parser, policy engine, poller, wired agent with real Strands Interrupts for rider decisions, evals,
+> a red team, the one-page rider app (0 axe-core violations) with a decisions inbox and replay
+> timeline, the weekly quiet report, rider preferences, label export and relevance scorer, file
+> tracing with the guardrail spans, an MCP server, a reusable example, and a dataset exporter.
+> Every number in this README, in `docs/devpost.md`, in `docs/VIDEO.md` and in `docs/posts/` is a
+> claim rendered from `results/` by `make render-claims` and checked by `scripts/verify_claims.py`;
+> what is not measured yet is marked TODO. Not done: the live Bedrock evals (E9, waiting for
+> credentials), the live weekend archive and dataset, human relevance labels, and deployment.
 
 ## How it works
 
@@ -95,6 +97,27 @@ present; when it runs, its two numbers replace these. Stations with accessible-p
   decided by a reviewer against the actual texts and frozen as `kb-labels-v1`. alternate_elevator
   means an alternate accessible path at the same station, including ramps, lifts and tunnels.
   `results/kb_label_distribution.json` lists the counts and any text left at the default (none).
+
+## Guarantees and the evidence (Block E)
+
+| Guarantee | Mechanism | Evidence |
+| --- | --- | --- |
+| A rider decision (after dark, last train) pauses the run instead of guessing | Strands steering `Interrupt`, decision card, resume with the answer remembered in session state | `tests/test_strands_mechanics.py`, `make demo-one ARGS=--after-dark`, `POST /decisions/{id}` |
+| Nothing the model invents reaches the rider | `BeforeToolCall` hook, steering `Guide`, `Plan` schema, code verification with a station-code scrub | `make red-team`: <!-- claim:red_team.reached_rider.hallucinated_stations -->0/ <!-- claim:red_team.reached_rider.wrong_options -->0/ <!-- claim:red_team.reached_rider.minutes_not_from_policy -->0reached the rider over <!-- claim:red_team.runs -->20runs |
+| The agent is measured by how rarely it interrupts | `results/quiet.json`, `make report` opens with days, interruptions, decisions | <!-- claim:quiet.synthetic_replay.interruptions -->4interruptions over <!-- claim:quiet.synthetic_replay.decisions -->8decisions (synthetic); archive: TODO |
+| The rider app is accessible | axe-core via Playwright Chromium, in CI | <!-- claim:axe.violations -->0violations |
+| Every guardrail decision is visible in traces | OpenTelemetry spans to a file, `hook.cancel_tool` and `steering.guide` events; `AGENTCORE_OBSERVABILITY=1` switches to OTLP | `docs/traces/demo_one.txt` |
+| The pattern is reusable | Standalone example, scripted model, no BART data | `examples/compliance_steering.py`; samples fork branch `compliance-steering-sample` |
+| The grounding tools work over MCP with the same guarantees | `MCPServer` over stdio, KB checks inside the tools | `make mcp-test` |
+| The outage archive becomes a public dataset | `make dataset` with BART attribution and a README line | TODO: needs an hour of live archive |
+
+## Still TODO
+
+- Live policy-agreement evals on Amazon Bedrock (Sonnet profile and Amazon Nova Lite, enforced and
+  no-steering, 200 calls each): waiting for credentials ("aws ready").
+- Live weekend archive (`make archive` with `BART_API_KEY`), the dataset export, the real
+  interruption ratio, and two human labelers for `evals/labels/relevance.csv`.
+- Deployment (C5), the public URL, the video, and the architecture diagram export.
 
 ## Layout
 

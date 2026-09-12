@@ -24,6 +24,13 @@ from typing import Any
 REPO_ROOT = Path(__file__).resolve().parents[1]
 README = REPO_ROOT / "README.md"
 RESULTS_DIR = REPO_ROOT / "results"
+# Every document whose numbers must come from results/ (claims) or be marked TODO.
+CLAIM_DOCS = (
+    README,
+    REPO_ROOT / "docs" / "devpost.md",
+    REPO_ROOT / "docs" / "VIDEO.md",
+    *sorted((REPO_ROOT / "docs" / "posts").glob("*.md")),
+)
 
 CLAIM_RE = re.compile(r"<!--\s*claim:([A-Za-z0-9_.\-]+)\s*-->\s*\**\s*([-+]?\d[\d,]*(?:\.\d+)?)\s*(%?)")
 PERCENT_RE = re.compile(r"(?<![\w.\-])(\d+(?:\.\d+)?)%")
@@ -50,12 +57,31 @@ def decimals_shown(text: str) -> int:
 
 
 def verify(readme: Path = README, results_dir: Path = RESULTS_DIR) -> int:
-    body = readme.read_text()
+    docs = CLAIM_DOCS if readme == README else (readme,)
+    total = 0
+    failures: list[str] = []
+    for doc in docs:
+        if not doc.exists():
+            continue
+        n, doc_failures = verify_doc(doc, results_dir)
+        total += n
+        failures.extend(f"{doc.relative_to(REPO_ROOT)}: {f}" for f in doc_failures)
+    if failures:
+        print("\nverify_claims: FAILED", file=sys.stderr)
+        for f in failures:
+            print(f"  - {f}", file=sys.stderr)
+        return 1
+    print(f"verify_claims: {total} claim(s) match results/ across {len(docs)} document(s)")
+    return 0
+
+
+def verify_doc(doc: Path, results_dir: Path) -> tuple[int, list[str]]:
+    body = doc.read_text()
     claims = CLAIM_RE.findall(body)
     failures: list[str] = []
 
-    if not claims:
-        failures.append("README.md has no <!-- claim:key --> markers; every reported number must be a claim")
+    if not claims and doc == README:
+        failures.append("no <!-- claim:key --> markers; every reported number must be a claim")
 
     for key, shown, pct in claims:
         value, err = lookup(key, results_dir)
@@ -70,20 +96,13 @@ def verify(readme: Path = README, results_dir: Path = RESULTS_DIR) -> int:
         if not ok:
             failures.append(f"{key}: README says {shown}{pct}, results say {value}")
 
-    # Every percentage in the README must be a claim (no hand-typed numbers).
+    # Every percentage in the document must be a claim (no hand-typed numbers).
     claimed_spans = {m.end(2) for m in CLAIM_RE.finditer(body)}
     for m in PERCENT_RE.finditer(body):
         if m.end(1) not in claimed_spans:
             line = body.count("\n", 0, m.start()) + 1
-            failures.append(f"README.md:{line}: percentage {m.group(0)!r} is not marked as a claim")
-
-    if failures:
-        print("\nverify_claims: FAILED", file=sys.stderr)
-        for f in failures:
-            print(f"  - {f}", file=sys.stderr)
-        return 1
-    print(f"verify_claims: {len(claims)} claim(s) match results/")
-    return 0
+            failures.append(f"line {line}: percentage {m.group(0)!r} is not marked as a claim")
+    return len(claims), failures
 
 
 if __name__ == "__main__":

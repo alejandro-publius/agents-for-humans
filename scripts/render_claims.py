@@ -12,10 +12,22 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from verify_claims import CLAIM_RE, README, RESULTS_DIR, decimals_shown, lookup  # noqa: E402
+from verify_claims import CLAIM_DOCS, CLAIM_RE, README, RESULTS_DIR, decimals_shown, lookup  # noqa: E402
 
 
 def render(readme: Path = README, results_dir: Path = RESULTS_DIR) -> int:
+    docs = CLAIM_DOCS if readme == README else (readme,)
+    total = 0
+    for doc in docs:
+        if doc.exists():
+            rc = render_doc(doc, results_dir)
+            if rc:
+                return rc
+            total += 1
+    return 0
+
+
+def render_doc(readme: Path, results_dir: Path) -> int:
     body = readme.read_text()
     changed = 0
     missing: list[str] = []
@@ -44,7 +56,9 @@ def render(readme: Path = README, results_dir: Path = RESULTS_DIR) -> int:
         return 1
     if new_body != body:
         readme.write_text(new_body)
-    print(f"render_claims: {changed} claim(s) updated from results/")
+    print(
+        f"render_claims: {readme.relative_to(RESULTS_DIR.parent)}: {changed} claim(s) updated from results/"
+    )
     return 0
 
 
