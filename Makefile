@@ -6,7 +6,7 @@ PY    := $(VENV)/bin/python
 UV    := $(shell command -v uv 2>/dev/null)
 ABLATE ?= 0
 
-.PHONY: help setup lint test evals evals-ablate evals-no-steering results render-claims verify-claims secret-scan verify replay poll demo-one app inbox-replay report labels relevance archive quota bedrock-smoke eval-live eval-live-nova red-team a11y trace mcp-test dataset clean
+.PHONY: help setup lint test evals evals-ablate evals-no-steering results render-claims verify-claims secret-scan verify replay poll demo-one app inbox-replay report-v1 labels relevance archive quota bedrock-smoke eval-live-v1 eval-live-nova red-team a11y trace mcp-test dataset-v1 clean
 
 help: ## list targets
 	@grep -E '^[a-z-]+:.*## ' $(MAKEFILE_LIST) | awk -F ':.*## ' '{printf "  %-10s %s\n", $$1, $$2}'
@@ -63,7 +63,7 @@ archive: ## live: poll every 5 min with BART_API_KEY into data/archive/ (own db,
 bedrock-smoke: ## one Converse call to the eval model in AWS_REGION; prints the reply; creates nothing
 	$(PY) scripts/bedrock_smoke.py
 
-eval-live: ## exactly once: policy_agreement on Bedrock (Sonnet profile), enforced then --no-steering, 200 calls each
+eval-live-v1: ## policy_agreement on Bedrock via evals/run.py, 200 calls each; superseded by make eval-live EVAL_LIVE_ARGS=...
 	$(PY) evals/run.py --provider bedrock --suite policy_agreement --max-model-calls 200 --env-file .env
 	$(PY) evals/run.py --provider bedrock --no-steering --max-model-calls 200 --env-file .env
 
@@ -75,7 +75,7 @@ eval-live-nova: ## the same two runs on Amazon Nova Lite (EVAL_MODEL_ID), entrie
 quota: ## read-only: print the Amazon Bedrock AgentCore Runtime quotas for this account/region (needs AWS creds)
 	$(PY) scripts/agentcore_quota.py
 
-report: ## weekly quiet report for one rider -> results/interruptions.json (RIDER=demo)
+report-v1: ## weekly quiet report for one rider -> results/interruptions.json (RIDER=demo); superseded by make report
 	$(PY) -m src.report --rider $(or $(RIDER),demo)
 
 inbox-replay: ## offline: replay the archived feed into data/riders.sqlite inbox (seeds the demo rider)
@@ -96,7 +96,7 @@ verify-claims: ## every number in README.md marked <!-- claim:key --> must match
 secret-scan: ## regex scan of every tracked file for keys and tokens
 	$(PY) scripts/secret_scan.py
 
-dataset: ## export the live archive (data/archive/outages.sqlite, >=12 snapshots) to data/public/*.csv with attribution
+dataset-v1: ## export the live archive to data/public/*.csv with attribution; superseded by make dataset DATASET_ARGS=...
 	$(PY) scripts/dataset.py
 
 mcp-test: ## a Strands agent over MCP stdio gets the same plan as make demo-one; unknown stations are refused
@@ -117,3 +117,12 @@ verify: lint test evals evals-ablate evals-no-steering red-team verify-claims se
 
 clean: ## remove the virtualenv and caches
 	rm -rf $(VENV) .pytest_cache .ruff_cache
+
+# Every target the dispatch package adds (docs/INTEGRATION.md section 1). Included LAST on purpose:
+# make takes the LAST recipe defined for a target, and dispatch.mk also defines report, dataset and
+# eval-live. Those three are the ones docs/SUNDAY.md, docs/RUNBOOK-dispatch.md, docs/SUBMISSION-CHECKLIST.md
+# and tests/dispatch assert on -- they take REPORT_ARGS, DATASET_ARGS and EVAL_LIVE_ARGS, which this
+# file's older recipes ignore -- so the package's must win. This file's three are kept, renamed *-v1,
+# rather than shadowed in silence. dispatch.mk's red-team is byte-identical to this file's, so it is
+# the one recipe here that is safe to let through unrenamed.
+-include dispatch.mk

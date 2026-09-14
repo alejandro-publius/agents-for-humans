@@ -251,7 +251,7 @@ wrote results/badges/claims.json
 (no output)
 ```
 
-## line coverage of the package by the offline tests (results/coverage.json, regenerated and diffed on 3.11)
+## line coverage of the package by the offline tests (results/coverage.json, regenerated and diffed on 3.12)
 
 `make coverage && git diff --exit-code -- results/coverage.json`: exit 0, 147s
 

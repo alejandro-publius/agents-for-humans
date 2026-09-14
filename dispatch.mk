@@ -22,8 +22,8 @@ demo-one-brief:
 fixtures:
 	$(PY) scripts/make_fixtures.py
 
-red-team:
-	$(PY) scripts/red_team.py
+# red-team: defined in the main Makefile, byte-identical to this file's ($(PY) scripts/red_team.py).
+# Dropped here so including this file adds no overriding-recipe warning to every make invocation.
 
 red-team-exhaustive:
 	$(PY) scripts/red_team.py --exhaustive
