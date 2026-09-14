@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import os
 import socket
+from pathlib import Path
 
 import pytest
 
@@ -23,10 +24,22 @@ LIVE_KEY_NAMES = (
     "AWS_PROFILE",
     "AWS_DEFAULT_PROFILE",
     "AWS_BEARER_TOKEN_BEDROCK",
+    "AWS_CONTAINER_CREDENTIALS_RELATIVE_URI",  # in LIVE_CREDENTIAL_ENV, so credentials_present() reads it
+    "AWS_WEB_IDENTITY_TOKEN_FILE",  # likewise: a task role or an OIDC runner would read as a laptop's keys
     "BART_API_KEY",
     "ANTHROPIC_API_KEY",
     "OPENAI_API_KEY",
 )
+
+# credentials_present() falls back to the shared credentials file (~/.aws/credentials on a laptop), which
+# stripping the environment does not reach. Point it, and the config file a profile would come from, at a
+# path that does not exist, so no test ever sees a laptop's credentials.
+NO_SUCH_AWS_DIR = Path(__file__).resolve().parent / "no-such-aws-dir"
+AWS_FILE_ENV = {
+    "AWS_SHARED_CREDENTIALS_FILE": str(NO_SUCH_AWS_DIR / "credentials"),
+    "AWS_CONFIG_FILE": str(NO_SUCH_AWS_DIR / "config"),
+}
+
 
 EXPORT_ENV_NAMES = ("LE_KB_EXPORT", "LE_CASES_EXPORT")
 
@@ -52,10 +65,13 @@ def no_live_keys(monkeypatch):
         monkeypatch.delenv(name, raising=False)
     for name in EXPORT_ENV_NAMES:  # the tests are pinned to the fixtures; the generators read the exports
         monkeypatch.delenv(name, raising=False)
+    for name, value in AWS_FILE_ENV.items():
+        monkeypatch.setenv(name, value)
     monkeypatch.setenv("AWS_EC2_METADATA_DISABLED", "true")
     yield
     for name in LIVE_KEY_NAMES:
         assert name not in os.environ
+    assert not NO_SUCH_AWS_DIR.exists(), "the tests' stand-in AWS directory must never be created"
 
 
 @pytest.fixture
