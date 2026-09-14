@@ -8,9 +8,11 @@ jobs:
   verify:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false  # one leg failing must not cancel the other; both results are wanted
       matrix:
-        # the results files must come out byte-identical on both (checked below)
-        python-version: ["3.11", "3.13"]
+        # the results files must come out byte-identical on both (checked below).
+        # 3.12 is the floor: this repository's pyproject requires >=3.12 (the package alone allowed 3.11).
+        python-version: ["3.12", "3.13"]
     env:
       # the tests strip keys anyway; keep the job honest about never needing one
       AWS_EC2_METADATA_DISABLED: "true"
@@ -50,7 +52,7 @@ jobs:
       - name: the runtime image's requirements carry everything the entrypoint needs (a fresh venv from that file alone)
         run: make image-check
       - name: the evidence site through axe-core in Chromium (regenerates results/site_a11y.json; a violation fails)
-        if: matrix.python-version == '3.11'
+        if: matrix.python-version == '3.12'
         run: |
           pip install -e ".[a11y]"
           playwright install chromium
@@ -73,7 +75,7 @@ jobs:
       - name: every generated file is unchanged by the reruns (deterministic)
         run: git diff --exit-code -- results/ docs/evidence/ docs/TOUR-TRANSCRIPT.md infra/agentcore/policy/ evals/agentcore/
       - name: line coverage of the package by the offline tests (results/coverage.json, regenerated and diffed on 3.11)
-        if: matrix.python-version == '3.11'
+        if: matrix.python-version == '3.12'
         run: make coverage && git diff --exit-code -- results/coverage.json
       - uses: actions/upload-artifact@v4
         with:
