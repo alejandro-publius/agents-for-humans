@@ -326,7 +326,7 @@ with each image's source and who regenerates it is
 
 ## Links
 
-- Repo: TODO (public, MIT license)
+- Repo: https://github.com/alejandro-publius/agents-for-humans (public, MIT license)
 - Video: TODO (under five minutes)
 - Live URL: TODO
 - Evidence site: TODO (GitHub Pages, published by `make site` on every push to main once Pages is on)
