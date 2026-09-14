@@ -1,8 +1,15 @@
-name: verify
+name: verify (dispatch package)
 
+# The dispatch package's own CI, vendored with the package. It is green on the package's own tree and
+# is kept here for provenance, but it is not yet wired for THIS repository: it installs into the system
+# Python while this repo's Makefile runs every target through .venv/bin/python, and it asks for the
+# cedar, aws and a11y extras, which docs/INTEGRATION.md section 1 lists as a by-hand addition to this
+# project's pyproject and which have not been added. Until that wiring is done it runs on request only.
+#
+# This repository's CI is .github/workflows/ci.yml, which runs `make verify` (lint, both test suites,
+# the evals and the ablations, the red team, the claim check and the secret scan) on every push.
 on:
-  push:
-  pull_request:
+  workflow_dispatch:
 
 jobs:
   verify:
@@ -74,7 +81,7 @@ jobs:
         run: make agentcore-policy-gen agentcore-eval evidence transcript impact && python scripts/verify_claims.py --badge
       - name: every generated file is unchanged by the reruns (deterministic)
         run: git diff --exit-code -- results/ docs/evidence/ docs/TOUR-TRANSCRIPT.md infra/agentcore/policy/ evals/agentcore/
-      - name: line coverage of the package by the offline tests (results/coverage.json, regenerated and diffed on 3.11)
+      - name: line coverage of the package by the offline tests (results/coverage.json, regenerated and diffed on 3.12)
         if: matrix.python-version == '3.12'
         run: make coverage && git diff --exit-code -- results/coverage.json
       - uses: actions/upload-artifact@v4
