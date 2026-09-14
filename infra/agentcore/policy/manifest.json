@@ -1,0 +1,28 @@
+{
+  "kb_source": "FIXTURE: BART public station abbreviations; elevator ids synthetic. Replace with kb export.",
+  "kb_frozen_tag": "fixture (not kb-labels-v1)",
+  "stations": 50,
+  "elevators": 97,
+  "option_labels": [
+    "alternate_elevator",
+    "backtracking",
+    "transit",
+    "mitigation_trip",
+    "mitigation_shuttle"
+  ],
+  "target_name": "last-elevator-mcp",
+  "tools": [
+    "draft_plan",
+    "affected_trips"
+  ],
+  "files": [
+    "forbid_unknown_elevator.cedar",
+    "forbid_unknown_option.cedar",
+    "forbid_unknown_station.cedar",
+    "permit_kb_tools.cedar"
+  ],
+  "gateway_arn": "${GATEWAY_ARN}",
+  "validation_mode": "FAIL_ON_ANY_FINDINGS",
+  "schema": "schema.cedarschema.json",
+  "local_validation": "passed"
+}

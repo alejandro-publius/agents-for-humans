@@ -1,0 +1,42 @@
+{
+  "provenance": {
+    "run": "the outage archive's public rows summarised (le_dispatch/impact.py); the same code on the fixture archive and on the real one",
+    "claimable": false,
+    "archive": "fixture",
+    "source": {
+      "kb": "fixtures/kb.json",
+      "cases": "fixtures/cases.json",
+      "fixture": true
+    },
+    "note": "Impact numbers about the feed, never about the agent; fixture numbers until the laptop runs make impact IMPACT_ARGS=--archive on data/archive/."
+  },
+  "span": {
+    "start_utc": "2026-09-05T12:00Z",
+    "end_utc": "2026-09-08T11:55Z",
+    "days": 3.0
+  },
+  "outages": 5,
+  "stations": 5,
+  "elevators": 5,
+  "elevator_hours": 52.8,
+  "median_minutes": 385,
+  "longest": {
+    "station": "PLZA",
+    "elevator": "PLZA-E2",
+    "minutes": 1440
+  },
+  "open_at_export": 1,
+  "evenings_with_an_outage_in_progress": 2,
+  "elevators_in_knowledge_base": 5,
+  "elevators_with_a_case": 5,
+  "stations_cut_off": [
+    {
+      "station": "12TH",
+      "elevators": [
+        "12TH-E1"
+      ],
+      "minutes_cut_off": 815
+    }
+  ],
+  "stations_cut_off_count": 1
+}

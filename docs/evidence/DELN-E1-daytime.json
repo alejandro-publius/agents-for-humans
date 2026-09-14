@@ -1,0 +1,181 @@
+{
+  "packet": "last-elevator evidence packet v1",
+  "provenance": {
+    "run": "scripted model, fixture KB",
+    "claimable": false,
+    "source": {
+      "kb": "fixtures/kb.json",
+      "cases": "fixtures/cases.json",
+      "fixture": true
+    }
+  },
+  "trip": {
+    "rider_id": "rider-demo",
+    "origin": "DELN",
+    "destination": "EMBR",
+    "outages": [
+      "DELN-E1"
+    ],
+    "via": [],
+    "when": "",
+    "after_dark": false,
+    "last_train": false
+  },
+  "note": null,
+  "decision": {
+    "affected": true,
+    "kind": "cannot_enter",
+    "station": "DELN",
+    "elevator": "DELN-E1",
+    "top_option": "alternate_elevator",
+    "ranked": [
+      {
+        "label": "alternate_elevator",
+        "feasible": true,
+        "reason": "Use the DELN-E2 elevator on the other side of the platform; ramp connects at concourse level.",
+        "added_minutes": 4,
+        "source_url": "https://www.bart.gov/stations/deln/accessible"
+      },
+      {
+        "label": "transit",
+        "feasible": true,
+        "reason": "Take AC Transit or Muni from DELN to the next accessible station; BART honors the fare.",
+        "added_minutes": 20,
+        "source_url": "https://www.bart.gov/stations/deln/accessible"
+      }
+    ],
+    "flags": {
+      "after_dark": false,
+      "last_train": false
+    },
+    "source_url": "https://www.bart.gov/stations/deln/accessible",
+    "station_name": "",
+    "note_constraints": [],
+    "note_set_aside": false
+  },
+  "gate_events": [
+    {
+      "kind": "hook.cancel_tool",
+      "what": "KB hook cancelled the tool call",
+      "tool": "draft_plan",
+      "reason": "Cancelled: elevator='FAKE-E7' is not an elevator in the knowledge base; the affected station is 'DELN' and the elevator that is out is 'DELN-E1'. Use only stations and elevators from the knowledge base.",
+      "detail": {
+        "station": "DELN",
+        "elevator": "FAKE-E7",
+        "option": "alternate_elevator"
+      }
+    },
+    {
+      "kind": "steering.guide",
+      "what": "steering guided the tool call (wrong option)",
+      "tool": "draft_plan",
+      "reason": "BART's published order puts 'alternate_elevator' first for this outage; 'transit' is not the policy engine's top feasible option. Call draft_plan again with option='alternate_elevator'.",
+      "detail": {
+        "station": "DELN",
+        "elevator": "DELN-E1",
+        "option": "transit"
+      }
+    },
+    {
+      "kind": "tool.ran",
+      "what": "draft_plan ran (the policy engine's values came back)",
+      "tool": "draft_plan",
+      "reason": "tool ran with these arguments",
+      "detail": {
+        "station": "DELN",
+        "elevator": "DELN-E1",
+        "option": "alternate_elevator"
+      }
+    },
+    {
+      "kind": "steering.guide_after_model",
+      "what": "steering discarded the model's plan",
+      "tool": "Plan",
+      "reason": "Plan rejected: option 'transit' is not the policy engine's top feasible option 'alternate_elevator'; added_minutes 1 did not come from the policy engine (expected 4). Re-issue the Plan with the policy engine's values.",
+      "detail": {
+        "station": "DELN",
+        "elevator": "DELN-E1",
+        "option": "transit",
+        "added_minutes": 1,
+        "rider_message": "DELN elevator DELN-E1 is out at your starting station. Use the alternate elevator route at the same station; about 4 minutes more."
+      }
+    },
+    {
+      "kind": "steering.proceed_after_model",
+      "what": "steering accepted the model's plan",
+      "tool": "Plan",
+      "reason": "plan matches",
+      "detail": {
+        "station": "DELN",
+        "elevator": "DELN-E1",
+        "option": "alternate_elevator",
+        "added_minutes": 4,
+        "rider_message": "DELN elevator DELN-E1 is out at your starting station. Use the alternate elevator route at the same station; about 4 minutes more."
+      }
+    }
+  ],
+  "decision_card": null,
+  "rider_answer": null,
+  "final_plan": {
+    "station": "DELN",
+    "elevator": "DELN-E1",
+    "option": "alternate_elevator",
+    "added_minutes": 4,
+    "rider_message": "DELN elevator DELN-E1 is out at your starting station. Use the alternate elevator route at the same station; about 4 minutes more.",
+    "status": "send"
+  },
+  "trace_events": [
+    {
+      "event": "hook.cancel_tool",
+      "span": "execute_tool draft_plan",
+      "attributes": {
+        "tool": "draft_plan",
+        "reason": "Cancelled: elevator='FAKE-E7' is not an elevator in the knowledge base; the affected station is 'DELN' and the elevator that is out is 'DELN-E1'. Use only stations and elevators from the knowledge base."
+      }
+    },
+    {
+      "event": "steering.guide",
+      "span": "execute_tool draft_plan",
+      "attributes": {
+        "tool": "draft_plan",
+        "reason": "BART's published order puts 'alternate_elevator' first for this outage; 'transit' is not the policy engine's top feasible option. Call draft_plan again with option='alternate_elevator'."
+      }
+    },
+    {
+      "event": "steering.guide_after_model",
+      "span": "execute_event_loop_cycle",
+      "attributes": {
+        "reason": "Plan rejected: option 'transit' is not the policy engine's top feasible option 'alternate_elevator'; added_minutes 1 did not come from the policy engine (expected 4). Re-issue the Plan with the policy engine's values.",
+        "plan.station": "DELN",
+        "plan.elevator": "DELN-E1",
+        "plan.option": "transit",
+        "plan.added_minutes": 1
+      }
+    },
+    {
+      "event": "steering.proceed_after_model",
+      "span": "execute_event_loop_cycle",
+      "attributes": {
+        "plan.station": "DELN",
+        "plan.elevator": "DELN-E1",
+        "plan.option": "alternate_elevator",
+        "plan.added_minutes": 4
+      }
+    }
+  ],
+  "counts": {
+    "hook_cancel": 1,
+    "guide_before_tool": 1,
+    "guide_after_model": 1,
+    "proceed_after_model": 1,
+    "interrupts": 0,
+    "model_calls": 5
+  },
+  "cost": {
+    "model_calls": 5,
+    "input_tokens": 5,
+    "output_tokens": 5,
+    "total_tokens": 10,
+    "cycles": 4
+  }
+}

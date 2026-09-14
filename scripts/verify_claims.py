@@ -56,6 +56,34 @@ def decimals_shown(text: str) -> int:
     return len(text.split(".")[1]) if "." in text else 0
 
 
+# The dispatch package ships its own claim rows (le_dispatch/claims.py): one (file, json path,
+# comparison, expected) per number its documents cite. They are merged here rather than copied, so this
+# repo keeps one entry point. The two results files this repo kept at integration (results/red_team.json
+# and results/quiet.json have this repo's own shape, not the package's) are skipped with a printed reason.
+PACKAGE_CLAIMS_SKIP_FILES = ("red_team.json", "quiet.json")
+
+
+def verify_package_claims(results_dir: Path = RESULTS_DIR) -> int:
+    """Run the dispatch package's claim table. Returns the number that did not hold."""
+    try:
+        sys.path.insert(0, str(REPO_ROOT))
+        from le_dispatch.claims import CLAIMS, verify_all
+    except ImportError:
+        return 0
+    rows = [c for c in CLAIMS if c.file not in PACKAGE_CLAIMS_SKIP_FILES]
+    skipped = len(CLAIMS) - len(rows)
+    bad = 0
+    for claim, ok, actual in verify_all(results_dir=results_dir, claims=rows):
+        if not ok:
+            print(f"BAD {claim.id:<28} {claim.file} {claim.path} {claim.op} {claim.expected!r} (actual {actual!r})")
+            bad += 1
+    print(
+        f"dispatch package claims: {len(rows) - bad}/{len(rows)} verified"
+        f" ({skipped} skipped: this repo kept its own {', '.join(PACKAGE_CLAIMS_SKIP_FILES)})"
+    )
+    return bad
+
+
 def verify(readme: Path = README, results_dir: Path = RESULTS_DIR) -> int:
     docs = CLAIM_DOCS if readme == README else (readme,)
     total = 0
@@ -106,4 +134,4 @@ def verify_doc(doc: Path, results_dir: Path) -> tuple[int, list[str]]:
 
 
 if __name__ == "__main__":
-    sys.exit(verify())
+    sys.exit(verify() + verify_package_claims())

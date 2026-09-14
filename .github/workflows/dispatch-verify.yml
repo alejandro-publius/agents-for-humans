@@ -1,0 +1,83 @@
+name: verify
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # the results files must come out byte-identical on both (checked below)
+        python-version: ["3.11", "3.13"]
+    env:
+      # the tests strip keys anyway; keep the job honest about never needing one
+      AWS_EC2_METADATA_DISABLED: "true"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev,cedar,aws]"
+      - name: the exports, when the repository has them (the laptop's real results came from them; the reruns below must read them too, or the determinism check would compare real numbers with fixture ones)
+        run: if [ -f kb/export/kb-labels-v1.json ] && [ -f kb/export/cases-v1.json ]; then printf 'LE_KB_EXPORT=%s/kb/export/kb-labels-v1.json\nLE_CASES_EXPORT=%s/kb/export/cases-v1.json\n' "$PWD" "$PWD" >> "${GITHUB_ENV:-/dev/null}"; echo "exports found, the reruns read kb/export/ (the tests read the fixtures either way)"; else echo "no kb/export/, the reruns read the fixtures and every results file says so"; fi
+      - name: verify (lint, mypy, tests with the network blocked and keys stripped, secret scan, claims, docs)
+        run: make verify
+      - name: red team, exhaustive (every case times every attack)
+        run: make red-team-exhaustive
+      - name: custom evaluator on real Strands spans
+        run: make agentcore-eval-local
+      - name: feedback is actionable (nine personas times every case)
+        run: make convergence
+      - name: gate ablation (regenerates results/gate_ablation.json)
+        run: make ablation
+      - name: the policy engine against the frozen cases (the case-backed policy against itself here)
+        run: make policy-check
+      - name: the live path through the real Bedrock adapter, offline (regenerates results/bedrock_wire.json)
+        run: make wire
+      - name: every convergence persona through the real adapter, per model id (regenerates results/wire_convergence.json)
+        run: make wire-convergence
+      - name: every case through the runtime entrypoint, offline (regenerates results/runtime_sweep.json)
+        run: make runtime-sweep
+      - name: the second agency through the same entrypoint (regenerates results/runtime_sweep_synthetic.json)
+        run: make runtime-sweep-synthetic
+      - name: a stranger's first hour (the bundles into an empty repository, a fresh venv, the README's setup block)
+        run: make bundles cold-start COLD_START_ARGS=--skip-judge
+      - name: the runtime image's requirements carry everything the entrypoint needs (a fresh venv from that file alone)
+        run: make image-check
+      - name: the evidence site through axe-core in Chromium (regenerates results/site_a11y.json; a violation fails)
+        if: matrix.python-version == '3.11'
+        run: |
+          pip install -e ".[a11y]"
+          playwright install chromium
+          make site-a11y
+      - name: the live scripts' dress rehearsal (the live path with a stand-in client; nothing called, never a result)
+        run: |
+          make eval-live EVAL_LIVE_ARGS=--stand-in
+          make demo-live DEMO_LIVE_ARGS=--stand-in > /tmp/demo-live-stand-in.txt
+          tail -3 /tmp/demo-live-stand-in.txt
+      - name: the custom evaluator as a Lambda package, verified from the zip alone
+        run: make evaluator-zip
+      - name: the integrated layout works (tests/dispatch/, scripts/, docs/ in an empty tree)
+        run: make integrate-check
+      - name: Sunday rehearsed offline (the exports switch, every rerun, the docs-label flip, in a scratch copy)
+        run: make rehearse
+      - name: the AgentCore Memory plan (dry run, the call checked against the service model)
+        run: make agentcore-memory
+      - name: generated policies, dataset, evidence packets, the transcript and the claims badge
+        run: make agentcore-policy-gen agentcore-eval evidence transcript impact && python scripts/verify_claims.py --badge
+      - name: every generated file is unchanged by the reruns (deterministic)
+        run: git diff --exit-code -- results/ docs/evidence/ docs/TOUR-TRANSCRIPT.md infra/agentcore/policy/ evals/agentcore/
+      - name: line coverage of the package by the offline tests (results/coverage.json, regenerated and diffed on 3.11)
+        if: matrix.python-version == '3.11'
+        run: make coverage && git diff --exit-code -- results/coverage.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: results-py${{ matrix.python-version }}
+          path: |
+            results/
+            docs/evidence/

@@ -1,0 +1,56 @@
+{
+  "provenance": {
+    "run": "every case of BART through the runtime entrypoint (handle), the learner stand-in through Strands' real BedrockModel, the resilient AgentCore Memory stand-in; nothing was sent",
+    "agency": "BART",
+    "model_id": "us.amazon.nova-lite-v1:0",
+    "claimable": false,
+    "source": {
+      "kb": "fixtures/kb.json",
+      "cases": "fixtures/cases.json",
+      "fixture": true
+    },
+    "note": "Plumbing proof of the hosted contract over the dataset (states, agreement with the policy engine, one question, one message); never a claim about a live model."
+  },
+  "cases": 194,
+  "invocations": 2328,
+  "model_runs": 970,
+  "composed_by_code": 0,
+  "states": {
+    "already_sent": 582,
+    "held": 194,
+    "pending": 582,
+    "quiet": 194,
+    "sent": 776
+  },
+  "kinds": {
+    "cannot_enter": 65,
+    "cannot_exit": 65,
+    "transfer": 64
+  },
+  "daytime_sent": 194,
+  "agreement": 194,
+  "minutes_agreement": 194,
+  "one_message": 194,
+  "note_orders_ignored": 194,
+  "note_only_takes_away": 194,
+  "asked_once": 194,
+  "superseded": 194,
+  "late_answer": 194,
+  "held": 194,
+  "held_remembered": 194,
+  "forgotten": 194,
+  "asked_again": 194,
+  "failures": [],
+  "memory": {
+    "events": 3104,
+    "status": "ok",
+    "failures": 0,
+    "every_call_well_formed": true
+  },
+  "span_events": {
+    "decision.cleared": 194,
+    "interrupt.raised": 582,
+    "interrupt.resumed": 194,
+    "interrupt.superseded": 194
+  }
+}

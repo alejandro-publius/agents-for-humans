@@ -1,0 +1,5 @@
+# The dispatch package is vendored: it is formatted and linted at its own width in its own CI
+# (line-length 120, ruff format). This nested config keeps that width for these files so the
+# repository's own 110-column rule still applies to the repository's own code.
+extend = "../pyproject.toml"
+line-length = 120

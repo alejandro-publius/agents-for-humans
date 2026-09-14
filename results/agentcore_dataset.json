@@ -1,0 +1,30 @@
+{
+  "provenance": {
+    "run": "exporter over the cases JSON",
+    "claimable": false,
+    "source": {
+      "kb": "fixtures/kb.json",
+      "cases": "fixtures/cases.json",
+      "fixture": true
+    },
+    "note": "Dataset statistics only; no evaluation has run. Regenerate from the kb-labels-v1 export.",
+    "kb_frozen_tag": "fixture (not kb-labels-v1)"
+  },
+  "scenarios": 194,
+  "labels": {
+    "alternate_elevator": 55,
+    "backtracking": 53,
+    "transit": 86
+  },
+  "expected_options": {
+    "alternate_elevator": 110,
+    "backtracking": 84
+  },
+  "stations": 50,
+  "elevators": 97,
+  "turns_per_scenario": 1,
+  "expected_trajectory": [
+    "draft_plan",
+    "Plan"
+  ]
+}

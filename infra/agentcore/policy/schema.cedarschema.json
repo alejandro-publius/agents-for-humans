@@ -1,0 +1,95 @@
+{
+  "AgentCore": {
+    "entityTypes": {
+      "OAuthUser": {
+        "shape": {
+          "type": "Record",
+          "attributes": {}
+        }
+      },
+      "IamEntity": {
+        "shape": {
+          "type": "Record",
+          "attributes": {
+            "id": {
+              "type": "String",
+              "required": false
+            }
+          }
+        }
+      },
+      "Gateway": {
+        "shape": {
+          "type": "Record",
+          "attributes": {}
+        }
+      }
+    },
+    "actions": {
+      "last-elevator-mcp___draft_plan": {
+        "appliesTo": {
+          "principalTypes": [
+            "OAuthUser",
+            "IamEntity"
+          ],
+          "resourceTypes": [
+            "Gateway"
+          ],
+          "context": {
+            "type": "Record",
+            "attributes": {
+              "input": {
+                "type": "Record",
+                "attributes": {
+                  "station": {
+                    "type": "String",
+                    "required": false
+                  },
+                  "elevator": {
+                    "type": "String",
+                    "required": false
+                  },
+                  "option": {
+                    "type": "String",
+                    "required": false
+                  }
+                },
+                "required": true
+              }
+            }
+          }
+        }
+      },
+      "last-elevator-mcp___affected_trips": {
+        "appliesTo": {
+          "principalTypes": [
+            "OAuthUser",
+            "IamEntity"
+          ],
+          "resourceTypes": [
+            "Gateway"
+          ],
+          "context": {
+            "type": "Record",
+            "attributes": {
+              "input": {
+                "type": "Record",
+                "attributes": {
+                  "origin": {
+                    "type": "String",
+                    "required": false
+                  },
+                  "destination": {
+                    "type": "String",
+                    "required": false
+                  }
+                },
+                "required": true
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

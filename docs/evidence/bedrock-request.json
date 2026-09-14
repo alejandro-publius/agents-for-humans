@@ -1,0 +1,117 @@
+{
+  "inferenceConfig": {},
+  "messages": [
+    {
+      "content": [
+        {
+          "text": "Plan my trip from DELN to EMBR. Elevator DELN-E1 at DELN is out. Use draft_plan with that station and elevator, then return the Plan with one of its approved_messages."
+        }
+      ],
+      "role": "user"
+    }
+  ],
+  "modelId": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+  "system": [
+    {
+      "text": "You help a BART rider who depends on elevators. Use draft_plan with a station and elevator from the knowledge base and BART's top option, then return the Plan. Never invent stations, never compute minutes, never decide affectedness yourself; copy the policy engine's values. The rider_message must be one of the approved_messages returned by draft_plan, verbatim."
+    }
+  ],
+  "toolConfig": {
+    "toolChoice": {
+      "auto": {}
+    },
+    "tools": [
+      {
+        "toolSpec": {
+          "description": "Draft a plan for the rider's trip given the station, the elevator that is out, and BART's option label.",
+          "inputSchema": {
+            "json": {
+              "properties": {
+                "elevator": {
+                  "description": "Elevator id from the knowledge base (for example DELN-E1).",
+                  "type": "string"
+                },
+                "option": {
+                  "description": "BART option label: alternate_elevator, backtracking, transit, mitigation_trip, mitigation_shuttle.",
+                  "type": "string"
+                },
+                "station": {
+                  "description": "Station abbreviation from the knowledge base (for example DELN).",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "station",
+                "elevator",
+                "option"
+              ],
+              "type": "object"
+            }
+          },
+          "name": "draft_plan"
+        }
+      },
+      {
+        "toolSpec": {
+          "description": "IMPORTANT: This StructuredOutputTool should only be invoked as the last and final tool before returning the completed result to the caller. <description>Final plan for one rider and one trip. Every field is checked by code.</description>",
+          "inputSchema": {
+            "json": {
+              "description": "Final plan for one rider and one trip. Every field is checked by code.",
+              "properties": {
+                "added_minutes": {
+                  "description": "Minutes added: the added_minutes returned by draft_plan, never computed",
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "elevator": {
+                  "description": "Elevator id that is out, from the KB",
+                  "title": "Elevator",
+                  "type": "string"
+                },
+                "option": {
+                  "description": "BART's sanctioned option label: the policy_top_option returned by draft_plan, never another",
+                  "title": "Option",
+                  "type": "string"
+                },
+                "rider_message": {
+                  "description": "One of the approved_messages returned by draft_plan, copied verbatim; nothing else is accepted",
+                  "title": "Rider Message",
+                  "type": "string"
+                },
+                "station": {
+                  "description": "Station abbreviation where the outage bites, from the KB",
+                  "title": "Station",
+                  "type": "string"
+                },
+                "status": {
+                  "default": "send",
+                  "description": "send: deliver the plan. hold: the rider declined this reroute when asked; keep the plan on file",
+                  "enum": [
+                    "send",
+                    "hold"
+                  ],
+                  "title": "Status",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "station",
+                "elevator",
+                "option",
+                "rider_message"
+              ],
+              "title": "Plan",
+              "type": "object"
+            }
+          },
+          "name": "Plan"
+        }
+      }
+    ]
+  }
+}

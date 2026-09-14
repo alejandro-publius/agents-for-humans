@@ -1,0 +1,88 @@
+{
+  "packet": "last-elevator evidence packet v1",
+  "provenance": {
+    "run": "live model us.anthropic.claude-sonnet-4-5-20250929-v1:0 in us-west-2, fixture KB; composed_by=code",
+    "claimable": false,
+    "source": {
+      "kb": "fixtures/kb.json",
+      "cases": "fixtures/cases.json",
+      "fixture": true
+    }
+  },
+  "trip": {
+    "rider_id": "rider-live",
+    "origin": "DELN",
+    "destination": "EMBR",
+    "outages": [
+      "DELN-E1"
+    ],
+    "via": [],
+    "when": "",
+    "after_dark": false,
+    "last_train": false
+  },
+  "note": null,
+  "decision": {
+    "affected": true,
+    "kind": "cannot_enter",
+    "station": "DELN",
+    "elevator": "DELN-E1",
+    "top_option": "alternate_elevator",
+    "ranked": [
+      {
+        "label": "alternate_elevator",
+        "feasible": true,
+        "reason": "Use the DELN-E2 elevator on the other side of the platform; ramp connects at concourse level.",
+        "added_minutes": 4,
+        "source_url": "https://www.bart.gov/stations/deln/accessible"
+      },
+      {
+        "label": "transit",
+        "feasible": true,
+        "reason": "Take AC Transit or Muni from DELN to the next accessible station; BART honors the fare.",
+        "added_minutes": 20,
+        "source_url": "https://www.bart.gov/stations/deln/accessible"
+      }
+    ],
+    "flags": {
+      "after_dark": false,
+      "last_train": false
+    },
+    "source_url": "https://www.bart.gov/stations/deln/accessible",
+    "station_name": "",
+    "note_constraints": [],
+    "note_set_aside": false
+  },
+  "gate_events": [],
+  "decision_card": null,
+  "rider_answer": null,
+  "final_plan": {
+    "station": "DELN",
+    "elevator": "DELN-E1",
+    "option": "alternate_elevator",
+    "added_minutes": 4,
+    "rider_message": "DELN elevator DELN-E1 is out at your starting station. Use the alternate elevator route at the same station; about 4 minutes more.",
+    "status": "send"
+  },
+  "trace_events": [],
+  "counts": {
+    "hook_cancel": 0,
+    "guide_before_tool": 0,
+    "guide_after_model": 0,
+    "proceed_after_model": 0,
+    "interrupts": 0,
+    "model_calls": 1
+  },
+  "cost": {
+    "model_calls": 1,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "cycles": 1
+  },
+  "delivery": {
+    "composed_by": "code",
+    "stop_reason": "exception",
+    "reason": "HTTPClientError('An HTTP Client raised an unhandled exception: network access is blocked in tests')"
+  }
+}

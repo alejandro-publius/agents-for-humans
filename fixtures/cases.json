@@ -1,0 +1,1757 @@
+{
+  "source": "FIXTURE: synthetic option rows shaped like the 194 frozen cases. Replace with kb export.",
+  "frozen_tag": "fixture (not kb-labels-v1)",
+  "label_counts": {
+    "alternate_elevator": 55,
+    "backtracking": 53,
+    "transit": 86
+  },
+  "cases": [
+    {
+      "case_id": "C001",
+      "station": "12TH",
+      "elevator": "12TH-E1",
+      "label": "alternate_elevator",
+      "option_text": "Use the accessible ramp from the far entrance to the platform; no second elevator is needed.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/12th/accessible"
+    },
+    {
+      "case_id": "C002",
+      "station": "16TH",
+      "elevator": "16TH-E1",
+      "label": "alternate_elevator",
+      "option_text": "Use the accessible ramp from the far entrance to the platform; no second elevator is needed.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/16th/accessible"
+    },
+    {
+      "case_id": "C003",
+      "station": "19TH",
+      "elevator": "19TH-E1",
+      "label": "alternate_elevator",
+      "option_text": "Use the accessible ramp from the far entrance to the platform; no second elevator is needed.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/19th/accessible"
+    },
+    {
+      "case_id": "C004",
+      "station": "24TH",
+      "elevator": "24TH-E1",
+      "label": "alternate_elevator",
+      "option_text": "Use the 24TH-E2 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/24th/accessible"
+    },
+    {
+      "case_id": "C005",
+      "station": "24TH",
+      "elevator": "24TH-E2",
+      "label": "alternate_elevator",
+      "option_text": "Use the 24TH-E1 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/24th/accessible"
+    },
+    {
+      "case_id": "C006",
+      "station": "ANTC",
+      "elevator": "ANTC-E1",
+      "label": "alternate_elevator",
+      "option_text": "Use the ANTC-E2 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/antc/accessible"
+    },
+    {
+      "case_id": "C007",
+      "station": "ANTC",
+      "elevator": "ANTC-E2",
+      "label": "alternate_elevator",
+      "option_text": "Use the ANTC-E1 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/antc/accessible"
+    },
+    {
+      "case_id": "C008",
+      "station": "ASHB",
+      "elevator": "ASHB-E1",
+      "label": "alternate_elevator",
+      "option_text": "Use the ASHB-E2 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/ashb/accessible"
+    },
+    {
+      "case_id": "C009",
+      "station": "ASHB",
+      "elevator": "ASHB-E2",
+      "label": "alternate_elevator",
+      "option_text": "Use the ASHB-E1 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/ashb/accessible"
+    },
+    {
+      "case_id": "C010",
+      "station": "BALB",
+      "elevator": "BALB-E1",
+      "label": "alternate_elevator",
+      "option_text": "Use the BALB-E2 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/balb/accessible"
+    },
+    {
+      "case_id": "C011",
+      "station": "BALB",
+      "elevator": "BALB-E2",
+      "label": "alternate_elevator",
+      "option_text": "Use the BALB-E1 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/balb/accessible"
+    },
+    {
+      "case_id": "C012",
+      "station": "BAYF",
+      "elevator": "BAYF-E1",
+      "label": "alternate_elevator",
+      "option_text": "Use the BAYF-E2 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/bayf/accessible"
+    },
+    {
+      "case_id": "C013",
+      "station": "BAYF",
+      "elevator": "BAYF-E2",
+      "label": "alternate_elevator",
+      "option_text": "Use the BAYF-E1 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/bayf/accessible"
+    },
+    {
+      "case_id": "C014",
+      "station": "BERY",
+      "elevator": "BERY-E1",
+      "label": "alternate_elevator",
+      "option_text": "Use the BERY-E2 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/bery/accessible"
+    },
+    {
+      "case_id": "C015",
+      "station": "BERY",
+      "elevator": "BERY-E2",
+      "label": "alternate_elevator",
+      "option_text": "Use the BERY-E1 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/bery/accessible"
+    },
+    {
+      "case_id": "C016",
+      "station": "CAST",
+      "elevator": "CAST-E1",
+      "label": "alternate_elevator",
+      "option_text": "Use the CAST-E2 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/cast/accessible"
+    },
+    {
+      "case_id": "C017",
+      "station": "CAST",
+      "elevator": "CAST-E2",
+      "label": "alternate_elevator",
+      "option_text": "Use the CAST-E1 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/cast/accessible"
+    },
+    {
+      "case_id": "C018",
+      "station": "CIVC",
+      "elevator": "CIVC-E1",
+      "label": "alternate_elevator",
+      "option_text": "Use the CIVC-E2 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/civc/accessible"
+    },
+    {
+      "case_id": "C019",
+      "station": "CIVC",
+      "elevator": "CIVC-E2",
+      "label": "alternate_elevator",
+      "option_text": "Use the CIVC-E1 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/civc/accessible"
+    },
+    {
+      "case_id": "C020",
+      "station": "COLM",
+      "elevator": "COLM-E1",
+      "label": "alternate_elevator",
+      "option_text": "Use the COLM-E2 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/colm/accessible"
+    },
+    {
+      "case_id": "C021",
+      "station": "COLM",
+      "elevator": "COLM-E2",
+      "label": "alternate_elevator",
+      "option_text": "Use the COLM-E1 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/colm/accessible"
+    },
+    {
+      "case_id": "C022",
+      "station": "COLS",
+      "elevator": "COLS-E1",
+      "label": "alternate_elevator",
+      "option_text": "Use the COLS-E2 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/cols/accessible"
+    },
+    {
+      "case_id": "C023",
+      "station": "COLS",
+      "elevator": "COLS-E2",
+      "label": "alternate_elevator",
+      "option_text": "Use the COLS-E1 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/cols/accessible"
+    },
+    {
+      "case_id": "C024",
+      "station": "CONC",
+      "elevator": "CONC-E1",
+      "label": "alternate_elevator",
+      "option_text": "Use the CONC-E2 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/conc/accessible"
+    },
+    {
+      "case_id": "C025",
+      "station": "CONC",
+      "elevator": "CONC-E2",
+      "label": "alternate_elevator",
+      "option_text": "Use the CONC-E1 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/conc/accessible"
+    },
+    {
+      "case_id": "C026",
+      "station": "DALY",
+      "elevator": "DALY-E1",
+      "label": "alternate_elevator",
+      "option_text": "Use the DALY-E2 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/daly/accessible"
+    },
+    {
+      "case_id": "C027",
+      "station": "DALY",
+      "elevator": "DALY-E2",
+      "label": "alternate_elevator",
+      "option_text": "Use the DALY-E1 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/daly/accessible"
+    },
+    {
+      "case_id": "C028",
+      "station": "DBRK",
+      "elevator": "DBRK-E1",
+      "label": "alternate_elevator",
+      "option_text": "Use the DBRK-E2 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/dbrk/accessible"
+    },
+    {
+      "case_id": "C029",
+      "station": "DBRK",
+      "elevator": "DBRK-E2",
+      "label": "alternate_elevator",
+      "option_text": "Use the DBRK-E1 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/dbrk/accessible"
+    },
+    {
+      "case_id": "C030",
+      "station": "DELN",
+      "elevator": "DELN-E1",
+      "label": "alternate_elevator",
+      "option_text": "Use the DELN-E2 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/deln/accessible"
+    },
+    {
+      "case_id": "C031",
+      "station": "DELN",
+      "elevator": "DELN-E2",
+      "label": "alternate_elevator",
+      "option_text": "Use the DELN-E1 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/deln/accessible"
+    },
+    {
+      "case_id": "C032",
+      "station": "DUBL",
+      "elevator": "DUBL-E1",
+      "label": "alternate_elevator",
+      "option_text": "Use the DUBL-E2 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/dubl/accessible"
+    },
+    {
+      "case_id": "C033",
+      "station": "DUBL",
+      "elevator": "DUBL-E2",
+      "label": "alternate_elevator",
+      "option_text": "Use the DUBL-E1 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/dubl/accessible"
+    },
+    {
+      "case_id": "C034",
+      "station": "EMBR",
+      "elevator": "EMBR-E1",
+      "label": "alternate_elevator",
+      "option_text": "Use the EMBR-E2 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/embr/accessible"
+    },
+    {
+      "case_id": "C035",
+      "station": "EMBR",
+      "elevator": "EMBR-E2",
+      "label": "alternate_elevator",
+      "option_text": "Use the EMBR-E1 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/embr/accessible"
+    },
+    {
+      "case_id": "C036",
+      "station": "FRMT",
+      "elevator": "FRMT-E1",
+      "label": "alternate_elevator",
+      "option_text": "Use the FRMT-E2 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/frmt/accessible"
+    },
+    {
+      "case_id": "C037",
+      "station": "FRMT",
+      "elevator": "FRMT-E2",
+      "label": "alternate_elevator",
+      "option_text": "Use the FRMT-E1 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/frmt/accessible"
+    },
+    {
+      "case_id": "C038",
+      "station": "FTVL",
+      "elevator": "FTVL-E1",
+      "label": "alternate_elevator",
+      "option_text": "Use the FTVL-E2 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/ftvl/accessible"
+    },
+    {
+      "case_id": "C039",
+      "station": "FTVL",
+      "elevator": "FTVL-E2",
+      "label": "alternate_elevator",
+      "option_text": "Use the FTVL-E1 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/ftvl/accessible"
+    },
+    {
+      "case_id": "C040",
+      "station": "GLEN",
+      "elevator": "GLEN-E1",
+      "label": "alternate_elevator",
+      "option_text": "Use the GLEN-E2 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/glen/accessible"
+    },
+    {
+      "case_id": "C041",
+      "station": "GLEN",
+      "elevator": "GLEN-E2",
+      "label": "alternate_elevator",
+      "option_text": "Use the GLEN-E1 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/glen/accessible"
+    },
+    {
+      "case_id": "C042",
+      "station": "HAYW",
+      "elevator": "HAYW-E1",
+      "label": "alternate_elevator",
+      "option_text": "Use the HAYW-E2 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/hayw/accessible"
+    },
+    {
+      "case_id": "C043",
+      "station": "HAYW",
+      "elevator": "HAYW-E2",
+      "label": "alternate_elevator",
+      "option_text": "Use the HAYW-E1 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/hayw/accessible"
+    },
+    {
+      "case_id": "C044",
+      "station": "LAFY",
+      "elevator": "LAFY-E1",
+      "label": "alternate_elevator",
+      "option_text": "Use the LAFY-E2 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/lafy/accessible"
+    },
+    {
+      "case_id": "C045",
+      "station": "LAFY",
+      "elevator": "LAFY-E2",
+      "label": "alternate_elevator",
+      "option_text": "Use the LAFY-E1 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/lafy/accessible"
+    },
+    {
+      "case_id": "C046",
+      "station": "LAKE",
+      "elevator": "LAKE-E1",
+      "label": "alternate_elevator",
+      "option_text": "Use the LAKE-E2 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/lake/accessible"
+    },
+    {
+      "case_id": "C047",
+      "station": "LAKE",
+      "elevator": "LAKE-E2",
+      "label": "alternate_elevator",
+      "option_text": "Use the LAKE-E1 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/lake/accessible"
+    },
+    {
+      "case_id": "C048",
+      "station": "MCAR",
+      "elevator": "MCAR-E1",
+      "label": "alternate_elevator",
+      "option_text": "Use the MCAR-E2 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/mcar/accessible"
+    },
+    {
+      "case_id": "C049",
+      "station": "MCAR",
+      "elevator": "MCAR-E2",
+      "label": "alternate_elevator",
+      "option_text": "Use the MCAR-E1 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/mcar/accessible"
+    },
+    {
+      "case_id": "C050",
+      "station": "MLBR",
+      "elevator": "MLBR-E1",
+      "label": "alternate_elevator",
+      "option_text": "Use the MLBR-E2 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/mlbr/accessible"
+    },
+    {
+      "case_id": "C051",
+      "station": "MLBR",
+      "elevator": "MLBR-E2",
+      "label": "alternate_elevator",
+      "option_text": "Use the MLBR-E1 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/mlbr/accessible"
+    },
+    {
+      "case_id": "C052",
+      "station": "MLPT",
+      "elevator": "MLPT-E1",
+      "label": "alternate_elevator",
+      "option_text": "Use the MLPT-E2 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/mlpt/accessible"
+    },
+    {
+      "case_id": "C053",
+      "station": "MLPT",
+      "elevator": "MLPT-E2",
+      "label": "alternate_elevator",
+      "option_text": "Use the MLPT-E1 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/mlpt/accessible"
+    },
+    {
+      "case_id": "C054",
+      "station": "MONT",
+      "elevator": "MONT-E1",
+      "label": "alternate_elevator",
+      "option_text": "Use the MONT-E2 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/mont/accessible"
+    },
+    {
+      "case_id": "C055",
+      "station": "MONT",
+      "elevator": "MONT-E2",
+      "label": "alternate_elevator",
+      "option_text": "Use the MONT-E1 elevator on the other side of the platform; ramp connects at concourse level.",
+      "added_minutes": 4,
+      "source_url": "https://www.bart.gov/stations/mont/accessible"
+    },
+    {
+      "case_id": "C056",
+      "station": "NBRK",
+      "elevator": "NBRK-E1",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to NCON and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/nbrk/accessible"
+    },
+    {
+      "case_id": "C057",
+      "station": "NBRK",
+      "elevator": "NBRK-E2",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to NCON and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/nbrk/accessible"
+    },
+    {
+      "case_id": "C058",
+      "station": "NCON",
+      "elevator": "NCON-E1",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to OAKL and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/ncon/accessible"
+    },
+    {
+      "case_id": "C059",
+      "station": "NCON",
+      "elevator": "NCON-E2",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to OAKL and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/ncon/accessible"
+    },
+    {
+      "case_id": "C060",
+      "station": "OAKL",
+      "elevator": "OAKL-E1",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to ORIN and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/oakl/accessible"
+    },
+    {
+      "case_id": "C061",
+      "station": "OAKL",
+      "elevator": "OAKL-E2",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to ORIN and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/oakl/accessible"
+    },
+    {
+      "case_id": "C062",
+      "station": "ORIN",
+      "elevator": "ORIN-E1",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to PCTR and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/orin/accessible"
+    },
+    {
+      "case_id": "C063",
+      "station": "ORIN",
+      "elevator": "ORIN-E2",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to PCTR and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/orin/accessible"
+    },
+    {
+      "case_id": "C064",
+      "station": "PCTR",
+      "elevator": "PCTR-E1",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to PHIL and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/pctr/accessible"
+    },
+    {
+      "case_id": "C065",
+      "station": "PCTR",
+      "elevator": "PCTR-E2",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to PHIL and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/pctr/accessible"
+    },
+    {
+      "case_id": "C066",
+      "station": "PHIL",
+      "elevator": "PHIL-E1",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to PITT and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/phil/accessible"
+    },
+    {
+      "case_id": "C067",
+      "station": "PHIL",
+      "elevator": "PHIL-E2",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to PITT and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/phil/accessible"
+    },
+    {
+      "case_id": "C068",
+      "station": "PITT",
+      "elevator": "PITT-E1",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to PLZA and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/pitt/accessible"
+    },
+    {
+      "case_id": "C069",
+      "station": "PITT",
+      "elevator": "PITT-E2",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to PLZA and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/pitt/accessible"
+    },
+    {
+      "case_id": "C070",
+      "station": "PLZA",
+      "elevator": "PLZA-E1",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to POWL and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/plza/accessible"
+    },
+    {
+      "case_id": "C071",
+      "station": "PLZA",
+      "elevator": "PLZA-E2",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to POWL and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/plza/accessible"
+    },
+    {
+      "case_id": "C072",
+      "station": "POWL",
+      "elevator": "POWL-E1",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to RICH and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/powl/accessible"
+    },
+    {
+      "case_id": "C073",
+      "station": "POWL",
+      "elevator": "POWL-E2",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to RICH and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/powl/accessible"
+    },
+    {
+      "case_id": "C074",
+      "station": "RICH",
+      "elevator": "RICH-E1",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to ROCK and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/rich/accessible"
+    },
+    {
+      "case_id": "C075",
+      "station": "RICH",
+      "elevator": "RICH-E2",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to ROCK and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/rich/accessible"
+    },
+    {
+      "case_id": "C076",
+      "station": "ROCK",
+      "elevator": "ROCK-E1",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to SANL and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/rock/accessible"
+    },
+    {
+      "case_id": "C077",
+      "station": "ROCK",
+      "elevator": "ROCK-E2",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to SANL and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/rock/accessible"
+    },
+    {
+      "case_id": "C078",
+      "station": "SANL",
+      "elevator": "SANL-E1",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to SBRN and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/sanl/accessible"
+    },
+    {
+      "case_id": "C079",
+      "station": "SANL",
+      "elevator": "SANL-E2",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to SBRN and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/sanl/accessible"
+    },
+    {
+      "case_id": "C080",
+      "station": "SBRN",
+      "elevator": "SBRN-E1",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to SFIA and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/sbrn/accessible"
+    },
+    {
+      "case_id": "C081",
+      "station": "SBRN",
+      "elevator": "SBRN-E2",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to SFIA and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/sbrn/accessible"
+    },
+    {
+      "case_id": "C082",
+      "station": "SFIA",
+      "elevator": "SFIA-E1",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to SHAY and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/sfia/accessible"
+    },
+    {
+      "case_id": "C083",
+      "station": "SFIA",
+      "elevator": "SFIA-E2",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to SHAY and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/sfia/accessible"
+    },
+    {
+      "case_id": "C084",
+      "station": "SHAY",
+      "elevator": "SHAY-E1",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to SSAN and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/shay/accessible"
+    },
+    {
+      "case_id": "C085",
+      "station": "SHAY",
+      "elevator": "SHAY-E2",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to SSAN and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/shay/accessible"
+    },
+    {
+      "case_id": "C086",
+      "station": "SSAN",
+      "elevator": "SSAN-E1",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to UCTY and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/ssan/accessible"
+    },
+    {
+      "case_id": "C087",
+      "station": "SSAN",
+      "elevator": "SSAN-E2",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to UCTY and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/ssan/accessible"
+    },
+    {
+      "case_id": "C088",
+      "station": "UCTY",
+      "elevator": "UCTY-E1",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to WARM and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/ucty/accessible"
+    },
+    {
+      "case_id": "C089",
+      "station": "UCTY",
+      "elevator": "UCTY-E2",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to WARM and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/ucty/accessible"
+    },
+    {
+      "case_id": "C090",
+      "station": "WARM",
+      "elevator": "WARM-E1",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to WCRK and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/warm/accessible"
+    },
+    {
+      "case_id": "C091",
+      "station": "WARM",
+      "elevator": "WARM-E2",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to WCRK and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/warm/accessible"
+    },
+    {
+      "case_id": "C092",
+      "station": "WCRK",
+      "elevator": "WCRK-E1",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to WDUB and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/wcrk/accessible"
+    },
+    {
+      "case_id": "C093",
+      "station": "WCRK",
+      "elevator": "WCRK-E2",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to WDUB and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/wcrk/accessible"
+    },
+    {
+      "case_id": "C094",
+      "station": "WDUB",
+      "elevator": "WDUB-E1",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to WOAK and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/wdub/accessible"
+    },
+    {
+      "case_id": "C095",
+      "station": "WDUB",
+      "elevator": "WDUB-E2",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to WOAK and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/wdub/accessible"
+    },
+    {
+      "case_id": "C096",
+      "station": "WOAK",
+      "elevator": "WOAK-E1",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to 12TH and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/woak/accessible"
+    },
+    {
+      "case_id": "C097",
+      "station": "WOAK",
+      "elevator": "WOAK-E2",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to 12TH and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/woak/accessible"
+    },
+    {
+      "case_id": "C098",
+      "station": "12TH",
+      "elevator": "12TH-E1",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to 16TH and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/12th/accessible"
+    },
+    {
+      "case_id": "C099",
+      "station": "16TH",
+      "elevator": "16TH-E1",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to 19TH and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/16th/accessible"
+    },
+    {
+      "case_id": "C100",
+      "station": "19TH",
+      "elevator": "19TH-E1",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to 24TH and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/19th/accessible"
+    },
+    {
+      "case_id": "C101",
+      "station": "24TH",
+      "elevator": "24TH-E1",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to ANTC and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/24th/accessible"
+    },
+    {
+      "case_id": "C102",
+      "station": "24TH",
+      "elevator": "24TH-E2",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to ANTC and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/24th/accessible"
+    },
+    {
+      "case_id": "C103",
+      "station": "ANTC",
+      "elevator": "ANTC-E1",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to ASHB and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/antc/accessible"
+    },
+    {
+      "case_id": "C104",
+      "station": "ANTC",
+      "elevator": "ANTC-E2",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to ASHB and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/antc/accessible"
+    },
+    {
+      "case_id": "C105",
+      "station": "ASHB",
+      "elevator": "ASHB-E1",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to BALB and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/ashb/accessible"
+    },
+    {
+      "case_id": "C106",
+      "station": "ASHB",
+      "elevator": "ASHB-E2",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to BALB and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/ashb/accessible"
+    },
+    {
+      "case_id": "C107",
+      "station": "BALB",
+      "elevator": "BALB-E1",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to BAYF and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/balb/accessible"
+    },
+    {
+      "case_id": "C108",
+      "station": "BALB",
+      "elevator": "BALB-E2",
+      "label": "backtracking",
+      "option_text": "Ride one stop past to BAYF and return on the opposite platform, where the elevator works.",
+      "added_minutes": 12,
+      "source_url": "https://www.bart.gov/stations/balb/accessible"
+    },
+    {
+      "case_id": "C109",
+      "station": "BAYF",
+      "elevator": "BAYF-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from BAYF to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/bayf/accessible"
+    },
+    {
+      "case_id": "C110",
+      "station": "BAYF",
+      "elevator": "BAYF-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from BAYF to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/bayf/accessible"
+    },
+    {
+      "case_id": "C111",
+      "station": "BERY",
+      "elevator": "BERY-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from BERY to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/bery/accessible"
+    },
+    {
+      "case_id": "C112",
+      "station": "BERY",
+      "elevator": "BERY-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from BERY to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/bery/accessible"
+    },
+    {
+      "case_id": "C113",
+      "station": "CAST",
+      "elevator": "CAST-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from CAST to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/cast/accessible"
+    },
+    {
+      "case_id": "C114",
+      "station": "CAST",
+      "elevator": "CAST-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from CAST to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/cast/accessible"
+    },
+    {
+      "case_id": "C115",
+      "station": "CIVC",
+      "elevator": "CIVC-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from CIVC to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/civc/accessible"
+    },
+    {
+      "case_id": "C116",
+      "station": "CIVC",
+      "elevator": "CIVC-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from CIVC to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/civc/accessible"
+    },
+    {
+      "case_id": "C117",
+      "station": "COLM",
+      "elevator": "COLM-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from COLM to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/colm/accessible"
+    },
+    {
+      "case_id": "C118",
+      "station": "COLM",
+      "elevator": "COLM-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from COLM to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/colm/accessible"
+    },
+    {
+      "case_id": "C119",
+      "station": "COLS",
+      "elevator": "COLS-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from COLS to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/cols/accessible"
+    },
+    {
+      "case_id": "C120",
+      "station": "COLS",
+      "elevator": "COLS-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from COLS to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/cols/accessible"
+    },
+    {
+      "case_id": "C121",
+      "station": "CONC",
+      "elevator": "CONC-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from CONC to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/conc/accessible"
+    },
+    {
+      "case_id": "C122",
+      "station": "CONC",
+      "elevator": "CONC-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from CONC to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/conc/accessible"
+    },
+    {
+      "case_id": "C123",
+      "station": "DALY",
+      "elevator": "DALY-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from DALY to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/daly/accessible"
+    },
+    {
+      "case_id": "C124",
+      "station": "DALY",
+      "elevator": "DALY-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from DALY to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/daly/accessible"
+    },
+    {
+      "case_id": "C125",
+      "station": "DBRK",
+      "elevator": "DBRK-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from DBRK to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/dbrk/accessible"
+    },
+    {
+      "case_id": "C126",
+      "station": "DBRK",
+      "elevator": "DBRK-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from DBRK to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/dbrk/accessible"
+    },
+    {
+      "case_id": "C127",
+      "station": "DELN",
+      "elevator": "DELN-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from DELN to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/deln/accessible"
+    },
+    {
+      "case_id": "C128",
+      "station": "DELN",
+      "elevator": "DELN-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from DELN to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/deln/accessible"
+    },
+    {
+      "case_id": "C129",
+      "station": "DUBL",
+      "elevator": "DUBL-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from DUBL to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/dubl/accessible"
+    },
+    {
+      "case_id": "C130",
+      "station": "DUBL",
+      "elevator": "DUBL-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from DUBL to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/dubl/accessible"
+    },
+    {
+      "case_id": "C131",
+      "station": "EMBR",
+      "elevator": "EMBR-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from EMBR to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/embr/accessible"
+    },
+    {
+      "case_id": "C132",
+      "station": "EMBR",
+      "elevator": "EMBR-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from EMBR to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/embr/accessible"
+    },
+    {
+      "case_id": "C133",
+      "station": "FRMT",
+      "elevator": "FRMT-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from FRMT to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/frmt/accessible"
+    },
+    {
+      "case_id": "C134",
+      "station": "FRMT",
+      "elevator": "FRMT-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from FRMT to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/frmt/accessible"
+    },
+    {
+      "case_id": "C135",
+      "station": "FTVL",
+      "elevator": "FTVL-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from FTVL to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/ftvl/accessible"
+    },
+    {
+      "case_id": "C136",
+      "station": "FTVL",
+      "elevator": "FTVL-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from FTVL to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/ftvl/accessible"
+    },
+    {
+      "case_id": "C137",
+      "station": "GLEN",
+      "elevator": "GLEN-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from GLEN to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/glen/accessible"
+    },
+    {
+      "case_id": "C138",
+      "station": "GLEN",
+      "elevator": "GLEN-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from GLEN to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/glen/accessible"
+    },
+    {
+      "case_id": "C139",
+      "station": "HAYW",
+      "elevator": "HAYW-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from HAYW to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/hayw/accessible"
+    },
+    {
+      "case_id": "C140",
+      "station": "HAYW",
+      "elevator": "HAYW-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from HAYW to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/hayw/accessible"
+    },
+    {
+      "case_id": "C141",
+      "station": "LAFY",
+      "elevator": "LAFY-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from LAFY to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/lafy/accessible"
+    },
+    {
+      "case_id": "C142",
+      "station": "LAFY",
+      "elevator": "LAFY-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from LAFY to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/lafy/accessible"
+    },
+    {
+      "case_id": "C143",
+      "station": "LAKE",
+      "elevator": "LAKE-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from LAKE to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/lake/accessible"
+    },
+    {
+      "case_id": "C144",
+      "station": "LAKE",
+      "elevator": "LAKE-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from LAKE to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/lake/accessible"
+    },
+    {
+      "case_id": "C145",
+      "station": "MCAR",
+      "elevator": "MCAR-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from MCAR to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/mcar/accessible"
+    },
+    {
+      "case_id": "C146",
+      "station": "MCAR",
+      "elevator": "MCAR-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from MCAR to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/mcar/accessible"
+    },
+    {
+      "case_id": "C147",
+      "station": "MLBR",
+      "elevator": "MLBR-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from MLBR to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/mlbr/accessible"
+    },
+    {
+      "case_id": "C148",
+      "station": "MLBR",
+      "elevator": "MLBR-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from MLBR to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/mlbr/accessible"
+    },
+    {
+      "case_id": "C149",
+      "station": "MLPT",
+      "elevator": "MLPT-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from MLPT to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/mlpt/accessible"
+    },
+    {
+      "case_id": "C150",
+      "station": "MLPT",
+      "elevator": "MLPT-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from MLPT to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/mlpt/accessible"
+    },
+    {
+      "case_id": "C151",
+      "station": "MONT",
+      "elevator": "MONT-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from MONT to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/mont/accessible"
+    },
+    {
+      "case_id": "C152",
+      "station": "MONT",
+      "elevator": "MONT-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from MONT to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/mont/accessible"
+    },
+    {
+      "case_id": "C153",
+      "station": "NBRK",
+      "elevator": "NBRK-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from NBRK to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/nbrk/accessible"
+    },
+    {
+      "case_id": "C154",
+      "station": "NBRK",
+      "elevator": "NBRK-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from NBRK to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/nbrk/accessible"
+    },
+    {
+      "case_id": "C155",
+      "station": "NCON",
+      "elevator": "NCON-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from NCON to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/ncon/accessible"
+    },
+    {
+      "case_id": "C156",
+      "station": "NCON",
+      "elevator": "NCON-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from NCON to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/ncon/accessible"
+    },
+    {
+      "case_id": "C157",
+      "station": "OAKL",
+      "elevator": "OAKL-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from OAKL to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/oakl/accessible"
+    },
+    {
+      "case_id": "C158",
+      "station": "OAKL",
+      "elevator": "OAKL-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from OAKL to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/oakl/accessible"
+    },
+    {
+      "case_id": "C159",
+      "station": "ORIN",
+      "elevator": "ORIN-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from ORIN to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/orin/accessible"
+    },
+    {
+      "case_id": "C160",
+      "station": "ORIN",
+      "elevator": "ORIN-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from ORIN to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/orin/accessible"
+    },
+    {
+      "case_id": "C161",
+      "station": "PCTR",
+      "elevator": "PCTR-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from PCTR to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/pctr/accessible"
+    },
+    {
+      "case_id": "C162",
+      "station": "PCTR",
+      "elevator": "PCTR-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from PCTR to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/pctr/accessible"
+    },
+    {
+      "case_id": "C163",
+      "station": "PHIL",
+      "elevator": "PHIL-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from PHIL to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/phil/accessible"
+    },
+    {
+      "case_id": "C164",
+      "station": "PHIL",
+      "elevator": "PHIL-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from PHIL to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/phil/accessible"
+    },
+    {
+      "case_id": "C165",
+      "station": "PITT",
+      "elevator": "PITT-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from PITT to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/pitt/accessible"
+    },
+    {
+      "case_id": "C166",
+      "station": "PITT",
+      "elevator": "PITT-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from PITT to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/pitt/accessible"
+    },
+    {
+      "case_id": "C167",
+      "station": "PLZA",
+      "elevator": "PLZA-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from PLZA to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/plza/accessible"
+    },
+    {
+      "case_id": "C168",
+      "station": "PLZA",
+      "elevator": "PLZA-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from PLZA to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/plza/accessible"
+    },
+    {
+      "case_id": "C169",
+      "station": "POWL",
+      "elevator": "POWL-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from POWL to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/powl/accessible"
+    },
+    {
+      "case_id": "C170",
+      "station": "POWL",
+      "elevator": "POWL-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from POWL to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/powl/accessible"
+    },
+    {
+      "case_id": "C171",
+      "station": "RICH",
+      "elevator": "RICH-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from RICH to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/rich/accessible"
+    },
+    {
+      "case_id": "C172",
+      "station": "RICH",
+      "elevator": "RICH-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from RICH to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/rich/accessible"
+    },
+    {
+      "case_id": "C173",
+      "station": "ROCK",
+      "elevator": "ROCK-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from ROCK to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/rock/accessible"
+    },
+    {
+      "case_id": "C174",
+      "station": "ROCK",
+      "elevator": "ROCK-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from ROCK to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/rock/accessible"
+    },
+    {
+      "case_id": "C175",
+      "station": "SANL",
+      "elevator": "SANL-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from SANL to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/sanl/accessible"
+    },
+    {
+      "case_id": "C176",
+      "station": "SANL",
+      "elevator": "SANL-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from SANL to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/sanl/accessible"
+    },
+    {
+      "case_id": "C177",
+      "station": "SBRN",
+      "elevator": "SBRN-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from SBRN to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/sbrn/accessible"
+    },
+    {
+      "case_id": "C178",
+      "station": "SBRN",
+      "elevator": "SBRN-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from SBRN to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/sbrn/accessible"
+    },
+    {
+      "case_id": "C179",
+      "station": "SFIA",
+      "elevator": "SFIA-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from SFIA to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/sfia/accessible"
+    },
+    {
+      "case_id": "C180",
+      "station": "SFIA",
+      "elevator": "SFIA-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from SFIA to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/sfia/accessible"
+    },
+    {
+      "case_id": "C181",
+      "station": "SHAY",
+      "elevator": "SHAY-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from SHAY to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/shay/accessible"
+    },
+    {
+      "case_id": "C182",
+      "station": "SHAY",
+      "elevator": "SHAY-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from SHAY to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/shay/accessible"
+    },
+    {
+      "case_id": "C183",
+      "station": "SSAN",
+      "elevator": "SSAN-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from SSAN to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/ssan/accessible"
+    },
+    {
+      "case_id": "C184",
+      "station": "SSAN",
+      "elevator": "SSAN-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from SSAN to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/ssan/accessible"
+    },
+    {
+      "case_id": "C185",
+      "station": "UCTY",
+      "elevator": "UCTY-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from UCTY to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/ucty/accessible"
+    },
+    {
+      "case_id": "C186",
+      "station": "UCTY",
+      "elevator": "UCTY-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from UCTY to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/ucty/accessible"
+    },
+    {
+      "case_id": "C187",
+      "station": "WARM",
+      "elevator": "WARM-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from WARM to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/warm/accessible"
+    },
+    {
+      "case_id": "C188",
+      "station": "WARM",
+      "elevator": "WARM-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from WARM to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/warm/accessible"
+    },
+    {
+      "case_id": "C189",
+      "station": "WCRK",
+      "elevator": "WCRK-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from WCRK to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/wcrk/accessible"
+    },
+    {
+      "case_id": "C190",
+      "station": "WCRK",
+      "elevator": "WCRK-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from WCRK to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/wcrk/accessible"
+    },
+    {
+      "case_id": "C191",
+      "station": "WDUB",
+      "elevator": "WDUB-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from WDUB to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/wdub/accessible"
+    },
+    {
+      "case_id": "C192",
+      "station": "WDUB",
+      "elevator": "WDUB-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from WDUB to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/wdub/accessible"
+    },
+    {
+      "case_id": "C193",
+      "station": "WOAK",
+      "elevator": "WOAK-E1",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from WOAK to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/woak/accessible"
+    },
+    {
+      "case_id": "C194",
+      "station": "WOAK",
+      "elevator": "WOAK-E2",
+      "label": "transit",
+      "option_text": "Take AC Transit or Muni from WOAK to the next accessible station; BART honors the fare.",
+      "added_minutes": 20,
+      "source_url": "https://www.bart.gov/stations/woak/accessible"
+    }
+  ]
+}

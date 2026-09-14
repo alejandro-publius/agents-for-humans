@@ -25,8 +25,10 @@ lint: ## ruff check + format check
 	$(PY) -m ruff check .
 	$(PY) -m ruff format --check .
 
-test: ## unit tests, fully offline
-	$(PY) -m pytest -q
+test: ## unit tests, fully offline (two processes: the OpenTelemetry provider is global per process,
+      ## and both suites install one, so tests/test_tracing.py must not share a process with tests/dispatch)
+	$(PY) -m pytest -q tests --ignore=tests/dispatch
+	$(PY) -m pytest -q tests/dispatch
 
 evals: ## run eval cases on the mock provider and write results/*.json; ABLATE=1 disables hook + steering
 	$(PY) evals/run.py $(if $(filter 1,$(ABLATE)),--ablate,)

@@ -1,0 +1,122 @@
+{
+  "provenance": {
+    "run": "every convergence persona times every case in the slice, through Strands' real BedrockModel with a stand-in client per model id; nothing was sent",
+    "claimable": false,
+    "source": {
+      "kb": "fixtures/kb.json",
+      "cases": "fixtures/cases.json",
+      "fixture": true
+    },
+    "note": "Plumbing proof about the gates' feedback as a model reads it in each adapter format; never a claim about a live model."
+  },
+  "model_ids": [
+    "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+    "us.amazon.nova-lite-v1:0"
+  ],
+  "cases": 24,
+  "personas": [
+    "wrong_station",
+    "wrong_elevator",
+    "wrong_option",
+    "invented_minutes",
+    "prose_minutes",
+    "prose_station",
+    "own_words",
+    "injection",
+    "everything_wrong"
+  ],
+  "runs": 432,
+  "converged": 432,
+  "max_calls": 5,
+  "rejected_by_converse_rules": 0,
+  "per_model": {
+    "us.anthropic.claude-sonnet-4-5-20250929-v1:0": {
+      "runs": 216,
+      "converged": 216,
+      "max_calls": 5,
+      "by_persona": {
+        "wrong_station": {
+          "runs": 24,
+          "converged": 24
+        },
+        "wrong_elevator": {
+          "runs": 24,
+          "converged": 24
+        },
+        "wrong_option": {
+          "runs": 24,
+          "converged": 24
+        },
+        "invented_minutes": {
+          "runs": 24,
+          "converged": 24
+        },
+        "prose_minutes": {
+          "runs": 24,
+          "converged": 24
+        },
+        "prose_station": {
+          "runs": 24,
+          "converged": 24
+        },
+        "own_words": {
+          "runs": 24,
+          "converged": 24
+        },
+        "injection": {
+          "runs": 24,
+          "converged": 24
+        },
+        "everything_wrong": {
+          "runs": 24,
+          "converged": 24
+        }
+      },
+      "failed": []
+    },
+    "us.amazon.nova-lite-v1:0": {
+      "runs": 216,
+      "converged": 216,
+      "max_calls": 5,
+      "by_persona": {
+        "wrong_station": {
+          "runs": 24,
+          "converged": 24
+        },
+        "wrong_elevator": {
+          "runs": 24,
+          "converged": 24
+        },
+        "wrong_option": {
+          "runs": 24,
+          "converged": 24
+        },
+        "invented_minutes": {
+          "runs": 24,
+          "converged": 24
+        },
+        "prose_minutes": {
+          "runs": 24,
+          "converged": 24
+        },
+        "prose_station": {
+          "runs": 24,
+          "converged": 24
+        },
+        "own_words": {
+          "runs": 24,
+          "converged": 24
+        },
+        "injection": {
+          "runs": 24,
+          "converged": 24
+        },
+        "everything_wrong": {
+          "runs": 24,
+          "converged": 24
+        }
+      },
+      "failed": []
+    }
+  }
+}

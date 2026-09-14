@@ -1,0 +1,37 @@
+{
+  "provenance": {
+    "run": "coverage.py over the offline test suite (network blocked, keys stripped); scripts/ not measured",
+    "note": "Line coverage of le_dispatch/ and infra/agentcore/runtime/; the claim pins a floor, not a value."
+  },
+  "percent": 95.3,
+  "statements": 3699,
+  "missed": 173,
+  "files": 34,
+  "least_covered": [
+    {
+      "file": "le_dispatch/agentcore_policy.py",
+      "percent": 72.7,
+      "missing_lines": 30
+    },
+    {
+      "file": "le_dispatch/evidence.py",
+      "percent": 88.9,
+      "missing_lines": 9
+    },
+    {
+      "file": "le_dispatch/adaptive.py",
+      "percent": 90.8,
+      "missing_lines": 20
+    },
+    {
+      "file": "le_dispatch/policy_check.py",
+      "percent": 93.1,
+      "missing_lines": 4
+    },
+    {
+      "file": "le_dispatch/messages.py",
+      "percent": 94.3,
+      "missing_lines": 3
+    }
+  ]
+}

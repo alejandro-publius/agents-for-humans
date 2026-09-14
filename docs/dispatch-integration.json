@@ -1,0 +1,1185 @@
+{
+  "copied": 219,
+  "conflicts": [
+    "results/quiet.json",
+    "results/red_team.json",
+    "scripts/demo_one.py",
+    "scripts/red_team.py",
+    "scripts/secret_scan.py",
+    "scripts/verify_claims.py"
+  ],
+  "replaced": [
+    "docs/devpost.md"
+  ],
+  "not_copied": {
+    ".devcontainer/devcontainer.json": "not copied: the main repo decides its own Codespace (the package's is one file to copy)",
+    ".gitignore": "not copied: add data/public/ and fixtures/archive_fixture.sqlite to the main .gitignore",
+    "LICENSE": "not copied: the main repo has its own MIT license",
+    "Makefile": "not copied: add `-include dispatch.mk` at the end of the main Makefile (INTEGRATION.md section 1)",
+    "README.md": "not copied: merge docs/README-sections.md into the main README (F9 PR text)",
+    "pyproject.toml": "not copied: add the extras cedar and aws, and pytest pythonpath = ['.'] (INTEGRATION.md 1)",
+    "results/policy_agreement.json": "not copied: the main file exists; merge rows with write_scores / merge_entries"
+  },
+  "moves": [
+    {
+      "src": ".devcontainer/devcontainer.json",
+      "dst": null,
+      "action": "note"
+    },
+    {
+      "src": ".github/workflows/pages.yml",
+      "dst": ".github/workflows/dispatch-pages.yml",
+      "action": "copy"
+    },
+    {
+      "src": ".github/workflows/verify.yml",
+      "dst": ".github/workflows/dispatch-verify.yml",
+      "action": "copy"
+    },
+    {
+      "src": ".gitignore",
+      "dst": null,
+      "action": "note"
+    },
+    {
+      "src": "LICENSE",
+      "dst": null,
+      "action": "note"
+    },
+    {
+      "src": "Makefile",
+      "dst": null,
+      "action": "note"
+    },
+    {
+      "src": "README.md",
+      "dst": null,
+      "action": "note"
+    },
+    {
+      "src": "dispatch.mk",
+      "dst": "dispatch.mk",
+      "action": "copy"
+    },
+    {
+      "src": "docs/ARCHITECTURE.md",
+      "dst": "docs/ARCHITECTURE.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/EVIDENCE.md",
+      "dst": "docs/EVIDENCE.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/FAQ.md",
+      "dst": "docs/FAQ.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/HUMAN-CHECKLIST.md",
+      "dst": "docs/HUMAN-CHECKLIST.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/INTEGRATION.md",
+      "dst": "docs/INTEGRATION.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/ONBOARDING-AN-AGENCY.md",
+      "dst": "docs/ONBOARDING-AN-AGENCY.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/README-sections.md",
+      "dst": "docs/README-sections.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/RUNBOOK-dispatch.md",
+      "dst": "docs/RUNBOOK-dispatch.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/SUBMISSION-CHECKLIST.md",
+      "dst": "docs/SUBMISSION-CHECKLIST.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/SUNDAY.md",
+      "dst": "docs/SUNDAY.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/THREAT-MODEL.md",
+      "dst": "docs/THREAT-MODEL.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/TOUR-TRANSCRIPT.md",
+      "dst": "docs/TOUR-TRANSCRIPT.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/UPSTREAM-NOTE.md",
+      "dst": "docs/UPSTREAM-NOTE.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/architecture-additions.md",
+      "dst": "docs/architecture-additions.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/devpost.md",
+      "dst": "docs/devpost.md",
+      "action": "replace"
+    },
+    {
+      "src": "docs/diagrams/architecture-poll.png",
+      "dst": "docs/diagrams/architecture-poll.png",
+      "action": "copy"
+    },
+    {
+      "src": "docs/diagrams/architecture-poll.svg",
+      "dst": "docs/diagrams/architecture-poll.svg",
+      "action": "copy"
+    },
+    {
+      "src": "docs/diagrams/evidence-DELN-E1-after-dark-no.png",
+      "dst": "docs/diagrams/evidence-DELN-E1-after-dark-no.png",
+      "action": "copy"
+    },
+    {
+      "src": "docs/diagrams/evidence-DELN-E1-after-dark-yes.png",
+      "dst": "docs/diagrams/evidence-DELN-E1-after-dark-yes.png",
+      "action": "copy"
+    },
+    {
+      "src": "docs/diagrams/evidence-DELN-E1-daytime.png",
+      "dst": "docs/diagrams/evidence-DELN-E1-daytime.png",
+      "action": "copy"
+    },
+    {
+      "src": "docs/diagrams/evidence-DELN-E1-note.png",
+      "dst": "docs/diagrams/evidence-DELN-E1-note.png",
+      "action": "copy"
+    },
+    {
+      "src": "docs/diagrams/human-moment.png",
+      "dst": "docs/diagrams/human-moment.png",
+      "action": "copy"
+    },
+    {
+      "src": "docs/diagrams/human-moment.svg",
+      "dst": "docs/diagrams/human-moment.svg",
+      "action": "copy"
+    },
+    {
+      "src": "docs/diagrams/tour-1-every-gate.png",
+      "dst": "docs/diagrams/tour-1-every-gate.png",
+      "action": "copy"
+    },
+    {
+      "src": "docs/diagrams/tour-2-human-moment.png",
+      "dst": "docs/diagrams/tour-2-human-moment.png",
+      "action": "copy"
+    },
+    {
+      "src": "docs/diagrams/tour-3-counts.png",
+      "dst": "docs/diagrams/tour-3-counts.png",
+      "action": "copy"
+    },
+    {
+      "src": "docs/diagrams/tour-4-ablation.png",
+      "dst": "docs/diagrams/tour-4-ablation.png",
+      "action": "copy"
+    },
+    {
+      "src": "docs/diagrams/tour-5-wire.png",
+      "dst": "docs/diagrams/tour-5-wire.png",
+      "action": "copy"
+    },
+    {
+      "src": "docs/diagrams/tour-6-runtime.png",
+      "dst": "docs/diagrams/tour-6-runtime.png",
+      "action": "copy"
+    },
+    {
+      "src": "docs/diagrams/tour-7-sweep.png",
+      "dst": "docs/diagrams/tour-7-sweep.png",
+      "action": "copy"
+    },
+    {
+      "src": "docs/evidence/DELN-E1-after-dark-no.json",
+      "dst": "docs/evidence/DELN-E1-after-dark-no.json",
+      "action": "copy"
+    },
+    {
+      "src": "docs/evidence/DELN-E1-after-dark-no.md",
+      "dst": "docs/evidence/DELN-E1-after-dark-no.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/evidence/DELN-E1-after-dark-yes.json",
+      "dst": "docs/evidence/DELN-E1-after-dark-yes.json",
+      "action": "copy"
+    },
+    {
+      "src": "docs/evidence/DELN-E1-after-dark-yes.md",
+      "dst": "docs/evidence/DELN-E1-after-dark-yes.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/evidence/DELN-E1-daytime.json",
+      "dst": "docs/evidence/DELN-E1-daytime.json",
+      "action": "copy"
+    },
+    {
+      "src": "docs/evidence/DELN-E1-daytime.md",
+      "dst": "docs/evidence/DELN-E1-daytime.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/evidence/DELN-E1-note.json",
+      "dst": "docs/evidence/DELN-E1-note.json",
+      "action": "copy"
+    },
+    {
+      "src": "docs/evidence/DELN-E1-note.md",
+      "dst": "docs/evidence/DELN-E1-note.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/evidence/bedrock-request.json",
+      "dst": "docs/evidence/bedrock-request.json",
+      "action": "copy"
+    },
+    {
+      "src": "docs/evidence/bedrock-wire.md",
+      "dst": "docs/evidence/bedrock-wire.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/narrative.md",
+      "dst": "docs/narrative.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/posts/01-agents-for-humans-warn-reroute-inform.md",
+      "dst": "docs/posts/01-agents-for-humans-warn-reroute-inform.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/posts/02-agents-for-humans-two-stage-gate.md",
+      "dst": "docs/posts/02-agents-for-humans-two-stage-gate.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/posts/03-agents-for-humans-evidence-packet.md",
+      "dst": "docs/posts/03-agents-for-humans-evidence-packet.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/posts/publish-ready/post-1.md",
+      "dst": "docs/posts/publish-ready/post-1.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/posts/publish-ready/post-2.md",
+      "dst": "docs/posts/publish-ready/post-2.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/posts/publish-ready/post-3.md",
+      "dst": "docs/posts/publish-ready/post-3.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/reports/AUDIT.md",
+      "dst": "docs/reports/AUDIT.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/reports/FINAL-INTEGRATION.md",
+      "dst": "docs/reports/FINAL-INTEGRATION.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/reports/cold-start.md",
+      "dst": "docs/reports/cold-start.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/reports/field.md",
+      "dst": "docs/reports/field.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/reports/forms/devpost-fields.md",
+      "dst": "docs/reports/forms/devpost-fields.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/reports/integrated-ci.md",
+      "dst": "docs/reports/integrated-ci.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/reports/rubric-self-score.md",
+      "dst": "docs/reports/rubric-self-score.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/screenshots/00-first-shot.gif",
+      "dst": "docs/screenshots/00-first-shot.gif",
+      "action": "copy"
+    },
+    {
+      "src": "docs/screenshots/00-first-shot.png",
+      "dst": "docs/screenshots/00-first-shot.png",
+      "action": "copy"
+    },
+    {
+      "src": "docs/screenshots/01-decision-card.png",
+      "dst": "docs/screenshots/01-decision-card.png",
+      "action": "copy"
+    },
+    {
+      "src": "docs/screenshots/02-quiet-report.png",
+      "dst": "docs/screenshots/02-quiet-report.png",
+      "action": "copy"
+    },
+    {
+      "src": "docs/screenshots/03-trace.png",
+      "dst": "docs/screenshots/03-trace.png",
+      "action": "copy"
+    },
+    {
+      "src": "docs/screenshots/04-eval-table.png",
+      "dst": "docs/screenshots/04-eval-table.png",
+      "action": "copy"
+    },
+    {
+      "src": "docs/screenshots/05-red-team.png",
+      "dst": "docs/screenshots/05-red-team.png",
+      "action": "copy"
+    },
+    {
+      "src": "docs/screenshots/06-architecture.png",
+      "dst": "docs/screenshots/06-architecture.png",
+      "action": "copy"
+    },
+    {
+      "src": "docs/screenshots/07-claims-badge.png",
+      "dst": "docs/screenshots/07-claims-badge.png",
+      "action": "copy"
+    },
+    {
+      "src": "docs/screenshots/09-dataset-header.png",
+      "dst": "docs/screenshots/09-dataset-header.png",
+      "action": "copy"
+    },
+    {
+      "src": "docs/screenshots/README.md",
+      "dst": "docs/screenshots/README.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/video-script.md",
+      "dst": "docs/video-script.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/video/commands.md",
+      "dst": "docs/video/commands.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/video/eval_table.png",
+      "dst": "docs/video/eval_table.png",
+      "action": "copy"
+    },
+    {
+      "src": "docs/video/storyboard.md",
+      "dst": "docs/video/storyboard.md",
+      "action": "copy"
+    },
+    {
+      "src": "docs/video/trace.png",
+      "dst": "docs/video/trace.png",
+      "action": "copy"
+    },
+    {
+      "src": "evals/agentcore/dataset.json",
+      "dst": "evals/agentcore/dataset.json",
+      "action": "copy"
+    },
+    {
+      "src": "evals/agentcore/evaluators.json",
+      "dst": "evals/agentcore/evaluators.json",
+      "action": "copy"
+    },
+    {
+      "src": "evals/live_models.json",
+      "dst": "evals/live_models.json",
+      "action": "copy"
+    },
+    {
+      "src": "fixtures/cases.json",
+      "dst": "fixtures/cases.json",
+      "action": "copy"
+    },
+    {
+      "src": "fixtures/kb.json",
+      "dst": "fixtures/kb.json",
+      "action": "copy"
+    },
+    {
+      "src": "fixtures/outage_schedule.json",
+      "dst": "fixtures/outage_schedule.json",
+      "action": "copy"
+    },
+    {
+      "src": "fixtures/policy_agreement_live.json",
+      "dst": "fixtures/policy_agreement_live.json",
+      "action": "copy"
+    },
+    {
+      "src": "fixtures/riders.json",
+      "dst": "fixtures/riders.json",
+      "action": "copy"
+    },
+    {
+      "src": "infra/agentcore/policy/forbid_unknown_elevator.cedar",
+      "dst": "infra/agentcore/policy/forbid_unknown_elevator.cedar",
+      "action": "copy"
+    },
+    {
+      "src": "infra/agentcore/policy/forbid_unknown_option.cedar",
+      "dst": "infra/agentcore/policy/forbid_unknown_option.cedar",
+      "action": "copy"
+    },
+    {
+      "src": "infra/agentcore/policy/forbid_unknown_station.cedar",
+      "dst": "infra/agentcore/policy/forbid_unknown_station.cedar",
+      "action": "copy"
+    },
+    {
+      "src": "infra/agentcore/policy/manifest.json",
+      "dst": "infra/agentcore/policy/manifest.json",
+      "action": "copy"
+    },
+    {
+      "src": "infra/agentcore/policy/permit_kb_tools.cedar",
+      "dst": "infra/agentcore/policy/permit_kb_tools.cedar",
+      "action": "copy"
+    },
+    {
+      "src": "infra/agentcore/policy/schema.cedarschema.json",
+      "dst": "infra/agentcore/policy/schema.cedarschema.json",
+      "action": "copy"
+    },
+    {
+      "src": "infra/agentcore/runtime/app.py",
+      "dst": "infra/agentcore/runtime/app.py",
+      "action": "copy"
+    },
+    {
+      "src": "infra/agentcore/runtime/entrypoint.py",
+      "dst": "infra/agentcore/runtime/entrypoint.py",
+      "action": "copy"
+    },
+    {
+      "src": "infra/agentcore/runtime/requirements.txt",
+      "dst": "infra/agentcore/runtime/requirements.txt",
+      "action": "copy"
+    },
+    {
+      "src": "infra/agentcore/tools.json",
+      "dst": "infra/agentcore/tools.json",
+      "action": "copy"
+    },
+    {
+      "src": "le_dispatch/__init__.py",
+      "dst": "le_dispatch/__init__.py",
+      "action": "copy"
+    },
+    {
+      "src": "le_dispatch/ablation.py",
+      "dst": "le_dispatch/ablation.py",
+      "action": "copy"
+    },
+    {
+      "src": "le_dispatch/adaptive.py",
+      "dst": "le_dispatch/adaptive.py",
+      "action": "copy"
+    },
+    {
+      "src": "le_dispatch/agentcore_eval.py",
+      "dst": "le_dispatch/agentcore_eval.py",
+      "action": "copy"
+    },
+    {
+      "src": "le_dispatch/agentcore_memory.py",
+      "dst": "le_dispatch/agentcore_memory.py",
+      "action": "copy"
+    },
+    {
+      "src": "le_dispatch/agentcore_policy.py",
+      "dst": "le_dispatch/agentcore_policy.py",
+      "action": "copy"
+    },
+    {
+      "src": "le_dispatch/api_shapes.py",
+      "dst": "le_dispatch/api_shapes.py",
+      "action": "copy"
+    },
+    {
+      "src": "le_dispatch/bedrock_wire.py",
+      "dst": "le_dispatch/bedrock_wire.py",
+      "action": "copy"
+    },
+    {
+      "src": "le_dispatch/budget.py",
+      "dst": "le_dispatch/budget.py",
+      "action": "copy"
+    },
+    {
+      "src": "le_dispatch/cedar_gen.py",
+      "dst": "le_dispatch/cedar_gen.py",
+      "action": "copy"
+    },
+    {
+      "src": "le_dispatch/claims.py",
+      "dst": "le_dispatch/claims.py",
+      "action": "copy"
+    },
+    {
+      "src": "le_dispatch/dataset_export.py",
+      "dst": "le_dispatch/dataset_export.py",
+      "action": "copy"
+    },
+    {
+      "src": "le_dispatch/eval_live.py",
+      "dst": "le_dispatch/eval_live.py",
+      "action": "copy"
+    },
+    {
+      "src": "le_dispatch/evaluators/__init__.py",
+      "dst": "le_dispatch/evaluators/__init__.py",
+      "action": "copy"
+    },
+    {
+      "src": "le_dispatch/evaluators/option_equality.py",
+      "dst": "le_dispatch/evaluators/option_equality.py",
+      "action": "copy"
+    },
+    {
+      "src": "le_dispatch/evidence.py",
+      "dst": "le_dispatch/evidence.py",
+      "action": "copy"
+    },
+    {
+      "src": "le_dispatch/gates.py",
+      "dst": "le_dispatch/gates.py",
+      "action": "copy"
+    },
+    {
+      "src": "le_dispatch/impact.py",
+      "dst": "le_dispatch/impact.py",
+      "action": "copy"
+    },
+    {
+      "src": "le_dispatch/interfaces.py",
+      "dst": "le_dispatch/interfaces.py",
+      "action": "copy"
+    },
+    {
+      "src": "le_dispatch/interrupts.py",
+      "dst": "le_dispatch/interrupts.py",
+      "action": "copy"
+    },
+    {
+      "src": "le_dispatch/live.py",
+      "dst": "le_dispatch/live.py",
+      "action": "copy"
+    },
+    {
+      "src": "le_dispatch/messages.py",
+      "dst": "le_dispatch/messages.py",
+      "action": "copy"
+    },
+    {
+      "src": "le_dispatch/note.py",
+      "dst": "le_dispatch/note.py",
+      "action": "copy"
+    },
+    {
+      "src": "le_dispatch/plan.py",
+      "dst": "le_dispatch/plan.py",
+      "action": "copy"
+    },
+    {
+      "src": "le_dispatch/policy_check.py",
+      "dst": "le_dispatch/policy_check.py",
+      "action": "copy"
+    },
+    {
+      "src": "le_dispatch/portability.py",
+      "dst": "le_dispatch/portability.py",
+      "action": "copy"
+    },
+    {
+      "src": "le_dispatch/quiet.py",
+      "dst": "le_dispatch/quiet.py",
+      "action": "copy"
+    },
+    {
+      "src": "le_dispatch/red_team.py",
+      "dst": "le_dispatch/red_team.py",
+      "action": "copy"
+    },
+    {
+      "src": "le_dispatch/runtime_sweep.py",
+      "dst": "le_dispatch/runtime_sweep.py",
+      "action": "copy"
+    },
+    {
+      "src": "le_dispatch/scripted_model.py",
+      "dst": "le_dispatch/scripted_model.py",
+      "action": "copy"
+    },
+    {
+      "src": "le_dispatch/spans.py",
+      "dst": "le_dispatch/spans.py",
+      "action": "copy"
+    },
+    {
+      "src": "le_dispatch/tracing.py",
+      "dst": "le_dispatch/tracing.py",
+      "action": "copy"
+    },
+    {
+      "src": "pyproject.toml",
+      "dst": null,
+      "action": "note"
+    },
+    {
+      "src": "results/adaptive_convergence.json",
+      "dst": "results/adaptive_convergence.json",
+      "action": "copy"
+    },
+    {
+      "src": "results/agentcore_dataset.json",
+      "dst": "results/agentcore_dataset.json",
+      "action": "copy"
+    },
+    {
+      "src": "results/agentcore_eval_local.json",
+      "dst": "results/agentcore_eval_local.json",
+      "action": "copy"
+    },
+    {
+      "src": "results/badges/claims.json",
+      "dst": "results/badges/claims.json",
+      "action": "copy"
+    },
+    {
+      "src": "results/bedrock_wire.json",
+      "dst": "results/bedrock_wire.json",
+      "action": "copy"
+    },
+    {
+      "src": "results/coverage.json",
+      "dst": "results/coverage.json",
+      "action": "copy"
+    },
+    {
+      "src": "results/gate_ablation.json",
+      "dst": "results/gate_ablation.json",
+      "action": "copy"
+    },
+    {
+      "src": "results/outage_week.json",
+      "dst": "results/outage_week.json",
+      "action": "copy"
+    },
+    {
+      "src": "results/policy_agreement.json",
+      "dst": null,
+      "action": "note"
+    },
+    {
+      "src": "results/policy_engine_agreement.json",
+      "dst": "results/policy_engine_agreement.json",
+      "action": "copy"
+    },
+    {
+      "src": "results/quiet.json",
+      "dst": "results/quiet.json",
+      "action": "CONFLICT"
+    },
+    {
+      "src": "results/red_team.json",
+      "dst": "results/red_team.json",
+      "action": "CONFLICT"
+    },
+    {
+      "src": "results/red_team_exhaustive.json",
+      "dst": "results/red_team_exhaustive.json",
+      "action": "copy"
+    },
+    {
+      "src": "results/runtime_sweep.json",
+      "dst": "results/runtime_sweep.json",
+      "action": "copy"
+    },
+    {
+      "src": "results/runtime_sweep_synthetic.json",
+      "dst": "results/runtime_sweep_synthetic.json",
+      "action": "copy"
+    },
+    {
+      "src": "results/site_a11y.json",
+      "dst": "results/site_a11y.json",
+      "action": "copy"
+    },
+    {
+      "src": "results/wire_convergence.json",
+      "dst": "results/wire_convergence.json",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/ablation.py",
+      "dst": "scripts/ablation.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/agentcore_deploy.py",
+      "dst": "scripts/agentcore_deploy.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/agentcore_eval.py",
+      "dst": "scripts/agentcore_eval.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/agentcore_eval_local.py",
+      "dst": "scripts/agentcore_eval_local.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/agentcore_memory.py",
+      "dst": "scripts/agentcore_memory.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/agentcore_policy.py",
+      "dst": "scripts/agentcore_policy.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/bedrock_wire.py",
+      "dst": "scripts/bedrock_wire.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/bundles.py",
+      "dst": "scripts/bundles.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/check_docs.py",
+      "dst": "scripts/check_docs.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/cold_start.py",
+      "dst": "scripts/cold_start.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/convergence.py",
+      "dst": "scripts/convergence.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/coverage_report.py",
+      "dst": "scripts/coverage_report.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/demo_live.py",
+      "dst": "scripts/demo_live.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/demo_one.py",
+      "dst": "scripts/demo_one.py",
+      "action": "CONFLICT"
+    },
+    {
+      "src": "scripts/demo_runtime.py",
+      "dst": "scripts/demo_runtime.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/diagrams.py",
+      "dst": "scripts/diagrams.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/eval_live.py",
+      "dst": "scripts/eval_live.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/evaluator_zip.py",
+      "dst": "scripts/evaluator_zip.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/evidence_packet.py",
+      "dst": "scripts/evidence_packet.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/export_dataset.py",
+      "dst": "scripts/export_dataset.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/first_shot.py",
+      "dst": "scripts/first_shot.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/gen_cedar.py",
+      "dst": "scripts/gen_cedar.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/image_check.py",
+      "dst": "scripts/image_check.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/impact.py",
+      "dst": "scripts/impact.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/inbox.py",
+      "dst": "scripts/inbox.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/integrate.py",
+      "dst": "scripts/integrate.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/integrated_ci.py",
+      "dst": "scripts/integrated_ci.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/make_fixtures.py",
+      "dst": "scripts/make_fixtures.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/policy_check.py",
+      "dst": "scripts/policy_check.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/preflight.py",
+      "dst": "scripts/preflight.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/quiet_report.py",
+      "dst": "scripts/quiet_report.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/red_team.py",
+      "dst": "scripts/red_team.py",
+      "action": "CONFLICT"
+    },
+    {
+      "src": "scripts/rehearse.py",
+      "dst": "scripts/rehearse.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/render_results_table.py",
+      "dst": "scripts/render_results_table.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/retention.py",
+      "dst": "scripts/retention.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/runtime_sweep.py",
+      "dst": "scripts/runtime_sweep.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/screenshots.py",
+      "dst": "scripts/screenshots.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/secret_scan.py",
+      "dst": "scripts/secret_scan.py",
+      "action": "CONFLICT"
+    },
+    {
+      "src": "scripts/serve.py",
+      "dst": "scripts/serve.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/site.css",
+      "dst": "scripts/site.css",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/site.py",
+      "dst": "scripts/site.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/site_a11y.py",
+      "dst": "scripts/site_a11y.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/transcript_header.py",
+      "dst": "scripts/transcript_header.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/verify_claims.py",
+      "dst": "scripts/verify_claims.py",
+      "action": "CONFLICT"
+    },
+    {
+      "src": "scripts/video_assets.py",
+      "dst": "scripts/video_assets.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/walkthrough.py",
+      "dst": "scripts/walkthrough.py",
+      "action": "copy"
+    },
+    {
+      "src": "scripts/wire_convergence.py",
+      "dst": "scripts/wire_convergence.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/conftest.py",
+      "dst": "tests/dispatch/conftest.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_ablation.py",
+      "dst": "tests/dispatch/test_ablation.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_adaptive.py",
+      "dst": "tests/dispatch/test_adaptive.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_agentcore_eval.py",
+      "dst": "tests/dispatch/test_agentcore_eval.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_agentcore_memory.py",
+      "dst": "tests/dispatch/test_agentcore_memory.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_api_shapes.py",
+      "dst": "tests/dispatch/test_api_shapes.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_bedrock_wire.py",
+      "dst": "tests/dispatch/test_bedrock_wire.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_budget.py",
+      "dst": "tests/dispatch/test_budget.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_bundles.py",
+      "dst": "tests/dispatch/test_bundles.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_cedar.py",
+      "dst": "tests/dispatch/test_cedar.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_cold_start.py",
+      "dst": "tests/dispatch/test_cold_start.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_dataset_export.py",
+      "dst": "tests/dispatch/test_dataset_export.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_demo_runtime.py",
+      "dst": "tests/dispatch/test_demo_runtime.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_eval_live.py",
+      "dst": "tests/dispatch/test_eval_live.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_evaluator_zip.py",
+      "dst": "tests/dispatch/test_evaluator_zip.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_evidence.py",
+      "dst": "tests/dispatch/test_evidence.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_exports.py",
+      "dst": "tests/dispatch/test_exports.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_gates.py",
+      "dst": "tests/dispatch/test_gates.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_image_check.py",
+      "dst": "tests/dispatch/test_image_check.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_impact.py",
+      "dst": "tests/dispatch/test_impact.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_integrate.py",
+      "dst": "tests/dispatch/test_integrate.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_integrated_ci.py",
+      "dst": "tests/dispatch/test_integrated_ci.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_interrupts.py",
+      "dst": "tests/dispatch/test_interrupts.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_live.py",
+      "dst": "tests/dispatch/test_live.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_messages.py",
+      "dst": "tests/dispatch/test_messages.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_note.py",
+      "dst": "tests/dispatch/test_note.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_policy_check.py",
+      "dst": "tests/dispatch/test_policy_check.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_portability.py",
+      "dst": "tests/dispatch/test_portability.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_quiet.py",
+      "dst": "tests/dispatch/test_quiet.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_red_team.py",
+      "dst": "tests/dispatch/test_red_team.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_runtime.py",
+      "dst": "tests/dispatch/test_runtime.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_runtime_sweep.py",
+      "dst": "tests/dispatch/test_runtime_sweep.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_screenshots.py",
+      "dst": "tests/dispatch/test_screenshots.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_secret_scan.py",
+      "dst": "tests/dispatch/test_secret_scan.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_site.py",
+      "dst": "tests/dispatch/test_site.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_site_a11y.py",
+      "dst": "tests/dispatch/test_site_a11y.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_upstream_note.py",
+      "dst": "tests/dispatch/test_upstream_note.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_video_assets.py",
+      "dst": "tests/dispatch/test_video_assets.py",
+      "action": "copy"
+    },
+    {
+      "src": "tests/test_walkthrough.py",
+      "dst": "tests/dispatch/test_walkthrough.py",
+      "action": "copy"
+    }
+  ]
+}
