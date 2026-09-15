@@ -3,7 +3,7 @@ name = "last-elevator"
 version = "0.1.0"
 description = "Last Elevator: a Strands agent that watches BART elevator outages for the trips you actually take and interrupts only when a trip is broken."
 readme = "README.md"
-license = "Apache-2.0"
+license = "MIT"
 license-files = ["LICENSE"]
 requires-python = ">=3.12"
 authors = [

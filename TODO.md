@@ -12,7 +12,7 @@ Constraints that hold all night.
 
 ## Block A. Harness (idea-agnostic)
 
-- [x] A1. Repo skeleton. `pyproject.toml`, `Makefile` with targets `setup lint test evals results verify`, `LICENSE` (Apache-2.0), `README.md` stub, `.gitignore`, `.env.example`, `docs/`, `evals/`, `results/`, `scripts/`, `src/agent/`.
+- [x] A1. Repo skeleton. `pyproject.toml`, `Makefile` with targets `setup lint test evals results verify`, `LICENSE` (MIT; started as Apache-2.0, settled to MIT to match `main` and the Devpost text), `README.md` stub, `.gitignore`, `.env.example`, `docs/`, `evals/`, `results/`, `scripts/`, `src/agent/`.
       Accept. `make setup && make lint && make test` exits 0 with at least one passing test.
 - [x] A2. Offline mock model provider for Strands so the agent runs with no credentials. Scripted responses loaded from `fixtures/model/*.json`.
       Accept. `pytest tests/test_mock_provider.py -q` passes and shows the agent completing one turn with zero network calls (assert via a socket-blocking fixture).
