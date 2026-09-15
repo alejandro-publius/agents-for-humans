@@ -57,19 +57,19 @@ the tests assert that with a socket-blocking fixture.
 | Documented outage options (each is a labeled eval case) | <!-- claim:kb_label_distribution.options_total -->194|
 | Options labeled by a reviewer-decided phrase rule / left at default | <!-- claim:kb_label_distribution.labeled_by_rule.phrase -->194/ <!-- claim:kb_label_distribution.labeled_by_rule.default -->0|
 | Labels: alternate_elevator / backtracking / transit (frozen as `kb-labels-v1`) | <!-- claim:kb_label_distribution.counts.alternate_elevator -->55/ <!-- claim:kb_label_distribution.counts.backtracking -->53/ <!-- claim:kb_label_distribution.counts.transit -->86|
-| Policy agreement, enforced (steering on), mock mode: no live run yet | <!-- claim:policy_agreement.enforced.agreement_pct -->100.0% on <!-- claim:policy_agreement.enforced.cases_run -->194cases |
-| Policy agreement, no steering and no get_station_facts (unaided), mock mode: no live run yet | <!-- claim:policy_agreement.no_steering.agreement_pct -->100.0% on <!-- claim:policy_agreement.no_steering.cases_run -->194cases |
-| Outage parse accuracy, mock mode, with a regex baseline | <!-- claim:outage_parse.accuracy_pct -->100.0% / regex <!-- claim:outage_parse.baselines.regex_accuracy_pct -->100.0% on <!-- claim:outage_parse.cases_run -->10cases |
-| All eval cases passed, guardrails on | <!-- claim:summary.cases_passed -->211of <!-- claim:summary.cases_run -->211(<!-- claim:summary.accuracy_pct -->100.0%) |
-| All eval cases passed, guardrails removed (ablation) | <!-- claim:ablation.cases_passed -->209of <!-- claim:ablation.cases_run -->211(<!-- claim:ablation.accuracy_pct -->99.1%) |
+| Policy agreement, enforced (steering on), mock mode: no live run yet | <!-- claim:policy_agreement.enforced.agreement_pct -->100.0% on <!-- claim:policy_agreement.enforced.cases_run -->194 cases |
+| Policy agreement, no steering and no get_station_facts (unaided), mock mode: no live run yet | <!-- claim:policy_agreement.no_steering.agreement_pct -->100.0% on <!-- claim:policy_agreement.no_steering.cases_run -->194 cases |
+| Outage parse accuracy, mock mode, with a regex baseline | <!-- claim:outage_parse.accuracy_pct -->100.0% / regex <!-- claim:outage_parse.baselines.regex_accuracy_pct -->100.0% on <!-- claim:outage_parse.cases_run -->10 cases |
+| All eval cases passed, guardrails on | <!-- claim:summary.cases_passed -->211 of <!-- claim:summary.cases_run -->211 (<!-- claim:summary.accuracy_pct -->100.0%) |
+| All eval cases passed, guardrails removed (ablation) | <!-- claim:ablation.cases_passed -->209 of <!-- claim:ablation.cases_run -->211 (<!-- claim:ablation.accuracy_pct -->99.1%) |
 | Tool calls cancelled by the hook / responses rewritten by steering (harness suites) | <!-- claim:summary.hook_cancellations -->1/ <!-- claim:summary.steering_rewrites -->1|
 | Network attempts during the eval run | <!-- claim:summary.network_attempts -->0|
 | Demo rider, synthetic weekend archive: outages touching their stations / their trips | <!-- claim:interruptions.rider.outages_touching_your_stations -->3/ <!-- claim:interruptions.rider.outages_touching_your_trips -->3|
 | Interruptions the agent sent / what per-station BART alerts would have sent | <!-- claim:interruptions.rider.interruptions_sent -->4/ <!-- claim:interruptions.rider.bart_style_station_alerts -->6|
 | Relevance rows exported for two human labelers / rows labeled so far | <!-- claim:relevance.rows_total -->8/ <!-- claim:relevance.rows_labeled_by_both -->0|
-| Red team, 20 adversarial runs (fake stations, wrong options, invented minutes): reached the rider | <!-- claim:red_team.reached_rider.hallucinated_stations -->0stations / <!-- claim:red_team.reached_rider.wrong_options -->0options / <!-- claim:red_team.reached_rider.minutes_not_from_policy -->0minutes, over <!-- claim:red_team.runs -->20runs |
+| Red team, 20 adversarial runs (fake stations, wrong options, invented minutes): reached the rider | <!-- claim:red_team.reached_rider.hallucinated_stations -->0 stations / <!-- claim:red_team.reached_rider.wrong_options -->0 options / <!-- claim:red_team.reached_rider.minutes_not_from_policy -->0 minutes, over <!-- claim:red_team.runs -->20 runs |
 | Quiet metric, synthetic replay: interruptions / decisions / days covered | <!-- claim:quiet.synthetic_replay.interruptions -->4/ <!-- claim:quiet.synthetic_replay.decisions -->8/ <!-- claim:quiet.synthetic_replay.days_covered -->0.0104|
-| Rider app accessibility, axe-core violations on the served page (`make a11y`) | <!-- claim:axe.violations -->0violations, <!-- claim:axe.passes -->35rules passed |
+| Rider app accessibility, axe-core violations on the served page (`make a11y`) | <!-- claim:axe.violations -->0 violations, <!-- claim:axe.passes -->35 rules passed |
 
 The interruption numbers come from a synthetic four-snapshot archive replayed through the pipeline
 (`fixtures/bart/archive_synthetic.json`), not from a real weekend; the relevance score is unfilled
@@ -77,7 +77,7 @@ until two people label the exported rows. The two policy-agreement numbers are n
 the label, so both prove plumbing. The live run (Bedrock, frozen `kb-labels-v1` labels, hard cap of
 200 model calls per variant, exactly once) has not happened because no AWS credentials were
 present; when it runs, its two numbers replace these. Stations with accessible-pathway prose on BART's page: <!-- claim:kb_label_distribution.stations_with_pathways -->1; the other
-<!-- claim:kb_label_distribution.stations_pathways_unknown -->49are recorded as `unknown`, not invented.
+<!-- claim:kb_label_distribution.stations_pathways_unknown -->49 are recorded as `unknown`, not invented.
 
 ## What is simulated or unverified
 
@@ -103,9 +103,9 @@ present; when it runs, its two numbers replace these. Stations with accessible-p
 | Guarantee | Mechanism | Evidence |
 | --- | --- | --- |
 | A rider decision (after dark, last train) pauses the run instead of guessing | Strands steering `Interrupt`, decision card, resume with the answer remembered in session state | `tests/test_strands_mechanics.py`, `make demo-one ARGS=--after-dark`, `POST /decisions/{id}` |
-| Nothing the model invents reaches the rider | `BeforeToolCall` hook, steering `Guide`, `Plan` schema, code verification with a station-code scrub | `make red-team`: <!-- claim:red_team.reached_rider.hallucinated_stations -->0/ <!-- claim:red_team.reached_rider.wrong_options -->0/ <!-- claim:red_team.reached_rider.minutes_not_from_policy -->0reached the rider over <!-- claim:red_team.runs -->20runs |
-| The agent is measured by how rarely it interrupts | `results/quiet.json`, `make report` opens with days, interruptions, decisions | <!-- claim:quiet.synthetic_replay.interruptions -->4interruptions over <!-- claim:quiet.synthetic_replay.decisions -->8decisions (synthetic); archive: TODO |
-| The rider app is accessible | axe-core via Playwright Chromium, in CI | <!-- claim:axe.violations -->0violations |
+| Nothing the model invents reaches the rider | `BeforeToolCall` hook, steering `Guide`, `Plan` schema, code verification with a station-code scrub | `make red-team`: <!-- claim:red_team.reached_rider.hallucinated_stations -->0/ <!-- claim:red_team.reached_rider.wrong_options -->0/ <!-- claim:red_team.reached_rider.minutes_not_from_policy -->0 reached the rider over <!-- claim:red_team.runs -->20 runs |
+| The agent is measured by how rarely it interrupts | `results/quiet.json`, `make report` opens with days, interruptions, decisions | <!-- claim:quiet.synthetic_replay.interruptions -->4 interruptions over <!-- claim:quiet.synthetic_replay.decisions -->8 decisions (synthetic); archive: TODO |
+| The rider app is accessible | axe-core via Playwright Chromium, in CI | <!-- claim:axe.violations -->0 violations |
 | Every guardrail decision is visible in traces | OpenTelemetry spans to a file, `hook.cancel_tool` and `steering.guide` events; `AGENTCORE_OBSERVABILITY=1` switches to OTLP | `docs/traces/demo_one.txt` |
 | The pattern is reusable | Standalone example, scripted model, no BART data | `examples/compliance_steering.py`; samples fork branch `compliance-steering-sample` |
 | The grounding tools work over MCP with the same guarantees | `MCPServer` over stdio, KB checks inside the tools | `make mcp-test` |
@@ -143,4 +143,4 @@ present; when it runs, its two numbers replace these. Stations with accessible-p
 
 ## License
 
-Apache-2.0. See `LICENSE`.
+MIT. See `LICENSE`.

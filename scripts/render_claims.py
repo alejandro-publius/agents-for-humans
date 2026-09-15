@@ -46,8 +46,14 @@ def render_doc(readme: Path, results_dir: Path) -> int:
             rendered = str(int(round(float(value))))
         if rendered != shown:
             changed += 1
-        prefix = m.group(0)[: m.group(0).rfind(shown + pct)]
-        return f"{prefix}{rendered}{pct}"
+        whole = m.group(0)
+        at = whole.rfind(shown + pct)
+        prefix = whole[:at]
+        # CLAIM_RE's `\\s*` before the percent group swallows the space that separated the number from
+        # the word after it, and rebuilding from prefix alone dropped it -- every render glued the value
+        # to the next word ("20runs", "211of 211(100.0%)") and re-glued any space added by hand.
+        suffix = whole[at + len(shown + pct) :]
+        return f"{prefix}{rendered}{pct}{suffix}"
 
     new_body = CLAIM_RE.sub(sub, body)
     if missing:

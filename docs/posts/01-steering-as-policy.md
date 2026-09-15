@@ -16,14 +16,14 @@ the tool call is cancelled, the reason goes back to the model as feedback, and t
 Our handler holds one value computed by code, the first feasible option in BART's order for this
 outage and this trip, and guides `draft_message` whenever the model proposes anything else. The
 policy never lives in the prompt. It lives in a knowledge base scraped from BART's own pages
-(<!-- claim:kb_label_distribution.stations -->50stations, <!-- claim:kb_label_distribution.options_total -->194documented options) and in a pure-Python engine that ranks feasibility, computes minutes and sets
+(<!-- claim:kb_label_distribution.stations -->50 stations, <!-- claim:kb_label_distribution.options_total -->194 documented options) and in a pure-Python engine that ranks feasibility, computes minutes and sets
 the after-dark and last-train flags.
 
 ## What it bought us
 
-- Under a red team of <!-- claim:red_team.runs -->20adversarial runs (fake stations, wrong
-  options, invented minutes), <!-- claim:red_team.reached_rider.wrong_options -->0wrong options
-  and <!-- claim:red_team.reached_rider.hallucinated_stations -->0hallucinated stations reached
+- Under a red team of <!-- claim:red_team.runs -->20 adversarial runs (fake stations, wrong
+  options, invented minutes), <!-- claim:red_team.reached_rider.wrong_options -->0 wrong options
+  and <!-- claim:red_team.reached_rider.hallucinated_stations -->0 hallucinated stations reached
   the rider.
 - With the guardrails removed, the same eval cases drop from
   <!-- claim:summary.accuracy_pct -->100.0% to <!-- claim:ablation.accuracy_pct -->99.1%.

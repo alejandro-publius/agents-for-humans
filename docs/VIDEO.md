@@ -6,8 +6,8 @@ Strands Agents and Amazon Bedrock AgentCore are named on screen in the title car
 ## 0:00 The number (title card: "Last Elevator, built with Strands Agents")
 
 "On the demo rider's synthetic weekend, per-station BART alerts would have sent
-<!-- claim:interruptions.rider.bart_style_station_alerts -->6messages. Last Elevator sent
-<!-- claim:interruptions.rider.interruptions_sent -->4each with a workaround. TODO: replace with the
+<!-- claim:interruptions.rider.bart_style_station_alerts -->6 messages. Last Elevator sent
+<!-- claim:interruptions.rider.interruptions_sent -->4 each with a workaround. TODO: replace with the
 real weekend numbers from the archive."
 
 ## 0:20 The problem, who it is for, why it matters
@@ -31,8 +31,8 @@ steering handler guiding a wrong option back to BART's order.
 
 ## 2:40 The guardrails under attack (screen: `make red-team`)
 
-"<!-- claim:red_team.runs -->20adversarial runs. Fake stations, wrong options, invented minutes.
-<!-- claim:red_team.reached_rider.hallucinated_stations -->0<!-- claim:red_team.reached_rider.wrong_options -->0<!-- claim:red_team.reached_rider.minutes_not_from_policy -->0reached the rider."
+"<!-- claim:red_team.runs -->20 adversarial runs. Fake stations, wrong options, invented minutes.
+<!-- claim:red_team.reached_rider.hallucinated_stations -->0<!-- claim:red_team.reached_rider.wrong_options -->0<!-- claim:red_team.reached_rider.minutes_not_from_policy -->0 reached the rider."
 
 ## 3:15 The human decision (screen: `make demo-one ARGS=--after-dark`, then the decision card in the app)
 

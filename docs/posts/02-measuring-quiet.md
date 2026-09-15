@@ -17,12 +17,12 @@ README number drifts from results.
 ## The numbers so far
 
 - Policy agreement: one case per (station, elevator, condition) from BART's pages,
-  <!-- claim:policy_agreement.enforced.cases_run -->194cases; mock mode proves the plumbing at
+  <!-- claim:policy_agreement.enforced.cases_run -->194 cases; mock mode proves the plumbing at
   <!-- claim:policy_agreement.enforced.agreement_pct -->100.0%. Live Bedrock numbers: TODO (E9).
-- Synthetic weekend replay: <!-- claim:interruptions.rider.interruptions_sent -->4interruptions
+- Synthetic weekend replay: <!-- claim:interruptions.rider.interruptions_sent -->4 interruptions
   where per-station alerts would have sent
   <!-- claim:interruptions.rider.bart_style_station_alerts -->6; live weekend: TODO (archive).
-- Relevance: <!-- claim:relevance.rows_total -->8decision rows exported for two independent human
+- Relevance: <!-- claim:relevance.rows_total -->8 decision rows exported for two independent human
   labelers; precision, recall and Cohen's kappa are null until the labels exist.
 
 ## Honesty envelope
