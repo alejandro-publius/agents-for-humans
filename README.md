@@ -5,7 +5,7 @@ BART's own published outage options to your route, and interrupts you only when 
 with the workaround already worked out. Entry for the
 [AWS Agents for Humans Hackathon](https://agentsforhumans.devpost.com/), Everyday Agents track.
 
-> **Status (Sat Sept 12, 2026).** Built and tested offline: knowledge base, BART client, outage
+> **Status (Mon Sept 14, 2026).** Built and tested offline: knowledge base, BART client, outage
 > parser, policy engine, poller, wired agent with real Strands Interrupts for rider decisions, evals,
 > a red team, the one-page rider app (0 axe-core violations) with a decisions inbox and replay
 > timeline, the weekly quiet report, rider preferences, label export and relevance scorer, file
