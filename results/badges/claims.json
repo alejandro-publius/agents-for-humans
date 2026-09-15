@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
   "label": "claims verified by CI",
-  "message": "84/84",
+  "message": "131/131 (+19 skipped)",
   "color": "brightgreen"
 }

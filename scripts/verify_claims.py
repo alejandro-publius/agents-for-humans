@@ -62,16 +62,47 @@ def decimals_shown(text: str) -> int:
 # and results/quiet.json have this repo's own shape, not the package's) are skipped with a printed reason.
 PACKAGE_CLAIMS_SKIP_FILES = ("red_team.json", "quiet.json")
 
+BADGE = RESULTS_DIR / "badges" / "claims.json"
+# Filled by verify() and verify_package_claims() as they run, so --badge reports what this run actually
+# checked instead of a number typed once by hand.
+COUNTS = {"doc_claims": 0, "package_verified": 0, "package_total": 0, "package_skipped": 0}
+
+
+def write_badge(path: Path = BADGE) -> None:
+    """A shields.io endpoint for the claim count. Green only when every claim this run checked held."""
+    verified = COUNTS["doc_claims"] + COUNTS["package_verified"]
+    total = COUNTS["doc_claims"] + COUNTS["package_total"]
+    skipped = COUNTS["package_skipped"]
+    path.parent.mkdir(parents=True, exist_ok=True)
+    message = f"{verified}/{total}" + (f" (+{skipped} skipped)" if skipped else "")
+    path.write_text(
+        json.dumps(
+            {
+                "schemaVersion": 1,
+                "label": "claims verified by CI",
+                "message": message,
+                "color": "brightgreen" if verified == total else "red",
+            },
+            indent=2,
+        )
+        + "\n"
+    )
+    print(f"verify_claims: wrote {path.relative_to(REPO_ROOT)} ({message})")
+
 
 def verify_package_claims(results_dir: Path = RESULTS_DIR) -> int:
     """Run the dispatch package's claim table. Returns the number that did not hold."""
     try:
         sys.path.insert(0, str(REPO_ROOT))
         from le_dispatch.claims import CLAIMS, verify_all
-    except ImportError:
-        return 0
+    except ImportError as exc:  # le_dispatch is part of this repo; a broken import is a failure,
+        # not a reason to silently check 65 fewer claims than the run reports.
+        print(f"verify_claims: cannot import le_dispatch.claims ({exc});"
+              " the dispatch package's claim table did not run", file=sys.stderr)
+        return 1
     rows = [c for c in CLAIMS if c.file not in PACKAGE_CLAIMS_SKIP_FILES]
     skipped = len(CLAIMS) - len(rows)
+    COUNTS["package_total"], COUNTS["package_skipped"] = len(rows), skipped
     bad = 0
     for claim, ok, actual in verify_all(results_dir=results_dir, claims=rows):
         if not ok:
@@ -81,6 +112,7 @@ def verify_package_claims(results_dir: Path = RESULTS_DIR) -> int:
         f"dispatch package claims: {len(rows) - bad}/{len(rows)} verified"
         f" ({skipped} skipped: this repo kept its own {', '.join(PACKAGE_CLAIMS_SKIP_FILES)})"
     )
+    COUNTS["package_verified"] = len(rows) - bad
     return bad
 
 
@@ -99,6 +131,7 @@ def verify(readme: Path = README, results_dir: Path = RESULTS_DIR) -> int:
         for f in failures:
             print(f"  - {f}", file=sys.stderr)
         return 1
+    COUNTS["doc_claims"] = total
     print(f"verify_claims: {total} claim(s) match results/ across {len(docs)} document(s)")
     return 0
 
@@ -134,4 +167,7 @@ def verify_doc(doc: Path, results_dir: Path) -> tuple[int, list[str]]:
 
 
 if __name__ == "__main__":
-    sys.exit(verify() + verify_package_claims())
+    code = verify() + verify_package_claims()
+    if "--badge" in sys.argv[1:]:  # was accepted and ignored: this script parsed no arguments at all
+        write_badge()
+    sys.exit(code)

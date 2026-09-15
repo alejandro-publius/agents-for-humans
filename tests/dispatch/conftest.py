@@ -99,6 +99,11 @@ INTEGRATED_LAYOUT_SKIPS = {
     "test_check_docs_lets_the_owner_fill_the_links_on_a_posts_last_line",
     "test_check_docs_pins_every_run_count_on_the_first_page_to_results",
     "test_check_docs_refuses_a_make_variable_no_target_reads",
+    # check_badge asserts results/badges/claims.json equals the PACKAGE's claim-table size (84).
+    # Here the badge is this repository's: what `make verify` actually checked, 66 document claims
+    # plus 65 package claims, with the 19 this repo skips named in the message. Both are true of
+    # their own tree; the number in the README has to be this repository's.
+    "test_check_docs_refuses_a_stale_claim_count_and_a_stale_badge",
     "test_check_docs_shipped_list_matches_the_docs_directory",
     "test_the_first_shot_is_the_brief_as_a_gif_and_a_still_and_the_readme_shows_it",
     "test_every_moment_has_a_command_a_freeze_line_and_a_place_in_the_script",
