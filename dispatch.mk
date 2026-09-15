@@ -10,14 +10,14 @@ SHELL := /bin/bash
 .PHONY: walkthrough first-shot runtime-sweep-synthetic demo-one-trace demo-one-after-dark demo-one-brief fixtures red-team red-team-exhaustive report agentcore-policy-gen agentcore-policy agentcore-memory agentcore-eval eval-live results-table dataset agentcore-eval-local evidence badge convergence tour demo-runtime judge integrate-check integrate-ci transcript preflight retention diagrams policy-check wire wire-convergence video-assets screenshots cold-start serve impact site site-a11y bundles bundles-check runtime-sweep coverage image-check evaluator-zip rehearse agentcore-deploy ablation demo-live
 
 demo-one-trace:
-	$(PY) scripts/demo_one.py --trace
+	$(PY) scripts/dispatch/demo_one.py --trace
 
 demo-one-after-dark:
-	$(PY) scripts/demo_one.py --after-dark
+	$(PY) scripts/dispatch/demo_one.py --after-dark
 
 DEMO_ONE_ARGS ?=
 demo-one-brief:
-	$(PY) scripts/demo_one.py --brief $(DEMO_ONE_ARGS)
+	$(PY) scripts/dispatch/demo_one.py --brief $(DEMO_ONE_ARGS)
 
 fixtures:
 	$(PY) scripts/make_fixtures.py
@@ -26,7 +26,7 @@ fixtures:
 # Dropped here so including this file adds no overriding-recipe warning to every make invocation.
 
 red-team-exhaustive:
-	$(PY) scripts/red_team.py --exhaustive
+	$(PY) scripts/dispatch/red_team.py --exhaustive
 
 REPORT_ARGS ?=
 report:
@@ -83,8 +83,8 @@ convergence:
 
 # the four-minute tour for the video: every gate, the human moment, the counts
 tour:
-	@echo "== 1. every gate fires (make demo-one-brief, make demo-one-trace) =="; $(PY) scripts/demo_one.py --brief; echo; $(PY) scripts/demo_one.py --trace | awk '/hook cancels/{p=1} p'
-	@echo; echo "== 2. the human moment (make demo-one-after-dark) =="; $(PY) scripts/demo_one.py --after-dark | awk '/^run 1 state/{p=1} p' | grep -E '^(run|rider|plan)|"question"'
+	@echo "== 1. every gate fires (make demo-one-brief, make demo-one-trace) =="; $(PY) scripts/dispatch/demo_one.py --brief; echo; $(PY) scripts/dispatch/demo_one.py --trace | awk '/hook cancels/{p=1} p'
+	@echo; echo "== 2. the human moment (make demo-one-after-dark) =="; $(PY) scripts/dispatch/demo_one.py --after-dark | awk '/^run 1 state/{p=1} p' | grep -E '^(run|rider|plan)|"question"'
 	@echo; echo "== 3. the counts (make red-team, make report, make convergence) =="; $(PY) scripts/red_team.py | awk 'NR<=5'; $(PY) scripts/quiet_report.py | awk 'NR==1'; $(PY) scripts/convergence.py | awk 'NR==1'
 
 # the runtime entrypoint's whole state machine, offline: the learner through the real adapter, the Memory stand-in
