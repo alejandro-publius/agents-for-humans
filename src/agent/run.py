@@ -23,7 +23,7 @@ from agent.core import AgentConfig, BuiltAgent, build_agent
 from agent.decision_card import build_card, case_key, decision_flags
 from agent.outage_parser import parse_and_validate
 from agent.schema import Plan, normalize_option
-from agent.scrub import unknown_station_codes
+from agent.scrub import unknown_station_codes, unsupported_minutes
 from bart import BartClient
 from policy import Decision, Outage, Trip, assess, assess_condition
 
@@ -34,6 +34,7 @@ class Verification:
     minutes_ok: bool
     corrections: list[str] = field(default_factory=list)
     unknown_stations: list[str] = field(default_factory=list)
+    unsupported_minutes: list[int] = field(default_factory=list)
 
 
 @dataclass
@@ -83,17 +84,23 @@ def verify_plan(plan: Plan, decision: Decision) -> tuple[Plan, Verification]:
         "added_minutes": top_minutes,
         "affected": affected,
     }
+    documented_text = (decision.documented_option or {}).get("text")
     unknown = unknown_station_codes(plan.message, *plan.steps)
-    if unknown:
-        # A station the KB does not know never reaches the rider: fall back to BART's own text.
-        documented = (decision.documented_option or {}).get(
-            "text"
-        ) or "Contact the Station Agent for assistance."
+    # Correcting the added_minutes field does not touch the prose the rider reads, so check it too.
+    bad_minutes = unsupported_minutes(top_minutes, documented_text, plan.message, *plan.steps)
+    if unknown or bad_minutes:
+        # Nothing the KB cannot support reaches the rider: fall back to BART's own text.
+        documented = documented_text or "Contact the Station Agent for assistance."
         update["steps"] = [documented]
         update["message"] = documented
-        corrections.append(f"message and steps replaced: unknown station code(s) {unknown}")
+        if unknown:
+            corrections.append(f"message and steps replaced: unknown station code(s) {unknown}")
+        if bad_minutes:
+            corrections.append(f"message and steps replaced: minutes not from policy {bad_minutes}")
     final = plan.model_copy(update=update)
-    return final, Verification(option_ok, minutes_ok, corrections, unknown_stations=unknown)
+    return final, Verification(
+        option_ok, minutes_ok, corrections, unknown_stations=unknown, unsupported_minutes=bad_minutes
+    )
 
 
 def prompt_for(trip: Trip, raw: str, parsed: dict[str, Any], when: datetime) -> str:

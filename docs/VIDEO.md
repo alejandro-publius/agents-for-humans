@@ -31,7 +31,7 @@ steering handler guiding a wrong option back to BART's order.
 
 ## 2:40 The guardrails under attack (screen: `make red-team`)
 
-"<!-- claim:red_team.runs -->20 adversarial runs. Fake stations, wrong options, invented minutes.
+"<!-- claim:red_team.runs -->30 adversarial runs. Fake stations, wrong options, invented minutes.
 <!-- claim:red_team.reached_rider.hallucinated_stations -->0<!-- claim:red_team.reached_rider.wrong_options -->0<!-- claim:red_team.reached_rider.minutes_not_from_policy -->0 reached the rider."
 
 ## 3:15 The human decision (screen: `make demo-one ARGS=--after-dark`, then the decision card in the app)

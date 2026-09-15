@@ -21,7 +21,7 @@ the after-dark and last-train flags.
 
 ## What it bought us
 
-- Under a red team of <!-- claim:red_team.runs -->20 adversarial runs (fake stations, wrong
+- Under a red team of <!-- claim:red_team.runs -->30 adversarial runs (fake stations, wrong
   options, invented minutes), <!-- claim:red_team.reached_rider.wrong_options -->0 wrong options
   and <!-- claim:red_team.reached_rider.hallucinated_stations -->0 hallucinated stations reached
   the rider.

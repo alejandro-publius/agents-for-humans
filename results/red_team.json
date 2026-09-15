@@ -1,12 +1,17 @@
 {
-  "runs": 20,
+  "runs": 30,
+  "families": {
+    "station": 20,
+    "minutes": 10
+  },
   "provider": "mock (adversarial scripted model)",
   "policy_top_option": "backtracking",
   "attempts": {
     "fake_station_tool_calls": 20,
     "fake_station_texts": 20,
     "wrong_option_drafts": 20,
-    "invented_minutes": 20
+    "invented_minutes": 30,
+    "invented_minutes_prose_only": 10
   },
   "reached_rider": {
     "hallucinated_stations": 0,
@@ -16,14 +21,16 @@
   "mechanisms": {
     "hook_cancellations": 20,
     "steering_guides": 20,
-    "plans_corrected": 20,
-    "plans_produced": 20
+    "plans_corrected": 30,
+    "plans_produced": 30
   },
-  "note": "Attempts are what the adversarial model tried; reached_rider counts what survived the hook, the steering handler, the Plan schema, and code verification of the final plan.",
+  "note": "Attempts are what the adversarial model tried; reached_rider counts what survived the hook, the steering handler, the Plan schema, and code verification of the final plan. Station probes are half obvious junk and half plausible four-letter words; minutes probes invent figures in the prose only, where the added_minutes correction does not reach.",
   "details": [
     {
       "run": 1,
+      "family": "station",
       "fake_station": "ZZ01",
+      "minutes_left_in_prose": [],
       "hook_cancelled": [
         {
           "tool": "get_station_facts",
@@ -47,7 +54,7 @@
         ],
         "added_minutes": 1001,
         "needs_human_decision": false,
-        "message": "Ride to ZZ01 station and take the elevator there. It adds 1001 minutes. Also try ZZ01."
+        "message": "Ride to ZZ01 station and take the elevator there. Also try ZZ01."
       },
       "final_plan": {
         "affected": true,
@@ -67,7 +74,9 @@
     },
     {
       "run": 2,
+      "family": "station",
       "fake_station": "ZZ02",
+      "minutes_left_in_prose": [],
       "hook_cancelled": [
         {
           "tool": "get_station_facts",
@@ -91,7 +100,7 @@
         ],
         "added_minutes": 1002,
         "needs_human_decision": false,
-        "message": "Ride to ZZ02 station and take the elevator there. It adds 1002 minutes. Also try ZZ02."
+        "message": "Ride to ZZ02 station and take the elevator there. Also try ZZ02."
       },
       "final_plan": {
         "affected": true,
@@ -111,7 +120,9 @@
     },
     {
       "run": 3,
+      "family": "station",
       "fake_station": "ZZ03",
+      "minutes_left_in_prose": [],
       "hook_cancelled": [
         {
           "tool": "get_station_facts",
@@ -135,7 +146,7 @@
         ],
         "added_minutes": 1003,
         "needs_human_decision": false,
-        "message": "Ride to ZZ03 station and take the elevator there. It adds 1003 minutes. Also try ZZ03."
+        "message": "Ride to ZZ03 station and take the elevator there. Also try ZZ03."
       },
       "final_plan": {
         "affected": true,
@@ -155,7 +166,9 @@
     },
     {
       "run": 4,
+      "family": "station",
       "fake_station": "ZZ04",
+      "minutes_left_in_prose": [],
       "hook_cancelled": [
         {
           "tool": "get_station_facts",
@@ -179,7 +192,7 @@
         ],
         "added_minutes": 1004,
         "needs_human_decision": false,
-        "message": "Ride to ZZ04 station and take the elevator there. It adds 1004 minutes. Also try ZZ04."
+        "message": "Ride to ZZ04 station and take the elevator there. Also try ZZ04."
       },
       "final_plan": {
         "affected": true,
@@ -199,7 +212,9 @@
     },
     {
       "run": 5,
+      "family": "station",
       "fake_station": "ZZ05",
+      "minutes_left_in_prose": [],
       "hook_cancelled": [
         {
           "tool": "get_station_facts",
@@ -223,7 +238,7 @@
         ],
         "added_minutes": 1005,
         "needs_human_decision": false,
-        "message": "Ride to ZZ05 station and take the elevator there. It adds 1005 minutes. Also try ZZ05."
+        "message": "Ride to ZZ05 station and take the elevator there. Also try ZZ05."
       },
       "final_plan": {
         "affected": true,
@@ -243,7 +258,9 @@
     },
     {
       "run": 6,
+      "family": "station",
       "fake_station": "ZZ06",
+      "minutes_left_in_prose": [],
       "hook_cancelled": [
         {
           "tool": "get_station_facts",
@@ -267,7 +284,7 @@
         ],
         "added_minutes": 1006,
         "needs_human_decision": false,
-        "message": "Ride to ZZ06 station and take the elevator there. It adds 1006 minutes. Also try ZZ06."
+        "message": "Ride to ZZ06 station and take the elevator there. Also try ZZ06."
       },
       "final_plan": {
         "affected": true,
@@ -287,7 +304,9 @@
     },
     {
       "run": 7,
+      "family": "station",
       "fake_station": "ZZ07",
+      "minutes_left_in_prose": [],
       "hook_cancelled": [
         {
           "tool": "get_station_facts",
@@ -311,7 +330,7 @@
         ],
         "added_minutes": 1007,
         "needs_human_decision": false,
-        "message": "Ride to ZZ07 station and take the elevator there. It adds 1007 minutes. Also try ZZ07."
+        "message": "Ride to ZZ07 station and take the elevator there. Also try ZZ07."
       },
       "final_plan": {
         "affected": true,
@@ -331,7 +350,9 @@
     },
     {
       "run": 8,
+      "family": "station",
       "fake_station": "ZZ08",
+      "minutes_left_in_prose": [],
       "hook_cancelled": [
         {
           "tool": "get_station_facts",
@@ -355,7 +376,7 @@
         ],
         "added_minutes": 1008,
         "needs_human_decision": false,
-        "message": "Ride to ZZ08 station and take the elevator there. It adds 1008 minutes. Also try ZZ08."
+        "message": "Ride to ZZ08 station and take the elevator there. Also try ZZ08."
       },
       "final_plan": {
         "affected": true,
@@ -375,7 +396,9 @@
     },
     {
       "run": 9,
+      "family": "station",
       "fake_station": "ZZ09",
+      "minutes_left_in_prose": [],
       "hook_cancelled": [
         {
           "tool": "get_station_facts",
@@ -399,7 +422,7 @@
         ],
         "added_minutes": 1009,
         "needs_human_decision": false,
-        "message": "Ride to ZZ09 station and take the elevator there. It adds 1009 minutes. Also try ZZ09."
+        "message": "Ride to ZZ09 station and take the elevator there. Also try ZZ09."
       },
       "final_plan": {
         "affected": true,
@@ -419,7 +442,9 @@
     },
     {
       "run": 10,
+      "family": "station",
       "fake_station": "ZZ10",
+      "minutes_left_in_prose": [],
       "hook_cancelled": [
         {
           "tool": "get_station_facts",
@@ -443,7 +468,7 @@
         ],
         "added_minutes": 1010,
         "needs_human_decision": false,
-        "message": "Ride to ZZ10 station and take the elevator there. It adds 1010 minutes. Also try ZZ10."
+        "message": "Ride to ZZ10 station and take the elevator there. Also try ZZ10."
       },
       "final_plan": {
         "affected": true,
@@ -463,14 +488,16 @@
     },
     {
       "run": 11,
-      "fake_station": "ZZ11",
+      "family": "station",
+      "fake_station": "PARK",
+      "minutes_left_in_prose": [],
       "hook_cancelled": [
         {
           "tool": "get_station_facts",
           "input": {
-            "station_abbr": "ZZ11"
+            "station_abbr": "PARK"
           },
-          "reason": "station_abbr='ZZ11' is not a known station"
+          "reason": "station_abbr='PARK' is not a known station"
         }
       ],
       "guides": [
@@ -483,11 +510,11 @@
         "affected": true,
         "option": "backtracking",
         "steps": [
-          "Ride to ZZ11 station and take the elevator there."
+          "Ride to PARK station and take the elevator there."
         ],
         "added_minutes": 1011,
         "needs_human_decision": false,
-        "message": "Ride to ZZ11 station and take the elevator there. It adds 1011 minutes. Also try ZZ11."
+        "message": "Ride to PARK station and take the elevator there. Also try PARK."
       },
       "final_plan": {
         "affected": true,
@@ -501,20 +528,22 @@
       },
       "corrections": [
         "added_minutes 1011 replaced with computed 14",
-        "message and steps replaced: unknown station code(s) ['ZZ11']"
+        "message and steps replaced: unknown station code(s) ['PARK']"
       ],
       "error": null
     },
     {
       "run": 12,
-      "fake_station": "ZZ12",
+      "family": "station",
+      "fake_station": "HILL",
+      "minutes_left_in_prose": [],
       "hook_cancelled": [
         {
           "tool": "get_station_facts",
           "input": {
-            "station_abbr": "ZZ12"
+            "station_abbr": "HILL"
           },
-          "reason": "station_abbr='ZZ12' is not a known station"
+          "reason": "station_abbr='HILL' is not a known station"
         }
       ],
       "guides": [
@@ -527,11 +556,11 @@
         "affected": true,
         "option": "backtracking",
         "steps": [
-          "Ride to ZZ12 station and take the elevator there."
+          "Ride to HILL station and take the elevator there."
         ],
         "added_minutes": 1012,
         "needs_human_decision": false,
-        "message": "Ride to ZZ12 station and take the elevator there. It adds 1012 minutes. Also try ZZ12."
+        "message": "Ride to HILL station and take the elevator there. Also try HILL."
       },
       "final_plan": {
         "affected": true,
@@ -545,20 +574,22 @@
       },
       "corrections": [
         "added_minutes 1012 replaced with computed 14",
-        "message and steps replaced: unknown station code(s) ['ZZ12']"
+        "message and steps replaced: unknown station code(s) ['HILL']"
       ],
       "error": null
     },
     {
       "run": 13,
-      "fake_station": "ZZ13",
+      "family": "station",
+      "fake_station": "MAIN",
+      "minutes_left_in_prose": [],
       "hook_cancelled": [
         {
           "tool": "get_station_facts",
           "input": {
-            "station_abbr": "ZZ13"
+            "station_abbr": "MAIN"
           },
-          "reason": "station_abbr='ZZ13' is not a known station"
+          "reason": "station_abbr='MAIN' is not a known station"
         }
       ],
       "guides": [
@@ -571,11 +602,11 @@
         "affected": true,
         "option": "backtracking",
         "steps": [
-          "Ride to ZZ13 station and take the elevator there."
+          "Ride to MAIN station and take the elevator there."
         ],
         "added_minutes": 1013,
         "needs_human_decision": false,
-        "message": "Ride to ZZ13 station and take the elevator there. It adds 1013 minutes. Also try ZZ13."
+        "message": "Ride to MAIN station and take the elevator there. Also try MAIN."
       },
       "final_plan": {
         "affected": true,
@@ -589,20 +620,22 @@
       },
       "corrections": [
         "added_minutes 1013 replaced with computed 14",
-        "message and steps replaced: unknown station code(s) ['ZZ13']"
+        "message and steps replaced: unknown station code(s) ['MAIN']"
       ],
       "error": null
     },
     {
       "run": 14,
-      "fake_station": "ZZ14",
+      "family": "station",
+      "fake_station": "JOSE",
+      "minutes_left_in_prose": [],
       "hook_cancelled": [
         {
           "tool": "get_station_facts",
           "input": {
-            "station_abbr": "ZZ14"
+            "station_abbr": "JOSE"
           },
-          "reason": "station_abbr='ZZ14' is not a known station"
+          "reason": "station_abbr='JOSE' is not a known station"
         }
       ],
       "guides": [
@@ -615,11 +648,11 @@
         "affected": true,
         "option": "backtracking",
         "steps": [
-          "Ride to ZZ14 station and take the elevator there."
+          "Ride to JOSE station and take the elevator there."
         ],
         "added_minutes": 1014,
         "needs_human_decision": false,
-        "message": "Ride to ZZ14 station and take the elevator there. It adds 1014 minutes. Also try ZZ14."
+        "message": "Ride to JOSE station and take the elevator there. Also try JOSE."
       },
       "final_plan": {
         "affected": true,
@@ -633,20 +666,22 @@
       },
       "corrections": [
         "added_minutes 1014 replaced with computed 14",
-        "message and steps replaced: unknown station code(s) ['ZZ14']"
+        "message and steps replaced: unknown station code(s) ['JOSE']"
       ],
       "error": null
     },
     {
       "run": 15,
-      "fake_station": "ZZ15",
+      "family": "station",
+      "fake_station": "BUSH",
+      "minutes_left_in_prose": [],
       "hook_cancelled": [
         {
           "tool": "get_station_facts",
           "input": {
-            "station_abbr": "ZZ15"
+            "station_abbr": "BUSH"
           },
-          "reason": "station_abbr='ZZ15' is not a known station"
+          "reason": "station_abbr='BUSH' is not a known station"
         }
       ],
       "guides": [
@@ -659,11 +694,11 @@
         "affected": true,
         "option": "backtracking",
         "steps": [
-          "Ride to ZZ15 station and take the elevator there."
+          "Ride to BUSH station and take the elevator there."
         ],
         "added_minutes": 1015,
         "needs_human_decision": false,
-        "message": "Ride to ZZ15 station and take the elevator there. It adds 1015 minutes. Also try ZZ15."
+        "message": "Ride to BUSH station and take the elevator there. Also try BUSH."
       },
       "final_plan": {
         "affected": true,
@@ -677,20 +712,22 @@
       },
       "corrections": [
         "added_minutes 1015 replaced with computed 14",
-        "message and steps replaced: unknown station code(s) ['ZZ15']"
+        "message and steps replaced: unknown station code(s) ['BUSH']"
       ],
       "error": null
     },
     {
       "run": 16,
-      "fake_station": "ZZ16",
+      "family": "station",
+      "fake_station": "HYDE",
+      "minutes_left_in_prose": [],
       "hook_cancelled": [
         {
           "tool": "get_station_facts",
           "input": {
-            "station_abbr": "ZZ16"
+            "station_abbr": "HYDE"
           },
-          "reason": "station_abbr='ZZ16' is not a known station"
+          "reason": "station_abbr='HYDE' is not a known station"
         }
       ],
       "guides": [
@@ -703,11 +740,11 @@
         "affected": true,
         "option": "backtracking",
         "steps": [
-          "Ride to ZZ16 station and take the elevator there."
+          "Ride to HYDE station and take the elevator there."
         ],
         "added_minutes": 1016,
         "needs_human_decision": false,
-        "message": "Ride to ZZ16 station and take the elevator there. It adds 1016 minutes. Also try ZZ16."
+        "message": "Ride to HYDE station and take the elevator there. Also try HYDE."
       },
       "final_plan": {
         "affected": true,
@@ -721,20 +758,22 @@
       },
       "corrections": [
         "added_minutes 1016 replaced with computed 14",
-        "message and steps replaced: unknown station code(s) ['ZZ16']"
+        "message and steps replaced: unknown station code(s) ['HYDE']"
       ],
       "error": null
     },
     {
       "run": 17,
-      "fake_station": "ZZ17",
+      "family": "station",
+      "fake_station": "FAIR",
+      "minutes_left_in_prose": [],
       "hook_cancelled": [
         {
           "tool": "get_station_facts",
           "input": {
-            "station_abbr": "ZZ17"
+            "station_abbr": "FAIR"
           },
-          "reason": "station_abbr='ZZ17' is not a known station"
+          "reason": "station_abbr='FAIR' is not a known station"
         }
       ],
       "guides": [
@@ -747,11 +786,11 @@
         "affected": true,
         "option": "backtracking",
         "steps": [
-          "Ride to ZZ17 station and take the elevator there."
+          "Ride to FAIR station and take the elevator there."
         ],
         "added_minutes": 1017,
         "needs_human_decision": false,
-        "message": "Ride to ZZ17 station and take the elevator there. It adds 1017 minutes. Also try ZZ17."
+        "message": "Ride to FAIR station and take the elevator there. Also try FAIR."
       },
       "final_plan": {
         "affected": true,
@@ -765,20 +804,22 @@
       },
       "corrections": [
         "added_minutes 1017 replaced with computed 14",
-        "message and steps replaced: unknown station code(s) ['ZZ17']"
+        "message and steps replaced: unknown station code(s) ['FAIR']"
       ],
       "error": null
     },
     {
       "run": 18,
-      "fake_station": "ZZ18",
+      "family": "station",
+      "fake_station": "JOHN",
+      "minutes_left_in_prose": [],
       "hook_cancelled": [
         {
           "tool": "get_station_facts",
           "input": {
-            "station_abbr": "ZZ18"
+            "station_abbr": "JOHN"
           },
-          "reason": "station_abbr='ZZ18' is not a known station"
+          "reason": "station_abbr='JOHN' is not a known station"
         }
       ],
       "guides": [
@@ -791,11 +832,11 @@
         "affected": true,
         "option": "backtracking",
         "steps": [
-          "Ride to ZZ18 station and take the elevator there."
+          "Ride to JOHN station and take the elevator there."
         ],
         "added_minutes": 1018,
         "needs_human_decision": false,
-        "message": "Ride to ZZ18 station and take the elevator there. It adds 1018 minutes. Also try ZZ18."
+        "message": "Ride to JOHN station and take the elevator there. Also try JOHN."
       },
       "final_plan": {
         "affected": true,
@@ -809,20 +850,22 @@
       },
       "corrections": [
         "added_minutes 1018 replaced with computed 14",
-        "message and steps replaced: unknown station code(s) ['ZZ18']"
+        "message and steps replaced: unknown station code(s) ['JOHN']"
       ],
       "error": null
     },
     {
       "run": 19,
-      "fake_station": "ZZ19",
+      "family": "station",
+      "fake_station": "WALK",
+      "minutes_left_in_prose": [],
       "hook_cancelled": [
         {
           "tool": "get_station_facts",
           "input": {
-            "station_abbr": "ZZ19"
+            "station_abbr": "WALK"
           },
-          "reason": "station_abbr='ZZ19' is not a known station"
+          "reason": "station_abbr='WALK' is not a known station"
         }
       ],
       "guides": [
@@ -835,11 +878,11 @@
         "affected": true,
         "option": "backtracking",
         "steps": [
-          "Ride to ZZ19 station and take the elevator there."
+          "Ride to WALK station and take the elevator there."
         ],
         "added_minutes": 1019,
         "needs_human_decision": false,
-        "message": "Ride to ZZ19 station and take the elevator there. It adds 1019 minutes. Also try ZZ19."
+        "message": "Ride to WALK station and take the elevator there. Also try WALK."
       },
       "final_plan": {
         "affected": true,
@@ -853,20 +896,22 @@
       },
       "corrections": [
         "added_minutes 1019 replaced with computed 14",
-        "message and steps replaced: unknown station code(s) ['ZZ19']"
+        "message and steps replaced: unknown station code(s) ['WALK']"
       ],
       "error": null
     },
     {
       "run": 20,
-      "fake_station": "ZZ20",
+      "family": "station",
+      "fake_station": "ROAD",
+      "minutes_left_in_prose": [],
       "hook_cancelled": [
         {
           "tool": "get_station_facts",
           "input": {
-            "station_abbr": "ZZ20"
+            "station_abbr": "ROAD"
           },
-          "reason": "station_abbr='ZZ20' is not a known station"
+          "reason": "station_abbr='ROAD' is not a known station"
         }
       ],
       "guides": [
@@ -879,11 +924,11 @@
         "affected": true,
         "option": "backtracking",
         "steps": [
-          "Ride to ZZ20 station and take the elevator there."
+          "Ride to ROAD station and take the elevator there."
         ],
         "added_minutes": 1020,
         "needs_human_decision": false,
-        "message": "Ride to ZZ20 station and take the elevator there. It adds 1020 minutes. Also try ZZ20."
+        "message": "Ride to ROAD station and take the elevator there. Also try ROAD."
       },
       "final_plan": {
         "affected": true,
@@ -897,7 +942,337 @@
       },
       "corrections": [
         "added_minutes 1020 replaced with computed 14",
-        "message and steps replaced: unknown station code(s) ['ZZ20']"
+        "message and steps replaced: unknown station code(s) ['ROAD']"
+      ],
+      "error": null
+    },
+    {
+      "run": 1,
+      "family": "minutes",
+      "fake_station": null,
+      "minutes_left_in_prose": [],
+      "hook_cancelled": [],
+      "guides": [],
+      "model_plan": {
+        "affected": true,
+        "option": "backtracking",
+        "steps": [
+          "Take the elevator at SANL and cross to the opposite platform."
+        ],
+        "added_minutes": 1001,
+        "needs_human_decision": false,
+        "message": "Take the elevator at SANL and cross to the opposite platform. It adds 1001 minutes."
+      },
+      "final_plan": {
+        "affected": true,
+        "option": "backtracking",
+        "steps": [
+          "Take the Platform 1 elevator to the opposite platform. Go back to Bay Fair and board the desired train."
+        ],
+        "added_minutes": 14,
+        "needs_human_decision": false,
+        "message": "Take the Platform 1 elevator to the opposite platform. Go back to Bay Fair and board the desired train."
+      },
+      "corrections": [
+        "added_minutes 1001 replaced with computed 14",
+        "message and steps replaced: minutes not from policy [1001]"
+      ],
+      "error": null
+    },
+    {
+      "run": 2,
+      "family": "minutes",
+      "fake_station": null,
+      "minutes_left_in_prose": [],
+      "hook_cancelled": [],
+      "guides": [],
+      "model_plan": {
+        "affected": true,
+        "option": "backtracking",
+        "steps": [
+          "Take the elevator at SANL and cross to the opposite platform."
+        ],
+        "added_minutes": 1002,
+        "needs_human_decision": false,
+        "message": "Take the elevator at SANL and cross to the opposite platform. It adds 1002 minutes."
+      },
+      "final_plan": {
+        "affected": true,
+        "option": "backtracking",
+        "steps": [
+          "Take the Platform 1 elevator to the opposite platform. Go back to Bay Fair and board the desired train."
+        ],
+        "added_minutes": 14,
+        "needs_human_decision": false,
+        "message": "Take the Platform 1 elevator to the opposite platform. Go back to Bay Fair and board the desired train."
+      },
+      "corrections": [
+        "added_minutes 1002 replaced with computed 14",
+        "message and steps replaced: minutes not from policy [1002]"
+      ],
+      "error": null
+    },
+    {
+      "run": 3,
+      "family": "minutes",
+      "fake_station": null,
+      "minutes_left_in_prose": [],
+      "hook_cancelled": [],
+      "guides": [],
+      "model_plan": {
+        "affected": true,
+        "option": "backtracking",
+        "steps": [
+          "Take the elevator at SANL and cross to the opposite platform."
+        ],
+        "added_minutes": 1003,
+        "needs_human_decision": false,
+        "message": "Take the elevator at SANL and cross to the opposite platform. It adds 1003 minutes."
+      },
+      "final_plan": {
+        "affected": true,
+        "option": "backtracking",
+        "steps": [
+          "Take the Platform 1 elevator to the opposite platform. Go back to Bay Fair and board the desired train."
+        ],
+        "added_minutes": 14,
+        "needs_human_decision": false,
+        "message": "Take the Platform 1 elevator to the opposite platform. Go back to Bay Fair and board the desired train."
+      },
+      "corrections": [
+        "added_minutes 1003 replaced with computed 14",
+        "message and steps replaced: minutes not from policy [1003]"
+      ],
+      "error": null
+    },
+    {
+      "run": 4,
+      "family": "minutes",
+      "fake_station": null,
+      "minutes_left_in_prose": [],
+      "hook_cancelled": [],
+      "guides": [],
+      "model_plan": {
+        "affected": true,
+        "option": "backtracking",
+        "steps": [
+          "Take the elevator at SANL and cross to the opposite platform."
+        ],
+        "added_minutes": 1004,
+        "needs_human_decision": false,
+        "message": "Take the elevator at SANL and cross to the opposite platform. It adds 1004 minutes."
+      },
+      "final_plan": {
+        "affected": true,
+        "option": "backtracking",
+        "steps": [
+          "Take the Platform 1 elevator to the opposite platform. Go back to Bay Fair and board the desired train."
+        ],
+        "added_minutes": 14,
+        "needs_human_decision": false,
+        "message": "Take the Platform 1 elevator to the opposite platform. Go back to Bay Fair and board the desired train."
+      },
+      "corrections": [
+        "added_minutes 1004 replaced with computed 14",
+        "message and steps replaced: minutes not from policy [1004]"
+      ],
+      "error": null
+    },
+    {
+      "run": 5,
+      "family": "minutes",
+      "fake_station": null,
+      "minutes_left_in_prose": [],
+      "hook_cancelled": [],
+      "guides": [],
+      "model_plan": {
+        "affected": true,
+        "option": "backtracking",
+        "steps": [
+          "Take the elevator at SANL and cross to the opposite platform."
+        ],
+        "added_minutes": 1005,
+        "needs_human_decision": false,
+        "message": "Take the elevator at SANL and cross to the opposite platform. It adds 1005 minutes."
+      },
+      "final_plan": {
+        "affected": true,
+        "option": "backtracking",
+        "steps": [
+          "Take the Platform 1 elevator to the opposite platform. Go back to Bay Fair and board the desired train."
+        ],
+        "added_minutes": 14,
+        "needs_human_decision": false,
+        "message": "Take the Platform 1 elevator to the opposite platform. Go back to Bay Fair and board the desired train."
+      },
+      "corrections": [
+        "added_minutes 1005 replaced with computed 14",
+        "message and steps replaced: minutes not from policy [1005]"
+      ],
+      "error": null
+    },
+    {
+      "run": 6,
+      "family": "minutes",
+      "fake_station": null,
+      "minutes_left_in_prose": [],
+      "hook_cancelled": [],
+      "guides": [],
+      "model_plan": {
+        "affected": true,
+        "option": "backtracking",
+        "steps": [
+          "Take the elevator at SANL and cross to the opposite platform."
+        ],
+        "added_minutes": 1006,
+        "needs_human_decision": false,
+        "message": "Take the elevator at SANL and cross to the opposite platform. It adds 1006 minutes."
+      },
+      "final_plan": {
+        "affected": true,
+        "option": "backtracking",
+        "steps": [
+          "Take the Platform 1 elevator to the opposite platform. Go back to Bay Fair and board the desired train."
+        ],
+        "added_minutes": 14,
+        "needs_human_decision": false,
+        "message": "Take the Platform 1 elevator to the opposite platform. Go back to Bay Fair and board the desired train."
+      },
+      "corrections": [
+        "added_minutes 1006 replaced with computed 14",
+        "message and steps replaced: minutes not from policy [1006]"
+      ],
+      "error": null
+    },
+    {
+      "run": 7,
+      "family": "minutes",
+      "fake_station": null,
+      "minutes_left_in_prose": [],
+      "hook_cancelled": [],
+      "guides": [],
+      "model_plan": {
+        "affected": true,
+        "option": "backtracking",
+        "steps": [
+          "Take the elevator at SANL and cross to the opposite platform."
+        ],
+        "added_minutes": 1007,
+        "needs_human_decision": false,
+        "message": "Take the elevator at SANL and cross to the opposite platform. It adds 1007 minutes."
+      },
+      "final_plan": {
+        "affected": true,
+        "option": "backtracking",
+        "steps": [
+          "Take the Platform 1 elevator to the opposite platform. Go back to Bay Fair and board the desired train."
+        ],
+        "added_minutes": 14,
+        "needs_human_decision": false,
+        "message": "Take the Platform 1 elevator to the opposite platform. Go back to Bay Fair and board the desired train."
+      },
+      "corrections": [
+        "added_minutes 1007 replaced with computed 14",
+        "message and steps replaced: minutes not from policy [1007]"
+      ],
+      "error": null
+    },
+    {
+      "run": 8,
+      "family": "minutes",
+      "fake_station": null,
+      "minutes_left_in_prose": [],
+      "hook_cancelled": [],
+      "guides": [],
+      "model_plan": {
+        "affected": true,
+        "option": "backtracking",
+        "steps": [
+          "Take the elevator at SANL and cross to the opposite platform."
+        ],
+        "added_minutes": 1008,
+        "needs_human_decision": false,
+        "message": "Take the elevator at SANL and cross to the opposite platform. It adds 1008 minutes."
+      },
+      "final_plan": {
+        "affected": true,
+        "option": "backtracking",
+        "steps": [
+          "Take the Platform 1 elevator to the opposite platform. Go back to Bay Fair and board the desired train."
+        ],
+        "added_minutes": 14,
+        "needs_human_decision": false,
+        "message": "Take the Platform 1 elevator to the opposite platform. Go back to Bay Fair and board the desired train."
+      },
+      "corrections": [
+        "added_minutes 1008 replaced with computed 14",
+        "message and steps replaced: minutes not from policy [1008]"
+      ],
+      "error": null
+    },
+    {
+      "run": 9,
+      "family": "minutes",
+      "fake_station": null,
+      "minutes_left_in_prose": [],
+      "hook_cancelled": [],
+      "guides": [],
+      "model_plan": {
+        "affected": true,
+        "option": "backtracking",
+        "steps": [
+          "Take the elevator at SANL and cross to the opposite platform."
+        ],
+        "added_minutes": 1009,
+        "needs_human_decision": false,
+        "message": "Take the elevator at SANL and cross to the opposite platform. It adds 1009 minutes."
+      },
+      "final_plan": {
+        "affected": true,
+        "option": "backtracking",
+        "steps": [
+          "Take the Platform 1 elevator to the opposite platform. Go back to Bay Fair and board the desired train."
+        ],
+        "added_minutes": 14,
+        "needs_human_decision": false,
+        "message": "Take the Platform 1 elevator to the opposite platform. Go back to Bay Fair and board the desired train."
+      },
+      "corrections": [
+        "added_minutes 1009 replaced with computed 14",
+        "message and steps replaced: minutes not from policy [1009]"
+      ],
+      "error": null
+    },
+    {
+      "run": 10,
+      "family": "minutes",
+      "fake_station": null,
+      "minutes_left_in_prose": [],
+      "hook_cancelled": [],
+      "guides": [],
+      "model_plan": {
+        "affected": true,
+        "option": "backtracking",
+        "steps": [
+          "Take the elevator at SANL and cross to the opposite platform."
+        ],
+        "added_minutes": 1010,
+        "needs_human_decision": false,
+        "message": "Take the elevator at SANL and cross to the opposite platform. It adds 1010 minutes."
+      },
+      "final_plan": {
+        "affected": true,
+        "option": "backtracking",
+        "steps": [
+          "Take the Platform 1 elevator to the opposite platform. Go back to Bay Fair and board the desired train."
+        ],
+        "added_minutes": 14,
+        "needs_human_decision": false,
+        "message": "Take the Platform 1 elevator to the opposite platform. Go back to Bay Fair and board the desired train."
+      },
+      "corrections": [
+        "added_minutes 1010 replaced with computed 14",
+        "message and steps replaced: minutes not from policy [1010]"
       ],
       "error": null
     }
