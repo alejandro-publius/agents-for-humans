@@ -1,12 +1,20 @@
 name: pages
 
-# The evidence site (make site) published to GitHub Pages from main. Needs Pages switched on once in the
-# repository settings (Settings, Pages, Source: GitHub Actions); until then the deploy job fails on its own
-# and verify.yml is unaffected.
-
+# The evidence site (make site) published to GitHub Pages. Vendored with the dispatch package and kept
+# here for provenance, like .github/workflows/dispatch-verify.yml, and on request only for the same
+# reason: it is not wired for THIS repository yet. Two things must happen before it can be green.
+# Pages has to be switched on once in the repository settings (Settings, Pages, Source: GitHub Actions)
+# or the deploy job fails on its own, and it installs into the system Python while this repo's Makefile
+# runs every target through .venv/bin/python.
+#
+# It used to run on every push to main and had never actually run, because until now nothing had been
+# pushed to main. Its first run failed in 13 seconds: setup-python asked for 3.11 and pyproject.toml
+# requires >=3.12, the same mismatch dispatch-verify.yml was fixed for. The pin is corrected below so
+# that a deliberate run gets as far as the Pages setting, and the push trigger is gone so a workflow
+# that cannot yet pass does not sit red on the default branch.
+#
+# This repository's CI is .github/workflows/ci.yml, which runs `make verify` on every push.
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -25,7 +33,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: "3.12"
       - run: pip install -e ".[dev,a11y]" && playwright install chromium
       - run: make site
       - run: make site-a11y SITE_A11Y_ARGS="--site build/site"   # what is published is what was audited
