@@ -1,0 +1,105 @@
+{
+  "abbr": "ANTC",
+  "documented_outage_options": [
+    {
+      "elevator": "STREET ELEVATOR (CONCOURSE TO WALKWAY)",
+      "elevator_kind": "street",
+      "label": "Can't enter station",
+      "label_rule": "phrase",
+      "option_label": "transit",
+      "situation": "cant_enter",
+      "text": "Take another mode of transportation such as a Tri Delta Transit bus to another BART station. The closest station is Pittsburg Center."
+    },
+    {
+      "elevator": "STREET ELEVATOR (CONCOURSE TO WALKWAY)",
+      "elevator_kind": "street",
+      "label": "Can't exit station",
+      "label_rule": "phrase",
+      "option_label": "transit",
+      "situation": "cant_exit",
+      "text": "Continue on BART to exit at another station. The closest station is Pittsburg Center."
+    },
+    {
+      "elevator": "PLATFORM ELEVATOR (WALKWAY TO PLATFORM)",
+      "elevator_kind": "platform",
+      "label": "Can't enter station",
+      "label_rule": "phrase",
+      "option_label": "transit",
+      "situation": "cant_enter",
+      "text": "Take another mode of transportation such as a Tri Delta Transit bus to another BART station. The closest station is Pittsburg Center."
+    },
+    {
+      "elevator": "PLATFORM ELEVATOR (WALKWAY TO PLATFORM)",
+      "elevator_kind": "platform",
+      "label": "Can't exit station",
+      "label_rule": "phrase",
+      "option_label": "transit",
+      "situation": "cant_exit",
+      "text": "Continue on BART to exit at another station. The closest station is Pittsburg Center."
+    }
+  ],
+  "elevators": [
+    {
+      "enter_option": "transit",
+      "exit_option": "transit",
+      "kind": "street",
+      "name": "STREET ELEVATOR (CONCOURSE TO WALKWAY)",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "label_rule": "phrase",
+          "option_label": "transit",
+          "situation": "cant_enter",
+          "text": "Take another mode of transportation such as a Tri Delta Transit bus to another BART station. The closest station is Pittsburg Center."
+        },
+        {
+          "label": "Can't exit station",
+          "label_rule": "phrase",
+          "option_label": "transit",
+          "situation": "cant_exit",
+          "text": "Continue on BART to exit at another station. The closest station is Pittsburg Center."
+        }
+      ]
+    },
+    {
+      "enter_option": "transit",
+      "exit_option": "transit",
+      "kind": "platform",
+      "name": "PLATFORM ELEVATOR (WALKWAY TO PLATFORM)",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "label_rule": "phrase",
+          "option_label": "transit",
+          "situation": "cant_enter",
+          "text": "Take another mode of transportation such as a Tri Delta Transit bus to another BART station. The closest station is Pittsburg Center."
+        },
+        {
+          "label": "Can't exit station",
+          "label_rule": "phrase",
+          "option_label": "transit",
+          "situation": "cant_exit",
+          "text": "Continue on BART to exit at another station. The closest station is Pittsburg Center."
+        }
+      ]
+    }
+  ],
+  "http_status": 200,
+  "name": "Antioch",
+  "other_sections": [
+    {
+      "section": "BART Station Real Time Service Notification",
+      "text": [
+        "Follow our Service Alert Twitter Page@SFBARTalert",
+        "Sign up forBART Email and Text Alerts"
+      ]
+    }
+  ],
+  "outage_intro": "In case of an elevator outage, use the following options or contact the station agent for assistance. Agents can arrange a ride to a different station in an accessible van if needed.",
+  "page_name": "Antioch",
+  "pathways": [],
+  "pathways_status": "unknown",
+  "scrape_method": "Chrome same-origin fetch, text blocks, 1 request per 1.1 s",
+  "scraped_at": "2026-09-11T18:19:25.007Z",
+  "source_url": "https://www.bart.gov/stations/ANTC/accessible"
+}

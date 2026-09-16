@@ -1,20 +1,30 @@
 name: ci
 
+# Runs the full local gate with no secrets: lint, tests (network blocked), evals on the mock
+# provider, ablation, README claim verification, and a secret scan.
 on:
   push:
-    branches: [main]
+    branches: [main, overnight]
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
-  test:
+  verify:
     runs-on: ubuntu-latest
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v5
         with:
           enable-cache: true
-      - run: uv python install 3.12
-      - run: uv sync --all-groups
-      - run: uv run ruff check .
-      - run: uv run ruff format --check .
-      - run: uv run pytest -q
+      - name: Install (creates .venv with Python 3.12)
+        run: make setup
+      - name: Verify (lint, test, evals, ablation, claims, secret scan)
+        run: make verify
+      - name: Install Chromium for the accessibility audit
+        run: .venv/bin/python -m playwright install --with-deps chromium
+      - name: Accessibility audit (axe-core, 0 violations required)
+        run: make replay >/dev/null && make a11y

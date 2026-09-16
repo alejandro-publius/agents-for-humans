@@ -1,0 +1,97 @@
+{
+  "abbr": "CIVC",
+  "documented_outage_options": [
+    {
+      "elevator": "STREET ELEVATOR",
+      "elevator_kind": "street",
+      "label": "Can't enter station",
+      "label_rule": "phrase",
+      "option_label": "transit",
+      "situation": "cant_enter",
+      "text": "Use the Powell St. Station street elevator at Market and Ellis streets (0.5 miles/ 5 blocks). Go to the intersection of McAllister and Leavenworth streets to take a bus to Market at Powell Street."
+    },
+    {
+      "elevator": "STREET ELEVATOR",
+      "elevator_kind": "street",
+      "label": "Can't exit station",
+      "label_rule": "phrase",
+      "option_label": "transit",
+      "situation": "cant_exit",
+      "text": "Continue on train to exit at another station. The closest station is Powell St. (0.5 miles)."
+    },
+    {
+      "elevator": "PLATFORM ELEVATOR",
+      "elevator_kind": "platform",
+      "label": "Can't enter station",
+      "label_rule": "phrase",
+      "option_label": "transit",
+      "situation": "cant_enter",
+      "text": "Use the Powell St. Station street elevator at Market and Ellis streets (0.5 miles/ 5 blocks). Go to the intersection of McAllister and Leavenworth streets to take a bus to Market at Powell Street."
+    },
+    {
+      "elevator": "PLATFORM ELEVATOR",
+      "elevator_kind": "platform",
+      "label": "Can't exit station",
+      "label_rule": "phrase",
+      "option_label": "transit",
+      "situation": "cant_exit",
+      "text": "Continue on train to exit at another station. The closest station is Powell St. (0.5 miles)."
+    }
+  ],
+  "elevators": [
+    {
+      "enter_option": "transit",
+      "exit_option": "transit",
+      "kind": "street",
+      "name": "STREET ELEVATOR",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "label_rule": "phrase",
+          "option_label": "transit",
+          "situation": "cant_enter",
+          "text": "Use the Powell St. Station street elevator at Market and Ellis streets (0.5 miles/ 5 blocks). Go to the intersection of McAllister and Leavenworth streets to take a bus to Market at Powell Street."
+        },
+        {
+          "label": "Can't exit station",
+          "label_rule": "phrase",
+          "option_label": "transit",
+          "situation": "cant_exit",
+          "text": "Continue on train to exit at another station. The closest station is Powell St. (0.5 miles)."
+        }
+      ]
+    },
+    {
+      "enter_option": "transit",
+      "exit_option": "transit",
+      "kind": "platform",
+      "name": "PLATFORM ELEVATOR",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "label_rule": "phrase",
+          "option_label": "transit",
+          "situation": "cant_enter",
+          "text": "Use the Powell St. Station street elevator at Market and Ellis streets (0.5 miles/ 5 blocks). Go to the intersection of McAllister and Leavenworth streets to take a bus to Market at Powell Street."
+        },
+        {
+          "label": "Can't exit station",
+          "label_rule": "phrase",
+          "option_label": "transit",
+          "situation": "cant_exit",
+          "text": "Continue on train to exit at another station. The closest station is Powell St. (0.5 miles)."
+        }
+      ]
+    }
+  ],
+  "http_status": 200,
+  "name": "Civic Center (SF)",
+  "other_sections": [],
+  "outage_intro": "In case of an elevator outage, use the following options or contact the station agent for assistance. Agents can arrange a ride to a different station in an accessible van if needed.",
+  "page_name": "Civic Center / UN Plaza",
+  "pathways": [],
+  "pathways_status": "unknown",
+  "scrape_method": "Chrome same-origin fetch, text blocks, 1 request per 1.1 s",
+  "scraped_at": "2026-09-11T18:21:06.973Z",
+  "source_url": "https://www.bart.gov/stations/CIVC/accessible"
+}

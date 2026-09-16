@@ -1,0 +1,20 @@
+{
+  "agent_sent_total": 4,
+  "confusion": {
+    "fn": 0,
+    "fp": 0,
+    "tn": 0,
+    "tp": 0
+  },
+  "inter_labeler_cohen_kappa": null,
+  "inter_labeler_percent_agreement": null,
+  "labels_csv": "evals/labels/relevance.csv",
+  "note": "Truth = the label when both labelers agree. Precision/recall are for agent_sent against truth == relevant. Null means not computable from the labels present; nothing is estimated.",
+  "precision_pct": null,
+  "recall_pct": null,
+  "rows_labeled_by_both": 0,
+  "rows_labelers_agree": 0,
+  "rows_labelers_disagree": 0,
+  "rows_total": 8,
+  "status": "awaiting labels"
+}

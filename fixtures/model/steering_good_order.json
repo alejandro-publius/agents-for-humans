@@ -1,0 +1,7 @@
+{
+  "name": "steering_good_order",
+  "description": "Model recommends backtracking, matching code's top feasible option. The steering handler must leave it alone.",
+  "turns": [
+    {"type": "text", "text": "Use backtracking: ride one stop past Del Norte to Richmond, then return; the far platform elevator is working."}
+  ]
+}

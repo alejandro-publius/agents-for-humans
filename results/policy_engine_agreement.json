@@ -1,0 +1,18 @@
+{
+  "provenance": {
+    "run": "the case-backed policy against itself (plumbing proof; pass --policy)",
+    "claimable": false,
+    "source": {
+      "kb": "fixtures/kb.json",
+      "cases": "fixtures/cases.json",
+      "fixture": true
+    },
+    "note": "Agreement below 100 percent means a number downstream measures the wrong thing; fix the drift (the engine or the labels) before citing any result."
+  },
+  "cases": 194,
+  "agree": 194,
+  "disagree": 0,
+  "agreement_pct": 100.0,
+  "source_url_differs": 0,
+  "disagreements": []
+}

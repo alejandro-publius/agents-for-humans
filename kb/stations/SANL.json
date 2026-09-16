@@ -1,0 +1,97 @@
+{
+  "abbr": "SANL",
+  "documented_outage_options": [
+    {
+      "elevator": "PLATFORM 2 ELEVATOR (RICHMOND, SFO/MILLBRAE/DALY CITY DIRECTIONS)",
+      "elevator_kind": "platform",
+      "label": "Can't enter station",
+      "label_rule": "phrase",
+      "option_label": "backtracking",
+      "situation": "cant_enter",
+      "text": "Take the Platform 1 elevator to the opposite platform. Go back to Bay Fair and board the desired train."
+    },
+    {
+      "elevator": "PLATFORM 2 ELEVATOR (RICHMOND, SFO/MILLBRAE/DALY CITY DIRECTIONS)",
+      "elevator_kind": "platform",
+      "label": "Can't exit station",
+      "label_rule": "phrase",
+      "option_label": "backtracking",
+      "situation": "cant_exit",
+      "text": "Continue on BART to Coliseum and return to San Leandro. Exit using the Platform 1 elevator."
+    },
+    {
+      "elevator": "PLATFORM 1 ELEVATOR (DUBLIN, BERRYESSA DIRECTIONS)",
+      "elevator_kind": "platform",
+      "label": "Can't enter station",
+      "label_rule": "phrase",
+      "option_label": "backtracking",
+      "situation": "cant_enter",
+      "text": "Take the Platform 2 elevator to the opposite platform. Go back to Coliseum and board the desired train."
+    },
+    {
+      "elevator": "PLATFORM 1 ELEVATOR (DUBLIN, BERRYESSA DIRECTIONS)",
+      "elevator_kind": "platform",
+      "label": "Can't exit station",
+      "label_rule": "phrase",
+      "option_label": "backtracking",
+      "situation": "cant_exit",
+      "text": "Continue on BART to Bay Fair and return to San Leandro. Exit using the Platform 2 elevator."
+    }
+  ],
+  "elevators": [
+    {
+      "enter_option": "backtracking",
+      "exit_option": "backtracking",
+      "kind": "platform",
+      "name": "PLATFORM 2 ELEVATOR (RICHMOND, SFO/MILLBRAE/DALY CITY DIRECTIONS)",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "label_rule": "phrase",
+          "option_label": "backtracking",
+          "situation": "cant_enter",
+          "text": "Take the Platform 1 elevator to the opposite platform. Go back to Bay Fair and board the desired train."
+        },
+        {
+          "label": "Can't exit station",
+          "label_rule": "phrase",
+          "option_label": "backtracking",
+          "situation": "cant_exit",
+          "text": "Continue on BART to Coliseum and return to San Leandro. Exit using the Platform 1 elevator."
+        }
+      ]
+    },
+    {
+      "enter_option": "backtracking",
+      "exit_option": "backtracking",
+      "kind": "platform",
+      "name": "PLATFORM 1 ELEVATOR (DUBLIN, BERRYESSA DIRECTIONS)",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "label_rule": "phrase",
+          "option_label": "backtracking",
+          "situation": "cant_enter",
+          "text": "Take the Platform 2 elevator to the opposite platform. Go back to Coliseum and board the desired train."
+        },
+        {
+          "label": "Can't exit station",
+          "label_rule": "phrase",
+          "option_label": "backtracking",
+          "situation": "cant_exit",
+          "text": "Continue on BART to Bay Fair and return to San Leandro. Exit using the Platform 2 elevator."
+        }
+      ]
+    }
+  ],
+  "http_status": 200,
+  "name": "San Leandro",
+  "other_sections": [],
+  "outage_intro": "In case of an elevator outage, use the following options or contact the station agent for assistance. Agents can arrange a ride to a different station in an accessible van if needed.",
+  "page_name": "San Leandro",
+  "pathways": [],
+  "pathways_status": "unknown",
+  "scrape_method": "Chrome same-origin fetch, text blocks, 1 request per 1.1 s",
+  "scraped_at": "2026-09-11T18:25:08.008Z",
+  "source_url": "https://www.bart.gov/stations/SANL/accessible"
+}

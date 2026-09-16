@@ -1,0 +1,120 @@
+{
+  "provenance": {
+    "run": "rule-following stand-in model over the fixture KB",
+    "claimable": false,
+    "source": {
+      "kb": "fixtures/kb.json",
+      "cases": "fixtures/cases.json",
+      "fixture": true
+    },
+    "note": "Measures whether the gates' feedback is actionable, not a live model. A live model's convergence is measured by make eval-live on the laptop."
+  },
+  "personas": [
+    "wrong_station",
+    "wrong_elevator",
+    "wrong_option",
+    "invented_minutes",
+    "prose_minutes",
+    "prose_station",
+    "own_words",
+    "injection",
+    "everything_wrong"
+  ],
+  "call_cap": 12,
+  "runs": 1746,
+  "converged": 1746,
+  "not_converged": 0,
+  "max_calls": 5,
+  "per_persona": {
+    "wrong_station": {
+      "cases": 194,
+      "converged": 194,
+      "failed_cases": [],
+      "max_calls": 3,
+      "mean_calls": 3.0,
+      "calls_histogram": {
+        "3": 194
+      }
+    },
+    "wrong_elevator": {
+      "cases": 194,
+      "converged": 194,
+      "failed_cases": [],
+      "max_calls": 3,
+      "mean_calls": 3.0,
+      "calls_histogram": {
+        "3": 194
+      }
+    },
+    "wrong_option": {
+      "cases": 194,
+      "converged": 194,
+      "failed_cases": [],
+      "max_calls": 3,
+      "mean_calls": 3.0,
+      "calls_histogram": {
+        "3": 194
+      }
+    },
+    "invented_minutes": {
+      "cases": 194,
+      "converged": 194,
+      "failed_cases": [],
+      "max_calls": 3,
+      "mean_calls": 3.0,
+      "calls_histogram": {
+        "3": 194
+      }
+    },
+    "prose_minutes": {
+      "cases": 194,
+      "converged": 194,
+      "failed_cases": [],
+      "max_calls": 3,
+      "mean_calls": 3.0,
+      "calls_histogram": {
+        "3": 194
+      }
+    },
+    "prose_station": {
+      "cases": 194,
+      "converged": 194,
+      "failed_cases": [],
+      "max_calls": 3,
+      "mean_calls": 3.0,
+      "calls_histogram": {
+        "3": 194
+      }
+    },
+    "own_words": {
+      "cases": 194,
+      "converged": 194,
+      "failed_cases": [],
+      "max_calls": 3,
+      "mean_calls": 3.0,
+      "calls_histogram": {
+        "3": 194
+      }
+    },
+    "injection": {
+      "cases": 194,
+      "converged": 194,
+      "failed_cases": [],
+      "max_calls": 3,
+      "mean_calls": 3.0,
+      "calls_histogram": {
+        "3": 194
+      }
+    },
+    "everything_wrong": {
+      "cases": 194,
+      "converged": 194,
+      "failed_cases": [],
+      "max_calls": 5,
+      "mean_calls": 5.0,
+      "calls_histogram": {
+        "5": 194
+      }
+    }
+  }
+}

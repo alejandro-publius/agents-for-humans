@@ -1,0 +1,5 @@
+# the runtime image's dependencies (agentcore configure -r infra/agentcore/runtime/requirements.txt);
+# the dispatch package itself is copied with the project directory and imported from the repo root
+strands-agents[otel]==1.55.1
+pydantic>=2
+bedrock-agentcore>=1.0

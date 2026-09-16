@@ -1,0 +1,1378 @@
+{
+  "provenance": {
+    "run": "scripted model over the fixture KB, real Strands spans from the in-memory exporter",
+    "claimable": false,
+    "source": {
+      "kb": "fixtures/kb.json",
+      "cases": "fixtures/cases.json",
+      "fixture": true
+    },
+    "note": "Proves the custom evaluator parses real Strands OpenTelemetry spans. Scores for a scripted model are plumbing proof, never a result; the AgentCore run is the result."
+  },
+  "scenarios": 194,
+  "pass": 194,
+  "fail": 0,
+  "option_found_in": {
+    "Plan:gen_ai.tool.message.content": 194
+  },
+  "results": [
+    {
+      "scenario_id": "C001",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C002",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C003",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C004",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C005",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C006",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C007",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C008",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C009",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C010",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C011",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C012",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C013",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C014",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C015",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C016",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C017",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C018",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C019",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C020",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C021",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C022",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C023",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C024",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C025",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C026",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C027",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C028",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C029",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C030",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C031",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C032",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C033",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C034",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C035",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C036",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C037",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C038",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C039",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C040",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C041",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C042",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C043",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C044",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C045",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C046",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C047",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C048",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C049",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C050",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C051",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C052",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C053",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C054",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C055",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C056",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C057",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C058",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C059",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C060",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C061",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C062",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C063",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C064",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C065",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C066",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C067",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C068",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C069",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C070",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C071",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C072",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C073",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C074",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C075",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C076",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C077",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C078",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C079",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C080",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C081",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C082",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C083",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C084",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C085",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C086",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C087",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C088",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C089",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C090",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C091",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C092",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C093",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C094",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C095",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C096",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C097",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C098",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C099",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C100",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C101",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C102",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C103",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C104",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C105",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C106",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C107",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C108",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C109",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C110",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C111",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C112",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C113",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C114",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C115",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C116",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C117",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C118",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C119",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C120",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C121",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C122",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C123",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C124",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C125",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C126",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C127",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C128",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C129",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C130",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C131",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C132",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C133",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C134",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C135",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C136",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C137",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C138",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C139",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C140",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C141",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C142",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C143",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C144",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C145",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C146",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C147",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C148",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C149",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C150",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C151",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C152",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'alternate_elevator' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C153",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C154",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C155",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C156",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C157",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C158",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C159",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C160",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C161",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C162",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C163",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C164",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C165",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C166",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C167",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C168",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C169",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C170",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C171",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C172",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C173",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C174",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C175",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C176",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C177",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C178",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C179",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C180",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C181",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C182",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C183",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C184",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C185",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C186",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C187",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C188",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C189",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C190",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C191",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C192",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C193",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    },
+    {
+      "scenario_id": "C194",
+      "spans": 7,
+      "label": "PASS",
+      "value": 1.0,
+      "explanation": "agent chose 'backtracking' (Plan:gen_ai.tool.message.content), matching the KB label"
+    }
+  ]
+}

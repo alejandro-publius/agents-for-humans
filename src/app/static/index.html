@@ -1,0 +1,58 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Last Elevator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{font:15px/1.45 system-ui,sans-serif;margin:0;padding:16px 20px;background:#f6f7f9;color:#1b1f24;max-width:1100px}
+h1{margin:0 0 4px;font-size:22px} h2{font-size:16px;margin:24px 0 8px} .muted{color:#4b5563}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}@media(max-width:800px){.grid{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid #dde1e6;border-radius:8px;padding:12px 14px}
+table{border-collapse:collapse;width:100%;font-size:13px} th,td{text-align:left;padding:6px 8px;border-bottom:1px solid #eceff2;vertical-align:top}
+.sent{background:#eaf7ee} .quiet{color:#4b5563} code{background:#f0f2f4;padding:1px 4px;border-radius:3px}
+input,select,button{font:inherit;padding:4px 6px} form label{display:block;margin:6px 0}
+.rank{margin:0;padding-left:16px} .badge{display:inline-block;padding:0 6px;border-radius:10px;background:#e5e9ef;font-size:12px}
+</style></head><body>
+<header>
+<h1>Last Elevator</h1>
+<div class="muted">A background agent for BART riders who depend on elevators. Everything on this page is offline
+and reproducible: <code>make replay</code> rebuilds the inbox from the archived feed.
+<span id="status"></span></div>
+</header>
+<main>
+<div class="grid">
+<div class="card"><h2>Register a trip</h2>
+<form method="post" action="/trips">
+<label>Rider id <input name="rider_id" value="demo"></label>
+<label>Origin <input name="origin" placeholder="SANL" required size="6"> Destination <input name="dest" placeholder="EMBR" required size="6"></label>
+<label>Days <span id="days"></span></label>
+<label>Window <input name="window_start" value="07:30" size="5"> to <input name="window_end" value="09:00" size="5"></label>
+<label>Needs <input name="needs" value="elevator" placeholder="elevator, no_bus"></label>
+<button type="submit">Register</button>
+</form>
+<h2>Registered trips</h2><table id="trips"></table></div>
+<div class="card"><h2>Replay timeline</h2>
+<div class="muted">Scrub through the archived feed. The inbox below shows decisions up to the selected snapshot.</div>
+<label for="scrub">Snapshot</label>
+<input type="range" id="scrub" min="0" max="0" value="0" style="width:100%" aria-label="Replay timeline snapshot">
+<div id="snap"></div></div>
+</div>
+<div class="card" style="margin-top:16px"><h2>Inbox: every decision, with reasoning and BART's option ranking</h2>
+<div class="muted">Rows shaded green were sent to the rider. Quiet rows are decisions the agent made silently.</div>
+<table id="inbox"></table></div>
+</main>
+<script>
+const WEEKDAYS=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+document.getElementById('days').innerHTML=WEEKDAYS.map(d=>`<label style="display:inline;margin-right:8px"><input type="checkbox" name="days" value="${d}" ${d.length&&"MonTueWedThuFri".includes(d)?"checked":""}>${d}</label>`).join("");
+let TL=[],INBOX=[];
+async function load(){
+  const [st,tr,tl,ib]=await Promise.all(["/api/status","/api/trips","/api/timeline","/api/inbox"].map(u=>fetch(u).then(r=>r.json())));
+  document.getElementById('status').textContent=` Riders ${st.riders}, trips ${st.trips}, decisions ${st.inbox}, messages sent ${st.sent}, snapshots ${st.snapshots}.`;
+  document.getElementById('trips').innerHTML="<tr><th>id</th><th>rider</th><th>trip</th><th>days</th><th>window</th><th>needs</th></tr>"+tr.map(t=>`<tr><td>${t.id}</td><td>${t.rider_id}</td><td>${t.origin} → ${t.dest}</td><td>${t.days.join(" ")}</td><td>${t.window_start}–${t.window_end}</td><td>${t.needs.join(", ")}</td></tr>`).join("");
+  TL=tl;INBOX=ib;const s=document.getElementById('scrub');s.max=Math.max(0,tl.length-1);s.value=s.max;render();
+}
+function render(){
+  const i=+document.getElementById('scrub').value;const snap=TL[i];
+  document.getElementById('snap').innerHTML=snap?`<div><b>${snap.at}</b> <span class="badge">${snap.source}</span></div><div>Active outages: ${snap.active.length?snap.active.map(a=>`<code>${a}</code>`).join(" "):"none"}</div>`:"<i>No snapshots yet. Run <code>make replay</code>.</i>";
+  const until=snap?snap.at:null;const rows=INBOX.filter(r=>!until||r.at<=until);
+  document.getElementById('inbox').innerHTML="<tr><th>at</th><th>rider / trip</th><th>outage</th><th>decision</th><th>BART option ranking</th><th>message</th></tr>"+rows.map(r=>`<tr class="${r.sent?"sent":"quiet"}"><td>${r.at}</td><td>${r.rider_id} #${r.trip_id}</td><td><code>${r.fragment}</code><br><small>${r.station||""} ${r.elevator||""}</small></td><td><b>${r.condition}</b> affected=${r.affected}<br><small>${r.reasoning}</small><br><small>provider ${r.provider}; hook cancels ${r.mechanisms.hook_cancellations||0}, steering guides ${r.mechanisms.steering_guides||0}</small></td><td><ol class="rank">${r.ranked_options.map(o=>`<li>${o.option}${o.feasible?"":" <small>(infeasible: "+o.reason+")</small>"}${o.added_minutes!=null?" +"+o.added_minutes+" min":""}</li>`).join("")}</ol></td><td>${r.message||"<span class='quiet'>(quiet)</span>"}</td></tr>`).join("");
+}
+document.getElementById('scrub').addEventListener('input',render);load();
+</script></body></html>

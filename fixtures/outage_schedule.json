@@ -1,0 +1,16 @@
+{
+  "source": "FIXTURE: a synthetic week of elevator outages at five-minute resolution, shaped like the poller's diffs. Not BART data.",
+  "days": 7,
+  "outages": [
+    {"day": 0, "elevator": "DELN-E1", "from": "05:00", "to": "11:30"},
+    {"day": 0, "elevator": "PLZA-E2", "from": "09:00", "to": "22:00"},
+    {"day": 1, "elevator": "POWL-E1", "from": "17:00", "to": "23:59"},
+    {"day": 2, "elevator": "MCAR-E2", "from": "06:00", "to": "09:00"},
+    {"day": 2, "elevator": "EMBR-E1", "from": "15:00", "to": "20:00"},
+    {"day": 3, "elevator": "POWL-E1", "from": "19:00", "to": "23:59"},
+    {"day": 3, "elevator": "ROCK-E1", "from": "08:00", "to": "11:00"},
+    {"day": 4, "elevator": "DELN-E2", "from": "17:30", "to": "23:59"},
+    {"day": 5, "elevator": "12TH-E1", "from": "20:00", "to": "23:59"},
+    {"day": 6, "elevator": "BALB-E1", "from": "00:00", "to": "23:59"}
+  ]
+}

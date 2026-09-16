@@ -1,0 +1,188 @@
+{
+  "packet": "last-elevator evidence packet v1",
+  "provenance": {
+    "run": "scripted model, fixture KB",
+    "claimable": false,
+    "source": {
+      "kb": "fixtures/kb.json",
+      "cases": "fixtures/cases.json",
+      "fixture": true
+    }
+  },
+  "trip": {
+    "rider_id": "rider-demo",
+    "origin": "DELN",
+    "destination": "EMBR",
+    "outages": [
+      "DELN-E1"
+    ],
+    "via": [],
+    "when": "",
+    "after_dark": true,
+    "last_train": false
+  },
+  "note": null,
+  "decision": {
+    "affected": true,
+    "kind": "cannot_enter",
+    "station": "DELN",
+    "elevator": "DELN-E1",
+    "top_option": "alternate_elevator",
+    "ranked": [
+      {
+        "label": "alternate_elevator",
+        "feasible": true,
+        "reason": "Use the DELN-E2 elevator on the other side of the platform; ramp connects at concourse level.",
+        "added_minutes": 4,
+        "source_url": "https://www.bart.gov/stations/deln/accessible"
+      },
+      {
+        "label": "transit",
+        "feasible": true,
+        "reason": "Take AC Transit or Muni from DELN to the next accessible station; BART honors the fare.",
+        "added_minutes": 20,
+        "source_url": "https://www.bart.gov/stations/deln/accessible"
+      }
+    ],
+    "flags": {
+      "after_dark": true,
+      "last_train": false
+    },
+    "source_url": "https://www.bart.gov/stations/deln/accessible",
+    "station_name": "",
+    "note_constraints": [],
+    "note_set_aside": false
+  },
+  "gate_events": [
+    {
+      "kind": "interrupt.raised",
+      "what": "run paused for the rider",
+      "tool": "draft_plan",
+      "reason": "It is after dark. DELN elevator DELN-E1 is out at your starting station. BART's option is the alternate elevator route at the same station, about 4 minutes more. Send this plan now?",
+      "detail": {
+        "case_key": "rider-demo|DELN>EMBR|DELN-E1",
+        "rider_id": "rider-demo",
+        "station": "DELN",
+        "elevator": "DELN-E1",
+        "option": "alternate_elevator",
+        "added_minutes": 4,
+        "flags": {
+          "after_dark": true,
+          "last_train": false
+        },
+        "source_url": "https://www.bart.gov/stations/deln/accessible",
+        "rejected": [
+          {
+            "label": "transit",
+            "reason": "Take AC Transit or Muni from DELN to the next accessible station; BART honors the fare."
+          }
+        ],
+        "question": "It is after dark. DELN elevator DELN-E1 is out at your starting station. BART's option is the alternate elevator route at the same station, about 4 minutes more. Send this plan now?",
+        "answer": null,
+        "interrupt_ids": [],
+        "withdrawn_at": null,
+        "withdrawn_reason": ""
+      }
+    },
+    {
+      "kind": "interrupt.resumed",
+      "what": "rider answered, run resumed",
+      "tool": "draft_plan",
+      "reason": "False",
+      "detail": {}
+    },
+    {
+      "kind": "steering.proceed_after_model",
+      "what": "steering accepted the model's plan",
+      "tool": "Plan",
+      "reason": "plan matches",
+      "detail": {
+        "station": "DELN",
+        "elevator": "DELN-E1",
+        "option": "alternate_elevator",
+        "added_minutes": 4,
+        "rider_message": "Your plan for DELN is on file at your request: elevator DELN-E1 is out and BART's option is the alternate elevator route at the same station. Nothing was sent.",
+        "status": "hold"
+      }
+    }
+  ],
+  "decision_card": {
+    "case_key": "rider-demo|DELN>EMBR|DELN-E1",
+    "rider_id": "rider-demo",
+    "station": "DELN",
+    "elevator": "DELN-E1",
+    "option": "alternate_elevator",
+    "added_minutes": 4,
+    "flags": {
+      "after_dark": true,
+      "last_train": false
+    },
+    "source_url": "https://www.bart.gov/stations/deln/accessible",
+    "rejected": [
+      {
+        "label": "transit",
+        "reason": "Take AC Transit or Muni from DELN to the next accessible station; BART honors the fare."
+      }
+    ],
+    "question": "It is after dark. DELN elevator DELN-E1 is out at your starting station. BART's option is the alternate elevator route at the same station, about 4 minutes more. Send this plan now?",
+    "answer": false,
+    "interrupt_ids": [
+      "v1:before_tool_call:t1:313bf058-2f67-56cd-be91-36ddf4e7ae1d"
+    ],
+    "withdrawn_at": null,
+    "withdrawn_reason": ""
+  },
+  "rider_answer": false,
+  "final_plan": {
+    "station": "DELN",
+    "elevator": "DELN-E1",
+    "option": "alternate_elevator",
+    "added_minutes": 4,
+    "rider_message": "Your plan for DELN is on file at your request: elevator DELN-E1 is out and BART's option is the alternate elevator route at the same station. Nothing was sent.",
+    "status": "hold"
+  },
+  "trace_events": [
+    {
+      "event": "interrupt.raised",
+      "span": "execute_tool draft_plan",
+      "attributes": {
+        "case_key": "rider-demo|DELN>EMBR|DELN-E1",
+        "option": "alternate_elevator",
+        "flags": "{\"after_dark\": true, \"last_train\": false}"
+      }
+    },
+    {
+      "event": "interrupt.resumed",
+      "span": "execute_tool draft_plan",
+      "attributes": {
+        "case_key": "rider-demo|DELN>EMBR|DELN-E1",
+        "answer": false
+      }
+    },
+    {
+      "event": "steering.proceed_after_model",
+      "span": "execute_event_loop_cycle",
+      "attributes": {
+        "plan.station": "DELN",
+        "plan.elevator": "DELN-E1",
+        "plan.option": "alternate_elevator",
+        "plan.added_minutes": 4
+      }
+    }
+  ],
+  "counts": {
+    "hook_cancel": 0,
+    "guide_before_tool": 0,
+    "guide_after_model": 0,
+    "proceed_after_model": 1,
+    "interrupts": 1,
+    "model_calls": 2
+  },
+  "cost": {
+    "model_calls": 2,
+    "input_tokens": 2,
+    "output_tokens": 2,
+    "total_tokens": 4,
+    "cycles": 3
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "demo_one",
+  "description": "make demo-one script. The model first names a station that is not in the KB (hook cancels it), looks up the right station, plans, drafts with the wrong option (steering guides it), drafts with BART's option, and submits a Plan whose minutes match the computed ones.",
+  "turns": [
+    {"type": "tool_use", "name": "get_station_facts", "input": {"station_abbr": "SANK"}},
+    {"type": "tool_use", "name": "get_station_facts", "input": {"station_abbr": "SANL"}},
+    {"type": "tool_use", "name": "plan_alternatives", "input": {"origin": "SANL", "destination": "EMBR", "outage_station": "SANL", "outage_elevator": "PLATFORM 2 ELEVATOR (RICHMOND, SFO/MILLBRAE/DALY CITY DIRECTIONS)", "when_iso": "2026-09-12T08:00:00-07:00"}},
+    {"type": "tool_use", "name": "draft_message", "input": {"option": "mitigation_shuttle", "station_abbr": "SANL", "elevator": "PLATFORM 2 ELEVATOR (RICHMOND, SFO/MILLBRAE/DALY CITY DIRECTIONS)", "steps": ["Ask the station agent for a shuttle."], "added_minutes": null}},
+    {"type": "tool_use", "name": "draft_message", "input": {"option": "backtracking", "station_abbr": "SANL", "elevator": "PLATFORM 2 ELEVATOR (RICHMOND, SFO/MILLBRAE/DALY CITY DIRECTIONS)", "steps": ["Take the Platform 1 elevator to the opposite platform.", "Ride one stop to Bay Fair.", "Cross to the San Francisco-bound platform and board your train."], "added_minutes": 14}},
+    {"type": "tool_use", "name": "Plan", "input": {"affected": true, "option": "backtracking", "steps": ["Take the Platform 1 elevator to the opposite platform.", "Ride one stop to Bay Fair.", "Cross to the San Francisco-bound platform and board your train."], "added_minutes": 14, "needs_human_decision": false, "message": "San Leandro: the SF-direction platform elevator is out. Take the Platform 1 elevator to the opposite platform, ride one stop to Bay Fair, and board your San Francisco train there. Adds about 14 minutes."}}
+  ]
+}

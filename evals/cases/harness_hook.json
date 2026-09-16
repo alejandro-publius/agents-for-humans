@@ -1,0 +1,17 @@
+{
+  "suite": "harness_hook",
+  "description": "Does the BeforeToolCall hook cancel tool calls whose arguments name an unknown station? Output is the status of the first tool call: 'cancelled' or 'executed'.",
+  "output_of": "first_tool_status",
+  "cases": [
+    {
+      "name": "unknown_station_is_cancelled",
+      "input": {"prompt": "Outage: ZZZZ: Platform - Nowhere. Trip DELN to EMBR.", "model_fixture": "hook_bad_station"},
+      "label": "cancelled"
+    },
+    {
+      "name": "known_station_is_executed",
+      "input": {"prompt": "Outage: DELN: Platform - Richmond. Trip DELN to EMBR.", "model_fixture": "hook_good_station"},
+      "label": "executed"
+    }
+  ]
+}

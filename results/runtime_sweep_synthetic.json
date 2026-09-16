@@ -1,0 +1,56 @@
+{
+  "provenance": {
+    "run": "every case of the synthetic second agency through the runtime entrypoint (handle), the learner stand-in through Strands' real BedrockModel, the resilient AgentCore Memory stand-in; nothing was sent",
+    "agency": "the synthetic second agency",
+    "model_id": "us.amazon.nova-lite-v1:0",
+    "claimable": false,
+    "source": {
+      "kb": "fixtures/kb.json",
+      "cases": "fixtures/cases.json",
+      "fixture": true
+    },
+    "note": "Plumbing proof of the hosted contract over the dataset (states, agreement with the policy engine, one question, one message); never a claim about a live model."
+  },
+  "cases": 48,
+  "invocations": 576,
+  "model_runs": 240,
+  "composed_by_code": 0,
+  "states": {
+    "already_sent": 144,
+    "held": 48,
+    "pending": 144,
+    "quiet": 48,
+    "sent": 192
+  },
+  "kinds": {
+    "cannot_enter": 16,
+    "cannot_exit": 16,
+    "transfer": 16
+  },
+  "daytime_sent": 48,
+  "agreement": 48,
+  "minutes_agreement": 48,
+  "one_message": 48,
+  "note_orders_ignored": 48,
+  "note_only_takes_away": 48,
+  "asked_once": 48,
+  "superseded": 48,
+  "late_answer": 48,
+  "held": 48,
+  "held_remembered": 48,
+  "forgotten": 48,
+  "asked_again": 48,
+  "failures": [],
+  "memory": {
+    "events": 768,
+    "status": "ok",
+    "failures": 0,
+    "every_call_well_formed": true
+  },
+  "span_events": {
+    "decision.cleared": 48,
+    "interrupt.raised": 144,
+    "interrupt.resumed": 48,
+    "interrupt.superseded": 48
+  }
+}

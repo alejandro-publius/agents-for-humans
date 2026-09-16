@@ -1,0 +1,149 @@
+{
+  "provenance": {
+    "run": "the agent through Strands' real BedrockModel with a stand-in client that enforces the Converse rules; nothing was sent",
+    "model_id": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+    "claimable": false,
+    "source": {
+      "kb": "fixtures/kb.json",
+      "cases": "fixtures/cases.json",
+      "fixture": true
+    },
+    "note": "The stand-in replies with scripted chunks; the live run replaces it with Bedrock. Counts here measure the request path (what is sent, whether every retry is sendable, what an error costs), not model behaviour."
+  },
+  "scenarios": {
+    "compliant": {
+      "composed_by": "model",
+      "stop_reason": "tool_use",
+      "model_calls": 2,
+      "requests": 2,
+      "rejected_by_converse_rules": 0,
+      "hook_cancels": 0,
+      "guide_before_tool": 0,
+      "guide_after_model": 0,
+      "sendability": "both",
+      "reason": ""
+    },
+    "retries": {
+      "composed_by": "model",
+      "stop_reason": "tool_use",
+      "model_calls": 6,
+      "requests": 6,
+      "rejected_by_converse_rules": 0,
+      "hook_cancels": 1,
+      "guide_before_tool": 1,
+      "guide_after_model": 2,
+      "sendability": "both",
+      "reason": ""
+    },
+    "retries_fold_only": {
+      "composed_by": "model",
+      "stop_reason": "tool_use",
+      "model_calls": 6,
+      "requests": 7,
+      "rejected_by_converse_rules": 1,
+      "hook_cancels": 1,
+      "guide_before_tool": 1,
+      "guide_after_model": 2,
+      "sendability": "fold_only",
+      "reason": ""
+    },
+    "retries_no_passes": {
+      "composed_by": "code",
+      "stop_reason": "exception",
+      "model_calls": 6,
+      "requests": 7,
+      "rejected_by_converse_rules": 2,
+      "hook_cancels": 1,
+      "guide_before_tool": 1,
+      "guide_after_model": 2,
+      "sendability": "none",
+      "reason": "EventLoopException('An error occurred (ValidationException) when calling the ConverseStream operation: (stand-in) roles must alternate between user and assistant')"
+    },
+    "access_denied": {
+      "composed_by": "code",
+      "stop_reason": "exception",
+      "model_calls": 1,
+      "requests": 1,
+      "rejected_by_converse_rules": 0,
+      "hook_cancels": 0,
+      "guide_before_tool": 0,
+      "guide_after_model": 0,
+      "sendability": "both",
+      "reason": "ClientError(\"An error occurred (AccessDeniedException) when calling the ConverseStream operation: You don't have access to the model with the specified model ID.\")"
+    },
+    "throttled": {
+      "composed_by": "model",
+      "stop_reason": "tool_use",
+      "model_calls": 3,
+      "requests": 3,
+      "rejected_by_converse_rules": 0,
+      "hook_cancels": 0,
+      "guide_before_tool": 0,
+      "guide_after_model": 0,
+      "sendability": "both",
+      "reason": ""
+    },
+    "truncated": {
+      "composed_by": "code",
+      "stop_reason": "exception",
+      "model_calls": 1,
+      "requests": 1,
+      "rejected_by_converse_rules": 0,
+      "hook_cancels": 0,
+      "guide_before_tool": 0,
+      "guide_after_model": 0,
+      "sendability": "both",
+      "reason": "MaxTokensReachedException('Model stopped generating due to maximum token limit. The partial message has been added to the conversation history. You can continue by calling the agent again. For more information see: https://strandsagents.com/docs/user-guide/concepts/agents/agent-loop/#maxtokensreachedexception')"
+    },
+    "hung": {
+      "composed_by": "code",
+      "stop_reason": "exception",
+      "model_calls": 1,
+      "requests": 1,
+      "rejected_by_converse_rules": 0,
+      "hook_cancels": 0,
+      "guide_before_tool": 0,
+      "guide_after_model": 0,
+      "sendability": "both",
+      "reason": "ReadTimeoutError('Read timeout on endpoint URL: \"https://bedrock-runtime.us-west-2.amazonaws.com/\"')"
+    },
+    "prose_then_forced": {
+      "composed_by": "model",
+      "stop_reason": "tool_use",
+      "model_calls": 3,
+      "requests": 3,
+      "rejected_by_converse_rules": 0,
+      "hook_cancels": 0,
+      "guide_before_tool": 0,
+      "guide_after_model": 0,
+      "sendability": "both",
+      "reason": ""
+    },
+    "human_moment_yes": {
+      "composed_by": "model",
+      "stop_reason": "sent",
+      "model_calls": 3,
+      "requests": 3,
+      "rejected_by_converse_rules": 0,
+      "hook_cancels": 0,
+      "guide_before_tool": 2,
+      "guide_after_model": 0,
+      "sendability": "both",
+      "reason": "",
+      "interrupts_raised": 1
+    },
+    "human_moment_no": {
+      "composed_by": "model",
+      "stop_reason": "held",
+      "model_calls": 3,
+      "requests": 3,
+      "rejected_by_converse_rules": 0,
+      "hook_cancels": 0,
+      "guide_before_tool": 2,
+      "guide_after_model": 1,
+      "sendability": "both",
+      "reason": "",
+      "interrupts_raised": 1
+    }
+  }
+}

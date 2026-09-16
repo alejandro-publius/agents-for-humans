@@ -1,49 +1,165 @@
 [project]
-name = "afh-agent"
+name = "last-elevator"
 version = "0.1.0"
-description = "Agents for Humans hackathon entry: a Strands Agents SDK agent that handles a repetitive task end to end."
+description = "Last Elevator: a Strands agent that watches BART elevator outages for the trips you actually take and interrupts only when a trip is broken."
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
+requires-python = ">=3.12"
 authors = [
     { name = "Alex Vintera" },
     { name = "Rachel Selbrede" },
 ]
-requires-python = ">=3.10"
 dependencies = [
-    "python-dotenv>=1.2.3",
     "strands-agents>=1.55.1",
     "strands-agents-tools>=0.8.8",
+    "strands-agents-evals>=1.2.0",
+    "pydantic>=2.0",
+    "certifi>=2024.0",
+    "mcp>=2.0",
+    "fastapi>=0.115",
+    "uvicorn>=0.30",
+    "python-multipart>=0.0.9",
 ]
 
 [project.optional-dependencies]
-anthropic = ["strands-agents[anthropic]"]
-openai = ["strands-agents[openai]"]
-ollama = ["strands-agents[ollama]"]
-agentcore = [
-    "bedrock-agentcore>=1.22",
-    "bedrock-agentcore-starter-toolkit>=0.3",
-]
-
-[project.scripts]
-afh = "afh_agent.cli:main"
-
-[dependency-groups]
 dev = [
-    "pytest>=9.1.1",
-    "ruff>=0.16.7",
+    "pytest>=8.0",
+    "ruff>=0.6",
 ]
 
 [build-system]
-requires = ["uv_build>=0.11.28,<0.12.0"]
-build-backend = "uv_build"
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/agent", "src/bart", "src/policy", "src/app", "kb"]
 
 [tool.ruff]
 line-length = 110
-target-version = "py310"
+target-version = "py312"
+extend-exclude = ["results", "fixtures", "kb", "data"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B"]
 
+[tool.ruff.lint.flake8-bugbear]
+extend-immutable-calls = ["fastapi.Form"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["."]
+
+[dependency-groups]
+dev = [
+    "axe-playwright-python>=0.1.8",
+    "playwright>=1.62.0",
+]
+
+[tool.ruff.lint.per-file-ignores]
+# Vendored from the dispatch package, which formats at 120 columns in its own CI; the nested
+# ruff.toml files cover le_dispatch/, tests/dispatch/ and infra/, and these scripts sit beside
+# this repository's own in scripts/, so their width is excused by name.
+"scripts/ablation.py" = ["E501"]
+"scripts/agentcore_deploy.py" = ["E501"]
+"scripts/agentcore_eval.py" = ["E501"]
+"scripts/agentcore_eval_local.py" = ["E501"]
+"scripts/agentcore_memory.py" = ["E501"]
+"scripts/agentcore_policy.py" = ["E501"]
+"scripts/bedrock_wire.py" = ["E501"]
+"scripts/bundles.py" = ["E501"]
+"scripts/check_docs.py" = ["E501"]
+"scripts/cold_start.py" = ["E501"]
+"scripts/convergence.py" = ["E501"]
+"scripts/coverage_report.py" = ["E501"]
+"scripts/demo_live.py" = ["E501"]
+"scripts/demo_one.py" = ["E501"]
+"scripts/demo_runtime.py" = ["E501"]
+"scripts/diagrams.py" = ["E501"]
+"scripts/eval_live.py" = ["E501"]
+"scripts/evaluator_zip.py" = ["E501"]
+"scripts/evidence_packet.py" = ["E501"]
+"scripts/export_dataset.py" = ["E501"]
+"scripts/first_shot.py" = ["E501"]
+"scripts/gen_cedar.py" = ["E501"]
+"scripts/image_check.py" = ["E501"]
+"scripts/impact.py" = ["E501"]
+"scripts/inbox.py" = ["E501"]
+"scripts/integrate.py" = ["E501"]
+"scripts/integrated_ci.py" = ["E501"]
+"scripts/make_fixtures.py" = ["E501"]
+"scripts/policy_check.py" = ["E501"]
+"scripts/preflight.py" = ["E501"]
+"scripts/quiet_report.py" = ["E501"]
+"scripts/red_team.py" = ["E501"]
+"scripts/rehearse.py" = ["E501"]
+"scripts/render_results_table.py" = ["E501"]
+"scripts/retention.py" = ["E501"]
+"scripts/runtime_sweep.py" = ["E501"]
+"scripts/screenshots.py" = ["E501"]
+"scripts/secret_scan.py" = ["E501"]
+"scripts/serve.py" = ["E501"]
+"scripts/site.css" = ["E501"]
+"scripts/site.py" = ["E501"]
+"scripts/site_a11y.py" = ["E501"]
+"scripts/transcript_header.py" = ["E501"]
+"scripts/verify_claims.py" = ["E501"]
+"scripts/video_assets.py" = ["E501"]
+"scripts/walkthrough.py" = ["E501"]
+"scripts/wire_convergence.py" = ["E501"]
+
+[tool.ruff.format]
+# The dispatch package formats itself at 120 columns in its own CI, and these files sit beside this
+# repository's own code in scripts/ and docs/, where the nested ruff.toml files cannot reach them.
+# Lint still runs on every one of them (only their width is excused, in per-file-ignores above).
+exclude = [
+  "scripts/ablation.py",
+  "scripts/agentcore_deploy.py",
+  "scripts/agentcore_eval.py",
+  "scripts/agentcore_eval_local.py",
+  "scripts/agentcore_memory.py",
+  "scripts/agentcore_policy.py",
+  "scripts/bedrock_wire.py",
+  "scripts/bundles.py",
+  "scripts/check_docs.py",
+  "scripts/cold_start.py",
+  "scripts/convergence.py",
+  "scripts/coverage_report.py",
+  "scripts/demo_live.py",
+  "scripts/demo_one.py",
+  "scripts/demo_runtime.py",
+  "scripts/diagrams.py",
+  "scripts/eval_live.py",
+  "scripts/evaluator_zip.py",
+  "scripts/evidence_packet.py",
+  "scripts/export_dataset.py",
+  "scripts/first_shot.py",
+  "scripts/gen_cedar.py",
+  "scripts/image_check.py",
+  "scripts/impact.py",
+  "scripts/inbox.py",
+  "scripts/integrate.py",
+  "scripts/integrated_ci.py",
+  "scripts/make_fixtures.py",
+  "scripts/policy_check.py",
+  "scripts/preflight.py",
+  "scripts/quiet_report.py",
+  "scripts/red_team.py",
+  "scripts/rehearse.py",
+  "scripts/render_results_table.py",
+  "scripts/retention.py",
+  "scripts/runtime_sweep.py",
+  "scripts/screenshots.py",
+  "scripts/secret_scan.py",
+  "scripts/serve.py",
+  "scripts/site.css",
+  "scripts/site.py",
+  "scripts/site_a11y.py",
+  "scripts/transcript_header.py",
+  "scripts/verify_claims.py",
+  "scripts/video_assets.py",
+  "scripts/walkthrough.py",
+  "scripts/wire_convergence.py",
+  "docs/INTEGRATION.md",
+  "docs/UPSTREAM-NOTE.md"
+]

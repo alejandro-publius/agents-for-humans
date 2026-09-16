@@ -1,0 +1,10 @@
+{
+  "_fixture": {
+    "synthetic": true,
+    "source": "Authored 2026-09-12 for tests/test_app.py only: the same synthetic snapshots time-stamped at night (06:30 UTC = 23:30 PDT), so replayed decisions are after dark and past the fixture's last train.",
+    "note": "SYNTHETIC. Not used by make replay."
+  },
+  "snapshots": [
+    {"at": "2026-09-13T06:30:00+00:00", "file": "elev_multi.json", "note": "synthetic night: DELN, SANL (SF direction), PLZA (Richmond)"}
+  ]
+}

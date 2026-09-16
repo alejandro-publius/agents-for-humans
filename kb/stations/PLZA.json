@@ -1,0 +1,97 @@
+{
+  "abbr": "PLZA",
+  "documented_outage_options": [
+    {
+      "elevator": "PLATFORM 1 ELEVATOR (RICHMOND DIRECTION)",
+      "elevator_kind": "platform",
+      "label": "Can't enter station",
+      "label_rule": "phrase",
+      "option_label": "backtracking",
+      "situation": "cant_enter",
+      "text": "Take the Platform 2 elevator to the opposite platform and go back to North Berkeley to board desired train."
+    },
+    {
+      "elevator": "PLATFORM 1 ELEVATOR (RICHMOND DIRECTION)",
+      "elevator_kind": "platform",
+      "label": "Can't exit station",
+      "label_rule": "phrase",
+      "option_label": "backtracking",
+      "situation": "cant_exit",
+      "text": "Continue on BART to El Cerrito del Norte and return to El Cerrito Plaza. Exit using Platform 2 elevator."
+    },
+    {
+      "elevator": "PLATFORM 2 ELEVATOR (BERRYESSA, SFO/MILLBRAE/DALY CITY DIRECTION)",
+      "elevator_kind": "platform",
+      "label": "Can't enter station",
+      "label_rule": "phrase",
+      "option_label": "backtracking",
+      "situation": "cant_enter",
+      "text": "Take Platform 1 elevator to the opposite platform and go back to El Cerrito del Norte to board desired train."
+    },
+    {
+      "elevator": "PLATFORM 2 ELEVATOR (BERRYESSA, SFO/MILLBRAE/DALY CITY DIRECTION)",
+      "elevator_kind": "platform",
+      "label": "Can't exit station",
+      "label_rule": "phrase",
+      "option_label": "backtracking",
+      "situation": "cant_exit",
+      "text": "Continue on BART to North Berkeley and return to El Cerrito Plaza. Exit using Platform 1 elevator."
+    }
+  ],
+  "elevators": [
+    {
+      "enter_option": "backtracking",
+      "exit_option": "backtracking",
+      "kind": "platform",
+      "name": "PLATFORM 1 ELEVATOR (RICHMOND DIRECTION)",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "label_rule": "phrase",
+          "option_label": "backtracking",
+          "situation": "cant_enter",
+          "text": "Take the Platform 2 elevator to the opposite platform and go back to North Berkeley to board desired train."
+        },
+        {
+          "label": "Can't exit station",
+          "label_rule": "phrase",
+          "option_label": "backtracking",
+          "situation": "cant_exit",
+          "text": "Continue on BART to El Cerrito del Norte and return to El Cerrito Plaza. Exit using Platform 2 elevator."
+        }
+      ]
+    },
+    {
+      "enter_option": "backtracking",
+      "exit_option": "backtracking",
+      "kind": "platform",
+      "name": "PLATFORM 2 ELEVATOR (BERRYESSA, SFO/MILLBRAE/DALY CITY DIRECTION)",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "label_rule": "phrase",
+          "option_label": "backtracking",
+          "situation": "cant_enter",
+          "text": "Take Platform 1 elevator to the opposite platform and go back to El Cerrito del Norte to board desired train."
+        },
+        {
+          "label": "Can't exit station",
+          "label_rule": "phrase",
+          "option_label": "backtracking",
+          "situation": "cant_exit",
+          "text": "Continue on BART to North Berkeley and return to El Cerrito Plaza. Exit using Platform 1 elevator."
+        }
+      ]
+    }
+  ],
+  "http_status": 200,
+  "name": "El Cerrito Plaza",
+  "other_sections": [],
+  "outage_intro": "In case of an elevator outage, use the following options or contact the station agent for assistance. Agents can arrange a ride to a different station in an accessible van if needed.",
+  "page_name": "El Cerrito Plaza",
+  "pathways": [],
+  "pathways_status": "unknown",
+  "scrape_method": "Chrome same-origin fetch, text blocks, 1 request per 1.1 s",
+  "scraped_at": "2026-09-11T18:21:24.006Z",
+  "source_url": "https://www.bart.gov/stations/PLZA/accessible"
+}

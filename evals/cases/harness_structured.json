@@ -1,0 +1,22 @@
+{
+  "suite": "harness_structured",
+  "description": "Does every run end in a schema-valid Plan? Output is plan.option from the structured output.",
+  "output_of": "plan_option",
+  "cases": [
+    {
+      "name": "immediate_plan",
+      "input": {"prompt": "Outage: EMBR: Street - Platform. Trip EMBR to ASHB.", "model_fixture": "structured_plan"},
+      "label": "alternate_elevator"
+    },
+    {
+      "name": "forced_plan_after_prose",
+      "input": {"prompt": "Outage: DELN: Platform - Richmond. Trip DELN to EMBR.", "model_fixture": "structured_forced"},
+      "label": "backtracking"
+    },
+    {
+      "name": "invalid_plan_then_valid",
+      "input": {"prompt": "Outage: ASHB: Street - Platform. Trip ASHB to MONT.", "model_fixture": "structured_invalid_then_valid"},
+      "label": "transit"
+    }
+  ]
+}

@@ -1,0 +1,314 @@
+{
+ "_fixture": {
+  "synthetic": false,
+  "source": "https://api.bart.gov/docs/sched/depart.aspx (documented JSON sample, dated Jan 2, 2018)",
+  "captured_from_docs_on": "2026-09-11",
+  "note": "Verbatim documented sample. Schedule 45 is historical; trip times are used only as fixture arithmetic."
+ },
+ "?xml": {
+  "@version": "1.0",
+  "@encoding": "utf-8"
+ },
+ "root": {
+  "@id": "1",
+  "uri": {
+   "#cdata-section": "https://api.bart.gov/api/sched.aspx?cmd=depart&orig=ASHB&dest=CIVC&date=now&b=2&a=2&l=1&json=y"
+  },
+  "origin": "ASHB",
+  "destination": "CIVC",
+  "sched_num": "45",
+  "schedule": {
+   "date": "Jan 2, 2018",
+   "time": "10:10 AM",
+   "before": "2",
+   "after": "2",
+   "request": {
+    "trip": [
+     {
+      "@origin": "ASHB",
+      "@destination": "CIVC",
+      "@fare": "4.45",
+      "@origTimeMin": "9:57 AM",
+      "@origTimeDate": "01/02/2018 ",
+      "@destTimeMin": "10:22 AM",
+      "@destTimeDate": "01/02/2018",
+      "@clipper": "1.45",
+      "@tripTime": "25",
+      "fares": {
+       "@level": "normal",
+       "fare": [
+        {
+         "@amount": "3.95",
+         "@class": "clipper",
+         "@name": "Clipper"
+        },
+        {
+         "@amount": "4.45",
+         "@class": "cash",
+         "@name": "BART Blue Ticket"
+        },
+        {
+         "@amount": "1.45",
+         "@class": "rtcclipper",
+         "@name": "Senior/Disabled Clipper"
+        },
+        {
+         "@amount": "1.95",
+         "@class": "student",
+         "@name": "Youth Clipper"
+        },
+        {
+         "@amount": "3.25",
+         "@class": "start",
+         "@name": "Clipper START"
+        }
+       ]
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "ASHB",
+        "@destination": "CIVC",
+        "@origTimeMin": "9:57 AM",
+        "@origTimeDate": "01/02/2018",
+        "@destTimeMin": "10:22 AM",
+        "@destTimeDate": "01/02/2018",
+        "@line": "ROUTE 7",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Millbrae",
+        "@load": "1",
+        "@trainId": "4430942",
+        "@trainIdx": "23",
+        "@originPlatform": "PL 1",
+        "@destinationPlatform": "PL 2"
+       }
+      ]
+     },
+     {
+      "@origin": "ASHB",
+      "@destination": "CIVC",
+      "@fare": "4.45",
+      "@origTimeMin": "10:05 AM",
+      "@origTimeDate": "01/02/2018 ",
+      "@destTimeMin": "10:29 AM",
+      "@destTimeDate": "01/02/2018",
+      "@clipper": "1.45",
+      "@tripTime": "24",
+      "fares": {
+       "@level": "normal",
+       "fare": [
+        {
+         "@amount": "3.95",
+         "@class": "clipper",
+         "@name": "Clipper"
+        },
+        {
+         "@amount": "4.45",
+         "@class": "cash",
+         "@name": "BART Blue Ticket"
+        },
+        {
+         "@amount": "1.45",
+         "@class": "rtcclipper",
+         "@name": "Senior/Disabled Clipper"
+        },
+        {
+         "@amount": "1.95",
+         "@class": "student",
+         "@name": "Youth Clipper"
+        },
+        {
+         "@amount": "3.25",
+         "@class": "start",
+         "@name": "Clipper START"
+        }
+       ]
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "S",
+        "@origin": "ASHB",
+        "@destination": "MCAR",
+        "@origTimeMin": "10:05 AM",
+        "@origTimeDate": "01/02/2018",
+        "@destTimeMin": "10:08 AM",
+        "@destTimeDate": "01/02/2018",
+        "@line": "ROUTE 4",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Warm Springs/South Fremont",
+        "@load": "2",
+        "@trainId": "2250950",
+        "@trainIdx": "23",
+        "@originPlatform": "PL 1",
+        "@destinationPlatform": "PL 2"
+       },
+       {
+        "@order": "2",
+        "@transfercode": "",
+        "@origin": "MCAR",
+        "@destination": "CIVC",
+        "@origTimeMin": "10:08 AM",
+        "@origTimeDate": "01/02/2018",
+        "@destTimeMin": "10:29 AM",
+        "@destTimeDate": "01/02/2018",
+        "@line": "ROUTE 1",
+        "@bikeflag": "1",
+        "@trainHeadStation": "San Francisco International Airport",
+        "@load": "2",
+        "@trainId": "3790932",
+        "@trainIdx": "37",
+        "@originPlatform": "PL 1",
+        "@destinationPlatform": "PL 2"
+       }
+      ]
+     },
+     {
+      "@origin": "ASHB",
+      "@destination": "CIVC",
+      "@fare": "4.45",
+      "@origTimeMin": "10:12 AM",
+      "@origTimeDate": "01/02/2018 ",
+      "@destTimeMin": "10:37 AM",
+      "@destTimeDate": "01/02/2018",
+      "@clipper": "1.45",
+      "@tripTime": "25",
+      "fares": {
+       "@level": "normal",
+       "fare": [
+        {
+         "@amount": "3.95",
+         "@class": "clipper",
+         "@name": "Clipper"
+        },
+        {
+         "@amount": "4.45",
+         "@class": "cash",
+         "@name": "BART Blue Ticket"
+        },
+        {
+         "@amount": "1.45",
+         "@class": "rtcclipper",
+         "@name": "Senior/Disabled Clipper"
+        },
+        {
+         "@amount": "1.95",
+         "@class": "student",
+         "@name": "Youth Clipper"
+        },
+        {
+         "@amount": "3.25",
+         "@class": "start",
+         "@name": "Clipper START"
+        }
+       ]
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "",
+        "@origin": "ASHB",
+        "@destination": "CIVC",
+        "@origTimeMin": "10:12 AM",
+        "@origTimeDate": "01/02/2018",
+        "@destTimeMin": "10:37 AM",
+        "@destTimeDate": "01/02/2018",
+        "@line": "ROUTE 7",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Millbrae",
+        "@load": "1",
+        "@trainId": "4450957",
+        "@trainIdx": "24",
+        "@originPlatform": "PL 1",
+        "@destinationPlatform": "PL 2"
+       }
+      ]
+     },
+     {
+      "@origin": "ASHB",
+      "@destination": "CIVC",
+      "@fare": "4.45",
+      "@origTimeMin": "10:20 AM",
+      "@origTimeDate": "01/02/2018 ",
+      "@destTimeMin": "10:44 AM",
+      "@destTimeDate": "01/02/2018",
+      "@clipper": "1.45",
+      "@tripTime": "24",
+      "fares": {
+       "@level": "normal",
+       "fare": [
+        {
+         "@amount": "3.95",
+         "@class": "clipper",
+         "@name": "Clipper"
+        },
+        {
+         "@amount": "4.45",
+         "@class": "cash",
+         "@name": "BART Blue Ticket"
+        },
+        {
+         "@amount": "1.45",
+         "@class": "rtcclipper",
+         "@name": "Senior/Disabled Clipper"
+        },
+        {
+         "@amount": "1.95",
+         "@class": "student",
+         "@name": "Youth Clipper"
+        },
+        {
+         "@amount": "3.25",
+         "@class": "start",
+         "@name": "Clipper START"
+        }
+       ]
+      },
+      "leg": [
+       {
+        "@order": "1",
+        "@transfercode": "S",
+        "@origin": "ASHB",
+        "@destination": "MCAR",
+        "@origTimeMin": "10:20 AM",
+        "@origTimeDate": "01/02/2018",
+        "@destTimeMin": "10:23 AM",
+        "@destTimeDate": "01/02/2018",
+        "@line": "ROUTE 4",
+        "@bikeflag": "1",
+        "@trainHeadStation": "Warm Springs/South Fremont",
+        "@load": "2",
+        "@trainId": "2271005",
+        "@trainIdx": "24",
+        "@originPlatform": "PL 1",
+        "@destinationPlatform": "PL 2"
+       },
+       {
+        "@order": "2",
+        "@transfercode": "",
+        "@origin": "MCAR",
+        "@destination": "CIVC",
+        "@origTimeMin": "10:23 AM",
+        "@origTimeDate": "01/02/2018",
+        "@destTimeMin": "10:44 AM",
+        "@destTimeDate": "01/02/2018",
+        "@line": "ROUTE 1",
+        "@bikeflag": "1",
+        "@trainHeadStation": "San Francisco International Airport",
+        "@load": "2",
+        "@trainId": "3810947",
+        "@trainIdx": "38",
+        "@originPlatform": "PL 1",
+        "@destinationPlatform": "PL 2"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "message": {
+   "legend": "bikeflag: 1 = bikes allowed. 0 = no bikes allowed. transfercode: blank = no transfer, N = normal transfer, T = timed transfer, connecting trains will wait up to five minutes for transferring passengers. S = scheduled transfer, connecting trains will not wait for transferring passengers if there is a delay."
+  }
+ }
+}

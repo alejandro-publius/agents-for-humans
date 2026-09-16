@@ -1,0 +1,373 @@
+{
+  "built_from": "kb/raw/batch*.json",
+  "canonical_station_list": {
+    "count": 50,
+    "source_url": "https://api.bart.gov/docs/overview/abbrev.aspx"
+  },
+  "counts": {
+    "documented_outage_options_total": 194,
+    "elevators_total": 97,
+    "pathways_unknown": 49,
+    "stations": 50,
+    "stations_missing_page": [],
+    "with_documented_outage_options": 50,
+    "with_elevators": 50,
+    "with_pathways": 1
+  },
+  "scraped_at_range": [
+    "2026-09-11T18:19:17.007Z",
+    "2026-09-11T18:25:23.007Z"
+  ],
+  "stations": [
+    {
+      "abbr": "12TH",
+      "documented_outage_options": 6,
+      "elevators": 3,
+      "name": "12th St. Oakland City Center",
+      "pathways": 0
+    },
+    {
+      "abbr": "16TH",
+      "documented_outage_options": 4,
+      "elevators": 2,
+      "name": "16th St. Mission (SF)",
+      "pathways": 0
+    },
+    {
+      "abbr": "19TH",
+      "documented_outage_options": 6,
+      "elevators": 3,
+      "name": "19th St. Oakland",
+      "pathways": 0
+    },
+    {
+      "abbr": "24TH",
+      "documented_outage_options": 4,
+      "elevators": 2,
+      "name": "24th St. Mission (SF)",
+      "pathways": 0
+    },
+    {
+      "abbr": "ANTC",
+      "documented_outage_options": 4,
+      "elevators": 2,
+      "name": "Antioch",
+      "pathways": 0
+    },
+    {
+      "abbr": "ASHB",
+      "documented_outage_options": 6,
+      "elevators": 3,
+      "name": "Ashby (Berkeley)",
+      "pathways": 0
+    },
+    {
+      "abbr": "BALB",
+      "documented_outage_options": 2,
+      "elevators": 1,
+      "name": "Balboa Park (SF)",
+      "pathways": 0
+    },
+    {
+      "abbr": "BAYF",
+      "documented_outage_options": 2,
+      "elevators": 1,
+      "name": "Bay Fair (San Leandro)",
+      "pathways": 0
+    },
+    {
+      "abbr": "BERY",
+      "documented_outage_options": 2,
+      "elevators": 1,
+      "name": "Berryessa / North San Jose",
+      "pathways": 0
+    },
+    {
+      "abbr": "CAST",
+      "documented_outage_options": 2,
+      "elevators": 1,
+      "name": "Castro Valley",
+      "pathways": 2
+    },
+    {
+      "abbr": "CIVC",
+      "documented_outage_options": 4,
+      "elevators": 2,
+      "name": "Civic Center (SF)",
+      "pathways": 0
+    },
+    {
+      "abbr": "COLM",
+      "documented_outage_options": 2,
+      "elevators": 1,
+      "name": "Colma",
+      "pathways": 0
+    },
+    {
+      "abbr": "COLS",
+      "documented_outage_options": 8,
+      "elevators": 4,
+      "name": "Coliseum",
+      "pathways": 0
+    },
+    {
+      "abbr": "CONC",
+      "documented_outage_options": 2,
+      "elevators": 1,
+      "name": "Concord",
+      "pathways": 0
+    },
+    {
+      "abbr": "DALY",
+      "documented_outage_options": 6,
+      "elevators": 3,
+      "name": "Daly City",
+      "pathways": 0
+    },
+    {
+      "abbr": "DBRK",
+      "documented_outage_options": 4,
+      "elevators": 2,
+      "name": "Downtown Berkeley",
+      "pathways": 0
+    },
+    {
+      "abbr": "DELN",
+      "documented_outage_options": 4,
+      "elevators": 2,
+      "name": "El Cerrito del Norte",
+      "pathways": 0
+    },
+    {
+      "abbr": "DUBL",
+      "documented_outage_options": 2,
+      "elevators": 1,
+      "name": "Dublin/Pleasanton",
+      "pathways": 0
+    },
+    {
+      "abbr": "EMBR",
+      "documented_outage_options": 4,
+      "elevators": 2,
+      "name": "Embarcadero (SF)",
+      "pathways": 0
+    },
+    {
+      "abbr": "FRMT",
+      "documented_outage_options": 2,
+      "elevators": 1,
+      "name": "Fremont",
+      "pathways": 0
+    },
+    {
+      "abbr": "FTVL",
+      "documented_outage_options": 4,
+      "elevators": 2,
+      "name": "Fruitvale (Oakland)",
+      "pathways": 0
+    },
+    {
+      "abbr": "GLEN",
+      "documented_outage_options": 2,
+      "elevators": 1,
+      "name": "Glen Park (SF)",
+      "pathways": 0
+    },
+    {
+      "abbr": "HAYW",
+      "documented_outage_options": 4,
+      "elevators": 2,
+      "name": "Hayward",
+      "pathways": 0
+    },
+    {
+      "abbr": "LAFY",
+      "documented_outage_options": 2,
+      "elevators": 1,
+      "name": "Lafayette",
+      "pathways": 0
+    },
+    {
+      "abbr": "LAKE",
+      "documented_outage_options": 4,
+      "elevators": 2,
+      "name": "Lake Merritt (Oakland)",
+      "pathways": 0
+    },
+    {
+      "abbr": "MCAR",
+      "documented_outage_options": 4,
+      "elevators": 2,
+      "name": "MacArthur (Oakland)",
+      "pathways": 0
+    },
+    {
+      "abbr": "MLBR",
+      "documented_outage_options": 8,
+      "elevators": 4,
+      "name": "Millbrae",
+      "pathways": 0
+    },
+    {
+      "abbr": "MLPT",
+      "documented_outage_options": 4,
+      "elevators": 2,
+      "name": "Milpitas",
+      "pathways": 0
+    },
+    {
+      "abbr": "MONT",
+      "documented_outage_options": 4,
+      "elevators": 2,
+      "name": "Montgomery St. (SF)",
+      "pathways": 0
+    },
+    {
+      "abbr": "NBRK",
+      "documented_outage_options": 2,
+      "elevators": 1,
+      "name": "North Berkeley",
+      "pathways": 0
+    },
+    {
+      "abbr": "NCON",
+      "documented_outage_options": 2,
+      "elevators": 1,
+      "name": "North Concord/Martinez",
+      "pathways": 0
+    },
+    {
+      "abbr": "OAKL",
+      "documented_outage_options": 2,
+      "elevators": 1,
+      "name": "Oakland Int'l Airport",
+      "pathways": 0
+    },
+    {
+      "abbr": "ORIN",
+      "documented_outage_options": 2,
+      "elevators": 1,
+      "name": "Orinda",
+      "pathways": 0
+    },
+    {
+      "abbr": "PCTR",
+      "documented_outage_options": 2,
+      "elevators": 1,
+      "name": "Pittsburg Center",
+      "pathways": 0
+    },
+    {
+      "abbr": "PHIL",
+      "documented_outage_options": 4,
+      "elevators": 2,
+      "name": "Pleasant Hill",
+      "pathways": 0
+    },
+    {
+      "abbr": "PITT",
+      "documented_outage_options": 4,
+      "elevators": 2,
+      "name": "Pittsburg/Bay Point",
+      "pathways": 0
+    },
+    {
+      "abbr": "PLZA",
+      "documented_outage_options": 4,
+      "elevators": 2,
+      "name": "El Cerrito Plaza",
+      "pathways": 0
+    },
+    {
+      "abbr": "POWL",
+      "documented_outage_options": 4,
+      "elevators": 2,
+      "name": "Powell St. (SF)",
+      "pathways": 0
+    },
+    {
+      "abbr": "RICH",
+      "documented_outage_options": 6,
+      "elevators": 3,
+      "name": "Richmond",
+      "pathways": 0
+    },
+    {
+      "abbr": "ROCK",
+      "documented_outage_options": 2,
+      "elevators": 1,
+      "name": "Rockridge (Oakland)",
+      "pathways": 0
+    },
+    {
+      "abbr": "SANL",
+      "documented_outage_options": 4,
+      "elevators": 2,
+      "name": "San Leandro",
+      "pathways": 0
+    },
+    {
+      "abbr": "SBRN",
+      "documented_outage_options": 2,
+      "elevators": 1,
+      "name": "San Bruno",
+      "pathways": 0
+    },
+    {
+      "abbr": "SFIA",
+      "documented_outage_options": 4,
+      "elevators": 2,
+      "name": "San Francisco Int'l Airport",
+      "pathways": 0
+    },
+    {
+      "abbr": "SHAY",
+      "documented_outage_options": 4,
+      "elevators": 2,
+      "name": "South Hayward",
+      "pathways": 0
+    },
+    {
+      "abbr": "SSAN",
+      "documented_outage_options": 2,
+      "elevators": 1,
+      "name": "South San Francisco",
+      "pathways": 0
+    },
+    {
+      "abbr": "UCTY",
+      "documented_outage_options": 4,
+      "elevators": 2,
+      "name": "Union City",
+      "pathways": 0
+    },
+    {
+      "abbr": "WARM",
+      "documented_outage_options": 10,
+      "elevators": 5,
+      "name": "Warm Springs/South Fremont",
+      "pathways": 0
+    },
+    {
+      "abbr": "WCRK",
+      "documented_outage_options": 4,
+      "elevators": 2,
+      "name": "Walnut Creek",
+      "pathways": 0
+    },
+    {
+      "abbr": "WDUB",
+      "documented_outage_options": 10,
+      "elevators": 5,
+      "name": "West Dublin",
+      "pathways": 0
+    },
+    {
+      "abbr": "WOAK",
+      "documented_outage_options": 4,
+      "elevators": 2,
+      "name": "West Oakland",
+      "pathways": 0
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "option_order": {
+    "note": "Alternate elevator is always the primary option when one exists, then backtracking, then transit, then Mitigation Trip, then Mitigation Shuttle. The automated capture got HTTP 403 for this page: BART's WAF blocks this laptop's IP; the page itself is live.",
+    "order": [
+      "alternate_elevator",
+      "backtracking",
+      "transit",
+      "mitigation_trip",
+      "mitigation_shuttle"
+    ],
+    "source_url": "https://www.bart.gov/guide/accessibility/elevators",
+    "verified": true,
+    "verified_by": "reviewer, read on the live page Fri Sept 11, 2026"
+  },
+  "scraped_at": "2026-09-11T18:19:15.629Z",
+  "sections": {
+    "BART Station Real Time Service Notification": [
+      "Follow our Service Alert Twitter Page@SFBARTalert",
+      "Sign up forBART Email and Text Alerts"
+    ],
+    "Calling for Help": [
+      "All BART stations have call boxes and/or courtesy telephones at all levels that connect to a BART Station Agent or the BART Operating Central Center.",
+      "If you need to communicate with the Station Agent while inside the elevator, use the emergency telephone. If the Station Agent does not answer within 30 seconds, your call will be answered by BART Central Dispatch.",
+      "If the emergency telephone is off the hook for at least two minutes and there is no voice communication, BART will treat this as a call for assistance. This ensures that help is available to elevator passengers even if they are unable to speak."
+    ],
+    "Elevator Attendants": [
+      "Riders will be greeted by elevator attendants at Civic Center/UN Plaza, Embarcadero, Montgomery St., and Powell St. stations to bolster accessibility, safety, and cleanliness."
+    ],
+    "Elevator Buttons": [
+      "S=Street level",
+      "C=Concourse",
+      "P=Platform",
+      "UL=Upper Level (not for all BART elevators)",
+      "LL=Lower Level (not for all BART elevators)",
+      "BA=BART platform (Muni system connected with San Francisco BART, but not all BART in San Francisco will have the connections",
+      "M=Muni (Muni system connected with San Francisco BART, but not all BART in San Francisco will have the connections)"
+    ],
+    "Elevator Dimensions": [
+      "We have created this Elevator Dimension Guide to provide the dimensions of each elevator systemwide to help you plan your journey. The guide outlines the dimensions of every elevator, including measurements of the door, width, length, and diagonal space across the floor."
+    ],
+    "Elevator Status": [
+      "*Click the station name for accessible alternatives for each station elevator"
+    ],
+    "Planned Elevator Service Advisories": [
+      "24th St. Mission Station elevator out of service July 13 to September 18",
+      "Read More",
+      "RSS Feed",
+      "Elevator status alerts are also available through:",
+      "Email and text alerts for stations of choice: bart.gov/alerts",
+      "The Official BART App (bart.gov/apps) with options to receive in-app notifications",
+      "Frequent systemwide PA announcements in stations",
+      "Digital screen updates on the platform digital signs and at Station Agent boothsEmail and text alerts for stations of choice: bart.gov/alerts",
+      "The Elevator Status Hotline: (510) 834-LIFT or (888) 2-ELEVAT",
+      "BART prioritizes the maintenance of elevators because of the essential role they play for passengers with disabilities and those with luggage and strollers. Our goal for station availability is 98%."
+    ],
+    "Station-Specific Elevator Outage Options and Accessible Pathways": [
+      "BART has identified alternative accessible options when elevators are out of service and provided a description of accessible pathways for each station.",
+      "12th St. Oakland City Center16th St. Mission 19th St. Oakland 24th St. Mission Antioch Ashby Balboa Park Bay Fair Berryessa / North San Jose Castro Valley Civic Center / UN Plaza Coliseum Colma ConcordDaly City Downtown Berkeley Dublin / Pleasanton El Cerrito del Norte El Cerrito Plaza Embarcadero Fremont Fruitvale Glen Park Hayward Lafayette",
+      "Lake Merritt MacArthur Millbrae Milpitas Montgomery St. North Berkeley North Concord / Martinez Oakland International Airport Orinda Pittsburg / Bay Point Pittsburg Center Pleasant Hill / Contra Costa Centre Powell St.Richmond Rockridge San BrunoSan Francisco International Airport San Leandro South Hayward South San Francisco Union City Walnut Creek Warm Springs / South Fremont West Dublin / Pleasanton West Oakland"
+    ],
+    "Using Elevators": [
+      "All BART stations have accessible elevators. In some stations, you may need to use two different elevators to get from the street to the train platform.",
+      "If you need assistance finding or using the elevator visit the Station Agent in the booth or contact them by pressing the button on the courtesy phone call box beside the elevator entrance. If you are unable to enter or exit the station because the elevator is not working, contact the Station Agent. They will help you enter or exit another way if possible or refer you to an alternate means of transportation, such as a bus or Paratransit.",
+      "If you find out in advance that an elevator is not working at a station, call the BART Transit Information Center to find out what transit alternatives are available to you, such as a bus or Paratransit."
+    ]
+  },
+  "source_url": "https://www.bart.gov/stations/elevators"
+}

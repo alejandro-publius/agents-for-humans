@@ -1,0 +1,36 @@
+{
+  "source": "FIXTURE: three synthetic rider profiles shaped like docs/riders in the main repo. No real personal data.",
+  "after_dark_from": "19:30",
+  "last_train_from": "23:30",
+  "riders": [
+    {
+      "rider_id": "rider-ana",
+      "name": "Ana",
+      "needs": "power wheelchair",
+      "trips": [
+        {"origin": "DELN", "destination": "EMBR", "depart_local": "07:40", "days": [0, 1, 2, 3, 4]},
+        {"origin": "EMBR", "destination": "DELN", "depart_local": "18:10", "days": [0, 1, 2, 3, 4]}
+      ]
+    },
+    {
+      "rider_id": "rider-marcus",
+      "name": "Marcus",
+      "needs": "stroller, two kids",
+      "trips": [
+        {"origin": "MCAR", "destination": "POWL", "depart_local": "08:15", "days": [0, 1, 2, 3, 4]},
+        {"origin": "POWL", "destination": "MCAR", "depart_local": "20:05", "days": [1, 3]},
+        {"origin": "POWL", "destination": "MCAR", "depart_local": "16:30", "days": [0, 2, 4]}
+      ]
+    },
+    {
+      "rider_id": "rider-june",
+      "name": "June",
+      "needs": "walker, 74",
+      "trips": [
+        {"origin": "ROCK", "destination": "12TH", "depart_local": "10:00", "days": [1, 3, 5]},
+        {"origin": "12TH", "destination": "ROCK", "depart_local": "23:40", "days": [5]},
+        {"origin": "12TH", "destination": "ROCK", "depart_local": "14:00", "days": [1, 3]}
+      ]
+    }
+  ]
+}

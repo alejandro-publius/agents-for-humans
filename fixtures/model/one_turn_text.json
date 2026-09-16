@@ -1,0 +1,7 @@
+{
+  "name": "one_turn_text",
+  "description": "The model answers in a single text turn with no tool calls. Proves the agent loop completes offline.",
+  "turns": [
+    {"type": "text", "text": "Mock model here. The loop ran end to end with no network."}
+  ]
+}

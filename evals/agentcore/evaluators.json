@@ -1,0 +1,35 @@
+{
+  "builtin": [
+    {
+      "evaluator_id": "Builtin.ToolSelectionAccuracy",
+      "level": "TOOL_CALL",
+      "ground_truth": null,
+      "why": "was calling draft_plan at that point justified"
+    },
+    {
+      "evaluator_id": "Builtin.TrajectoryExactOrderMatch",
+      "level": "SESSION",
+      "ground_truth": "expected_trajectory",
+      "why": "the tool sequence is exactly draft_plan then the Plan"
+    },
+    {
+      "evaluator_id": "Builtin.Correctness",
+      "level": "TRACE",
+      "ground_truth": "turns[].expected_response",
+      "why": "the response states the KB label"
+    }
+  ],
+  "custom": [
+    {
+      "evaluator_name": "LastElevatorOptionEquality",
+      "level": "TRACE",
+      "code": "le_dispatch/evaluators/option_equality.py",
+      "handler": "option_equality.lambda_handler",
+      "lambda_arn": "${OPTION_EQUALITY_LAMBDA_ARN}",
+      "lambda_timeout_seconds": 60,
+      "ground_truth": "evaluationReferenceInputs[0].expected_option (from scenario metadata.expected_option)",
+      "verified_on": "real Strands spans via make agentcore-eval-local (results/agentcore_eval_local.json)"
+    }
+  ],
+  "region": "us-west-2"
+}

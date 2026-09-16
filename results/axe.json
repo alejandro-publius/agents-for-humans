@@ -1,0 +1,13 @@
+{
+  "url": "/",
+  "axe_version": "4.12.1",
+  "violations": 0,
+  "violation_nodes": 0,
+  "passes": 35,
+  "incomplete": 1,
+  "violation_details": [],
+  "incomplete_rules": [
+    "form-field-multiple-labels"
+  ],
+  "note": "axe-core via Playwright Chromium against the served page with replayed data; 0 required."
+}

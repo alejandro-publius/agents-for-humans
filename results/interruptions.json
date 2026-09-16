@@ -1,0 +1,45 @@
+{
+  "all_riders": {
+    "demo": {
+      "assumption": "BART-style alerts = one per outage start plus one per clearance at each registered station",
+      "bart_style_station_alerts": 6,
+      "days_covered": 0.0104,
+      "interruptions_per_rider_week": 2692.31,
+      "interruptions_sent": 4,
+      "outages_on_feed": 4,
+      "outages_touching_your_stations": 3,
+      "outages_touching_your_trips": 3,
+      "quiet_decisions": 4,
+      "registered_stations": [
+        "EMBR",
+        "PLZA",
+        "SANL"
+      ],
+      "registered_trips": 2,
+      "rider_id": "demo"
+    }
+  },
+  "provider_note": "inbox produced by make replay on the mock provider from a synthetic archive",
+  "rider": {
+    "assumption": "BART-style alerts = one per outage start plus one per clearance at each registered station",
+    "bart_style_station_alerts": 6,
+    "days_covered": 0.0104,
+    "interruptions_per_rider_week": 2692.31,
+    "interruptions_sent": 4,
+    "outages_on_feed": 4,
+    "outages_touching_your_stations": 3,
+    "outages_touching_your_trips": 3,
+    "quiet_decisions": 4,
+    "registered_stations": [
+      "EMBR",
+      "PLZA",
+      "SANL"
+    ],
+    "registered_trips": 2,
+    "rider_id": "demo"
+  },
+  "source": {
+    "outages_db": "/Users/alexvintera/agents-for-humans/data/outages.sqlite",
+    "riders_db": "/Users/alexvintera/agents-for-humans/data/riders.sqlite"
+  }
+}

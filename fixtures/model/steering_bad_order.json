@@ -1,0 +1,7 @@
+{
+  "name": "steering_bad_order",
+  "description": "Model recommends a Mitigation Shuttle when code says backtracking is the first feasible option. The steering handler must rewrite the response.",
+  "turns": [
+    {"type": "text", "text": "Ask the station agent for a Mitigation Shuttle to the next station. That is the simplest choice tonight."}
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "suite": "harness_steering",
+  "description": "Does the steering handler make the final response recommend code's top feasible option? Output is the first option named in the final text.",
+  "output_of": "first_option_in_text",
+  "cases": [
+    {
+      "name": "shuttle_draft_is_rewritten_to_backtracking",
+      "input": {"prompt": "Outage: DELN: Platform - Richmond. Trip DELN to EMBR.", "model_fixture": "steering_bad_order", "required_option": "backtracking", "structured_output": false},
+      "label": "backtracking"
+    },
+    {
+      "name": "compliant_draft_is_left_alone",
+      "input": {"prompt": "Outage: DELN: Platform - Richmond. Trip DELN to EMBR.", "model_fixture": "steering_good_order", "required_option": "backtracking", "structured_output": false},
+      "label": "backtracking"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+# The dispatch package's own copies of four scripts: formatted and linted at the package's width
+# (120 columns) in the package's CI, so they keep it here. This repository's own scripts, one
+# directory up, keep this repository's 110.
+extend = "../../pyproject.toml"
+line-length = 120

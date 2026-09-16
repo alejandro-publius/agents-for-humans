@@ -1,0 +1,97 @@
+{
+  "abbr": "MONT",
+  "documented_outage_options": [
+    {
+      "elevator": "STREET ELEVATOR",
+      "elevator_kind": "street",
+      "label": "Can't enter station",
+      "label_rule": "phrase",
+      "option_label": "transit",
+      "situation": "cant_enter",
+      "text": "Use the Embarcadero Station street elevator at Market and Drumm streets (0.3 miles/ 4 short blocks). Go to the island on Market at Battery/Bush to take bus to Market at Main."
+    },
+    {
+      "elevator": "STREET ELEVATOR",
+      "elevator_kind": "street",
+      "label": "Can't exit station",
+      "label_rule": "phrase",
+      "option_label": "transit",
+      "situation": "cant_exit",
+      "text": "Continue on train to exit at another station. The closest stations are Embarcadero (0.3 miles) and Powell (0.4 miles)."
+    },
+    {
+      "elevator": "PLATFORM ELEVATOR",
+      "elevator_kind": "platform",
+      "label": "Can't enter station",
+      "label_rule": "phrase",
+      "option_label": "transit",
+      "situation": "cant_enter",
+      "text": "Use the Embarcadero Station street elevator at Market and Drumm Streets (0.3 miles/ 4 short blocks). Go to the island on Market at Battery/Bush to take bus to Market at Main."
+    },
+    {
+      "elevator": "PLATFORM ELEVATOR",
+      "elevator_kind": "platform",
+      "label": "Can't exit station",
+      "label_rule": "phrase",
+      "option_label": "transit",
+      "situation": "cant_exit",
+      "text": "Continue on train to exit at another station. The closest stations are Embarcadero (0.3 miles) and Powell (0.4 miles)."
+    }
+  ],
+  "elevators": [
+    {
+      "enter_option": "transit",
+      "exit_option": "transit",
+      "kind": "street",
+      "name": "STREET ELEVATOR",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "label_rule": "phrase",
+          "option_label": "transit",
+          "situation": "cant_enter",
+          "text": "Use the Embarcadero Station street elevator at Market and Drumm streets (0.3 miles/ 4 short blocks). Go to the island on Market at Battery/Bush to take bus to Market at Main."
+        },
+        {
+          "label": "Can't exit station",
+          "label_rule": "phrase",
+          "option_label": "transit",
+          "situation": "cant_exit",
+          "text": "Continue on train to exit at another station. The closest stations are Embarcadero (0.3 miles) and Powell (0.4 miles)."
+        }
+      ]
+    },
+    {
+      "enter_option": "transit",
+      "exit_option": "transit",
+      "kind": "platform",
+      "name": "PLATFORM ELEVATOR",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "label_rule": "phrase",
+          "option_label": "transit",
+          "situation": "cant_enter",
+          "text": "Use the Embarcadero Station street elevator at Market and Drumm Streets (0.3 miles/ 4 short blocks). Go to the island on Market at Battery/Bush to take bus to Market at Main."
+        },
+        {
+          "label": "Can't exit station",
+          "label_rule": "phrase",
+          "option_label": "transit",
+          "situation": "cant_exit",
+          "text": "Continue on train to exit at another station. The closest stations are Embarcadero (0.3 miles) and Powell (0.4 miles)."
+        }
+      ]
+    }
+  ],
+  "http_status": 200,
+  "name": "Montgomery St. (SF)",
+  "other_sections": [],
+  "outage_intro": "In case of an elevator outage, use the following options or contact the station agent for assistance. Agents can arrange a ride to a different station in an accessible van if needed.",
+  "page_name": "Montgomery St.",
+  "pathways": [],
+  "pathways_status": "unknown",
+  "scrape_method": "Chrome same-origin fetch, text blocks, 1 request per 1.1 s",
+  "scraped_at": "2026-09-11T18:22:44.008Z",
+  "source_url": "https://www.bart.gov/stations/MONT/accessible"
+}

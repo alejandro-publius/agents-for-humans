@@ -1,0 +1,145 @@
+{
+  "abbr": "ASHB",
+  "documented_outage_options": [
+    {
+      "elevator": "PLATFORM ELEVATOR 1",
+      "elevator_kind": "platform",
+      "label": "Can't enter station",
+      "label_rule": "phrase",
+      "option_label": "alternate_elevator",
+      "situation": "cant_enter",
+      "text": "Take the other platform elevator"
+    },
+    {
+      "elevator": "PLATFORM ELEVATOR 1",
+      "elevator_kind": "platform",
+      "label": "Can't exit station",
+      "label_rule": "phrase",
+      "option_label": "alternate_elevator",
+      "situation": "cant_exit",
+      "text": "Take the other platform elevator"
+    },
+    {
+      "elevator": "PLATFORM ELEVATOR 2",
+      "elevator_kind": "platform",
+      "label": "Can't enter station",
+      "label_rule": "phrase",
+      "option_label": "alternate_elevator",
+      "situation": "cant_enter",
+      "text": "Take the other platform elevator"
+    },
+    {
+      "elevator": "PLATFORM ELEVATOR 2",
+      "elevator_kind": "platform",
+      "label": "Can't exit station",
+      "label_rule": "phrase",
+      "option_label": "alternate_elevator",
+      "situation": "cant_exit",
+      "text": "Take the other platform elevator"
+    },
+    {
+      "elevator": "STREET ELEVATOR",
+      "elevator_kind": "street",
+      "label": "Can't enter station",
+      "label_rule": "phrase",
+      "option_label": "alternate_elevator",
+      "situation": "cant_enter",
+      "text": "Take the ramp at the southwest corner of Ashby and Adeline Streets to access the other side of the station via the lower BART parking lot, or use the elevator inside of Ed Roberts Campus (only during opening hours)."
+    },
+    {
+      "elevator": "STREET ELEVATOR",
+      "elevator_kind": "street",
+      "label": "Can't exit station",
+      "label_rule": "phrase",
+      "option_label": "alternate_elevator",
+      "situation": "cant_exit",
+      "text": "Go back into the station and exit on the other (lower) side. Then take the ramp at the southwest corner of Ashby and Adeline Streets to get back up to street level, or use the elevator inside of Ed Roberts Campus (only during opening hours)."
+    }
+  ],
+  "elevators": [
+    {
+      "enter_option": "alternate_elevator",
+      "exit_option": "alternate_elevator",
+      "kind": "platform",
+      "name": "PLATFORM ELEVATOR 1",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "label_rule": "phrase",
+          "option_label": "alternate_elevator",
+          "situation": "cant_enter",
+          "text": "Take the other platform elevator"
+        },
+        {
+          "label": "Can't exit station",
+          "label_rule": "phrase",
+          "option_label": "alternate_elevator",
+          "situation": "cant_exit",
+          "text": "Take the other platform elevator"
+        }
+      ]
+    },
+    {
+      "enter_option": "alternate_elevator",
+      "exit_option": "alternate_elevator",
+      "kind": "platform",
+      "name": "PLATFORM ELEVATOR 2",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "label_rule": "phrase",
+          "option_label": "alternate_elevator",
+          "situation": "cant_enter",
+          "text": "Take the other platform elevator"
+        },
+        {
+          "label": "Can't exit station",
+          "label_rule": "phrase",
+          "option_label": "alternate_elevator",
+          "situation": "cant_exit",
+          "text": "Take the other platform elevator"
+        }
+      ]
+    },
+    {
+      "enter_option": "alternate_elevator",
+      "exit_option": "alternate_elevator",
+      "kind": "street",
+      "name": "STREET ELEVATOR",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "label_rule": "phrase",
+          "option_label": "alternate_elevator",
+          "situation": "cant_enter",
+          "text": "Take the ramp at the southwest corner of Ashby and Adeline Streets to access the other side of the station via the lower BART parking lot, or use the elevator inside of Ed Roberts Campus (only during opening hours)."
+        },
+        {
+          "label": "Can't exit station",
+          "label_rule": "phrase",
+          "option_label": "alternate_elevator",
+          "situation": "cant_exit",
+          "text": "Go back into the station and exit on the other (lower) side. Then take the ramp at the southwest corner of Ashby and Adeline Streets to get back up to street level, or use the elevator inside of Ed Roberts Campus (only during opening hours)."
+        }
+      ]
+    }
+  ],
+  "http_status": 200,
+  "name": "Ashby (Berkeley)",
+  "other_sections": [
+    {
+      "section": "BART Station Real Time Service Notification",
+      "text": [
+        "Follow our Service Alert Twitter Page@SFBARTalert",
+        "Sign up forBART Email and Text Alerts"
+      ]
+    }
+  ],
+  "outage_intro": "In case of an elevator outage, use the following options or contact the station agent for assistance. Agents can arrange a ride to a different station in an accessible van if needed.",
+  "page_name": "Ashby",
+  "pathways": [],
+  "pathways_status": "unknown",
+  "scrape_method": "Chrome same-origin fetch, text blocks, 1 request per 1.1 s",
+  "scraped_at": "2026-09-11T18:19:27.007Z",
+  "source_url": "https://www.bart.gov/stations/ASHB/accessible"
+}

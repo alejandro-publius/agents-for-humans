@@ -1,0 +1,10 @@
+{
+  "_comment": "Models for make eval-live (laptop only). Confirm both ids in the Bedrock console for us-west-2 before the run; cross-region inference profile ids carry the us. prefix.",
+  "region": "us-west-2",
+  "hard_cap_calls_per_entry": 200,
+  "modes": ["enforced", "no_steering"],
+  "models": [
+    {"name": "sonnet", "provider": "bedrock", "model_id": "us.anthropic.claude-sonnet-4-5-20250929-v1:0"},
+    {"name": "nova-lite", "provider": "bedrock", "model_id": "us.amazon.nova-lite-v1:0"}
+  ]
+}

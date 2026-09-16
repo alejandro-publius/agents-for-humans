@@ -1,0 +1,65 @@
+{
+  "abbr": "BERY",
+  "documented_outage_options": [
+    {
+      "elevator": "STATION ELEVATOR",
+      "elevator_kind": "station",
+      "label": "Can't enter station",
+      "label_rule": "phrase",
+      "option_label": "transit",
+      "situation": "cant_enter",
+      "text": "Take another mode of transportation such as a VTA bus to enter BART at the Milpitas station."
+    },
+    {
+      "elevator": "STATION ELEVATOR",
+      "elevator_kind": "station",
+      "label": "Can't exit station",
+      "label_rule": "phrase",
+      "option_label": "backtracking",
+      "situation": "cant_exit",
+      "text": "Return to Milpitas to exit BART and take another mode of transportation such as a VTA bus to the destination."
+    }
+  ],
+  "elevators": [
+    {
+      "enter_option": "transit",
+      "exit_option": "backtracking",
+      "kind": "station",
+      "name": "STATION ELEVATOR",
+      "outage_options": [
+        {
+          "label": "Can't enter station",
+          "label_rule": "phrase",
+          "option_label": "transit",
+          "situation": "cant_enter",
+          "text": "Take another mode of transportation such as a VTA bus to enter BART at the Milpitas station."
+        },
+        {
+          "label": "Can't exit station",
+          "label_rule": "phrase",
+          "option_label": "backtracking",
+          "situation": "cant_exit",
+          "text": "Return to Milpitas to exit BART and take another mode of transportation such as a VTA bus to the destination."
+        }
+      ]
+    }
+  ],
+  "http_status": 200,
+  "name": "Berryessa / North San Jose",
+  "other_sections": [
+    {
+      "section": "BART Station Real Time Service Notification",
+      "text": [
+        "Follow our Service Alert Twitter Page@SFBARTalert",
+        "Sign up forBART Email and Text Alerts"
+      ]
+    }
+  ],
+  "outage_intro": "In case of an elevator outage, use the following options or contact the station agent for assistance. Agents can arrange a ride to a different station in an accessible van if needed.",
+  "page_name": "Berryessa / North San Jose",
+  "pathways": [],
+  "pathways_status": "unknown",
+  "scrape_method": "Chrome same-origin fetch, text blocks, 1 request per 1.1 s",
+  "scraped_at": "2026-09-11T18:19:33.006Z",
+  "source_url": "https://www.bart.gov/stations/BERY/accessible"
+}

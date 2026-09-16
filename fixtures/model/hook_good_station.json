@@ -1,0 +1,8 @@
+{
+  "name": "hook_good_station",
+  "description": "Model calls get_station_facts with a known station. The hook must let it through.",
+  "turns": [
+    {"type": "tool_use", "name": "get_station_facts", "input": {"station_abbr": "DELN"}},
+    {"type": "tool_use", "name": "Plan", "input": {"affected": true, "option": "backtracking", "steps": ["Ride one stop to Richmond", "Return on the next train"], "added_minutes": 12, "message": "Del Norte platform elevator is out. Ride to Richmond and come back; the other platform elevator works."}}
+  ]
+}

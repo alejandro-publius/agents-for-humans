@@ -1,0 +1,21 @@
+{
+  "_comment": "Gateway tools governed by AgentCore Policy. target_name is the gateway target name; Cedar actions are '<target_name>___<tool>'. Extend when the E7 MCP server exposes more tools.",
+  "target_name": "last-elevator-mcp",
+  "mcp_endpoint": "${MCP_ENDPOINT}",
+  "tools": [
+    {
+      "name": "draft_plan",
+      "description": "Draft a plan for the rider's trip: station and elevator from the KB, BART's option label",
+      "station_params": ["station"],
+      "elevator_params": ["elevator"],
+      "option_params": ["option"]
+    },
+    {
+      "name": "affected_trips",
+      "description": "List a rider's saved trips affected by an outage at a station",
+      "station_params": ["origin", "destination"],
+      "elevator_params": [],
+      "option_params": []
+    }
+  ]
+}

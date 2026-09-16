@@ -1,0 +1,13 @@
+{
+  "_fixture": {
+    "synthetic": true,
+    "source": "Authored 2026-09-12. An ordered sequence of the labeled synthetic elev snapshots, standing in for a weekend archive until the poller records a real one with BART_API_KEY.",
+    "note": "SYNTHETIC. Timestamps are placeholders in UTC. DELN appears, SANL and PLZA join, DELN clears while EMBR appears, then everything clears."
+  },
+  "snapshots": [
+    {"at": "2026-09-12T14:00:00+00:00", "file": "elev_sample.json", "note": "documented sample: DELN platform (Richmond)"},
+    {"at": "2026-09-12T14:05:00+00:00", "file": "elev_multi.json", "note": "synthetic: DELN, SANL (SF direction), PLZA (Richmond)"},
+    {"at": "2026-09-12T14:10:00+00:00", "file": "elev_changed.json", "note": "synthetic: DELN cleared, EMBR street elevator added"},
+    {"at": "2026-09-12T14:15:00+00:00", "file": "elev_none.json", "note": "synthetic: all clear"}
+  ]
+}

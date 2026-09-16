@@ -1,0 +1,13 @@
+{
+  "provenance": {
+    "run": "axe-core over every page of the evidence site (scripts/site_a11y.py); the site is built from the documents in the repository, so this is the accessibility of what a judge reads",
+    "engine": "axe-core 4.12.1",
+    "claimable": true,
+    "note": "Nothing here is about the rider app, whose audit is the main repo's (screenshot 08)."
+  },
+  "pages": 35,
+  "violations": 0,
+  "rules_failed": 0,
+  "by_rule": {},
+  "pages_with_violations": {}
+}

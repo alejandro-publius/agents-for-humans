@@ -1,0 +1,40 @@
+{
+  "baselines": {},
+  "mode": "mock",
+  "variant": null,
+  "steering": null,
+  "tools": null,
+  "agreement_pct": 100.0,
+  "model_call_budget": null,
+  "suite": "harness_structured",
+  "description": "Does every run end in a schema-valid Plan? Output is plan.option from the structured output.",
+  "output_of": "plan_option",
+  "cases_run": 3,
+  "cases_passed": 3,
+  "accuracy": 1.0,
+  "accuracy_pct": 100.0,
+  "strands_evals_overall_score": 1.0,
+  "mechanisms": {
+    "hook_cancellations": 0,
+    "steering_rewrites": 0,
+    "steering_guides": 0,
+    "model_calls": 5
+  },
+  "cases": {
+    "immediate_plan": {
+      "expected": "alternate_elevator",
+      "actual": "alternate_elevator",
+      "pass": true
+    },
+    "forced_plan_after_prose": {
+      "expected": "backtracking",
+      "actual": "backtracking",
+      "pass": true
+    },
+    "invalid_plan_then_valid": {
+      "expected": "transit",
+      "actual": "transit",
+      "pass": true
+    }
+  }
+}

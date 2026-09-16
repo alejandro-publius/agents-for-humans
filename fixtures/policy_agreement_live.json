@@ -1,0 +1,12 @@
+{
+  "_comment": "FIXTURE for the table generator test: four live-shaped rows with made-up numbers. Never copy these into results/.",
+  "entries": [
+    {"provider": "mock", "model_id": "mock-echo", "mode": "enforced", "cases": 194, "agree": 194, "agreement_pct": 100.0, "claimable": false},
+    {"provider": "mock", "model_id": "mock-echo", "mode": "no_steering", "cases": 194, "agree": 194, "agreement_pct": 100.0, "claimable": false},
+    {"provider": "bedrock", "model_id": "us.anthropic.claude-sonnet-4-5-20250929-v1:0", "model_name": "sonnet", "mode": "enforced", "cases": 194, "agree": 194, "agreement_pct": 100.0, "calls_used": 199, "hard_cap_calls": 200, "claimable": true},
+    {"provider": "bedrock", "model_id": "us.anthropic.claude-sonnet-4-5-20250929-v1:0", "model_name": "sonnet", "mode": "no_steering", "cases": 194, "agree": 171, "agreement_pct": 88.1, "calls_used": 194, "hard_cap_calls": 200, "claimable": true},
+    {"provider": "bedrock", "model_id": "us.amazon.nova-lite-v1:0", "model_name": "nova-lite", "mode": "enforced", "cases": 194, "agree": 194, "agreement_pct": 100.0, "calls_used": 200, "hard_cap_calls": 200, "stopped_early": null, "claimable": true},
+    {"provider": "bedrock", "model_id": "us.amazon.nova-lite-v1:0", "model_name": "nova-lite", "mode": "no_steering", "cases": 194, "agree": 150, "agreement_pct": 77.3, "calls_used": 194, "hard_cap_calls": 200, "claimable": true},
+    {"provider": "agentcore-evaluations", "model_id": "us.amazon.nova-lite-v1:0", "mode": "enforced", "evaluator": "LastElevatorOptionEquality", "cases": 194, "agree": 194, "agreement_pct": 100.0, "claimable": true}
+  ]
+}
